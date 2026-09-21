@@ -1,7 +1,6 @@
 import { Button } from "../../_ui/button/button.jsx";
 import { Block_Head } from "../_ui/block--head/block--head.jsx";
 import { Block_banner } from './block_banner.jsx';
-import { HeroContent } from '../../content/custom/hero-content/hero-content.jsx';
 
 export const All_block_banner = () => {
 	return (
@@ -18,7 +17,6 @@ export const All_block_banner = () => {
 				]}
 				className={"block_banner-hero"}
 			>
-        <HeroContent main={true}></HeroContent>
       </Block_banner>
       <br/>
 
@@ -41,7 +39,6 @@ export const All_block_banner = () => {
 				]}
 				className={"block_banner-hero"}
 			>
-        <HeroContent></HeroContent>
       </Block_banner>
       <br/>
       {/*обычный Баннер*/}

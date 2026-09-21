@@ -36,10 +36,7 @@ import "../../components/form/inputs/input_date/input_date";
 // content
 
 import '../../components/content/reviews/review.js';
-import '../../components/content/custom/vertical-cards/vertical-cards.js';
-import '../../components/content/custom/creator/creator.js';
-import '../../components/content/custom/calendar/calendar.js';
-import '../../components/transition/transition.js';
+// import '../../components/transition/transition.js';
 
 Fancybox.bind('.gallery *[data-fancybox]', {
   infinite: false,

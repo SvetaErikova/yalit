@@ -9,7 +9,6 @@ export const Footer = () => {
 	return (
     <>
       <footer className="footer">
-        <div class="wrapper">
           <div className="footer--main">
             <div className="footer--col">
               <FooterContacts></FooterContacts>
@@ -22,7 +21,6 @@ export const Footer = () => {
           </div>
           <FooterLogo></FooterLogo>
           <FooterBottom></FooterBottom>
-        </div>
       </footer>
     </>
 );

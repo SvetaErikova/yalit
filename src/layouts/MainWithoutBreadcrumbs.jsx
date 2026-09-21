@@ -9,7 +9,7 @@ export default function MainWithoutBreadcrumbsLayout({ children, meta, lightmode
 		<BaseHtml meta={meta} lightmode={lightmode} className={className} colorMode={colorMode}>
 			<Header pagePath={meta.path} />
 			<main>{children}
-        <FooterTop></FooterTop></main>
+      </main>
 
 			<Footer></Footer>
 			<Popups></Popups>

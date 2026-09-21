@@ -1,114 +1,91 @@
 .footer
-  a:hover
-    color: var(--text-neutral-tertiary)
-
+  background-color: var(--bg-primary)
+  //a:hover
+  //  color: var(--text-neutral-tertiary)
+  color: #FEF9F1
   &--main
     position: relative
     z-index: 1
-
-
+    display: grid
+    grid-template-columns: 4fr 2fr 6fr
+    padding: 100px var(--container) 100px
+  &--logo
+    display: flex
+    justify-content: center
+    img
+      max-width: 483px
   &--col
     display: flex
     flex-direction: column
-    & > *
-      padding: 32px var(--container)
+    &:has(.footer--nav)
+      @media (min-width: 769px)
+        grid-column: 3
   &--nav
     gap: var(--container)
+    text-transform: uppercase
     @media (min-width: 769px)
       display: grid
-      grid-template-columns: repeat(2, 1fr)
+      grid-template-columns: repeat(3, 1fr)
     &_group
       display: flex
-      gap: 32px
-
+      flex-direction: column
+      gap: 20px
+      max-width: 200px
       &_title
-        writing-mode: vertical-lr
-        text-orientation: upright
-        padding: 8px
-        color: var(--text-fixed-light-primary)
-        background: var(--bg-illustration)
-        height: max-content
-        font-size: var(--fs-caption-2)
+        font-size: var(--fs-body-2)
         line-height: 1
-        letter-spacing: 0.2em
+        font-weight: 600
     &_list
-      font-size: var(--fs-body-2)
-      line-height: 1.5
-
       &_item
-        padding: 8px 0
+        font-size: var(--fs-caption-2)
+        line-height: 1.5
         list-style-type: none
-        @media (min-width: 769px)
-          padding: 6px 0
+
   &--contacts
-    gap: 32px
+    display: flex
+    flex-direction: column
+    gap: 20px
     margin-top: auto
     font-size: var(--fs-body-1)
     @media (min-width: 769px)
-      display: grid
-      grid-template-columns: repeat(2, 1fr)
-    div
-      display: flex
-      flex-direction: column
-      &:first-child
-        padding: 4px 0
-        color: var(--text-neutral-tertiary)
-      &:last-child
-        .button
-          padding: 8px 0
-          gap: 20px
-          font-size: var(--fs-body-2)
-  .form--title
-    font-size: var(--fs-body-2)
-  &--info
-    display: flex
-    flex-direction: column
-    gap: var(--container)
-    border-top: 1px solid var(--line-quatemary-filled)
     &_title
       text-transform: uppercase
+      font-size: var(--fs-body-2)
+      font-weight: 600
     &_list
       display: flex
       flex-direction: column
-      gap: 10px
-      font-size: var(--fs-body-1)
-      line-height: 1.5
-
+      .button
+        padding: 8px 0
+        gap: 20px
+        font-size: var(--fs-body-2)
+  .form--title
+    font-size: var(--fs-body-2)
+  &--awards
+    &_list
+      display: flex
+      gap: 16px
+      .item
+        max-width: 150px
 
   &--note
     border-top: 1px solid var(--line-quatemary-filled)
-    margin-top: auto
     display: flex
-    color: var(--text-neutral-tertiary)
-    font-size: var(--fs-body-1)
+    color: #FEF9F1
+    font-size: var(--fs-caption-2)
     flex-direction: column
     gap: 24px
+    text-transform: uppercase
+    padding: 48px  var(--container)
+    margin-top: 56px
+
     @media (min-width: 769px)
       flex-direction: row
       justify-content: space-between
+
     .developer
-      color: var(--text-neutral-tertiary)
       span
-        color: var(--text-neutral-primary)
-
-  &--col:first-child
-    border-right: 1px solid var(--line-quatemary-filled)
-
-.footer--top
-  display: grid
-  grid-template-columns: repeat(2, 1fr)
-  grid-template-rows: 1fr 1fr
-  justify-items: center
-  position: relative
-  z-index: 2
-  padding: clamp(16px, calc(16px + (148 - 120) * ((100vw - 768px) / (1440 - 1240))), 148px) var(--container) 48px
-  @media (min-width: 1024px)
-    display: flex
-    justify-content: space-between
-  .item
-    display: flex
-
-  img
-    width: auto
+        color: #FEF9F1
+        font-weight: 600
 
 

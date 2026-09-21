@@ -9,7 +9,6 @@ export default function HeroLayout({ children, meta, className, colorMode = '' }
 		<BaseHtml meta={meta}  className={className} colorMode={colorMode}>
 			<Header transparent={true} pagePath={meta.path} />
 			<main>{children}
-        <FooterTop></FooterTop>
       </main>
 			<Footer></Footer>
 			<Popups></Popups>

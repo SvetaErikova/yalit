@@ -1,10 +1,8 @@
 import { Form } from '../form/form-comp.jsx';
-import { Menu } from '../menu/menu-comp.jsx';
 import { Is_cascade_mini } from '../_ui/is_cascade/is_cascade_mini.jsx';
 import { Button } from '../_ui/button/button.jsx';
 import { Nav } from '../nav/nav.jsx';
 import { HeaderInfo } from '../header/header-info.jsx';
-import { HeroDecor } from '../content/custom/hero-content/hero-content.jsx';
 
 const PopupsLayout = ({ data, className, children, btnClose = true, popupTitle, popupActions }) => {
   return (
@@ -62,7 +60,6 @@ export const PopupMenu = () =>{
         <HeaderInfo />
         </div>
         <Nav></Nav>
-        <HeroDecor></HeroDecor>
       </div>
     </div>
   )

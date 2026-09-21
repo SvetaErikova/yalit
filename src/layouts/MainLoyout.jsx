@@ -12,7 +12,6 @@ export default function MainLayout({ children, meta, className, colorMode = '' }
 			<main>
 				<Breadcrumbs></Breadcrumbs>
 				{children}
-        <FooterTop></FooterTop>
 			</main>
 			<Footer></Footer>
 			<Popups></Popups>

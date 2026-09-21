@@ -19,8 +19,8 @@ export default function BaseHtml({ children, meta, colorMode = '', className }) 
       <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body class={clsx( colorMode, className)}>
-    <Preloader />
-    <Transition/>
+    {/*<Preloader />*/}
+    {/*<Transition/>*/}
 
     {children}
     <script src="/assets/js/main.libs.js"></script>

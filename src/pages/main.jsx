@@ -1,19 +1,16 @@
 import HeroLayout from '../layouts/HeroLayout.jsx';
 import { metaPages } from '../shared/meta-pages';
-import { Creator } from '../components/content/custom/creator/creator.jsx';
 import { Block_List } from '../components/block/block_list/block_list.jsx';
 import { Block_Head } from '../components/block/_ui/block--head/block--head.jsx';
 import { All_card_offers, All_card_services } from '../components/_ui/card/all_card.jsx';
 import { Block_banner } from '../components/block/block_banner/block_banner.jsx';
 import { Button } from '../components/_ui/button/button.jsx';
-import { HeroContent } from '../components/content/custom/hero-content/hero-content.jsx';
 import { Accommodation } from '../components/content/accomodation/accommodation.jsx';
 import { Block_image_text } from '../components/block/block_image_text/block_image_text.jsx';
 import { Faq } from '../components/content/faq/faq.jsx';
 import { Input } from '../components/form/inputs/input/input_comp.jsx';
 import { Form_policy } from '../components/form/form_policy.jsx';
 import { Input_textarea } from '../components/form/inputs/input_textarea/input_textarea_comp.jsx';
-import { Card } from '../components/_ui/card/card.jsx';
 
 
 export default function Home() {
@@ -30,7 +27,6 @@ export default function Home() {
         ]}
         className={"block_banner-hero"}
       >
-        <HeroContent main={true}></HeroContent>
       </Block_banner>
       <Block_List
         className="content_services"
@@ -45,7 +41,6 @@ export default function Home() {
       >
         <All_card_services />
       </Block_List>
-      <Creator></Creator>
       <Block_List
         className="content_offers"
         link={true}

@@ -12,7 +12,6 @@ export default function HeroWithBreadcrumbs({ children, meta, className, colorMo
       <main>
         <Breadcrumbs></Breadcrumbs>
         {children}
-        <FooterTop></FooterTop>
       </main>
       <Footer></Footer>
       <Popups></Popups>
