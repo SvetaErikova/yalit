@@ -1,0 +1,136 @@
+.form--input
+  position: relative
+  input[type="radio"],
+  input[type="checkbox"]
+    position: absolute
+    top: 0
+    left: 0
+    opacity: 0
+    order: -1
+    & ~ span
+      order: 1
+      line-height: 1.5
+      margin-left: 16px
+      font-size: var(--fs-body-1)
+    & ~ .radio,
+    & ~ .checkbox,
+    & ~ .toggle
+      flex-shrink: 0
+      flex-grow: 0
+      cursor: pointer
+
+  input[type="checkbox"]
+    & ~ .checkbox
+      transition: var(--transition)
+      width: 20px
+      height: 20px
+      border: 1px solid var(--line-quatemary)
+      background-color: transparent
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+      box-shadow: none
+      @media(min-width: 768px)
+        width: 24px
+        height: 24px
+      &:after
+        content: "\e909"
+        font-family: 'icomoon' !important
+        font-size: 20px
+        line-height: 1
+        color: #482F0C
+        transition: 0.18s cubic-bezier(.36,.25,.56,1)
+        scale: 0
+        position: absolute
+        translate: -50% -50%
+        top: 50%
+        left: 50%
+
+      &:hover,
+      &:focus
+        border-color: var(--line-primary)
+
+    & ~ .toggle
+      width: 46px
+      height: 24px
+      border: 1px solid var(--line-quatemary)
+      position: relative
+      transition: var(--transition)
+      display: flex
+      align-items: center
+      justify-content: center
+      cursor: pointer
+      background-color: transparent
+      border-radius: 50px
+      &:after
+        content: ""
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 12px
+        height: 12px
+        position: absolute
+        left: 4px
+        top: 5px
+        border-radius: 50px
+        background-color: #482F0C
+        transition: var(--transition)
+        z-index: 2
+        flex-shrink: 0
+        flex-grow: 0
+      &:hover,
+      &:focus
+        border-color: var(--line-primary)
+
+    &:checked
+      & ~ .checkbox
+        border-color: var(--line-quatemary)
+        &:after
+          transition: 0.18s cubic-bezier(.36,.25,.56,1.82)
+          scale: 1
+      & ~ .toggle
+        background-color: transparent
+        border-color: var(--line-primary)
+        &:after
+          transform: translateX(20px)
+
+  input[type="radio"]
+    & ~ .radio
+      transition: var(--transition)
+      width: 20px
+      height: 20px
+      border: 1px solid var(--line-quatemary)
+      background-color: transparent
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      position: relative
+      @media(min-width: 769px)
+        width: 24px
+        height: 24px
+      &:after
+        content: ""
+        position: absolute
+        translate: -50% -50%
+        top: 50%
+        left: 50%
+        transition: 0.18s cubic-bezier(.36,.25,.56,1)
+        scale: 0
+        width: 16px
+        height: 16px
+        background-color: #482F0C
+        border-radius: 50px
+        @media(min-width: 768px)
+          width: 16px
+          height: 16px
+      &:hover,
+      &:focus
+        border-color: var(--line-primary)
+    &:checked
+      & ~ .radio
+        border-color: var(--line-quatemary)
+        &:after
+          transition: 0.18s cubic-bezier(.36,.25,.56,1.82)
+          scale: 1

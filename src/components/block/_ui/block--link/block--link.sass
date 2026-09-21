@@ -1,0 +1,13 @@
+.block--link
+  display: flex
+  align-items: flex-end
+  justify-content: flex-end
+  @media (min-width: 1024px)
+    span[class^=icon-]
+      display: none
+  @media (max-width: 1023px)
+    span:not([class^=icon-])
+      display: none
+  .button
+    @media(min-width: 769px)
+      height: 40px

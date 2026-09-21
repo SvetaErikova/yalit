@@ -1,0 +1,86 @@
+
+@font-face
+  font-family: 'TT Tricks'
+  src: url("/assets/fonts/TT Tricks/TTTricks-Light┬атАФ ╨║╨╛╨┐╨╕╤П.ttf") format("truetype")
+  font-display: swap
+  font-style: normal
+  font-weight: 300
+
+@font-face
+  font-family: 'TT Tricks'
+  src: url("/assets/fonts/TT Tricks/TTTricks-Regular┬атАФ ╨║╨╛╨┐╨╕╤П.ttf") format("truetype")
+  font-display: swap
+  font-style: normal
+  font-weight: 400
+
+@font-face
+  font-family: 'Suisse'
+  src: url("/assets/fonts/suisse/SuisseIntl-Light┬атАФ ╨║╨╛╨┐╨╕╤П.otf") format("opentype")
+  font-display: swap
+  font-style: normal
+  font-weight: 300
+
+@font-face
+  font-family: 'Suisse'
+  src: url("/assets/fonts/suisse/SuisseIntl-Regular┬атАФ ╨║╨╛╨┐╨╕╤П.otf") format("opentype")
+  font-display: swap
+  font-style: normal
+  font-weight: 400
+
+@font-face
+  font-family: 'Suisse'
+  src: url("/assets/fonts/suisse/SuisseIntl-Medium┬атАФ ╨║╨╛╨┐╨╕╤П.otf") format("opentype")
+  font-display: swap
+  font-style: normal
+  font-weight: 500
+@font-face
+  font-family: 'Suisse'
+  src: url("/assets/fonts/suisse/SuisseIntl-SemiBold┬атАФ ╨║╨╛╨┐╨╕╤П") format("opentype")
+  font-display: swap
+  font-style: normal
+  font-weight: 600
+
+html
+  font-size: var(--fs-body-2)
+  line-height: var(--lh-body-2)
+  font-family: 'Suisse', sans-serif
+  font-weight: 400
+  text-size-adjust: none
+  -webkit-text-size-adjust: none
+  scroll-behavior: smooth
+
+body
+  color: var(--text-neutral-primary)
+  position: relative
+  background: var(--bg-page)
+
+main
+  background: var(--bg-page)
+  position: relative
+  z-index: 1
+h1, h2, h3, h4, h5, h6
+
+  font-weight: 300
+
+h1, h2, h3
+h4, h5, h6
+.f-h1
+  font-size: var(--display-2)
+.f-h2
+  font-size: var(--heading-2)
+.f-h3
+  font-size: var(--heading-3)
+.f-h4
+  font-size: var(--heading-4)
+.f-h5
+  font-size: var(--heading-5)
+
+.-desk
+  @media(max-width: 768px)
+    display: none !important
+.-mob
+  display: initial
+  @media(min-width: 769px)
+    display: none !important
+.hidden
+  display: none !important

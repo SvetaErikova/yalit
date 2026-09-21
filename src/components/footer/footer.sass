@@ -1,0 +1,114 @@
+.footer
+  a:hover
+    color: var(--text-neutral-tertiary)
+
+  &--main
+    position: relative
+    z-index: 1
+
+
+  &--col
+    display: flex
+    flex-direction: column
+    & > *
+      padding: 32px var(--container)
+  &--nav
+    gap: var(--container)
+    @media (min-width: 769px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+    &_group
+      display: flex
+      gap: 32px
+
+      &_title
+        writing-mode: vertical-lr
+        text-orientation: upright
+        padding: 8px
+        color: var(--text-fixed-light-primary)
+        background: var(--bg-illustration)
+        height: max-content
+        font-size: var(--fs-caption-2)
+        line-height: 1
+        letter-spacing: 0.2em
+    &_list
+      font-size: var(--fs-body-2)
+      line-height: 1.5
+
+      &_item
+        padding: 8px 0
+        list-style-type: none
+        @media (min-width: 769px)
+          padding: 6px 0
+  &--contacts
+    gap: 32px
+    margin-top: auto
+    font-size: var(--fs-body-1)
+    @media (min-width: 769px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+    div
+      display: flex
+      flex-direction: column
+      &:first-child
+        padding: 4px 0
+        color: var(--text-neutral-tertiary)
+      &:last-child
+        .button
+          padding: 8px 0
+          gap: 20px
+          font-size: var(--fs-body-2)
+  .form--title
+    font-size: var(--fs-body-2)
+  &--info
+    display: flex
+    flex-direction: column
+    gap: var(--container)
+    border-top: 1px solid var(--line-quatemary-filled)
+    &_title
+      text-transform: uppercase
+    &_list
+      display: flex
+      flex-direction: column
+      gap: 10px
+      font-size: var(--fs-body-1)
+      line-height: 1.5
+
+
+  &--note
+    border-top: 1px solid var(--line-quatemary-filled)
+    margin-top: auto
+    display: flex
+    color: var(--text-neutral-tertiary)
+    font-size: var(--fs-body-1)
+    flex-direction: column
+    gap: 24px
+    @media (min-width: 769px)
+      flex-direction: row
+      justify-content: space-between
+    .developer
+      color: var(--text-neutral-tertiary)
+      span
+        color: var(--text-neutral-primary)
+
+  &--col:first-child
+    border-right: 1px solid var(--line-quatemary-filled)
+
+.footer--top
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  grid-template-rows: 1fr 1fr
+  justify-items: center
+  position: relative
+  z-index: 2
+  padding: clamp(16px, calc(16px + (148 - 120) * ((100vw - 768px) / (1440 - 1240))), 148px) var(--container) 48px
+  @media (min-width: 1024px)
+    display: flex
+    justify-content: space-between
+  .item
+    display: flex
+
+  img
+    width: auto
+
+

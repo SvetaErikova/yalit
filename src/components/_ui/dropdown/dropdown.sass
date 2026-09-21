@@ -1,0 +1,73 @@
+.dropdown
+  position: relative
+
+  &:hover
+    @media(min-width: 769px)
+      .dropdown--wrapper
+        opacity: 1
+        visibility: visible
+        pointer-events: auto
+        transform: translateY(0)
+  @media(max-width: 768px)
+    & > a
+      pointer-events: none
+  &.is_active
+    .dropdown--wrapper
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      transform: translateY(0)
+  &--wrapper
+    position: absolute
+    top: 100%
+    padding-top: 8px
+    right: 0
+    min-width: 320px
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease
+    transform: translateY(-10px)
+    z-index: 1000
+    @media(max-width: 768px)
+      position: fixed
+      top: auto
+      left: 0
+      right: 0
+      min-width: auto
+      width: 100%
+      border-radius: 24px 24px 0 0
+      max-height: 80vh
+      overflow-y: auto
+
+  &--list
+    background: #FFFFFF
+    border-radius: 24px
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
+    padding: 24px
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+  &--item
+    display: flex
+    flex-direction: column
+    gap: 8px
+    color: #203750
+    .button span[class*="icon-"]
+      font-size: 2em
+    & > span
+      font-size: var(--subtitle-s)
+      color: #64788F
+      font-weight: 500
+    & > p
+      font-size: var(--caption-s)
+
+    & > p + a
+      margin-top: 4px
+      font-weight: 500
+    & > div
+      display: flex
+      gap: 12px
+      align-items: center
+

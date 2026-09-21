@@ -1,0 +1,72 @@
+.block_list
+
+  --col: 1
+  @media(min-width: 640px)
+    --col: 2
+  @media(min-width: 998px)
+    --col: 3
+  @media(min-width: 1440px)
+    --col: 4
+  &.-col-3 .block--elements
+    @media(min-width: 1140px)
+      --col: 3
+      .card .card--image
+        aspect-ratio: 597/541
+
+  .block--elements
+    grid-area: elements
+    display: grid
+    place-items: start
+    grid-auto-rows: minmax(min-content, max-content)
+    grid-template-columns: repeat(var(--col, 4), 1fr)
+    gap: 14px
+    overflow: initial
+    min-width: 0
+    @media(min-width: 998px)
+      gap: 20px
+  .block--wrapper
+    display: grid
+    gap: 0 var(--g-s)
+    grid-template-columns: 1fr auto
+    grid-template-areas: "heading heading" "showAll slider-controls"  "selection selection" "elements elements"
+    @media (min-width: 1024px)
+      grid-template-columns: 1fr auto auto
+      grid-template-areas: "heading showAll slider-controls" " heading showAll slider-controls" "selection showAll slider-controls" "elements elements elements"
+  .block--head
+    grid-area: heading
+    max-width: 928px
+
+  .block--selection
+    grid-area: selection
+    margin-top: 16px
+  .slider_controls
+    align-items: flex-end
+    justify-content: flex-end
+    grid-area: slider-controls
+    margin-left: 6px
+    margin-top: 16px
+    @media(min-width: 998px)
+      margin-top: 0
+    &:has(.swiper-button-lock)
+      display: none
+    //.swiper--prev,
+    //.swiper--next
+    //  @media (max-width: 1025px)
+    //    display: none
+  .block--link
+    grid-area: showAll
+  .block--filter
+    margin-top: 24px
+    grid-area: filter
+  &.block_list-slider
+    .block--wrapper
+      overflow: hidden
+    .block--elements
+
+      display: flex
+      flex-direction: column
+      @media (min-width: 1024px)
+        overflow: hidden
+    .block--pagination
+      order: 1
+

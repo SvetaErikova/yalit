@@ -1,0 +1,74 @@
+.content_gallery
+  overflow: hidden
+  .block--wrapper
+    overflow: hidden
+    @media (min-width: 769px)
+      display: grid
+      gap: 0 16px
+      grid-template-columns: 1fr auto auto
+      grid-template-areas: "heading showAll slider-controls" " heading showAll slider-controls" "selection selection filter" "elements elements elements"
+  .slider_controls
+    align-items: flex-end
+    @media (max-width: 769px)
+      display: none
+  .block--elements
+    grid-area: elements
+  .gallery:not(.js-gallerySwiper)
+    display: flex
+    flex-direction: column
+    gap: 8px
+    @media (min-width: 769px)
+      display: grid
+      gap: var(--g-16)
+      grid-template-columns: 6fr 3fr 3fr
+      grid-template-rows: repeat(2, 1fr)
+      &:has(.gallery--item:nth-child(2)):not(:has(.gallery--item:nth-child(5)))
+        .gallery--item:nth-child(2)
+          grid-column: span 2
+      .gallery--item
+        border-radius: var(--border-corner)
+        transition: var(--transition)
+        &:first-child
+          aspect-ratio: 920/695
+          grid-row: span 2
+        &:last-child:nth-child(2)
+          grid-row: span 2
+        &:last-child:nth-child(3)
+          grid-column: span 2
+        &:nth-child(n + 6)
+          display: none
+        &:not(:first-child)
+          a
+            position: absolute
+            inset: 0
+    [data-fancybox-trigger]
+      width: 100%
+      justify-content: center
+      @media (min-width: 769px)
+        position: absolute
+        left: auto
+        right: 16px
+        bottom: 16px
+        top: auto
+        width: max-content
+  .gallery.js-gallerySwiper
+    .gallery--item
+      aspect-ratio: 1544/868
+.gallery
+  position: relative
+  .gallery--item
+    position: relative
+    overflow: hidden
+    width: 100%
+    height: 100%
+    flex-shrink: 0
+    flex-grow: 0
+    display: flex
+
+    img, video, a
+      display: inherit
+      max-width: 100% !important
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center

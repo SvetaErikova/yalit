@@ -1,0 +1,34 @@
+.block--pagination
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+  width: 100%
+  margin-top: var(--g-l)
+  color: rgba(0, 0, 0, 0.7)
+  grid-column: span var(--col)
+  .button
+    aspect-ratio: 1/1
+    //width: 44px
+    @media(min-width: 769px)
+      width: 40px
+    &:not(:only-child)
+      padding: 0
+      justify-content: center
+    &.is_active
+      --button-color: var(--text-fixed-light-primary)
+      --button-bg-color: var(--text-neutral-primary)
+      --button-border-color: var(--text-neutral-primary)
+    &:hover,
+    &:focus,
+    &:active
+      --button-color:  var(--text-neutral-primary)
+      --button-bg-color: var(--text-neutral-quatemary)
+      --button-border-color: var(--text-neutral-quatemary)
+
+  .button:only-child
+    width: max-content
+    aspect-ratio: initial
+  .button span[class^=icon-]:only-child
+    font-size: var(--button-icon-size-2)
+

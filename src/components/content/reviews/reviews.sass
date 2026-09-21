@@ -1,0 +1,85 @@
+.content_reviews
+  @media (min-width: 993px)
+    --col: 1
+  @media (min-width: 1240px)
+    --col: 2
+
+.review
+  height: auto
+  //border-radius: var(--border-corner)
+  //border-right: 1px solid #DFD7CB
+  gap: 16px
+  padding-right: 16px
+  @media (min-width: 993px)
+    display: grid
+    grid-template-columns: 1fr 2fr
+    align-items: start
+    gap: 0
+  &:after
+    content: ''
+    width: 1px
+    background-color: var(--line-quatemary-filled)
+    top: 0
+    bottom: 0
+    right: 0
+    position: absolute
+    @media (min-width: 993px)
+      right: 16px
+
+
+
+  &__stars
+    --inactive_stars: #482F0C56
+    --star-color: #E54A4A
+    display: flex
+    align-items: center
+    .star-rate
+      height: 22px
+
+  &_description--clamper
+    overflow: hidden
+    max-height: 240px
+
+  &__content
+    display: flex
+    flex-direction: column
+    gap: var(--review-cards-v-gap)
+    padding: 0 var(--review-cards-h-gap)
+
+
+    .is_cascade > *:first-child
+      margin-top: 0
+
+  &__action
+    display: none
+    &.is_visible
+      display: block
+    .button
+      width: 100%
+      justify-content: space-between
+      text-transform: uppercase
+
+  &__image
+    cursor: pointer
+    @media (max-width: 994px)
+      order: 1
+      margin-top: auto
+    img
+      width: 100%
+      aspect-ratio: 312/246
+      object-fit: cover
+      object-position: center
+      @media (min-width: 993px)
+        aspect-ratio: 272/325
+
+  &.active
+    .review_description--clamper
+      max-height: unset
+
+.popup-review
+  .review__action
+    display: none
+
+  .popup--content
+    max-width: 640px
+    padding: 0

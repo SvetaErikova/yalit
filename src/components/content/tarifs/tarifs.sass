@@ -1,0 +1,27 @@
+.content_tariffs.block_html-code
+  .block--wrapper
+    display: flex
+    flex-direction: column
+    @media(min-width: 999px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      grid-template-areas: 'head head' 'selection selection' 'content widget' 'info widget'
+      gap: 0  var(--g-xl)
+  .block--selection
+    grid-area: selection
+    margin-bottom: 32px
+
+  .block--head
+    grid-area: head
+  .block--widget
+    grid-area: widget
+  .block--content
+    grid-area: content
+    padding: var(--g-s) 0
+  .block--info
+    margin-top: var(--g-s)
+    grid-area: info
+    color: var(--text-neutral-tertiary)
+
+
+

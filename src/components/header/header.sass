@@ -1,0 +1,131 @@
+.header
+  position: sticky
+  top: -1px
+  left: 0
+  width: 100%
+  max-width: 100vw
+  transition: 0.18s linear
+  z-index: 50
+  //overflow-x: hidden
+  color: var(--text-neutral-primary)
+  --c-border: var(--line-quatemary-filled)
+  background: var(--bg-page)
+  &--logo
+    border-bottom: 1px solid var(--c-border)
+    padding-left: var(--container)
+    //height: var(--header-side-width)
+    padding-right: 16px
+    width: 100%
+    display: flex
+    align-items: center
+    .logo
+      display: flex
+      align-items: center
+      width: 100%
+      aspect-ratio: 174/50
+      max-width: 174px
+  &.header-transparent
+    position: fixed
+    background: transparent
+    color: var(--text-fixed-light-primary)
+    --c-border: var(--line-light-secondary-filled)
+    .header--logo
+      @media(min-width: 1140px)
+        border-color: transparent
+
+  &.is_scrolled
+    color: var(--text-neutral-primary)
+    --c-border: var(--line-quatemary-filled)
+    background: var(--bg-page)
+    .header--logo
+      border-color: var(--c-border)
+
+  &--main
+    display: flex
+    //align-items: center
+    justify-content: space-between
+
+
+  &--actions
+    display: flex
+    align-items: center
+    gap: 0
+    border-bottom: 1px solid var(--c-border)
+    position: relative
+    transition: none
+    @media(min-width: 1140px)
+      border-left: 1px solid var(--c-border)
+    .item
+      text-transform: uppercase
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 8px
+      width: 160px
+      height: var(--header-side-width)
+      white-space: nowrap
+      @media(min-width: 1240px)
+        width: 190px
+      [class^=icon-]
+        font-size: var(--fs-subhead-2)
+      &.-ac
+        background: var(--button-dark-brand-primary-bg-rest)
+        color: var(--button-light-brand-primary-text-rest)
+        flex-shrink: 1
+        padding: 0 var(--g-m)
+        @media(min-width: 1140px)
+          width: 219px
+        &:hover
+          background: var(--button-light-brand-primary-bg-hover)
+          color: var(--button-light-brand-primary-text-hover)
+      &:not(.btn-openMenu)
+        @media(max-width: 1140px)
+          display: none
+      &:not(:first-child)
+        border-left: 1px solid var(--c-border)
+      &.btn-openMenu
+        width: var(--header-side-width)
+        position: relative
+        cursor: pointer
+        .btn-openMenu__icon
+          position: relative
+          display: block
+          width: 28px
+          height: 16px
+          color: currentColor
+          &::before,
+          &::after
+            content: ''
+            position: absolute
+            left: 0
+            width: 100%
+            height: 2px
+            background: currentColor
+            transform-origin: 50% 50%
+            transition: transform 0.24s ease, top 0.24s ease, opacity 0.24s ease, background-color 0.24s ease
+          &::before
+            top: 2px
+          &::after
+            top: 13px
+
+body:has(.popup-menu.is_active)
+  .header-transparent:not(.is_scrolled)
+    .header--logo
+      @media(min-width: 999px)
+        opacity: 0
+  .header
+    color: var(--text-neutral-primary)
+    --c-border: var(--line-quatemary-filled)
+    background: var(--bg-page)
+
+    .btn-openMenu__icon
+      &::before
+        top: 7px
+        transform: rotate(30deg)
+      &::after
+        top: 7px
+        transform: rotate(-30deg)
+
+    .header--actions
+      background: var(--bg-page)
+      transition: background 0.1s 0.5s linear

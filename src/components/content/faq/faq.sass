@@ -1,0 +1,21 @@
+.content_faq
+  .block--wrapper
+    display: flex
+    flex-direction: column
+    gap: var(--g-xl)
+    @media(min-width: 999px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      gap: var(--g-xl) var(--g-xl)
+  .block--image
+    grid-column: 1
+    &:not(:has(img))
+      display: none
+    img
+      aspect-ratio: 16/9
+      height: auto
+      position: sticky
+      top: var(--headerHeight)
+  .block--content
+    grid-column: 2
+  .block--image

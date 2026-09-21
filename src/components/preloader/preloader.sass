@@ -1,0 +1,45 @@
+.preloader
+  position: fixed
+  inset: 0
+  z-index: 1200
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 24px
+  background: #fff
+  transition: opacity 0.3s ease, visibility 0.3s ease
+  opacity: 0
+  visibility: hidden
+  pointer-events: none
+  &.is_active
+    opacity: 1
+    visibility: visible
+  //&.is-hidden
+  //  opacity: 0
+  //  visibility: hidden
+  //  pointer-events: none
+
+  &__inner
+    display: flex
+    align-items: center
+    justify-content: center
+
+  &__svg
+    width: min(395px, 90vw)
+    height: auto
+    display: block
+
+  &__circle-rise
+    transform: scaleY(0)
+    transform-box: fill-box
+    transform-origin: 50% 100%
+    animation: preloader-circle-fill 2s ease-in-out forwards
+
+@keyframes preloader-circle-fill
+  to
+    transform: scaleY(1)
+
+@media (prefers-reduced-motion: reduce)
+  .preloader__circle-rise
+    animation: none
+    transform: scaleY(1)

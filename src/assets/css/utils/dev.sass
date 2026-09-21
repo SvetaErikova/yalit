@@ -1,0 +1,54 @@
+.ui_grid-3
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  margin: 40px
+  gap: 28px
+.ui_grid-4
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  margin: 40px
+  gap: 28px
+.ui_grid-5
+  display: grid
+  grid-template-columns: repeat(5, 1fr)
+  margin: 40px
+  gap: 28px
+
+.ui_grid-2
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  margin: 40px
+  gap: 28px
+
+*
+  //outline: 1px solid deepskyblue
+
+body
+  position: relative
+  //&:after
+    content: ""
+    position: fixed
+    z-index: 100
+    top: 0
+    right: var(--container-padding)
+    left: var(--container-padding)
+    display: block
+    width: calc(100vw - var(--container-padding) * 2)
+    height: 100vh
+    opacity: 0.1
+    background-image: repeating-linear-gradient(90deg, indianred, indianred var(--column), transparent var(--column), transparent calc(var(--column) + var(--gap)))
+    pointer-events: none
+  //@media(max-width: 992px)
+    &:after
+      content: ""
+      position: fixed
+      z-index: 100
+      top: 0
+      right: var(--container-padding)
+      left: var(--container-padding)
+      display: block
+      width: calc(100vw - var(--container-padding) * 2)
+      height: 100vh
+      opacity: 0.1
+      background-image: repeating-linear-gradient(90deg, indianred, indianred var(--column), transparent var(--column), transparent calc(var(--column) + var(--gap)))
+      pointer-events: none

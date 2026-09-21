@@ -1,0 +1,64 @@
+.is_cascade--accordion
+  display: flex
+  flex-direction: column
+.accordion
+  position: relative
+  padding: var(--cascade-accordeon-head-padding) 0
+  border-bottom: 1px solid var(--line-tertiary)
+  &:first-child
+    border-top: 1px solid var(--line-tertiary)
+
+
+  &:not(:last-child)
+
+  &.is_open
+    .accordion--content
+      pointer-events: auto
+      grid-template-rows: 1fr
+      opacity: 1
+      padding-top: 16px
+    span[class^="icon-"]:before
+      content: '\e910'
+
+  &--button
+    transition: var(--transition)
+    cursor: pointer
+    display: flex
+    align-items: center
+    position: relative
+    gap: 24px
+    .accordion--button_text
+      transition: var(--transition)
+      font-size: var(--fs-subhead-1)
+      margin-bottom: 0
+    span[class^="icon-"]
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-shrink: 0
+      flex-grow: 0
+      transition: var(--transition)
+      aspect-ratio: 1/1
+      font-size: 1.2em
+
+    &:hover
+      .accordion--button_text
+        color: var(--fs-body-2)
+  &--content
+    opacity: 0
+    display: grid
+    grid-template-rows: 0fr
+    line-height: 1.5
+    pointer-events: none
+    overflow: hidden
+    transition: grid-template-rows 0.21s ease-out
+    color: var(--text-neutral-secondary)
+
+    .is_cascade
+      width: 100%
+      grid-row: 1 / span 2
+      overflow: hidden
+      color: var(--mos-beige-solid-085)
+      & > *:first-child
+        margin-top: 0

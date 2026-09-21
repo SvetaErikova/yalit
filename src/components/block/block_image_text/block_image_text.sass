@@ -1,0 +1,113 @@
+.block_image_text
+  .block--wrapper
+    display: flex
+    flex-direction: column
+    gap: 32px
+    @media(min-width: 992px)
+      gap: var(--g-xxxs)
+      display: grid
+      grid-template-columns: 1fr 1fr
+      grid-template-areas: 'content image'
+
+  @media(min-width: 992px)
+    .block--image ~ .block--content
+      grid-area: content
+    .block--image
+      grid-area: image
+  .block--head
+    text-align: left
+    margin: 0
+    @media(min-width: 992px)
+      gap: var(--g-xxs)
+    &_subtitle
+      color: var(--color-text-brand-dark-main-1)
+      font-size: var(--body-s)
+  .block--image
+    height: auto
+    display: flex
+    flex-direction: column
+    max-width: 100%
+    position: relative
+    min-width: 0
+    .gallery
+      min-width: 0
+      border-radius: var(--border-corner)
+      overflow: hidden
+      display: flex
+      // max-width: 100vw
+      width: 100%
+      aspect-ratio: 1 / 1
+      max-height: calc(100vh - var(--headerHeight) - 16px)
+      @media(min-width: 992px)
+        // max-width: 50vw
+        position: sticky
+        top: var(--headerHeight)
+
+    img, video
+      overflow: hidden
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center
+  .block--content
+    overflow: hidden
+    //border-radius: var(--border-corner)
+    display: flex
+    flex-direction: column
+
+    gap: var(--g-xxs)
+
+    &:only-child
+      display: grid
+      gap: var(--g-16)
+      @media(min-width: 992px)
+        gap: var(--g-xxl)
+        grid-column: span 2
+        grid-template-columns: 1fr 1fr
+        .block--head
+          grid-column: 1
+        .is_cascade
+          grid-column: 2
+
+  &.block_image_text-reversed
+    //.block--image
+    //  order: 1
+    .block--wrapper
+      @media(min-width: 992px)
+        grid-template-areas: 'image content'
+    .block--content:only-child
+      @media(min-width: 992px)
+        .block--head
+          grid-column: 2
+        .is_cascade
+          order: -1
+          grid-column: 1
+  &.block_image_text-ratio-fill
+    @media(min-width: 992px)
+      .block--image
+        position: relative
+      .gallery
+        position: absolute
+        inset: 0
+        aspect-ratio: initial
+        //height: 100%
+
+  &.block_image_text_ar-16-9
+    .gallery
+      aspect-ratio: 16 / 9
+
+  &.block_image_text_ar-4-3
+    .gallery
+      aspect-ratio: 4 / 3
+
+  &.block_image_text_ar-3-4
+    .gallery
+      aspect-ratio: 3 / 4
+
+  &.block_image_text_ar-1-1
+    .gallery
+      aspect-ratio: 1 / 1
+
+  &.block_image_text-centered
+    .block--content
+      justify-content: center

@@ -1,0 +1,232 @@
+.form--input_date,
+.form--input_date-range
+  transition: var(--transition)
+  width: 100%
+  position: relative
+  border-bottom: 1px solid var(--line-quatemary)
+  border-radius: 0
+  background-color:  transparent
+  display: flex
+  align-items: center
+  &:after
+    content: "\e901"
+    font-family: 'icomoon'
+    font-size: 18px
+    color: var(--icon-primary)
+  input
+    line-height: 1.5
+    font-size: 16px
+    background-color: transparent
+    transition: var(--transition)
+    width: 100%
+    padding: 8px 0
+    color: var(--text-neutral-quatemary)
+    @media(min-width: 768px)
+      padding: 12px 0
+    &::placeholder,
+    &:placeholder-shown
+      color: var(--text-neutral-quatemary)
+    &:not(:placeholder-shown)
+      color: var(--text-neutral-primary)
+  &:hover,
+  &:focus,
+  &:focus-within
+    border-color: var(--line-secondary)
+
+
+
+.air-datepicker
+  color: var(--text-neutral-primary)
+  --adp-font-family: inherit
+  --adp-font-size: var(--fs-button-l)
+  --adp-width: 288px
+  --adp-z-index: 60
+  --adp-padding: 12px
+  --adp-grid-areas: "nav" "body" "timepicker" "buttons"
+  --adp-transition-duration: .3s
+  --adp-transition-ease: ease-out
+  --adp-transition-offset: 8px
+  --adp-background-color: #fff
+  --adp-background-color-hover: transparent
+  --adp-background-color-active: transparent
+  --adp-background-color-in-range: var(--surface-brand)
+  --adp-background-color-in-range-focused:  var(--surface-brand)
+  --adp-background-color-selected-other-month-focused: var(--neutral-default)
+  --adp-background-color-selected-other-month: var(--neutral-default)
+  --adp-color: var(--text-neutral-primary)
+  --adp-color-secondary: #9c9c9c
+  --adp-accent-color:  var(--surface-brand)
+  --adp-color-current-date:  var(--text-link)
+  --adp-color-other-month: var(--text-neutral-primary)
+  --adp-color-disabled: var(--text-neutral-quatemary)
+  --adp-color-disabled-in-range: var(--text-neutral-quatemary)
+  --adp-color-other-month-hover: var(--text-neutral-primary)
+  --adp-border-color: transparent
+  --adp-border-color-inner: transparent
+  --adp-border-radius: 0
+  --adp-border-color-inline: var(--neutral-container-default)
+  --adp-nav-height: 32px
+  --adp-nav-arrow-color: var(--fg-default)
+  --adp-nav-action-size: 32px
+  --adp-nav-color-secondary: var(--fg-default)
+  --adp-day-name-color: #818080
+  --adp-day-name-color-hover: #818080
+  --adp-day-cell-width: 1fr
+  --adp-day-cell-height: 36px
+  --adp-month-cell-height: 36px
+  --adp-year-cell-height: 36px
+  --adp-pointer-size: 10px
+  --adp-poiner-border-radius: 0
+  --adp-pointer-offset: 14px
+  --adp-cell-border-radius: 0
+  --adp-cell-background-color-hover: transparent
+  --adp-cell-background-color-selected: var(--text-neutral-primary)
+  --adp-cell-background-color-selected-hover: var(--text-neutral-primary)
+  --adp-cell-background-color-in-range: var(--neutral-container-soft)
+  --adp-cell-background-color-in-range-hover: var(--neutral-container-soft)
+  --adp-cell-border-color-in-range: var(--neutral-default)
+
+  --adp-btn-height: 36x
+  --adp-btn-color: var(--accent-on-accent)
+  --adp-btn-color-hover: var(--accent-on-accent)
+  --adp-btn-border-radius: var(--adp-border-radius)
+  --adp-btn-background-color-hover: #1212121A
+  --adp-btn-background-color-active: var(--accent-default)
+
+  --adp-time-track-height: 1px
+  --adp-time-track-color: #dedede
+  --adp-time-track-color-hover: #b1b1b1
+  --adp-time-thumb-size: 12px
+  --adp-time-padding-inner: 10px
+  --adp-time-day-period-color: var(--adp-color-secondary)
+  --adp-mobile-font-size: 16px
+  --adp-mobile-nav-height: 36px
+  --adp-mobile-width: 220px
+  --adp-mobile-day-cell-height: 36px
+  --adp-mobile-month-cell-height: 36px
+  --adp-mobile-year-cell-height: 36px
+  --adp-border-color-inline: rgba(255, 252, 250, 0.15)
+
+.air-datepicker
+  background-color: var(--bg-page)
+  border: 1px solid var(--line-quatemary)
+  color: var(--text-neutral-primary)
+  //box-shadow: none
+
+.air-datepicker-body--day-name
+  height: 36px
+  font-size: 12px
+  font-weight: 400
+  text-transform: unset
+
+.air-datepicker--content
+  padding: 0
+
+.air-datepicker-nav
+  padding: 10px 0 2px
+
+.air-datepicker-nav--title
+  font-size: 14px
+
+.air-datepicker-cell.-day-
+  font-size: 12px
+  color: var(--text-neutral-primary)
+  border: 1px solid transparent
+
+.air-datepicker-cell.-day-.-current-:not(.-selected-):not(.-range-from-):not(.-range-to-)
+  border-color: var(--line-tertiary)
+
+.air-datepicker-cell.-day-.-other-month-
+  color: var(--text-neutral-primary)
+
+.air-datepicker-cell.-day-.-disabled-,
+.air-datepicker-cell.-day-.-disabled-.-other-month-
+  color: var(--text-neutral-quatemary)
+
+.air-datepicker-cell.-day-.-focus-:not(.-selected-):not(.-range-from-):not(.-range-to-),
+.air-datepicker-cell.-day-:hover:not(.-selected-):not(.-range-from-):not(.-range-to-)
+  color: var(--text-neutral-primary)
+  background-color: transparent
+  border-color: var(--line-quatemary)
+
+.air-datepicker-cell.-day-.-range-to-.-focus-,
+.air-datepicker-cell.-day-.-range-to-:hover
+  color: var(--text-neutral-primary)
+  background-color: transparent
+  border-color: var(--line-quatemary)
+
+.air-datepicker-cell.-day-.-selected-,
+.air-datepicker-cell.-day-.-selected-.-range-from-,
+.air-datepicker-cell.-day-.-selected-.-range-to-,
+.air-datepicker-cell.-selected-.-focus-
+  color: var(--text-fixed-light-primary)
+  background-color: var(--text-neutral-primary)
+  border-color: var(--text-neutral-primary)
+
+.air-datepicker-cell.-day-.-in-range-
+  background-color: var(--text-neutral-quatemary)
+.air-datepicker-body
+  padding: 8px
+//.air-datepicker-cell.-selected-
+//  color: #fff
+//  background-color: #1918180D
+//
+//.air-datepicker-cell.-day-.-focus-,
+//.air-datepicker-cell.-selected-.-focus-
+//  color: var(--text-primary)
+//  background-color: var(--accent-color)
+//
+//.air-datepicker-cell.-selected-.-current-
+//  color: var(--text-primary)
+//  background-color: var(--accent-color)
+//
+//.air-datepicker-button.airpicker_button_apply
+//  min-width: 100%
+//  border-radius: 0
+//  background: var(--accent-default)
+//  color: var(--accent-on-accent)
+//  &:hover
+//    background: var(--accent-hover)
+//    color: var(--accent-on-accent)
+//
+//.air-datepicker--buttons
+//  padding-top: 16px
+//
+//.air-datepicker-nav--title
+//  font-weight: 500
+//  text-transform: uppercase
+//  font-size: 16px
+//
+//.-disabled-.-focus-.air-datepicker-cell.-day-.-other-month-,
+//.-disabled-.-focus-.air-datepicker-cell.-year-.-other-decade-,
+//.air-datepicker-cell.-day-.-other-month-.-disabled-,
+//.air-datepicker-cell.-year-.-other-decade-.-disabled-
+//  color: var(--text-fixed-light-primary)
+//  &:hover
+//    background: transparent
+//
+//.air-datepicker-cell.-disabled-
+//  color: var(--text-fixed-light-primary)
+//  pointer-events: none
+//
+//.air-datepicker-nav--action
+//  font-size: 18px
+//
+//
+//.-in-range-.air-datepicker-cell.-year-.-other-decade-,
+//.-in-range-.air-datepicker-cell.-day-.-other-month-
+//  color: #fff
+//
+//.air-datepicker-cell.-day-
+//  //border-radius: 6px
+//
+//
+//.air-datepicker-cell.-range-from-,
+//.air-datepicker-cell.-range-to-
+//  color: #fff !important
+//  background-color: var(--accent-color) !important
+//
+//.air-datepicker-cell.-in-range-
+//  opacity: 0.8
+//  background-color: var(--accent-color)
+//  color: #fff

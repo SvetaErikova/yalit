@@ -1,0 +1,122 @@
+select
+  -moz-appearance: none
+  -webkit-appearance: none
+  appearance: none
+  display: none
+
+
+
+.form--input_select
+  max-width: 100%
+  display: flex
+  & + .form--input_select
+    margin-top: 12px
+  option
+    display: none
+
+.select
+  position: relative
+  width: 100%
+  &:hover
+    .select--button
+      border-bottom-color: var(--line-secondary)
+  &--button
+    position: relative
+    cursor: pointer
+    transition: var(--transition)
+    color: var(--text-neutral-quatemary)
+    font-size: var(--fs-body-2)
+    line-height: var(--lh-body-1)
+    width: 100%
+    max-width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    overflow: hidden
+    border: none
+    border-bottom: 1px solid var(--line-quatemary)
+    border-radius: 0
+    padding: 10px 0
+    background-color: transparent
+    box-shadow: none
+    &:after
+      font-family: 'icomoon' !important
+      content: "\e902"
+      transform: scaleY(1)
+      transition: var(--transition)
+      transform-origin: center
+      font-size: 1.2em
+      width: 1em
+      height: 1em
+      display: flex
+      align-items: center
+      color: var(--icon-primary)
+    p
+      margin: 0
+      max-width: 100%
+      text-overflow: ellipsis
+      overflow: hidden
+      display: -webkit-box
+      -webkit-line-clamp: 1
+      -webkit-box-orient: vertical
+  &:has(option[selected]:not([value=""]))
+    .select--button
+      color: var(--text-neutral-primary)
+
+  &--option_wrapper
+    opacity: 0
+    pointer-events: none
+    padding-top: 8px
+    position: absolute
+    width: 100%
+    max-width: 100%
+    height: fit-content
+    max-height: 320px
+    z-index: 3
+    &.is_opened
+      opacity: 1
+      pointer-events: all
+      .select--option_list
+        transform: translateY(0)
+
+  &--option_list
+    width: 100%
+    background-color: #FFFFFF
+    transition: var(--transition)
+    transform: translateY(-8px)
+    border-radius: var(--border-corner-s)
+    display: flex
+    flex-direction: column
+    border: 1px solid var(--line-quatemary)
+    overflow: hidden
+    max-height: 320px
+    overflow-y: auto
+    &_title
+      padding: 20px 20px 8px
+      font-weight: 500
+      font-size: var(--body-s)
+  &--option
+    padding: 10px 12px
+    transition: var(--transition)
+    cursor: pointer
+    display: flex
+    align-items: center
+    @media(min-width: 768px)
+      padding: 12px 16px
+    &:hover,
+    &:active,
+    &:focus
+      background-color: var(--bg-illustration-light)
+    &.is_selected
+      background-color:  var(--line-quatemary)
+
+
+    &[data-disabled="true"]
+      pointer-events: none
+      opacity: 0.4
+select:has(option[selected]) ~ .select
+  .select--button
+    color: var(--text-neutral-primary)
+.form--input.error
+  .select--button
+    border-bottom-color: var(--color-text-semantic-critical-main)

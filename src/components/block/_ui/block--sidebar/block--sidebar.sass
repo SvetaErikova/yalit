@@ -1,0 +1,41 @@
+.block--sidebar
+  display: flex
+  flex-direction: column
+  gap: 16px
+  height: 100%
+  grid-column: 2
+  grid-row: span 2
+  .is_cascade
+    position: sticky
+    top: var(--headerHeight)
+    height: max-content
+    background-color: var(--mos-brand-solid-005)
+    border-radius: var(--border-corner)
+    padding: var(--g-s)
+    color: var(--mos-brand-solid-100)
+
+  .icon-list
+    gap: 0
+    .item
+      padding: 12px 8px
+      border-radius: 8px
+      transition: var(--transition )
+      @media(min-width: 769px)
+        padding: 18px 12px
+
+.block:has(.block--sidebar) .block--wrapper
+  display: flex
+  flex-direction: column
+  gap: var(--g-m)
+  padding: var(--container)
+  @media(min-width: 999px)
+    display: grid
+    grid-template-columns: 5fr 2fr
+  .block--sidebar
+    @media(max-width: 998px)
+      order: -1
+  .block--head
+    justify-content: flex-start
+    text-align: left
+    max-width: initial
+

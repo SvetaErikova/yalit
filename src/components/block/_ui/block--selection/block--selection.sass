@@ -1,0 +1,27 @@
+.block--selection
+  display: flex
+  align-items: center
+  flex-grow: 1
+  position: relative
+  padding: 0 16px
+  margin: 12px -16px 0
+  color: currentColor
+  overflow: auto
+  gap: 8px
+  text-transform: uppercase
+  @media (min-width: 769px )
+    gap: 18px
+  &:empty
+    display: none
+  a
+    white-space: nowrap
+    font-size: var(--fs-body-1)
+    line-height: var(--lh-body-2)
+    padding: 12px 18px
+    border-bottom: 1px solid var(--line-primary)
+    &:hover
+      border-color: var(--line-tertiary)
+
+    &.is_active
+      border-color: var(--line-illustration)
+      color: var(--text-accent-primary)

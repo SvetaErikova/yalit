@@ -1,0 +1,342 @@
+.card
+  flex-shrink: 0
+  flex-grow: 0
+  display: flex
+  flex-direction: column
+  position: relative
+  width: 100%
+  height: 100%
+  transition: none
+  //gap: 8px
+  border-radius: var(--border-corner)
+  overflow: hidden
+
+  &--content
+    display: flex
+    flex-direction: column
+    z-index: 2
+
+  &--title
+    text-overflow: ellipsis
+    overflow: hidden
+    display: -webkit-box
+    -webkit-line-clamp: 2
+    -webkit-box-orient: vertical
+    transition: var(--transition)
+    text-transform: uppercase
+
+  &--text
+    line-height: 1.3
+    text-overflow: ellipsis
+    overflow: hidden
+    display: -webkit-box
+    -webkit-line-clamp: 3
+    -webkit-box-orient: vertical
+  &--action
+    display: flex
+    align-items: center
+    gap: 8px
+    transition: var(--transition)
+    .button
+      height: var(--button-height)
+  &:hover
+    .button
+      --button-bg-color: var(--button-light-outlined-bg-hover)
+      --button-border-color: var(--button-light-outlined-bg-rest)
+      --button-color: var(--button-light-outlined-text-hover)
+
+  &--image
+    display: flex
+    align-items: flex-start
+    background-position: center
+    background-size: cover
+    width: 100%
+    height: auto
+    position: relative
+    overflow: hidden
+
+    img, video
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center
+
+[href],
+[data-popup_cascade],
+[data-openpopup]
+  cursor: pointer
+
+
+[data-popup_cascade],
+[data-openpopup]
+  .card--action
+    opacity: 1
+    .icon:after
+      content: "\e949"
+.content_cards,
+.content_article,
+.content_services,
+.content_calendar.block_list
+  .card
+    &--image
+      aspect-ratio: 440/541
+      overflow: hidden
+    &--price
+      position: absolute
+      z-index: 2
+      inset: 0
+      display: flex
+      align-items: flex-end
+      span
+        color: #fff
+        background: #E54A4A
+        padding: clamp(8px, calc(8px + (12 - 8) * ((100vw - 768px) / (1440 - 768))), 12px)
+    &--title
+      font-size: var(--fs-subhead-2)
+      line-height: var(--lh-subhead-2)
+    &--content
+      font-size: var(--fs-body-1)
+      line-height: var(--fs-body-3)
+
+      &:has(.card--action)
+        padding-right: calc(16px + var(--button-height))
+        .card--action
+          position: absolute
+          bottom: 0
+          right: 0
+          left: auto
+    &--captions
+      display: flex
+      align-content: center
+      margin-top: var(--card-caption-date-padding)
+      align-items: center
+    .labels
+      margin-top: var(--card-label-padding)
+    &--title
+      margin-top: var(--card-heading-padding-lg)
+    &--text
+      color: var(--text-neutral-secondary)
+      margin-top: var(--card-caption-padding)
+    &--image img
+      transition: var(--transition)
+    @media(min-width: 769px)
+      &[href]:hover,
+      &[data-popup_cascade]:hover,
+      &[data-openpopup]:hover
+        .card--image
+          overflow: hidden
+          img
+            scale: 1.1
+
+.content_calendar.block_list
+  .card
+    &--title
+      font-size: var(--fs-subhead-2)
+      line-height: var(--lh-subhead-2)
+    &--text
+      font-size: var(--fs-body-1)
+      line-height: var(--lh-body-3)
+
+.content_calendar.block_element
+
+  .card
+    border: 1px solid var(--line-quatemary-filled)
+    transition: var(--transition)
+    aspect-ratio: 190/160
+    @media (min-width: 769px )
+      height: 400px
+      aspect-ratio: inherit
+    &--content
+      position: absolute
+      justify-content: space-between
+      inset: 8px
+      @media (min-width: 769px )
+        inset: 20px
+    &--title
+      font-size: var(--fs-subhead-2)
+      line-height: 1.2
+      max-width: 60%
+    &--text
+      text-transform: uppercase
+      order: -1
+      font-size: var(--fs-body-2)
+      line-height: 1.2
+      color: var(--text-neutral-tertiary)
+    &--image
+      height: 100%
+      img
+        object-fit: contain
+        object-position: right bottom
+    &:hover
+      background: #DFD7CB
+
+
+.content_tariffs,
+.content_docs
+  .card
+    border-right: 1px solid var(--line-quatemary)
+    padding: var(--card-h-padding-lg) var(--card-v-padding-lg)
+    &--title
+      font-size: var(--fs-subhead-2)
+      line-height: var(--lh-subhead-2)
+    &--tariff
+      display: flex
+      flex-direction: column
+      gap: 16px
+      &_list
+        display: flex
+        flex-direction: column
+        gap: 8px
+        .item
+          display: flex
+          gap: 8px
+    &--content
+      gap: var(--card-h-padding-lg)
+      &:has(.card--action)
+        padding-right: calc(16px + var(--button-height))
+        .card--action
+          position: absolute
+          bottom: var(--card-h-padding-lg)
+          right: var(--card-v-padding-lg)
+          left: auto
+
+
+.content_offers
+  .card
+    padding: var(--g-s) 0
+    --offers-gap: clamp(20px, calc(20px + (32 - 20) * ((100vw - 768px) / (1440 - 768))), 32px)
+    gap:  var(--offers-gap)
+    border-bottom: 1px  solid var(--line-tertiary)
+    border-top: 1px  solid var(--line-tertiary)
+    transition: var(--transition)
+    border-color: var(--line-quatemary)
+    @media(min-width: 1025px)
+      border-top: none
+      border-color: var(--line-tertiary)
+      padding: var(--card-action-padding)
+      display: grid
+      grid-template-columns: 1fr 1fr 2fr
+      min-height: 258px
+    &--date
+      text-transform: uppercase
+    &--image
+      aspect-ratio: 380/180
+      @media(min-width: 1025px)
+        aspect-ratio: initial
+        position: relative
+        img
+          position: absolute
+          inset: 0
+
+    &--content
+      row-gap:  var(--offers-gap)
+      @media(min-width: 1025px)
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        column-gap: var(--offers-gap)
+        row-gap: 0
+    &--title
+      font-size: var(--fs-subhead-1)
+      line-height: 1.5
+
+
+    &--text
+      font-size: var(--fs-body-1)
+      -webkit-line-clamp: 6
+      grid-row: span 2
+      height: max-content
+      line-height: 1.6
+    &--action
+      align-items: end
+      .button
+        text-transform: uppercase
+        height: max-content
+    @media(min-width: 769px)
+      &:hover
+        color: var(--text-neutral-primary)
+        background: var(--bg-card)
+        .button
+          --button-bg-color: transparent
+          --button-border-color: transparent
+          --button-color: var(--text-neutral-primary)
+    &:first-child
+      border-top: 1px  solid var(--line-tertiary)
+
+
+.content_advantages
+  .card
+    //max-width: 190px
+    text-align: center
+    gap: 12px
+    @media (min-width: 769px)
+      padding:  0 var(--g-m)
+    &--image
+      padding: 0 25px
+      @media (min-width: 769px)
+        padding: 0
+    &--content
+      container-type: inline-size
+    &--title
+      font-weight: 500
+      font-size: var(--fs-subhead-2-2)
+      font-size: 13.6cqw
+      line-height: var(--lh-subhead-2)
+
+
+.content_special
+  @media(min-width: 640px)
+    --col: 1
+  .card
+    padding: 0 clamp(0px, calc(0px + (32 - 0) * ((100vw - 768px) / (1440 - 768))), 32px)
+    gap: var(--card-v-padding-lg)
+    @media (min-width: 769px )
+      display: grid
+      grid-template-columns: 1fr 1fr
+    &--content
+      gap: clamp(18px, calc(18px + (24 - 18) * ((100vw - 768px) / (1440 - 768))), 24px)
+      @media (min-width: 769px )
+        place-self: center
+
+    &--image
+      justify-content: center
+      img
+        aspect-ratio: 606 / 664
+        height: auto
+        max-width: 606px
+    &--title
+      font-size: var(--fs-heading-1)
+      line-height: var(--lh-heading-1)
+    &--action
+      .button
+        width: 100%
+        max-width: 283px
+        --button-bg-color: var(--button-light-primary-bg-rest)
+        --button-border-color: var(--button-light-primary-bg-rest)
+        --button-color: var(--button-light-primary-text-rest)
+    &:hover
+      .button
+        --button-bg-color: var(--button-light-primary-bg-hover)
+        --button-border-color: var(--button-light-primary-bg-hover)
+        --button-color: var(--button-light-primary-text-hover)
+
+
+.content_cards-fest
+  .card
+    gap: clamp(16px, calc(16px + (20 - 16) * ((100vw - 768px) / (1440 - 768))), 20px)
+    &--title
+      font-size: var(--fs-subhead-2)
+      line-height: var(--lh-subhead-2)
+      margin-bottom: 8px
+    &--text
+      font-size: var(--fs-body-1)
+      line-height: var(--fs-body-3)
+    &--action
+      margin-top: var(--g-s)
+    &--image
+      aspect-ratio: 912/541
+      img
+        transition: var(--transition)
+    &:hover
+      .card--image img
+        scale: 1.1
+

@@ -1,0 +1,79 @@
+.quantity
+  &-inputs
+    display: flex
+    flex-direction: column
+    gap: 16px
+  &-range-inputs
+    display: flex
+    gap: 16px
+  &-input-group
+    display: flex
+    align-items: center
+    gap: 8px
+    padding: 10px 16px
+    border: 1px solid var(--color-line-basic-main-3)
+  &-label
+    color: var(--color-text-basic-main-3)
+  &-input
+    border-radius: 4px
+    width: 100px
+    font-size: 16px
+
+    &:focus
+      outline: none
+      border-color: #02CB80
+  &-range-labels
+    display: flex
+    justify-content: space-between
+    color: #666
+    font-size: 16px
+
+
+.slider
+  position: relative
+  width: 100%
+  height: 4px
+  &__range
+    position: absolute
+    height: 4px
+    border-radius: 2px
+    top: 50%
+    transform: translateY(-50%)
+
+  &__track
+    background-color: rgba(2, 203, 128, 0.2)
+    width: 100%
+    height: 4px
+
+  &__range
+    background-color: #02CB80
+    z-index: 1
+
+  &__thumb
+    -webkit-appearance: none
+    pointer-events: none
+    position: absolute
+    height: 0
+    width: 100%
+    outline: none
+    z-index: 2
+    translate: 0 -50%
+    top: 50%
+
+    &::-webkit-slider-thumb
+      -webkit-appearance: none
+      pointer-events: auto
+      width: 16px
+      height: 16px
+      border-radius: 50%
+      background-color: #02CB80
+      cursor: pointer
+      border: none
+
+  &--left
+    z-index: 3
+
+  &--right
+    z-index: 4
+
+

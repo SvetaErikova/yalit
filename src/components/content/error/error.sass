@@ -1,0 +1,22 @@
+.content_error
+  height: calc(100lvh - var(--headerHeight) - 60px )
+  min-height: min-content
+  .block--wrapper
+    max-width: 1046px
+    margin: auto
+    display: flex
+    flex-direction: column
+    gap: var(--g-container-vertical)
+  .block--head
+    justify-content: center
+    align-items: center
+    text-align: center
+    gap: var(--g-s)
+  .block--actions
+    width: 100%
+    justify-content: center
+  &.error-500
+    .block--head_subtitle
+      color: var(--text-accent-primary)
+      font-size: clamp(48px, calc(48px + (96 - 48) * ((100vw - 768px) / (1440 - 768))), 96px)
+      line-height: 1.2

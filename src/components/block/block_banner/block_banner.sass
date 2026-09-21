@@ -1,0 +1,112 @@
+.block_banner
+  overflow: hidden
+  position: relative
+  padding: 0
+  margin: 0
+  height: calc(100vh - var(--headerHeight))
+  .block--wrapper
+    height: 100%
+    position: relative
+    padding: 0
+  .block--head
+    &_title
+      font-size: var(--fs-display-2)
+      line-height: var(--lh-display-2)
+
+.block_banner.block_banner-hero
+  min-height: 640px
+  height: 100vh
+
+
+
+.banner
+  display: flex
+  flex-direction: column
+  padding: var(--g-m) var(--container)
+  flex-shrink: 0
+  flex-grow: 0
+  height: 100%
+  overflow: hidden
+  position: relative
+  justify-content: end
+  color: var(--text-fixed-light-primary)
+  .block--head
+    max-width: 920px
+  .block--head,
+  .block--actions
+    z-index: 3
+    position: relative
+  .block--content
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+    z-index: 1
+    img, video
+      width: 100%
+      height: 100%
+      object-position: center
+      object-fit: cover
+      z-index: 1
+    &:after
+      content: ""
+      width: 100%
+      height: 100%
+      pointer-events: none
+      display: block
+      position: absolute
+      z-index: 2
+      top: 0
+      left: 0
+      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 63.94%, rgba(0, 0, 0, 0.36) 100%)
+
+
+.block_banner-group
+  .slider_controls
+    display: flex
+    color: #fff
+    left: auto
+    width: max-content
+    right: calc(var(--header-side-width) + var(--container))
+    z-index: 11
+  @media(max-width: 1140px)
+    .block--head
+      padding-bottom: 56px
+
+      //bottom: 100px
+      //left: 50%
+      //translate: -50% 0
+
+.block_banner:not(.block_banner-no_media)
+  .banner
+      min-height: 500px
+      @media(min-width: 999px)
+        min-height: 720px
+
+.block_banner.block_banner-hero
+  margin-bottom: var(--g-container-vertical)
+  .block--head
+    padding-right: calc(var(--header-side-width) + var(--container)  / 2)
+.block_banner:not(.block_banner-hero)
+  height: initial
+  padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container)
+  .banner
+    height: max-content
+    overflow: hidden
+    border-radius: var(--border-corner)
+    justify-content: flex-start
+    padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container)
+    .block--head
+      max-width: 1200px
+      &_caption
+        max-width: 800px
+.block_banner-no_media
+  .banner
+    min-height: auto
+    .block--content:after
+      content: none

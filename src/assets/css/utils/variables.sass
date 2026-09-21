@@ -1,0 +1,29 @@
+html
+  --container: 16px
+  --headerHeight: 64px
+  --header-side-width: 64px
+  --g-container-vertical: clamp(60px, calc(60px + (72 - 60) * ((100vw - 768px) / (1440 - 768))), 72px)
+  @media(min-width: 769px)
+    --container: clamp(16px, calc(16px + (32 - 16) * ((100vw - 1240px) / (1440 - 1240))), 32px)
+    --headerHeight: 88px
+  @media(min-width: 1241px)
+    --header-side-width: 88px
+
+
+  --border-corner-s: 0
+  --border-corner: 0
+  --border-corner-button: 0
+
+  --g-16: 16px
+  --g-12: 12px
+  --g-8: 8px
+  --g-outline: clamp(4px, calc(4px + (8 - 4) * ((100vw - 768px) / (1440 - 768))), 8px)
+  --g-xxxs: clamp(8px, calc(8px + (20 - 8) * ((100vw - 768px) / (1440 - 768))), 20px)
+  --g-xxs: clamp(16px, calc(16px + (24 - 16) * ((100vw - 992px) / (1440 - 992))), 24px)
+  --g-s: clamp(16px, calc(16px + (32 - 16) * ((100vw - 992px) / (1440 - 992))), 32px)
+  --g-m: clamp(32px, calc(32px + (48 - 32) * ((100vw - 992px) / (1440 - 992))), 48px)
+  --g-l: clamp(16px, calc(16px + (58 - 16) * ((100vw - 992px) / (1440 - 992))), 58px)
+  --g-xl: clamp(32px, calc(32px + (72 - 32) * ((100vw - 992px) / (1440 - 992))), 72px)
+  --g-xxl: clamp(32px, calc(32px + (112 - 32) * ((100vw - 992px) / (1440 - 992))), 112px)
+
+  --transition: 0.18s ease-out

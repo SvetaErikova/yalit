@@ -1,0 +1,62 @@
+.breadcrumbs
+  --breadcrumbs-color: var(--text-neutral-tertiary)
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  max-width: 100vw
+  padding: clamp(30px, calc(40px + (72 - 30) * ((100vw - 992px) / (1440 - 992))), 72px) var(--container) 0
+  gap: 4px
+  position: relative
+  z-index: 10
+  //overflow-x: auto
+  color: var(--breadcrumbs-color)
+  text-transform: uppercase
+  a
+    transition: var(--transition)
+    display: flex
+    align-items: center
+    position: relative
+    white-space: nowrap
+    flex-shrink: 0
+    flex-grow: 0
+    text-overflow: ellipsis
+    overflow: hidden
+    font-size: var(--fs-body-1)
+    padding: 4px 0
+    line-height: 1em
+    gap: 6px 0
+    @media(min-width: 1024px)
+      padding: 8px 0
+      gap: 6px
+    &:not(:last-child)
+      &:hover,
+      &:focus,
+      &:active
+        opacity: 0.7
+      &:after
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 1.3em
+        height: 1.3em
+        content: "\e904"
+        font-family: 'icomoon' !important
+
+    &:last-child
+      pointer-events: none
+      color: var(--text-neutral-primary)
+body:has(.header-transparent)
+  .breadcrumbs
+    padding-top: 0
+    position: absolute
+    z-index: 10
+    top: calc(var(--headerHeight) + var(--g-m))
+    left: 0
+    right: 0
+    --breadcrumbs-color: var(--text-softlight-primary)
+    @media(max-width: 1140px)
+      top: calc(var(--headerHeight) + 120px)
+      max-width: calc(100% - var(--header-side-width) )
+    a:last-child
+      color: var(--text-fixed-light-primary)
+

@@ -1,0 +1,35 @@
+.form--input.form--input_numbers
+  display: grid
+  align-items: center
+  grid-template-columns: 1fr auto
+  gap: 0 16px
+  .numbers
+    grid-column: 2
+    grid-row: span 1 / -1
+  .hint
+    font-weight: 400
+    letter-spacing: 0.01em
+    font-size: var(--fs-caption-xs)
+    color: var(--primary-disabled)
+
+.numbers
+  display: flex
+  align-items: center
+  gap: 4px
+  &--button
+    border-radius: 50%
+    width: 48px
+    height: 48px
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: rgba(243, 243, 244, 1)
+    font-size: 20px
+    &:hover,
+    &:active
+      background-color:  rgba(220, 220, 221, 1)
+  &--output
+    color: var(--primary-default)
+    font-weight: 500
+    max-width: 52px
+    text-align: center

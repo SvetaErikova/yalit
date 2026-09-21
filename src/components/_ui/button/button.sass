@@ -1,0 +1,288 @@
+/* Buttons */
+.button
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  width: fit-content
+  gap: 8px
+  flex-shrink: 0
+  cursor: pointer
+  z-index: 1
+  overflow: hidden
+  transition: var(--transition)
+  padding: var(--button-padding)
+  font-size: var(--button-fs)
+  background: var(--button-bg-color, transparent)
+  color: var(--button-color)
+  --button-fs: var(--fs-body-1)
+  line-height: var(--lh-body-1)
+  --button-padding: 14px
+
+  span
+    //transition: var(--transition)
+    color: inherit
+  span:not([class])
+    white-space: nowrap
+    text-align: center
+    //line-height: 1
+
+  span[class^="icon-"],
+  span[class*=" icon-"],
+  svg[class^="icon"],
+  svg
+    color: inherit
+    line-height: 1
+    //width: 1.2em
+    //height: 1.2em
+    font-size: var(--button-icon-size)
+    display: flex
+    align-items: center
+    justify-content: center
+  &:has(span[class^="icon-"]:only-child)
+    aspect-ratio: 1/1
+    padding: 0
+    justify-content: center
+
+  &[disabled],
+  &.is_disabled,
+  &.swiper-button-disabled
+    cursor: initial
+    pointer-events: none
+    opacity: 0.8
+    span
+      opacity: 0.6
+
+.button-filled-primary, .button-filled-secondary, .button-outlined, .button-flat
+  border-radius: var(--border-corner-button)
+  position: relative
+  overflow: hidden
+  --button-padding: 12px 16px
+  text-transform: uppercase
+  justify-content: space-between
+
+
+.button-outlined, .button-filled-primary, .button-filled-secondary
+  border: 1px solid var(--button-border-color, transparent)
+.button-flat
+  --button-padding: 0
+
+/* Button  colors  */
+.button-neutral
+  &.button-filled-primary
+    --button-bg-color: var(--button-light-primary-bg-rest)
+    --button-border-color: var(--button-light-primary-bg-rest)
+    --button-color: var(--button-light-primary-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--button-light-primary-bg-hover)
+      --button-border-color: var(--button-light-primary-bg-hover)
+      --button-color: var(--button-light-primary-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: var(--button-light-primary-bg-disabled)
+      --button-border-color: var(--button-light-primary-bg-disabled)
+      --button-color: var(--button-light-primary-text-disabled)
+  &.button-filled-secondary
+    --button-bg-color: var(--button-light-secondary-bg-rest)
+    --button-border-color: var(--button-light-secondary-bg-rest)
+    --button-color: var(--button-light-secondary-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--button-light-secondary-bg-hover)
+      --button-border-color: var(--button-light-secondary-bg-hover)
+      --button-color: var(--button-light-secondary-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: var(--button-light-secondary-bg-disabled)
+      --button-border-color: var(--button-light-secondary-bg-disabled)
+      --button-color: var(--button-light-secondary-text-disabled)
+  &.button-flat
+    --button-bg-color: transparent
+    --button-border-color: transparent
+    --button-color: var(--button-light-flat-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-flat-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-flat-text-disabled)
+  &.button-outlined
+    --button-bg-color: transparent
+    --button-border-color: var(--button-light-outlined-bg-rest)
+    --button-color: var(--button-light-outlined-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--button-light-outlined-bg-hover)
+      --button-border-color: var(--button-light-outlined-bg-rest)
+      --button-color: var(--button-light-outlined-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: transparent
+      --button-border-color: var(--button-light-outlined-bg-disabled)
+      --button-color: var(--button-light-outlined-text-disabled)
+  &.button-link
+    --button-bg-color: transparent
+    --button-border-color: transparent
+    --button-color: var(--button-light-flat-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-flat-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-flat-text-disabled)
+
+.button-brand
+  &.button-filled-primary
+    --button-bg-color: var(--button-light-brand-primary-bg-rest)
+    --button-border-color: var(--button-light-brand-primary-bg-rest)
+    --button-color: var(--button-light-brand-primary-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--button-light-brand-primary-bg-hover)
+      --button-border-color: var(--button-light-brand-primary-bg-hover)
+      --button-color: var(--button-light-brand-primary-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: var(--button-light-brand-primary-bg-disabled)
+      --button-border-color: var(--button-light-brand-primary-bg-disabled)
+      --button-color: var(--button-light-brand-primary-text-disabled)
+  &.button-filled-secondary
+    --button-bg-color: var(--button-light-brand-secondary-bg-rest)
+    --button-border-color: var(--button-light-brand-secondary-bg-rest)
+    --button-color: var(--button-light-brand-secondary-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--button-light-brand-secondary-bg-hover)
+      --button-border-color: var(--button-light-brand-secondary-bg-hover)
+      --button-color: var(--button-light-brand-secondary-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: var(--button-light-brand-secondary-bg-disabled)
+      --button-border-color: var(--button-light-brand-secondary-bg-disabled)
+      --button-color: var(--button-light-brand-secondary-text-disabled)
+  &.button-flat
+    --button-bg-color: transparent
+    --button-border-color: transparent
+    --button-color: var(--button-light-brand-flat-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-brand-flat-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-brand-flat-text-disabled)
+  &.button-outlined
+    --button-bg-color: transparent
+    --button-border-color: var(--button-light-brand-outlined-bg-rest)
+    --button-color: var(--button-light-brand-outlined-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--button-light-brand-outlined-bg-hover)
+      --button-border-color: var(--button-light-brand-outlined-bg-rest)
+      --button-color: var(--button-light-brand-outlined-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: transparent
+      --button-border-color: var(--button-light-brand-outlined-bg-disabled)
+      --button-color: var(--button-light-brand-outlined-text-disabled)
+  &.button-link
+    --button-bg-color: transparent
+    --button-border-color: transparent
+    --button-color: var(--button-light-brand-flat-text-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-brand-flat-text-hover)
+    &[disabled],
+    &.is_disabled,
+    &.swiper-button-disabled
+      --button-bg-color: transparent
+      --button-border-color: transparent
+      --button-color: var(--button-light-brand-flat-text-disabled)
+
+.block_banner .button,
+.content_gallery [data-fancybox-trigger],
+.content_contacts .block--actions
+  --button-light-primary-text-rest: var(--button-dark-primary-text-rest)
+  --button-light-primary-text-hover: var(--button-dark-primary-text-hover)
+  --button-light-primary-text-disabled: var(--button-dark-primary-text-disabled)
+  --button-light-primary-bg-rest: var(--button-dark-primary-bg-rest)
+  --button-light-primary-bg-hover: var(--button-dark-primary-bg-hover)
+  --button-light-primary-bg-disabled: var(--button-dark-primary-bg-disabled)
+
+  --button-light-secondary-text-rest: var(--button-dark-secondary-text-rest)
+  --button-light-secondary-text-hover: var(--button-dark-secondary-text-hover)
+  --button-light-secondary-text-disabled: var(--button-dark-secondary-text-disabled)
+  --button-light-secondary-bg-rest: var(--button-dark-secondary-bg-rest)
+  --button-light-secondary-bg-hover: var(--button-dark-secondary-bg-hover)
+  --button-light-secondary-bg-disabled: var(--button-dark-secondary-bg-disabled)
+
+  --button-light-outlined-text-rest: var(--button-dark-outlined-text-rest)
+  --button-light-outlined-text-hover: var(--button-dark-outlined-text-hover)
+  --button-light-outlined-text-disabled: var(--button-dark-outlined-text-disabled)
+  --button-light-outlined-bg-rest: var(--button-dark-outlined-bg-rest)
+  --button-light-outlined-bg-hover: var(--button-dark-outlined-bg-hover)
+  --button-light-outlined-bg-disabled: var(--button-dark-outlined-bg-disabled)
+
+  --button-light-flat-text-rest: var(--button-dark-flat-text-rest)
+  --button-light-flat-text-hover: var(--button-dark-flat-text-hover)
+  --button-light-flat-text-disabled: var(--button-dark-flat-text-disabled)
+
+  --button-light-brand-primary-text-rest: var(--button-dark-brand-primary-text-rest)
+  --button-light-brand-primary-text-hover: var(--button-dark-brand-primary-text-hover)
+  --button-light-brand-primary-text-disabled: var(--button-dark-brand-primary-text-disabled)
+  --button-light-brand-primary-bg-rest: var(--button-dark-brand-primary-bg-rest)
+  --button-light-brand-primary-bg-hover: var(--button-dark-brand-primary-bg-hover)
+  --button-light-brand-primary-bg-disabled: var(--button-dark-brand-primary-bg-disabled)
+
+  --button-light-brand-secondary-text-rest: var(--button-dark-brand-secondary-text-rest)
+  --button-light-brand-secondary-text-hover: var(--button-dark-brand-secondary-text-hover)
+  --button-light-brand-secondary-text-disabled: var(--button-dark-brand-secondary-text-disabled)
+  --button-light-brand-secondary-bg-rest: var(--button-dark-brand-secondary-bg-rest)
+  --button-light-brand-secondary-bg-hover: var(--button-dark-brand-secondary-bg-hover)
+  --button-light-brand-secondary-bg-disabled: var(--button-dark-brand-secondary-bg-disabled)
+
+  --button-light-brand-outlined-text-rest: var(--button-dark-brand-outlined-text-rest)
+  --button-light-brand-outlined-text-hover: var(--button-dark-brand-outlined-text-hover)
+  --button-light-brand-outlined-text-disabled: var(--button-dark-brand-outlined-text-disabled)
+  --button-light-brand-outlined-bg-rest: var(--button-dark-brand-outlined-bg-rest)
+  --button-light-brand-outlined-bg-hover: var(--button-dark-brand-outlined-bg-hover)
+  --button-light-brand-outlined-bg-disabled: var(--button-dark-brand-outlined-bg-disabled)
+
+  --button-light-brand-flat-text-rest: var(--button-dark-brand-flat-text-rest)
+  --button-light-brand-flat-text-hover: var(--button-dark-brand-flat-text-hover)
+  --button-light-brand-flat-text-disabled: var(--button-dark-brand-flat-text-disabled)
+
+

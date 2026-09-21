@@ -1,0 +1,31 @@
+.content_contacts
+
+  overflow: hidden
+  .block--wrapper
+    position: relative
+    height: 100%
+    padding: var(--g-xl) 0 0
+
+
+    .block--actions
+      position: absolute
+      top: auto
+      bottom: var(--g-s)
+      left: var(--g-s)
+      right: var(--g-s)
+      display: flex
+      flex-direction: column
+      gap: clamp(8px, calc(8px + (32 - 8) * ((100vw - 992px) / (1440 - 992))), 32px)
+      @media(min-width: 769px)
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+      .button
+        width: 100%
+        justify-content: space-between
+        max-width: initial
+        @media(max-width: 575px)
+          span
+            white-space: wrap
+            text-align: left
+
+

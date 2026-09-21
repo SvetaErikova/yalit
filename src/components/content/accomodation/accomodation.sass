@@ -1,0 +1,146 @@
+.content_accommodation
+  position: relative
+  margin:  0  0 var(--g-container-vertical)
+  &.block_element
+    margin:  var(--g-container-vertical)  0
+  .block--wrapper
+    display: flex
+    flex-direction: column
+    padding: var(--g-s) var(--container)
+    gap: 16px
+    @media(min-width: 999px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+
+  .block--head
+    color: var(--text-fixed-light-primary)
+    position: relative
+    z-index: 2
+    @media(max-width: 998px)
+      aspect-ratio: 412/404
+  .block--image
+    position: absolute
+    top: 0
+    left: 0
+    aspect-ratio: 412/404
+    width: 100%
+    @media(min-width: 999px)
+      aspect-ratio: inherit
+      inset: 0
+    &:after
+      content: ''
+      position: absolute
+      inset: 0
+      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 31.25%, rgba(0, 0, 0, 0.3) 100%)
+    img
+      object-fit: cover
+  .block--elements
+    margin-top: 0
+    position: relative
+    z-index: 2
+    display: flex
+    flex-direction: column
+    gap: 8px
+    .item
+      background: var(--bg-page)
+      padding: var(--card-v-padding-lg) 0
+      @media(min-width: 999px)
+        padding: var(--card-v-padding-lg) var(--card-h-padding-lg)
+      &.is_open
+        .item--content
+          pointer-events: auto
+          grid-template-rows: 1fr
+          opacity: 1
+          padding-top: 16px
+        .item--title span[class^="icon-"]:before
+          content: '\e910'
+      &--title
+        display: flex
+        gap: 16px
+        justify-content: space-between
+        align-items: center
+        font-size: var(--fs-heading-1)
+        line-height: var(--lh-heading-1)
+        font-family: 'TT Tricks', sans-serif
+        cursor: pointer
+        transition: var(--transition)
+        font-weight: 300
+        p
+          text-transform: uppercase
+          margin: 0
+        span[class^="icon-"]
+          flex-shrink: 0
+          transition: var(--transition)
+      &--content
+        opacity: 0
+        display: grid
+        grid-template-rows: 0fr
+        pointer-events: none
+        overflow: hidden
+        transition: grid-template-rows 0.21s ease-out, opacity 0.21s ease-out
+        &_inner
+          overflow: hidden
+          min-height: 0
+          display: flex
+          flex-direction: column
+          gap: 32px
+      &--text
+        font-size: var(--fs-body-2)
+        line-height: 1.2
+        color: var(--text-neutral-secondary)
+        @media(min-width: 999px)
+          text-overflow: ellipsis
+          overflow: hidden
+          display: -webkit-box
+          -webkit-line-clamp: 3
+          -webkit-box-orient: vertical
+      .block--actions
+        margin-top: 0
+      &--images
+        display: grid
+        grid-template-columns: 1fr 2.5fr
+        grid-template-rows: repeat(2, 1fr)
+        gap: 8px
+        img
+      &--image
+        aspect-ratio: 123/144
+        display: flex
+        object-fit: cover
+        @media(min-width: 999px)
+          aspect-ratio: 227/234
+        &:nth-child(2)
+          grid-column: 1
+        &:last-child
+          grid-column: 2
+          grid-row: 1/ span 2
+          aspect-ratio: 248/298
+          @media(min-width: 999px)
+            aspect-ratio: 563/476
+
+
+
+.block-detail.content_accommodation
+  .block--wrapper
+    display: flex
+    flex-direction: column
+    gap: 16px
+    @media(min-width: 769px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+  .accommodation_content
+    @media(min-width: 769px)
+      margin-right: var(--g-m)
+  .accommodation_sidebar
+    height: 100%
+    &--sticky
+      @media(min-width: 769px)
+        top: calc(var(--headerHeight) + 16px)
+        position: sticky
+    .block--actions
+      margin-top: var(--g-s)
+      .button
+        width: 100%
+        justify-content: space-between
+    .list-table
+      .item span
+        text-align: left

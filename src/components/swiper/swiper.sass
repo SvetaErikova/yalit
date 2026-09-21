@@ -1,0 +1,113 @@
+.swiper-slide,
+.card,
+.gallery--item,
+.banner-group .banner
+  -webkit-transform: translate3d(0, 0, 0)
+  -webkit-backface-visibility: hidden
+
+.swiper-wrapper
+  -webkit-transform-style: preserve-3d
+
+.swiper--prev.swiper-button-lock, .swiper--next.swiper-button-lock,
+.swiper-pagination-lock
+  display: none
+
+.swiper-notification
+  display: none
+.block_list,
+.content_gallery
+  .slider_controls
+    gap: 4px
+    border: 1px solid var(--line-tertiary)
+    border-radius: 100px
+    position: static
+    overflow: hidden
+    height: max-content
+  .block--wrapper > .slider_controls
+    margin-top: auto
+
+
+
+.slider_controls
+  position: absolute
+  bottom: var(--g-m)
+  right: var(--g-s)
+  left: var(--g-s)
+  z-index: 3
+  display: flex
+  justify-content: space-between
+  align-items: center
+  pointer-events: none
+  gap: 8px
+
+
+.swiper--prev, .swiper--next
+  cursor: pointer
+  display: flex
+  justify-content: center
+  align-items: center
+  pointer-events: all
+  transition: var(--transition)
+  width: var(--container)
+  height: var(--container)
+  aspect-ratio: 1/1
+  min-width: 36px
+  min-height: 36px
+  color: var(--text-neutral-primary)
+  @media(min-width: 769px)
+    width: 40px
+    height: 40px
+  &:hover
+    background-color: var(--text-neutral-quatemary)
+  &.swiper-button-disabled
+    pointer-events: none
+    color: var(--line-quatemary)
+  span
+    font-size: var(--button-icon-size-2)
+
+
+.swiper-pagination
+  display: flex
+  align-items: center
+  z-index: 10
+  gap: 2px
+  &-bullet
+    width: 6px
+    aspect-ratio: 1/1
+    background-color: #F3ECE480
+    &-active
+      background-color: var(--bg-page)
+
+
+
+.block_banner,
+.block_image_text,
+.is_cascade .gallery
+  .swiper--prev, .swiper--next
+    color: #fff
+    border: 1px solid var(--line-light-secondary)
+    &:hover
+      background: #0000004D
+
+
+.block_image_text,
+.is_cascade .gallery
+  .slider_controls
+    height: 100%
+    .swiper--prev
+      position: absolute
+      translate: 0 -50%
+      top: 50%
+
+    .swiper--next
+      position: absolute
+      translate: 0 -50%
+      top: 50%
+      left: auto
+      right: 0
+    .swiper-pagination
+      position: absolute
+      translate: -50% 0
+      bottom: 16px
+      left: 50%
+

@@ -1,0 +1,26 @@
+.block--head
+  display: flex
+  flex-direction: column
+  gap: clamp(12px, calc(12px + (16 - 12) * ((100vw - 768px) / (1440 - 768))), 16px)
+  align-content: center
+
+  &_subtitle
+    text-transform: uppercase
+    font-size: var(--fs-subhead-2)
+    line-height: var(--lh-subhead-2)
+
+  &_title
+    font-size: var(--fs-display-1)
+    text-transform: uppercase
+    line-height: var(--lh-display-1)
+    font-family: 'TT Tricks', sans-serif
+
+  &_caption
+    font-size: var(--fs-body-3)
+    line-height: 1.5
+
+//.-centered
+//  .block--head
+//    margin: auto
+//    max-width: 1160px
+//    text-align: center

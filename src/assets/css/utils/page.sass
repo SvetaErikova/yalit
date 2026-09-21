@@ -1,0 +1,105 @@
+.page-accommodation
+  .block_banner.block_banner-hero
+    margin-bottom: 0
+.page-fest
+  .block_list,
+  .content_gallery
+    .block--head
+      display: grid
+      grid-template-columns: auto 1fr
+      gap: var(--g-xxs)
+      &_subtitle
+        writing-mode: vertical-lr
+        text-orientation: upright
+        grid-column: 1
+        color: var(--text-fixed-light-primary)
+        background: var(--button-dark-brand-primary-bg-rest)
+        font-size: var(--fs-body-3)
+        line-height: 1
+        padding: clamp(6px, calc(6px + (10 - 6) * ((100vw - 575px) / (1240 - 575))), 10px)
+        height: max-content
+        letter-spacing: 0.2em
+      &_title,
+      &_caption
+        grid-column: 2
+      .block--actions
+        grid-column: span 2
+    //.block--wrapper > .slider_controls
+    //  margin-top: auto
+  .image_text_first_in_fest
+    position: relative
+
+  .image-text-first-bck
+    position: absolute
+    z-index: -1
+    top: calc(var(--g-container-vertical) * -1)
+    left: 0
+    right: 0
+    bottom: calc(var(--g-container-vertical) * -1 * 2)
+    margin: 0
+    aspect-ratio: initial
+
+  .block--head
+    &_title
+      font-family: 'Suisse', sans-serif
+      &> *
+        font-weight: 400
+
+  .content_gallery .gallery
+    .swiper-wrapper
+      align-items: center
+    .gallery--item:nth-child(odd)
+      aspect-ratio: 1/1
+    .gallery--item:nth-child(even)
+      aspect-ratio: 3/4
+  .image_text_first_in_fest
+    .block--content
+      max-width: 590px
+      margin: 0 auto
+  .block_info_fest
+    .block--wrapper
+      display: flex
+      flex-direction: column
+      gap: 16px
+      //padding-top: 0
+      @media(min-width: 992px)
+        display: grid
+        grid-template-columns: 1fr minmax(400px, 1fr)
+    .block--content
+      display: flex
+      flex-direction: column
+      gap: 16px
+      @media(min-width: 769px)
+        display: grid
+        grid-template-columns: 4fr 2fr
+      .block_info_fest_first-img
+        height: auto
+        aspect-ratio: 1/1
+        margin-bottom: var(--g-m)
+        @media(min-width: 769px)
+          aspect-ratio: 608/360
+
+
+      .block--head, p
+        margin-bottom: 16px
+        @media(min-width: 769px)
+          padding-right: var(--g-m)
+      .block_info_fest_second-img
+        aspect-ratio: 1/1
+      div:last-child
+        display: flex
+        align-items: end
+        img
+          height: auto
+
+    .block--image
+      img
+        aspect-ratio: 1/1
+        height: auto
+        position: sticky
+        top: var(--headerHeight)
+
+    img
+
+      object-fit: cover
+

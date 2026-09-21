@@ -1,0 +1,208 @@
+.is_cascade
+  --m-head-top: var(--cascade-margine-page-lg)
+  --m-bottom: var(--cascade-margine-page-md)
+  --m-text-top: var(--cascade-margine-page-md)
+  color: var(--color-text-basic-main-1)
+  & > *
+    margin: var(--m-text-top) 0 var(--m-bottom)
+
+    &:first-child
+      margin-top: 0
+
+    &:last-child
+      margin-bottom: 0
+
+  h1, h2, h3, h4, h5, h6
+    margin: var(--m-head-top) 0 var(--m-bottom)
+    text-transform: uppercase
+    font-weight: 400
+
+  h1
+    font-size: var(--fs-display-1)
+    line-height: var(--lh-display-1)
+  h2
+    font-size: var(--fs-heading-1)
+    line-height: var(--lh-heading-1)
+  h3
+    font-size: var(--fs-subhead-2)
+    line-height: var(--lh-subhead-2)
+  h4,h5,h6
+    font-size: var(--fs-body-3)
+    line-height: var(--lh-body-3)
+
+  p, li
+
+  b, strong
+    font-weight: 500
+  table
+
+  p > a:not([class])
+    text-decoration: underline
+
+    &:hover,
+    &:focus
+      color: var(--accent-2)
+
+  img,
+  video
+    height: auto
+    border-radius: var(--border-corner)
+    aspect-ratio: 16 / 9
+    width: 100%
+
+  ul, ol
+    margin: 0 0 var(--m-bottom)
+    padding-left: 24px
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+  figure
+    img, video
+      aspect-ratio: 16 / 9
+    figcaption
+      margin-top: 8px
+      color: var(--text-neutral-tertiary)
+
+  hr
+    border-color: var(--line-quatemary)
+
+  .button_wrapper, .block--actions
+    display: flex
+    align-items: center
+    gap: 8px
+    margin: 8px 0 12px
+
+  .is_cascade--table
+    width: 100%
+    margin: var(--m-text-top) 0 var(--m-bottom)
+    overflow: auto
+    table
+      width: 100%
+      border-collapse: collapse
+      border-radius: var(--border-corner)
+      overflow: hidden
+      outline: 1px solid var(--line-quatemary)
+      outline-offset: -1px
+    thead
+      background-color: var(--bg-illustration-light)
+
+    tr
+      border-bottom: 1px solid var(--line-quatemary)
+
+      &:last-child
+        border-bottom: none
+    td,
+    th
+      text-align: center
+      padding: 16px 24px
+      &:not(:last-child)
+        border-right: 1px solid var(--line-quatemary)
+
+    .table-subhead
+      background-color: #F2F9FA
+      text-align: center
+
+    tbody
+      td:first-child:not(.table-subhead)
+        text-align: left
+  .block--actions
+    margin: var(--m-text-top) 0 var(--m-bottom)
+  //  new
+
+.list-table
+  display: flex
+  flex-direction: column
+  text-transform: uppercase
+  font-size: var(--fs-body-1)
+  line-height: var(--lh-body-1)
+  .item
+    display: grid
+    align-items: center
+    grid-template-columns: 2fr 2fr
+    gap: 16px
+    padding: 24px 0
+    @media(min-width: 769px)
+      grid-template-columns: 4fr 2.5fr
+    &:not(:last-child)
+      border-bottom: 1px solid var(--text-neutral-tertiary)
+    span
+      text-align: right
+
+
+
+.is_cascade:has(.gallery)
+  overflow: hidden
+  .gallery
+    aspect-ratio: 800/533
+    border-radius: var(--border-corner)
+    overflow: hidden
+    .slider_controls
+      bottom: 16px
+      right: 16px
+      gap: 8px
+
+      .swiper--next,
+      .swiper--prev
+        width: 44px
+        height: 44px
+        font-size: 1.4em
+        &:before
+          content: none
+
+// Video
+.is_cascade
+  &--video
+    overflow: hidden
+    margin: var(--margin-m) 0
+
+.video
+  width: 100%
+  height: auto
+  position: relative
+
+  video
+    width: 100%
+    height: 100%
+    object-position: center
+    object-fit: cover
+
+.blockquote
+  margin: 16px 0
+  border-left:  10px solid var(--color-line-brand-main-1)
+  padding-left: var(--g-m)
+  display: flex
+  flex-direction: column
+  gap: 16px
+  &--decor
+    &:after
+      content: ""
+      display: flex
+      width: 60px
+      aspect-ratio: 60/44
+      background-color: var(--color-text-brand-light-main-4)
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='61' height='45' viewBox='0 0 61 45' fill='none'%3E%3Cpath d='M59.9834 2.58594C58.4549 2.58598 56.4986 2.89412 54.1143 3.50977C51.7296 4.06393 49.3753 4.9258 47.0518 6.0957C44.7284 7.26555 42.802 8.7428 41.2734 10.5283C38.9499 13.2376 37.7881 15.4546 37.7881 17.1787C38.2772 16.5014 39.3778 15.9164 41.0898 15.4238C42.8018 14.8697 44.6362 14.5928 46.5928 14.5928C49.2832 14.5928 51.6375 15.2392 53.6553 16.5322C55.673 17.8253 57.2631 19.5802 58.4248 21.7969C59.5865 23.9519 60.167 26.3534 60.167 29.001C60.167 33.4343 58.7609 37.0982 55.9482 39.9922C53.1968 42.8861 49.4668 44.333 44.7588 44.333C41.5792 44.333 38.7048 43.5326 36.1367 41.9316C33.5688 40.3307 31.674 38.1136 30.4512 35.2812C29.2894 38.1137 27.4849 40.3307 25.0391 41.9316C22.5933 43.5324 19.6277 44.333 16.1426 44.333C11.5568 44.333 7.70429 42.7623 4.58594 39.6221C1.52896 36.4202 0 31.8328 0 25.8604C5.63006e-05 21.1193 1.25385 16.8088 3.76074 12.9297C6.32872 8.98921 9.96701 5.84951 14.6748 3.50977C19.444 1.17 24.3971 4.79028e-05 29.5332 0L31.3682 2.58594C29.8395 2.58594 27.8827 2.89403 25.498 3.50977C23.1134 4.06393 20.7591 4.92579 18.4355 6.0957C16.1122 7.26557 14.1858 8.74278 12.6572 10.5283C10.3337 13.2376 9.17188 15.4546 9.17188 17.1787C9.661 16.5014 10.7618 15.9164 12.4736 15.4238C14.1857 14.8697 16.0209 14.5928 17.9775 14.5928C22.8689 14.5929 26.599 16.6247 29.167 20.6885C30.0842 16.563 31.9184 12.9605 34.6699 9.88184C37.4825 6.80328 40.9069 4.40175 44.9424 2.67773C49.039 0.892196 53.4414 0 58.1494 0L59.9834 2.58594Z' fill='%23FF7C22' fill-opacity='0.5'/%3E%3C/svg%3E")
+  &--text
+    display: flex
+    flex-direction: column
+    gap: 8px
+    p
+      font-size: var(--subtitle-m)
+      font-weight: 600
+    span
+      font-size: var(--caption-xl)
+      color: var(--color-text-basic-main-3)
+
+
+.block--content .is_cascade
+  --m-head-top: var(--cascade-margine-block-lg)
+  --m-bottom: var(--cascade-margine-block-md)
+  --m-text-top: var(--cascade-margine-block-md)
+.popup .is_cascade
+  --m-head-top: var(--cascade-margine-modal-lg)
+  --m-bottom: var(--cascade-margine-modal-md)
+  --m-text-top: var(--cascade-margine-modal-md)
+.block_html_code
+  .block--content.is_cascade
+    margin-top: var(--g-xl)
+
