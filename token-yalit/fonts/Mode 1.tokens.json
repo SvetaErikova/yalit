@@ -1,0 +1,27 @@
+{
+  "ff-1": {
+    "$type": "string",
+    "$value": "Literature Decor",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:49:1629",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "ff-2": {
+    "$type": "string",
+    "$value": "Involve",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:49:1630",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}

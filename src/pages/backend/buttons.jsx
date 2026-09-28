@@ -7,43 +7,43 @@ export default function Home() {
 	return (
 		<MainLayout meta={metaPages.home} >
       <div class="block">
-        <div className="block--wrapper" style={{ margin: "2em" }}>
-          <h1 className='f-h1'>Кнопки</h1>
-
-          <h2 className='f-h3'>Base (default)</h2>
+        <div className="block--wrapper" style={{ padding: "2em" }}>
           <div className="ui_grid-5">
-            <Button color="neutral" type="filled-primary">neutral filled-primary</Button>
-            <Button color="neutral" type="filled-secondary">neutral filled-secondary</Button>
-            <Button color="neutral" type="outlined">neutral outlined</Button>
-            <Button color="neutral" type="link">neutral link</Button>
-            <Button color="neutral" type="flat">neutral flat</Button>
-
-            <Button color="brand" type="filled-primary">brand filled-primary</Button>
-            <Button color="brand" type="filled-secondary">brand filled-secondary</Button>
-            <Button color="brand" type="outlined">brand outlined</Button>
-            <Button color="brand" type="link">brand link</Button>
-            <Button color="brand" type="flat">brand flat</Button>
+            <Button  type="filled-primary"> filled-primary</Button>
+            <Button  type="filled-secondary"> filled-secondary</Button>
+            <Button  type="filled-accent"> filled-accent</Button>
+            <Button  type="outlined"> outlined</Button>
+            <Button  type="flat">neutral flat</Button>
+          </div>
+        </div>
+        <div className="block--wrapper -dark" style={{ padding: "2em", background: "var(--bg-primary)" }}>
+          <div className="ui_grid-5">
+            <Button  type="filled-primary"> filled-primary</Button>
+            <Button  type="filled-secondary"> filled-secondary</Button>
+            <Button  type="filled-accent"> filled-accent</Button>
+            <Button  type="outlined"> outlined</Button>
+            <Button  type="flat">neutral flat</Button>
+          </div>
+        </div>
+        <div className="block--wrapper -green" style={{ padding: "2em", background: "var(--bg-primary)" }}>
+          <div className="ui_grid-5">
+            <Button  type="filled-primary"> filled-primary</Button>
+            <Button  type="filled-secondary"> filled-secondary</Button>
+            <Button  type="filled-accent"> filled-accent</Button>
+            <Button  type="outlined"> outlined</Button>
+            <Button  type="flat">neutral flat</Button>
+          </div>
+        </div>
+        <div className="block--wrapper -accent" style={{ padding: "2em", background: "var(--bg-primary)" }}>
+          <div className="ui_grid-5">
+            <Button  type="filled-primary"> filled-primary</Button>
+            <Button  type="filled-secondary"> filled-secondary</Button>
+            <Button  type="filled-accent"> filled-accent</Button>
+            <Button  type="outlined"> outlined</Button>
+            <Button  type="flat">neutral flat</Button>
           </div>
         </div>
 
-        <div className="block--wrapper page-fest" style={{ margin: "2em" }}>
-          <h1 className='f-h1'>Кнопки</h1>
-
-          <h2 className='f-h3'>Base (default)</h2>
-          <div className="ui_grid-5">
-            <Button color="neutral" type="filled-primary">neutral filled-primary</Button>
-            <Button color="neutral" type="filled-secondary">neutral filled-secondary</Button>
-            <Button color="neutral" type="outlined">neutral outlined</Button>
-            <Button color="neutral" type="link">neutral link</Button>
-            <Button color="neutral" type="flat">neutral flat</Button>
-
-            <Button color="brand" type="filled-primary">brand filled-primary</Button>
-            <Button color="brand" type="filled-secondary">brand filled-secondary</Button>
-            <Button color="brand" type="outlined">brand outlined</Button>
-            <Button color="brand" type="link">brand link</Button>
-            <Button color="brand" type="flat">brand flat</Button>
-          </div>
-        </div>
       </div>
     </MainLayout>
   );

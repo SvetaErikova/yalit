@@ -11,7 +11,7 @@ import '../../components/header/header.js';
 import '../../components/footer/footer.js';
 import '../../components/scheme/scheme.js';
 // import '../../components/menu/menu.js';
-import '../../components/nav/nav.js';
+// import '../../components/nav/nav.js';
 import '../../components/popups/popups.js';
 import '../../components/swiper/helpers.js';
 import '../../components/swiper/swiper.js';

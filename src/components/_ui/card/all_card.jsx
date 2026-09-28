@@ -1,5 +1,9 @@
 import { Button } from '../button/button.jsx';
-import {Card, Card_accommodation, Card_doc, Card_offers, Card_reviews} from './card.jsx';
+import { Card, Card_doc } from './content/card.jsx';
+import { Card_accommodation } from './content/accommodation.jsx';
+import { Card_afisha } from './content/afisha.jsx';
+import { Card_review } from './content/review.jsx';
+import { Card_service } from './content/service.jsx';
 
 const REVIEW_CARD_TEXT = (
   <>
@@ -94,28 +98,28 @@ export const All_card_default = () => {
 export const All_card_services = () => {
   return (
     <>
-      <Card
+      <Card_service
         title={'Чайная церемония'}
         text={'Погружение в японскую традицию с мастером церемонии, ароматным чаем и спокойной атмосферой сада.'}
         image={'../../assets/img/2.jpg'}
         link={'/'}
         price={'от 1 500 ₽'}
       />
-      <Card
+      <Card_service
         title={'Индивидуальная экскурсия'}
         text={'Персональная прогулка по саду с гидом, историями о символике пространства и редких растениях.'}
         image={'../../assets/img/1.jpg'}
         link={'/'}
         price={'от 3 000 ₽'}
       />
-      <Card
+      <Card_service
         title={'Мастер-класс по каллиграфии'}
         text={'Практическое занятие по основам японской каллиграфии с материалами и сопровождением мастера.'}
         image={'../../assets/img/2.jpg'}
         link={'/'}
         price={'от 2 200 ₽'}
       />
-      <Card
+      <Card_service
         title={'Фотосессия в саду'}
         text={'Прогулка по самым живописным маршрутам сада с профессиональным фотографом и готовыми кадрами.'}
         image={'../../assets/img/1.jpg'}
@@ -129,14 +133,14 @@ export const All_card_services = () => {
 export const All_card_offers = () => {
   return (
     <>
-      <Card_offers
+      <Card_afisha
         title={'Фестиваль «цветущая сакура»'}
         text={'Фестиваль цветущей сакуры  — это праздник для всей семьи, где каждый может найти что-то особенное — от прогулок под цветущими деревьями до участия в мастер-классах и дегустациях стрит-фуда. Насыщенная программа дня подарит впечатления и новые эмоции.'}
         image={'../../assets/img/2.jpg'}
         date={'18-19 апреля'}
         action={<Button type={'flat'} icon={'icon-ic-uniq-arrow-right'}>зарегистрироваться</Button>}
       />
-      <Card_offers
+      <Card_afisha
         title={'Фестиваль «цветущая сакура»'}
         text={'Окунитесь в атмосферу настоящей Японии на фестивале рыб Кои в саду «Мрия» — яркие кои, древние легенды, музыка кото, аромат чая и сотни огней на воде ждут вас !'}
         image={'../../assets/img/2.jpg'}
@@ -144,14 +148,14 @@ export const All_card_offers = () => {
         action={<Button type={'flat'} icon={'icon-ic-uniq-arrow-right'}>зарегистрироваться</Button>}
 
       />
-      <Card_offers
+      <Card_afisha
         title="Фестиваль «цветущая сакура»"
         text={'Фестиваль проходит в Японском саду «Мрия» — покормите кои с рук, загадайте желание, насладитесь чайной церемонией и волшебным вечерним шоу фонарей на воде.'}
         image={'../../assets/img/1.jpg'}
         action={<Button type={'flat'} icon={'icon-ic-uniq-arrow-right'}>зарегистрироваться</Button>}
         date={'20 апреля'}
       />
-      <Card_offers
+      <Card_afisha
         title="Фестиваль «цветущая сакура»"
         text={'Фестиваль проходит в Японском саду «Мрия» — покормите кои с рук, загадайте желание, насладитесь чайной церемонией и волшебным вечерним шоу фонарей на воде.'}
         image={'../../assets/img/1.jpg'}
@@ -490,7 +494,7 @@ export const All_card_reviews = () => {
           </symbol>
         </defs>
       </svg>
-      <Card_reviews
+      <Card_review
         authorName="Андрей Сорокин"
         rating={5}
         sourceLabel={'/assets/img/reviews/ostrovok.svg'}
@@ -500,22 +504,22 @@ export const All_card_reviews = () => {
             аутентичный японский сад у нас.
           </p></>}
       />
-      <Card_reviews
+      <Card_review
         authorName="Мария Иванова"
         rating={4}
         text={REVIEW_CARD_TEXT}
       />
-      <Card_reviews
+      <Card_review
         authorName="Иван Петров"
         rating={5}
         text={REVIEW_CARD_TEXT}
       />
-      <Card_reviews
+      <Card_review
         authorName="Елена Сидорова"
         rating={3}
         text={REVIEW_CARD_TEXT}
       />
-      <Card_reviews
+      <Card_review
         authorName="Дмитрий Козлов"
         rating={5}
         text={REVIEW_CARD_TEXT}

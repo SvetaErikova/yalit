@@ -22,7 +22,7 @@
 .banner
   display: flex
   flex-direction: column
-  padding: var(--g-m) var(--container)
+  padding: var(--g-m) var(--container-padding)
   flex-shrink: 0
   flex-grow: 0
   height: 100%
@@ -72,7 +72,7 @@
     color: #fff
     left: auto
     width: max-content
-    right: calc(var(--header-side-width) + var(--container))
+    right: calc(var(--header-side-width) + var(--container-padding))
     z-index: 11
   @media(max-width: 1140px)
     .block--head
@@ -91,16 +91,16 @@
 .block_banner.block_banner-hero
   margin-bottom: var(--g-container-vertical)
   .block--head
-    padding-right: calc(var(--header-side-width) + var(--container)  / 2)
+    padding-right: calc(var(--header-side-width) + var(--container-padding)  / 2)
 .block_banner:not(.block_banner-hero)
   height: initial
-  padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container)
+  padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container-padding)
   .banner
     height: max-content
     overflow: hidden
     border-radius: var(--border-corner)
     justify-content: flex-start
-    padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container)
+    padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container-padding)
     .block--head
       max-width: 1200px
       &_caption

@@ -1,6 +1,6 @@
 export const links = [
   {
-    label: "Форматы посещения",
+    label: "о нас",
     href: "",
     children: [
       { label: "Входной билет", href: "/" },
@@ -22,23 +22,39 @@ export const links = [
     ],
   },
   {
-    label: "О Японском саде",
-    href: "/about",
-    children: [
-      { label: "история", href: "/" },
-      { label: "карта сада", href: "/scheme" },
-      { label: "календарь цветения", href: "/calendar" },
-      { label: "Блог", href: "/blog" },
-    ],
+    label: "наши услуги",
+    href: "",
   },
   {
-    label: "Чем заняться",
-    href: "/services",
-    children: [
-      { label: "Сувениры", href: "/" },
-      { label: "Афиша", href: "/offer" },
-
-    ],
+    label: "спецпредложения",
+    href: "",
   },
-
+  {
+    label: "спа и фитнес",
+    href: "",
+  },
+  {
+    label: "рестораны и бары",
+    href: "",
+  },
+  {
+    label: "события",
+    href: "",
+  },
+  {
+    label: "Контакты",
+    href: "",
+  },
+  {
+    label: "отзывы",
+    href: "",
+  },
+  {
+    label: "faq",
+    href: "",
+  },
+  {
+    label: "галерея",
+    href: "",
+  },
 ];

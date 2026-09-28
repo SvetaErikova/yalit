@@ -12,33 +12,15 @@ export default function Home() {
 						<Button link={"/main"} >
 							Главная
 						</Button>
-            <Button color={'brand'} link={"/ticket"} >
-              Билеты
+            <Button link={"/accommodation-detail"} >
+              Проживание разводящая
             </Button>
-            <Button  color={'brand'} link={"/tea"} >
-              чайные церемонии
-            </Button>
-            <Button  color={'brand'} link={"/onsen"} >
-              Онсен
-            </Button>
-            <Button  color={'brand'} link={"/rent"} >
-              аренда кимоно
-            </Button>
-            <Button  link={"/excursions"} >
-              экскурсии
-            </Button>
-            <Button  link={"/certificate"} >
-              сертификат
+            <Button link={"/accommodation-detail"} >
+              Проживание разводящая по корп
             </Button>
             <Button link={"/accommodation-detail"} >
               Проживание детальная
             </Button>
-            <Button link={"/all-inclusive"} >
-              Все включено
-            </Button>
-            {/*<Button link={"/spa"} >*/}
-            {/*  SPA*/}
-            {/*</Button>*/}
             <Button link={"/about"} >
               Об отеле
             </Button>
@@ -51,24 +33,12 @@ export default function Home() {
             <Button link={"/events-detail"} >
               афиша детальная
             </Button>
-            <Button link={"/organization"} >
-              организация мероприятий
-            </Button>
-            <Button link={"/documentation"} >
-              Документы
-            </Button>
-            <Button link={"/calendar"} >
-              Календарь цветения
-            </Button>
 						<Button link={"/faq"} >
 							FAQ
 						</Button>
-            {/*<Button link={"/backend/maps"} >*/}
-            {/*  Карты*/}
+            {/*<Button link={"/scheme"} >*/}
+            {/*  Карта*/}
             {/*</Button>*/}
-            <Button link={"/scheme"} >
-              Карта
-            </Button>
             <Button  link={"/article"} >
               article
             </Button>
@@ -78,11 +48,6 @@ export default function Home() {
 						<Button link={"/500"} >
 							500
 						</Button>
-            <div className={'page-fest'}>
-              <Button link={"/festival"} color={'brand'}>
-                Фестиваль сакуры
-              </Button>
-            </div>
 					</div>
 
 					<h2>DEV</h2>

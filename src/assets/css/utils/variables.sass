@@ -1,18 +1,18 @@
 html
-  --container: 16px
+  --container-padding: 16px
   --headerHeight: 64px
-  --header-side-width: 64px
   --g-container-vertical: clamp(60px, calc(60px + (72 - 60) * ((100vw - 768px) / (1440 - 768))), 72px)
   @media(min-width: 769px)
-    --container: clamp(16px, calc(16px + (32 - 16) * ((100vw - 1240px) / (1440 - 1240))), 32px)
-    --headerHeight: 88px
-  @media(min-width: 1241px)
-    --header-side-width: 88px
+    --container-padding: clamp(16px, calc(16px + (32 - 16) * ((100vw - 1240px) / (1440 - 1240))), 32px)
+  @media(min-width: 1540px)
+    --container: 1500px
+    --container-padding: calc((100vw - var(--container)) / 2)
 
 
-  --border-corner-s: 0
-  --border-corner: 0
-  --border-corner-button: 0
+
+  //--border-corner-s: 0
+  //--border-corner: 0
+  //--border-corner-button: 0
 
   --g-16: 16px
   --g-12: 12px
@@ -25,5 +25,7 @@ html
   --g-l: clamp(16px, calc(16px + (58 - 16) * ((100vw - 992px) / (1440 - 992))), 58px)
   --g-xl: clamp(32px, calc(32px + (72 - 32) * ((100vw - 992px) / (1440 - 992))), 72px)
   --g-xxl: clamp(32px, calc(32px + (112 - 32) * ((100vw - 992px) / (1440 - 992))), 112px)
+
+  --g-block-margin: clamp(56px, calc(56px + (120 - 56) * ((100vw - 768px) / (1440 - 768))), 120px)
 
   --transition: 0.18s ease-out

@@ -8,7 +8,7 @@ import { FooterAwards } from './footer-awards.jsx';
 export const Footer = () => {
 	return (
     <>
-      <footer className="footer">
+      <footer className="footer -dark">
           <div className="footer--main">
             <div className="footer--col">
               <FooterContacts></FooterContacts>

@@ -1,0 +1,111 @@
+{
+  "--cascade-margin-heading-top": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:50:206",
+      "com.figma.hiddenFromPublishing": true,
+      "com.figma.scopes": [
+        "GAP"
+      ]
+    }
+  },
+  "--cascade-margin-heading-bottom": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:50:207",
+      "com.figma.hiddenFromPublishing": true,
+      "com.figma.scopes": [
+        "GAP"
+      ]
+    }
+  },
+  "--cascade-margin-other-top": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:50:204",
+      "com.figma.hiddenFromPublishing": true,
+      "com.figma.scopes": [
+        "GAP"
+      ]
+    }
+  },
+  "--cascade-margin-other-bottom": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:50:203",
+      "com.figma.hiddenFromPublishing": true,
+      "com.figma.scopes": [
+        "GAP"
+      ]
+    }
+  },
+  "--cascade-margin-divider-top": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:50:208",
+      "com.figma.hiddenFromPublishing": true,
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "--cascade-margin-divider-bottom": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:50:205",
+      "com.figma.hiddenFromPublishing": true,
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "--block-margin-top": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:60:2241",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "--block-margin-template-top": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:397:57981",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "--block-margin-bottom": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:60:2242",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "--block-margin-template-bottom": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:397:57982",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "None"
+  }
+}

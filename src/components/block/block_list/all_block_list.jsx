@@ -4,7 +4,7 @@ import {
   All_card_default, All_card_offers, All_card_services,
   All_card_reviews, All_card_tariff, All_cards_advantages, All_cards_docs,
 } from '../../_ui/card/all_card.jsx';
-import { Card } from "../../_ui/card/card.jsx";
+import { Card } from "../../_ui/card/content/card.jsx";
 import {Block_Head} from "../_ui/block--head/block--head.jsx";
 import {Block_pagination} from "../_ui/block--pagination/block--pagination.jsx";
 import {Block_selection} from "../_ui/block--selection/block--selection-comp.jsx";

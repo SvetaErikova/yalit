@@ -1,38 +1,57 @@
-html
-  // font size
-  --fs-display-2: clamp(32px, calc(32px + (64 - 32) * ((100vw - 768px) / (1440 - 768))), 64px)
-  --fs-display-1: clamp(32px, calc(32px + (52 - 32) * ((100vw - 768px) / (1440 - 768))), 52px)
-  --fs-heading-3: clamp(28px, calc(28px + (48 - 28) * ((100vw - 768px) / (1440 - 768))), 48px)
-  --fs-heading-2: clamp(28px, calc(28px + (40 - 28) * ((100vw - 768px) / (1440 - 768))), 40px)
-  --fs-heading-1: clamp(24px, calc(24px + (32 - 24) * ((100vw - 768px) / (1440 - 768))), 32px)
-  --fs-subhead-3: clamp(28px, calc(28px + (40 - 28) * ((100vw - 768px) / (1440 - 768))), 40px)
-  --fs-subhead-2: clamp(24px, calc(24px + (24 - 24) * ((100vw - 768px) / (1440 - 768))), 24px)
-  --fs-subhead-2-2: clamp(20px, calc(20px + (24 - 20) * ((100vw - 768px) / (1440 - 768))), 24px)
-  --fs-subhead-1: clamp(20px, calc(20px + (22 - 20) * ((100vw - 768px) / (1440 - 768))), 22px)
-  --fs-body-3: clamp(16px, calc(16px + (20 - 16) * ((100vw - 768px) / (1440 - 768))), 20px)
-  --fs-body-2: clamp(16px, calc(16px + (18 - 16) * ((100vw - 768px) / (1440 - 768))), 18px)
-  --fs-body-1: clamp(14px, calc(14px + (16 - 14) * ((100vw - 768px) / (1440 - 768))), 16px)
-  --fs-caption-2-2: clamp(14px, calc(14px + (14 - 14) * ((100vw - 768px) / (1440 - 768))), 14px)
-  --fs-caption-2: clamp(12px, calc(12px + (14 - 12) * ((100vw - 768px) / (1440 - 768))), 14px)
-  --fs-caption-1: clamp(10px, calc(10px + (12 - 10) * ((100vw - 768px) / (1440 - 768))), 12px)
-  // Line height
-  --lh-display-2: clamp(44px, 5.463vw + -0.303px, 77px)
-  --lh-display-1: clamp(44px, 4.167vw + 11.998px, 64px)
-  --lh-heading-3: clamp(34px, 5.0vw + -4.4px, 58px)
-  --lh-heading-2: clamp(34px, 2.917vw + 11.598px, 48px)
-  --lh-heading-1: clamp(29px, 2.083vw + 12.998px, 39px)
-  --lh-subhead-3: clamp(34px, 2.917vw + 11.598px, 48px)
-  --lh-subhead-2: 29px
-  --lh-subhead-1: clamp(24px, 0.625vw + 19.198px, 27px)
-  --lh-body-3: clamp(24px, 3.333vw + -1.598px, 40px)
-  --lh-body-3-short: clamp(20px, 1.875vw + 5.598px, 29px)
-  --lh-body-2: clamp(24px, 0.833vw + 17.598px, 28px)
-  --lh-body-1: 24px
-  --lh-body-1-short: clamp(18px, 0.417vw + 14.798px, 20px)
-  --lh-caption-2: clamp(15px, 1.25vw + 5.398px, 21px)
-  --lh-caption-2-short: clamp(15px, 0.417vw + 11.798px, 17px)
-  --lh-caption-1: clamp(12px, 0.625vw + 7.198px, 15px)
-  // icon size
-  --button-icon-size: clamp(20px, calc(20px + (24 - 20) * ((100vw - 768px) / (1440 - 768))), 24px)
-  --button-icon-size-2: clamp(24px, calc(24px + (32 - 24) * ((100vw - 768px) / (1440 - 768))), 32px)
-  --button-icon-size-3: clamp(36px, calc(36px + (40 - 36) * ((100vw - 768px) / (1440 - 768))), 40px)
+:root
+  --fs-display-3: 64px
+  --fs-display-2: 48px
+  --fs-display-1: 36px
+  --fs-heading-3: 32px
+  --fs-heading-2: 20px
+  --fs-heading-1: 20px
+  --fs-body-3:    18px
+  --fs-body-2:    16px
+  --fs-body-1:    14px
+  --fs-caption-2: 12px
+  --fs-caption-1: 10px
+  //--container: 16px;
+
+  @media (min-width: 768px)
+    --fs-display-3: clamp(64px,  calc(64px  + (128 - 64)  * ((100vw - 768px) / (1024 - 768))), 128px)
+    --fs-display-2: clamp(48px,  calc(48px  + (64  - 48)  * ((100vw - 768px) / (1024 - 768))), 64px)
+    --fs-display-1: clamp(36px,  calc(36px  + (56  - 36)  * ((100vw - 768px) / (1024 - 768))), 56px)
+    --fs-heading-3: clamp(32px,  calc(32px  + (40  - 32)  * ((100vw - 768px) / (1024 - 768))), 40px)
+    --fs-heading-2: clamp(20px,  calc(20px  + (24  - 20)  * ((100vw - 768px) / (1024 - 768))), 24px)
+    --fs-heading-1: 20px
+    --fs-body-3:    18px
+    --fs-body-2:    16px
+    --fs-body-1:    14px
+    --fs-caption-2: 12px
+    --fs-caption-1: 10px
+
+    //--container: clamp(16px, calc(16px + (40 - 16) * ((100vw - 768px) / (1024 - 768))), 40px);
+
+  @media (min-width: 1024px)
+    --fs-display-3: clamp(128px, calc(128px + (200 - 128) * ((100vw - 1024px) / (1920 - 1024))), 200px)
+    --fs-display-2: clamp(64px,  calc(64px  + (80  - 64)  * ((100vw - 1024px) / (1920 - 1024))), 80px)
+    --fs-display-1: clamp(56px,  calc(56px  + (64  - 56)  * ((100vw - 1024px) / (1920 - 1024))), 64px)
+    --fs-heading-3: clamp(40px,  calc(40px  + (48  - 40)  * ((100vw - 1024px) / (1920 - 1024))), 48px)
+    --fs-heading-2: clamp(24px,  calc(24px  + (32  - 24)  * ((100vw - 1024px) / (1920 - 1024))), 32px)
+    --fs-heading-1: clamp(20px,  calc(20px  + (24  - 20)  * ((100vw - 1024px) / (1920 - 1024))), 24px)
+    --fs-body-3:    clamp(18px,  calc(18px  + (20  - 18)  * ((100vw - 1024px) / (1920 - 1024))), 20px)
+    --fs-body-2:    clamp(16px,  calc(16px  + (18  - 16)  * ((100vw - 1024px) / (1920 - 1024))), 18px)
+    --fs-body-1:    clamp(14px,  calc(14px  + (16  - 14)  * ((100vw - 1024px) / (1920 - 1024))), 16px)
+    --fs-caption-2: clamp(12px,  calc(12px  + (14  - 12)  * ((100vw - 1024px) / (1920 - 1024))), 14px)
+    --fs-caption-1: clamp(10px,  calc(10px  + (12  - 10)  * ((100vw - 1024px) / (1920 - 1024))), 12px)
+
+    //--container: clamp(40px, calc(40px + (180 - 40) * ((100vw - 1024px) / (1920 - 1024))), 180px)
+
+  @media (min-width: 1920px)
+    --fs-display-3: 200px
+    --fs-display-2: 80px
+    --fs-display-1: 64px
+    --fs-heading-3: 48px
+    --fs-heading-2: 32px
+    --fs-heading-1: 24px
+    --fs-body-3:    20px
+    --fs-body-2:    18px
+    --fs-body-1:    16px
+    --fs-caption-2: 14px
+    --fs-caption-1: 12px
+    //--container: 180px

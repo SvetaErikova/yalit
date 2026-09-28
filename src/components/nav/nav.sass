@@ -1,28 +1,51 @@
 .nav
   display: flex
-  flex-direction: column
+  gap: 20px
+  //max-width: 946px
+  text-transform: uppercase
+  height: var(--nav-menu-item-height,32px)
   &--item
     display: flex
-    flex-direction: column
-    padding: 24px var(--g-s)
-    text-transform: uppercase
-    gap: 24px
-    @media(min-width: 769px)
-      padding: var(--g-m)  var(--g-s)
-      display: grid
-      grid-template-columns: 3fr 1fr
-    &_title
-      font-family: 'TT Tricks', sans-serif
-      font-size: var(--fs-heading-1)
-      line-height: var(--lh-heading-2)
+    align-items: center
+    gap: 4px
+    font-size: var(--fs-caption-2)
     &_link
       display: flex
-      flex-direction: column
-      padding: 7.5px 0
-      font-size: var(--fs-caption-1)
-      line-height: var(--lh-caption-2)
+      align-items: center
+      gap: 4px
+      white-space: nowrap
       &:hover
-        color: var(--text-neutral-tertiary)
-    &:not(:last-child)
-      border-bottom: 1px solid #C7C4B9
+        color: var(--text-tertiary)
+.is_dropdown
+  position: relative
+  &:hover
+    .is_dropdown--wrapper
+      opacity: 1
+      pointer-events: all
+      top: 100%
+  &--wrapper
+    position: absolute
+    opacity: 0
+    pointer-events: none
+    transform-origin: center
+    top: 110%
+    left: 50%
+    transition: var(--transition)
+    z-index: 48
+    display: flex
+    padding: 8px
+    translate: -50% 0
+  &--content
+    background: #FFFFFF
+    border-radius: 8px
+    padding: 4px 8px
+    box-shadow: 0 1px 3px 0 #0000001A ,1px 5px 5px 0 #00000017,3px 22px 9px 0 #00000003,5px 34px 10px 0 #00000000
+    .nav--item
+      &:not(:last-child)
+        border-bottom: 1px solid var(--line-neutral-tertiary)
+      &_link
+        padding: 0 12px
+        height: var(--booking-input-height)
+        &:hover
+          color: var(--text-accent-heavy)
 
