@@ -6,36 +6,53 @@
   &--main
     position: relative
     z-index: 1
-    display: grid
-    grid-template-columns: 4fr 2fr 6fr
-    padding: 100px var(--container-padding) 100px
+    display: flex
+    flex-direction: column
+    padding: 46px var(--container-padding) 56px
+    @media (min-width: 1025px)
+      grid-template-columns: 4fr 2fr 6fr
+      padding: 100px var(--container-padding) 100px
   &--logo
     display: flex
     justify-content: center
     img
-      max-width: 483px
+      max-width: 233px
+      @media (min-width: 640px)
+        max-width: 364px
+      @media (min-width: 1025px)
+        max-width: 483px
   &--col
     display: flex
     flex-direction: column
     &:has(.footer--nav)
-      @media (min-width: 769px)
+      @media (min-width: 1025px)
         grid-column: 3
-  &--nav
-    gap: var(--container-padding)
+  [class*=_title]
+    font-size: var(--fs-body-2)
+    line-height: 1
+    font-weight: 600
     text-transform: uppercase
-    @media (min-width: 769px)
-      display: grid
+  &--nav
+    text-transform: uppercase
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 48px 16px
+    @media (min-width: 640px)
+      gap: 24px
       grid-template-columns: repeat(3, 1fr)
+    @media (min-width: 1025px)
+      gap: clamp(64px,  calc(64px  + (80 - 64)  * ((100vw - 1024px) / (1440 - 1024))), 80px)
+
     &_group
       display: flex
       flex-direction: column
       gap: 20px
       max-width: 200px
-      &_title
-        font-size: var(--fs-body-2)
-        line-height: 1
-        font-weight: 600
+
     &_list
+      display: flex
+      flex-direction: column
+      gap: 12px
       &_item
         font-size: var(--fs-caption-2)
         line-height: 1.5
@@ -45,23 +62,24 @@
     display: flex
     flex-direction: column
     gap: 20px
-    margin-top: auto
     font-size: var(--fs-body-1)
-    @media (min-width: 769px)
-    &_title
-      text-transform: uppercase
-      font-size: var(--fs-body-2)
-      font-weight: 600
+
     &_list
       display: flex
       flex-direction: column
+      gap: 8px
       .button
-        padding: 8px 0
-        gap: 20px
-        font-size: var(--fs-body-2)
+        text-transform: uppercase
+        gap: 10px
+        font-size: var(--fs-caption-2)
+      span[class^=icon-]
+        font-size: var(--button-icon-size)
   .form--title
     font-size: var(--fs-body-2)
   &--awards
+    display: flex
+    flex-direction: column
+    gap: var(--g-xxs)
     &_list
       display: flex
       gap: 16px
@@ -69,23 +87,25 @@
         max-width: 150px
 
   &--note
-    border-top: 1px solid var(--line-quatemary-filled)
+    border-top: 1px solid var(--line-neutral-tertiary)
     display: flex
-    color: #FEF9F1
+    color: var(--text-accent-heavy-contrast)
     font-size: var(--fs-caption-2)
     flex-direction: column
     gap: 24px
     text-transform: uppercase
-    padding: 48px  var(--container-padding)
-    margin-top: 56px
-
-    @media (min-width: 769px)
+    padding: 32px  var(--container-padding)
+    margin-top: 36px
+    text-align: center
+    @media (min-width: 640px)
+      margin-top: 56px
+      padding: 48px  var(--container-padding)
+      text-align: inherit
       flex-direction: row
       justify-content: space-between
 
     .developer
       span
-        color: #FEF9F1
         font-weight: 600
 
 

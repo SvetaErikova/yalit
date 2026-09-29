@@ -26,7 +26,7 @@
     display: flex
     align-items: center
     justify-content: space-between
-    @media(min-width: 575px)
+    @media(min-width: 640px)
       display: grid
       grid-template-columns: 3fr 2fr 3fr
     @media(min-width: 1024px)
@@ -34,14 +34,25 @@
 
   &--logo
     margin: 0 auto
+    width: 105px
+    flex-shrink: 0
+    @media(min-width: 1025px)
+      width: clamp(117px,  calc(117px  + (152 - 117)  * ((100vw - 1024px) / (1540 - 1024))), 152px)
   &--actions
     display: flex
     margin-left: auto
     gap: 8px
-    @media(min-width: 1140px)
+    .button:last-child
+      display: none
+      @media(min-width: 769px)
+        display: flex
   &--bottom
     transition: var(--transition)
     background: var(--surface-secondary)
+  &--hotel_select
+    display: none
+    @media(min-width: 640px)
+      display: flex
   &--nav
     padding: clamp(16px, calc(16px + (20 - 16) * ((100vw - 575px) / (1024 - 575))), 20px) var(--container-padding)
   &.is_scrolled

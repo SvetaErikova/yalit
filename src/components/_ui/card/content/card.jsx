@@ -66,3 +66,31 @@ export const Card_doc = ({ title, text, link }) => {
       <Button type={'outlined'} color={'neutral'} icon={'icon-ic-eye'}></Button>} link={link}></Card>
   );
 };
+
+export const All_cards_docs = () => {
+  return (
+    <>
+      <Card_doc
+        title="Пользовательское соглашение"
+        text=""
+
+      />
+      <Card_doc
+        title="Правила пребывания в саду"
+        text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. "
+      />
+      <Card_doc
+        title="Название документа в несколько строк"
+        text="Lorem ipsum dolor sit amet consectetur. Lacus tortor cursus ut volutpat ut aliquam non. "
+      />
+      <Card_doc
+        title="Название документа в несколько строк"
+        text="Lorem ipsum dolor sit amet consectetur. "
+      />
+      <Card_doc
+        title="Название документа в несколько строк"
+        text="Lorem ipsum dolor sit amet consectetur. "
+      />
+    </>
+  );
+};

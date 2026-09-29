@@ -33,9 +33,7 @@ export const Header = ({ transparent = false }) => {
                 </div>
               </div>
             </div>
-            <Button type={'filled-secondary'} className={' is_dropdown'} icon={'icon-ic-chevron-down'}>
 
-            </Button>
             <Button type={'filled-secondary'} icon={'icon-ic-phone'}>
 
             </Button>
