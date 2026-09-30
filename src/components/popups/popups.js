@@ -2,9 +2,15 @@ PopupManager.register("popup_for_cascade", {
   additional_close_controls: true,
   is_block_scroll: true,
 });
+PopupManager.register("popup_for_hotels_select", {
+  additional_close_controls: true,
+  is_block_scroll: true,
+});
+
 PopupManager.register(
   "popup_for_form",
   {
+
     is_block_scroll: true,
     additional_close_controls: true,
   },
@@ -14,25 +20,25 @@ PopupManager.register(
     },
   },
 );
-PopupManager.register('popup_for_review',
-  {
-    is_block_scroll: true,
-    close_controls: true,
-  },
-  {
-    on_open: (popup_element, params) => {
-      let block_to_clone = params.block.querySelector('.review_description.is_cascade');
-      let block_content = block_to_clone.cloneNode(true);
-      popup_element.querySelector('.popup_content-wrapper').append(block_content);
-
-    },
-    on_close: (popup_element, params) => {
-      setTimeout(() => {
-        popup_element.querySelector('.popup_content-wrapper').innerHTML = '';
-      }, 100)
-    }
-  }
-);
+// PopupManager.register('popup_for_review',
+//   {
+//     is_block_scroll: true,
+//     close_controls: true,
+//   },
+//   {
+//     on_open: (popup_element, params) => {
+//       let block_to_clone = params.block.querySelector('.review_description.is_cascade');
+//       let block_content = block_to_clone.cloneNode(true);
+//       popup_element.querySelector('.popup_content-wrapper').append(block_content);
+//
+//     },
+//     on_close: (popup_element, params) => {
+//       setTimeout(() => {
+//         popup_element.querySelector('.popup_content-wrapper').innerHTML = '';
+//       }, 100)
+//     }
+//   }
+// );
 
 PopupManager.register(
   "popup_for_cookies",
@@ -59,27 +65,27 @@ PopupManager.register(
   },
 );
 
-PopupManager.register(
-  "popup_for_menu",
-  {
-    additional_close_controls: false,
-    is_block_scroll: false,
-  },
-  {
-    on_open: (popup_element) => {
-      if (window.matchMedia("(min-width: 769px)").matches) {
-        setTimeout(()=>{
-          drawLogo(popup_element);
-        }, 500)
-      }
-    },
-    on_close: (popup_element) => {
-      popup_element.querySelectorAll(".menu--mobile_item").forEach((item) => {
-        item.classList.remove("is-open");
-      });
-    },
-  },
-);
+// PopupManager.register(
+//   "popup_for_menu",
+//   {
+//     additional_close_controls: false,
+//     is_block_scroll: false,
+//   },
+//   {
+//     on_open: (popup_element) => {
+//       if (window.matchMedia("(min-width: 769px)").matches) {
+//         setTimeout(()=>{
+//           drawLogo(popup_element);
+//         }, 500)
+//       }
+//     },
+//     on_close: (popup_element) => {
+//       popup_element.querySelectorAll(".menu--mobile_item").forEach((item) => {
+//         item.classList.remove("is-open");
+//       });
+//     },
+//   },
+// );
 
 
 PopupManager.register(

@@ -75,24 +75,6 @@ export const Card_review = ({
 export const All_card_reviews = () => {
   return (
     <>
-      <svg style="position: absolute; pointer-events: none;" viewBox="0 0 32 32" width="0" height="0">
-        <defs>
-          <linearGradient id="active_stars" x1="0" x2="100%" y1="0" y2="0">
-            <stop offset="0%" stop-color="" ></stop>
-            <stop offset="100%" stop-color="" ></stop>
-          </linearGradient>
-          <mask id="stars-mask">
-            <use xlink:href="#star" x="0"></use>
-            <use xlink:href="#star" x="32"></use>
-            <use xlink:href="#star" x="64"></use>
-            <use xlink:href="#star" x="96"></use>
-            <use xlink:href="#star" x="128"></use>
-          </mask>
-          <symbol viewBox="0 0 26 26" id="star">
-            <path d="M12.3633 0L15.282 8.98278H24.727L17.0858 14.5344L20.0045 23.5172L12.3633 17.9656L4.72207 23.5172L7.64075 14.5344L-0.000452995 8.98278H9.4446L12.3633 0Z" fill="#fff"/>
-          </symbol>
-        </defs>
-      </svg>
       <Card_review
         authorName="Андрей Сорокин"
         rating={5}

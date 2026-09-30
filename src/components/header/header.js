@@ -2,11 +2,8 @@ window.addEventListener('load', () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`)
 
-  let header_height = document.querySelector('header').getBoundingClientRect().height
+  let header_height = document.querySelector('.header--main').getBoundingClientRect().height
   document.documentElement.style.setProperty('--headerHeight', `${header_height}px`)
-
-  let header_actions_width = document.querySelector('.header--actions').getBoundingClientRect().width
-  document.documentElement.style.setProperty('--headerActionsWidth', `${header_actions_width}px`)
 
 });
 
@@ -31,13 +28,12 @@ window.addEventListener('load', (e) => {
 }, {once:true})
 
 // открытие меню
-const btn_openMenu = document.querySelectorAll('.btn-openMenu')
-const popupMenu = document.querySelector('[data-popup="popup_for_menu"]')
+const btn_openHotelSelect = document.querySelectorAll('.header--hotel_select')
+const popupHotelSelect = document.querySelector('[data-popup="popup_for_hotels_select"]')
 
-btn_openMenu.forEach(btn => {
+btn_openHotelSelect.forEach(btn => {
   btn.addEventListener('click', () => {
-    console.log(popupMenu.classList.contains('is_active'));
-    popupMenu.classList.contains('is_active') ? PopupManager.close('popup_for_menu') : PopupManager.open('popup_for_menu')
+    popupHotelSelect.classList.contains('is_active') ? PopupManager.close('popup_for_hotels_select') : PopupManager.open('popup_for_hotels_select')
   })
 })
 

@@ -319,24 +319,33 @@
         --button-border-color: var(--button-light-primary-bg-hover)
         --button-color: var(--button-light-primary-text-hover)
 
-
-.content_cards-fest
+.popup-hotel_select
   .card
-    gap: clamp(16px, calc(16px + (20 - 16) * ((100vw - 768px) / (1440 - 768))), 20px)
-    &--title
-      font-size: var(--fs-subhead-2)
-      line-height: var(--lh-subhead-2)
-      margin-bottom: 8px
-    &--text
-      font-size: var(--fs-body-1)
-      line-height: var(--fs-body-3)
-    &--action
-      margin-top: var(--g-s)
-    &--image
-      aspect-ratio: 912/541
-      img
-        transition: var(--transition)
-    &:hover
-      .card--image img
-        scale: 1.1
+    border-radius: 0
+    gap: 20px
+    &--content
+      justify-content: center
+      text-align: center
+      text-transform: uppercase
+      gap: 8px
 
+    &--image
+      border-radius: var(--border-corner)
+      aspect-ratio: 370/207
+
+    &--title
+      font-size: 24px
+      line-height: 1.2
+      font-family: var(--ff-title)
+    &--stars
+      --inactive_stars: transparent
+      --star-color: var(--surface-accent-primary)
+      display: flex
+      justify-content: center
+      align-items: center
+      .star-rate
+        height: 22px
+    &--subtitle
+      font-size: 14px
+      line-height: 1
+      color: #77796A

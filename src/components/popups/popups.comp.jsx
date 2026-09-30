@@ -3,6 +3,7 @@ import { Is_cascade_mini } from '../_ui/is_cascade/is_cascade_mini.jsx';
 import { Button } from '../_ui/button/button.jsx';
 import { Nav } from '../nav/nav.jsx';
 import { HeaderInfo } from '../header/header-info.jsx';
+import { Card_hotel_select } from '../_ui/card/content/hotel_select.jsx';
 
 const PopupsLayout = ({ data, className, children, btnClose = true, popupTitle, popupActions }) => {
   return (
@@ -25,9 +26,17 @@ const PopupsLayout = ({ data, className, children, btnClose = true, popupTitle, 
   );
 };
 export const PopupHotelSelect =() =>{
-  return(
-    <div>
-
+  return (
+    <div className={'popup popup-hotel_select'} data-popup={'popup_for_hotels_select'}>
+      <div className={'popup--content '}>
+          <div class="block--elements">
+            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Отель кол гали'} subtitle={'Болгар'}></Card_hotel_select>
+            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'4'} title={'Отель ногай'} subtitle={'казань'}></Card_hotel_select>
+            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'ак барс резорт'} subtitle={'казань'}></Card_hotel_select>
+            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Миллениум Панорама'} subtitle={'казань'}></Card_hotel_select>
+            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'рисала'} subtitle={'казань'}></Card_hotel_select>
+          </div>
+      </div>
     </div>
   )
 }
@@ -35,7 +44,7 @@ export const PopupHotelSelect =() =>{
 export const PopupCascade = () => {
   return (
     <PopupsLayout data={'popup_for_cascade'}
-    popupTitle={'Попап каскад'}>
+                  popupTitle={'Попап каскад'}>
       <Is_cascade_mini></Is_cascade_mini>
     </PopupsLayout>
   );
@@ -98,12 +107,13 @@ export const PopupConfirmation = () =>{
 export const Popups = () => {
   return (
     <>
+      <PopupHotelSelect></PopupHotelSelect>
       {/*<PopupRoomAdvantages></PopupRoomAdvantages>*/}
       <PopupForm></PopupForm>
       <PopupCascade></PopupCascade>
       <PopupConfirmation></PopupConfirmation>
       <PopupCookies></PopupCookies>
-      <PopupReview></PopupReview>
+      {/*<PopupReview></PopupReview>*/}
     </>
   );
 };
