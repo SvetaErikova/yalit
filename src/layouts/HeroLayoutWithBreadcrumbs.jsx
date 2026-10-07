@@ -4,10 +4,10 @@ import { Popups } from "../components/popups/popups.comp.jsx";
 import BaseHtml from "../templates/BaseHtml";
 import { Breadcrumbs } from '../components/breadcrumbs/breadcrumbs.jsx';
 
-export default function HeroWithBreadcrumbs({ children, meta, className, colorMode = '' }) {
+export default function HeroLayoutWithBreadcrumbs({ children, meta, className, colorMode = '' }) {
   return (
     <BaseHtml meta={meta}  className={className} colorMode={colorMode}>
-      <Header transparent={true} pagePath={meta.path} />
+      <Header hotel={false} pagePath={meta.path} />
       <main>
         <Breadcrumbs></Breadcrumbs>
         {children}

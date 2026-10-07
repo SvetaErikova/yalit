@@ -1,10 +1,12 @@
 import clsx from 'clsx';
-import { links } from './navigation.js';
+import { hotelLinks, links } from './navigation.js';
 
-export const Nav = ({ className, ...props }) => {
+export const Nav = ({ className, hotel = false, ...props }) => {
+  const items = hotel ? hotelLinks : links;
+
   return (
     <nav className={clsx('nav', className)} {...props}>
-      {links.map((item) => {
+      {items.map((item) => {
         const hasChildren = Boolean(item.children?.length);
 
         return (

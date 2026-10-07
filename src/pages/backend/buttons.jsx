@@ -1,11 +1,11 @@
 import { Button } from "../../components/_ui/button/button.jsx";
 
-import MainLayout from "../../layouts/MainLoyout.jsx";
+import HeroLayoutWithBreadcrumbs from "../../layouts/HeroLayoutWithBreadcrumbs.jsx";
 import { metaPages } from "../../shared/meta-pages";
 
 export default function Home() {
 	return (
-		<MainLayout meta={metaPages.home} >
+		<HeroLayoutWithBreadcrumbs meta={metaPages.home} >
       <div class="block">
         <div className="block--wrapper" style={{ padding: "2em" }}>
           <div className="ui_grid-5">
@@ -45,6 +45,6 @@ export default function Home() {
         </div>
 
       </div>
-    </MainLayout>
+    </HeroLayoutWithBreadcrumbs>
   );
 }

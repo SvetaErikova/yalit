@@ -1,11 +1,11 @@
 import { metaPages } from "../shared/meta-pages.js";
-import MainLayout from '../layouts/MainLoyout.jsx';
+import HotelLayoutWithBreadcrumbs from '../layouts/HotelLayoutWithBreadcrumbs.jsx';
 
 
 export default function Home() {
   return (
-    <MainLayout meta={metaPages.home}>
+    <HotelLayoutWithBreadcrumbs meta={metaPages.home}>
 
-    </MainLayout>
+    </HotelLayoutWithBreadcrumbs>
   );
 }

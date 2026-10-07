@@ -1,4 +1,4 @@
-import MainLayout from '../../layouts/MainLoyout.jsx';
+import HeroLayoutWithBreadcrumbs from '../../layouts/HeroLayoutWithBreadcrumbs.jsx';
 import { metaPages } from '../../shared/meta-pages.js';
 import { Block_List } from '../../components/block/block_list/block_list.jsx';
 import { Block_Head } from '../../components/block/_ui/block--head/block--head.jsx';
@@ -7,7 +7,7 @@ import { All_card_default } from '../../components/_ui/card/all_card.jsx';
 
 export default function Home() {
   return (
-    <MainLayout meta={metaPages.home} colorMode={''} >
+    <HeroLayoutWithBreadcrumbs meta={metaPages.home} colorMode={''} >
       <Block_List
         className="content_cards"
         title={
@@ -51,6 +51,6 @@ export default function Home() {
         <All_card_default></All_card_default>
       </Block_List>
 
-    </MainLayout>
+    </HeroLayoutWithBreadcrumbs>
   );
 }

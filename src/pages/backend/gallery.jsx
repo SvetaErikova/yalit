@@ -1,4 +1,4 @@
-import MainLayout from "../../layouts/MainLoyout.jsx";
+import HeroLayoutWithBreadcrumbs from "../../layouts/HeroLayoutWithBreadcrumbs.jsx";
 import { metaPages } from "../../shared/meta-pages";
 import { GalleryFull } from '../../components/gallery/galleryFull.jsx';
 import { Block_Head } from '../../components/block/_ui/block--head/block--head.jsx';
@@ -17,7 +17,7 @@ export default function Home() {
   ];
 
   return (
-    <MainLayout meta={metaPages.home}>
+    <HeroLayoutWithBreadcrumbs meta={metaPages.home}>
       <GalleryFull
         title={
           <Block_Head
@@ -101,6 +101,6 @@ export default function Home() {
 
       />
 
-    </MainLayout>
+    </HeroLayoutWithBreadcrumbs>
   );
 }

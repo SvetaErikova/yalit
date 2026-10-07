@@ -1,11 +1,11 @@
 import { metaPages } from "../shared/meta-pages.js";
-import MainLayout from '../layouts/MainLoyout.jsx';
+import HeroLayoutWithBreadcrumbs from '../layouts/HeroLayoutWithBreadcrumbs.jsx';
 
 
 export default function Home() {
   return (
-    <MainLayout meta={metaPages.events} className={"page-events"}>
+    <HeroLayoutWithBreadcrumbs meta={metaPages.events} className={"page-events"}>
 
-    </MainLayout>
+    </HeroLayoutWithBreadcrumbs>
   );
 }

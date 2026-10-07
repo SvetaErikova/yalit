@@ -6,7 +6,7 @@ import { HeaderContacts } from './header-contacts.jsx';
 import { HeaderInfo } from './header-info.jsx';
 import { HeaderLogo } from './header-logo.jsx';
 
-export const Header = ({ transparent = false }) => {
+export const Header = ({ transparent = false, hotel = false }) => {
   return (
     <>
       <header class={clsx('header', { 'header-transparent': transparent })}>
@@ -15,10 +15,10 @@ export const Header = ({ transparent = false }) => {
             <span>ВЫбрать отель</span>
           </Button>
 
-          <HeaderLogo/>
+          <HeaderLogo hotel={hotel} />
           <div className="header--actions ">
             <div className={'button button-filled-secondary is_dropdown'}>
-              <span class={'icon-ic-chevron-down'}></span>
+              <span className={'icon-ic-chevron-down'}></span>
               <div className="is_dropdown--wrapper">
                 <div className="is_dropdown--content">
                   <div className="nav--item">
@@ -33,10 +33,26 @@ export const Header = ({ transparent = false }) => {
                 </div>
               </div>
             </div>
+            <div className={'button button-filled-secondary is_dropdown'}>
+              <span className={'icon-ic-phone'}></span>
+              <div className="is_dropdown--wrapper">
+                <div className="is_dropdown--content">
+                  <div className="nav--item">
+                    <a href="" className="nav--item_link">
+                      <span class={'icon-ic-phone'}></span>
+                      <span>dropdown-item</span>
+                    </a>
+                  </div>
+                  <div className="nav--item">
+                    <a href="" className="nav--item_link">
+                      <span className={'icon-ic-email'}></span>
+                      <span>dropdown-item</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <Button type={'filled-secondary'} icon={'icon-ic-phone'}>
-
-            </Button>
             <Button type={'filled-secondary'} icon={'icon-ic-search'}>
             </Button>
             <Button type={'filled-accent'}>
@@ -48,7 +64,7 @@ export const Header = ({ transparent = false }) => {
         </div>
         <div class="header--bottom">
           <div class="header--nav">
-            <Nav transparent={transparent} />
+            <Nav hotel={hotel} />
           </div>
         </div>
       </header>

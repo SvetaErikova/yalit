@@ -1,12 +1,11 @@
 import { Button } from "../components/_ui/button/button.jsx";
 import { Block_Head } from "../components/block/_ui/block--head/block--head.jsx";
-import HeroLayout from "../layouts/HeroLayout.jsx";
 import { metaPages } from "../shared/meta-pages";
-import MainLayout from '../layouts/MainLoyout.jsx';
+import HeroLayoutWithBreadcrumbs from '../layouts/HeroLayoutWithBreadcrumbs.jsx';
 
 export default function Home() {
 	return (
-    <MainLayout meta={metaPages.home}>
+    <HeroLayoutWithBreadcrumbs meta={metaPages.home}>
       <div class="block block_html_code content_error error-500">
         <div class="block--wrapper">
           <img src="/assets/img/500.svg" alt="" />
@@ -15,6 +14,6 @@ export default function Home() {
           </Block_Head>
         </div>
       </div>
-    </MainLayout>
+    </HeroLayoutWithBreadcrumbs>
 	);
 }

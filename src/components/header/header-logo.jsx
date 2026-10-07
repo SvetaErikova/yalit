@@ -1,7 +1,11 @@
-export const HeaderLogo = () =>{
+export const HeaderLogo = ({ hotel = false }) =>{
   return (
     <div className="header--logo">
       <a href={'/'} className="logo">
+        {hotel ? (
+          <img src="/assets/img/logo/logo-hotels.svg" alt="logo" />
+        ) : (
+          <>
         {/* biome-ignore format:start */}
         <svg  viewBox="0 0 483 165" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_2174_3816)">
@@ -22,10 +26,10 @@ export const HeaderLogo = () =>{
             </g>
           </g>
         </svg>
-
+        {/* biome-ignore format:end */}
+          </>
+        )}
       </a>
-
-      {/* biome-ignore format:end */}
     </div>
   )
 }

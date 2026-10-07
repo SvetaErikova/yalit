@@ -6,7 +6,7 @@ import BaseHtml from "../templates/BaseHtml";
 export default function HeroLayout({ children, meta, className, colorMode = '' }) {
 	return (
 		<BaseHtml meta={meta}  className={className} colorMode={colorMode}>
-			<Header transparent={true} pagePath={meta.path} />
+			<Header hotel={false} pagePath={meta.path} />
 			<main>{children}
       </main>
 			<Footer></Footer>
