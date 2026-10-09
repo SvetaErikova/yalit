@@ -15,8 +15,8 @@
   background: var(--button-bg-color, transparent)
   padding: var(--button-padding)
   color: var(--button-color)
-  --button-fs: var(--fs-body-1)
-  line-height: var(--lh-body-1)
+  --button-fs: var(--button-context-text-fs)
+  line-height: 1.5
 
 
   span
@@ -26,6 +26,8 @@
     white-space: nowrap
     text-align: center
     //line-height: 1
+    &:only-child
+      padding: 0 8px
 
   span[class^="icon-"],
   span[class*=" icon-"],

@@ -68,13 +68,6 @@ export const PopupRoomAdvantages = () => {
     </PopupsLayout>
   );
 };
-export const PopupReview = () => {
-  return <PopupsLayout data={'popup_for_review'} className={'popup-review'} btnClose={true}>
-    <div class="popup_content-wrapper">
-
-    </div>
-  </PopupsLayout>;
-};
 export const PopupCookies = () => {
   return (
     <PopupsLayout
@@ -113,7 +106,6 @@ export const Popups = () => {
       <PopupCascade></PopupCascade>
       <PopupConfirmation></PopupConfirmation>
       <PopupCookies></PopupCookies>
-      {/*<PopupReview></PopupReview>*/}
     </>
   );
 };

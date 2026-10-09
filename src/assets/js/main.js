@@ -35,7 +35,6 @@ import "../../components/form/inputs/input_date/input_date";
 // import '../../components/booking/booking.js';
 // content
 
-import '../../components/content/reviews/review.js';
 // import '../../components/transition/transition.js';
 
 Fancybox.bind('.gallery *[data-fancybox]', {

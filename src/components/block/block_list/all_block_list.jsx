@@ -1,8 +1,7 @@
 import { Button } from "../../_ui/button/button.jsx";
 import {
   All_card_article,
-  All_card_default, All_card_offers, All_card_services,
-  All_card_reviews, All_card_tariff, All_cards_advantages, All_cards_docs,
+  All_card_afisha, All_card_default, All_card_offers, All_card_services,
 } from '../../_ui/card/all_card.jsx';
 import { Card } from "../../_ui/card/content/card.jsx";
 import {Block_Head} from "../_ui/block--head/block--head.jsx";
@@ -206,50 +205,6 @@ export const All_block_list = () => {
         <All_card_article />
       </Block_List>
 
-      <br></br>
-      {/*карточки Тарифов*/}
-      <Block_List
-        className="content_tariffs"
-        title={
-          <Block_Head
-            title={"Тарифы"}
-            subtitle={"content_tariffs"}
-            caption={"Тарифы грид "}
-            headingLevel={2}
-          ></Block_Head>
-        }
-      >
-        <All_card_tariff />
-      </Block_List>
-      {/*карточки Тарифов*/}
-      <Block_List
-        className="content_tariffs"
-        slider={true}
-        title={
-          <Block_Head
-            title={"Тарифы"}
-            subtitle={"content_tariffs"}
-            caption={"Тарифы слайдер "}
-            headingLevel={2}
-          ></Block_Head>
-        }
-      >
-        <All_card_tariff />
-      </Block_List>
-      {/*карточки Документов*/}
-      <Block_List
-        className="content_docs"
-        title={
-          <Block_Head
-            title={"Документы"}
-            subtitle={"content_docs"}
-            caption={"Документы грид"}
-            headingLevel={2}
-          ></Block_Head>
-        }
-      >
-        <All_cards_docs />
-      </Block_List>
       {/*карточки Услуг*/}
       <Block_List
         className="content_services"
@@ -279,6 +234,21 @@ export const All_block_list = () => {
       >
         <All_card_services />
       </Block_List>
+      {/*карточки Афиши*/}
+      <Block_List
+        className="content_afisha"
+        title={
+          <Block_Head
+            title={"Афиша"}
+            subtitle={"content_afisha"}
+            caption={"Афиша грид "}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_afisha />
+      </Block_List>
+
     {/*карточки Акций*/}
       <Block_List
         className="content_offers"
@@ -317,69 +287,6 @@ export const All_block_list = () => {
           link={"/"}
         />
       </Block_List>
-      {/*Карточки преимуществ*/}
-      <Block_List className="content_advantages"
-      title={
-        <Block_Head
-          title='content_advantages'
-          headingLevel={2}
-        />}
-      >
-        <All_cards_advantages/>
-      </Block_List>
-
-      <Block_List
-            className="content_reviews"
-            selection={<Block_selection tabs={tabs}></Block_selection>}
-            title={
-              <Block_Head
-                title={"Грид"}
-                ubtitle={"Блок-список "}
-            caption={"Карточки отзывов"}
-            headingLevel={2}
-            action={
-              <>
-                <Button type="filled-primary" color="neutral">
-                  <span>Кнопка 1</span>
-                </Button>
-                <Button type="outlined" color="neutral">Кнопка 2</Button>
-              </>
-            }
-          ></Block_Head>
-        }
-      >
-
-        <All_card_reviews></All_card_reviews>
-      </Block_List>
-
-      <Block_List
-        className="content_reviews"
-        selection={<Block_selection tabs={tabs}></Block_selection>}
-        slider={true}
-        title={
-          <Block_Head
-            title={"Слайдер"}
-            subtitle={"Блок-список "}
-            caption={"Карточки отзывов"}
-            headingLevel={2}
-            action={
-              <>
-                <Button type="filled-primary" color="neutral">
-                  <span>Кнопка 1</span>
-                </Button>
-                <Button type="outlined" color="neutral">Кнопка 2</Button>
-              </>
-            }
-          ></Block_Head>
-        }
-      >
-
-        <All_card_reviews></All_card_reviews>
-      </Block_List>
-
-
-
-
     </>
   );
 };

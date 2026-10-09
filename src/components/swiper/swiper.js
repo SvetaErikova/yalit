@@ -52,54 +52,50 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_centered = false;
 
   switch (true) {
-  case swiper_item.classList.contains('content_card'):
-    slides_per_view_desktop = 4;
-    slides_per_view_desktop_small = 3;
-    slides_per_view_pad = 2.2;
-    slides_per_view_mob = 1;
+  case swiper_item.classList.contains('content_cards'):
+    slides_per_view_desktop = 2;
+    slides_per_view_desktop_small = 2;
+    slides_per_view_pad = 1.5;
+    slides_per_view_mob = 1.1;
+    break;
+  case swiper_item.classList.contains('content_article'):
+    slides_per_view_desktop = 2;
+    slides_per_view_desktop_small = 2;
+    slides_per_view_pad = 1.5;
+    slides_per_view_mob = 1.1;
+    break;
+  case swiper_item.classList.contains('content_services'):
+    slides_per_view_desktop = 2;
+    slides_per_view_desktop_small = 2;
+    slides_per_view_pad = 1.5;
+    slides_per_view_mob = 1.1;
     break;
   case swiper_item.classList.contains('content_offers'):
+    slides_per_view_desktop = 1;
+    slides_per_view_desktop_small = 1;
+    slides_per_view_pad = 1;
+    slides_per_view_mob = 1;
+    break;
+  case swiper_item.classList.contains('content_afisha'):
     slides_per_view_desktop = 3;
     slides_per_view_desktop_small = 2.4;
     slides_per_view_pad = 2.1;
     slides_per_view_mob = 1.1;
     break;
-  case swiper_item.classList.contains('content_article'):
-    slides_per_view_desktop = 4;
-    slides_per_view_desktop_small = 3;
-    slides_per_view_pad = 2.2;
-    slides_per_view_mob = 1;
-    break;
-  case swiper_item.classList.contains('content_advantages'):
-    slides_per_view_desktop = 6;
-    slides_per_view_desktop_small = 4.5;
-    slides_per_view_pad = 3.2;
-    slides_per_view_mob = 2.2;
-    break;
-  case swiper_item.classList.contains('-col-3'):
-    slides_per_view_desktop = 3;
-    slides_per_view_desktop_small = 3;
-    slides_per_view_pad = 2.2;
-    slides_per_view_mob = 1.1;
-    break;
-  case swiper_item.classList.contains('content_reviews'):
-    slides_per_view_desktop = 2;
-    slides_per_view_desktop_small = 2;
-    slides_per_view_pad = 1.7;
-    slides_per_view_mob = 1.2;
-    break;
+
+  // case swiper_item.classList.contains('-col-3'):
+  //   slides_per_view_desktop = 3;
+  //   slides_per_view_desktop_small = 3;
+  //   slides_per_view_pad = 2.2;
+  //   slides_per_view_mob = 1.1;
+  //   break;
   case swiper_item.classList.contains('content_special'):
     slides_per_view_desktop = 1;
     slides_per_view_desktop_small = 1;
     slides_per_view_pad = 1;
     slides_per_view_mob = 1;
     break;
-  case swiper_item.classList.contains('content_cards-fest'):
-    slides_per_view_desktop = 2;
-    slides_per_view_desktop_small = 2;
-    slides_per_view_pad = 2.1;
-    slides_per_view_mob = 1.1;
-    break;
+
   default:
     slides_per_view_desktop = 4;
     slides_per_view_desktop_small = 3;
@@ -111,8 +107,7 @@ const activateBlocklistSlider = (swiper_item) => {
   const { controls, prev, next } = buildControls({ pagination: false });
   const blockElements = swiper_item.querySelector('.block--elements');
 
-
-  swiper_item.querySelector('.block--wrapper').append(controls);
+  blockElements.append(controls);
 
 
   const swiper = new Swiper(
@@ -144,9 +139,7 @@ const block_list_sliders = document.querySelectorAll('.block_list-slider');
 block_list_sliders.forEach((slider) => {
   activateBlocklistSlider(slider);
 });
-if (window.matchMedia("(max-width: 1024px)").matches && document.querySelector('.content_offers')) {
-  activateBlocklistSlider(document.querySelector('.content_offers'))
-}
+
 // Gallery
 let activateGallerySliders = (gallery) => {
   if (gallery.querySelectorAll('.gallery--item').length <= 1) {

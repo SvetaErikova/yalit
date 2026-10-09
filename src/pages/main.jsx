@@ -2,7 +2,7 @@ import HeroLayout from '../layouts/HeroLayout.jsx';
 import { metaPages } from '../shared/meta-pages';
 import { Block_List } from '../components/block/block_list/block_list.jsx';
 import { Block_Head } from '../components/block/_ui/block--head/block--head.jsx';
-import { All_card_offers, All_card_services } from '../components/_ui/card/all_card.jsx';
+import { All_card_afisha, All_card_services } from '../components/_ui/card/all_card.jsx';
 import { Block_banner } from '../components/block/block_banner/block_banner.jsx';
 import { Button } from '../components/_ui/button/button.jsx';
 import { Accommodation } from '../components/content/accomodation/accommodation.jsx';
@@ -42,7 +42,7 @@ export default function Home() {
         <All_card_services />
       </Block_List>
       <Block_List
-        className="content_offers"
+        className="content_afisha"
         link={true}
         title={
           <Block_Head
@@ -52,7 +52,7 @@ export default function Home() {
           ></Block_Head>
         }
       >
-        <All_card_offers />
+        <All_card_afisha />
 
 
       </Block_List>

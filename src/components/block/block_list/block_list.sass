@@ -7,11 +7,11 @@
     --col: 3
   @media(min-width: 1440px)
     --col: 4
-  &.-col-3 .block--elements
-    @media(min-width: 1140px)
-      --col: 3
-      .card .card--image
-        aspect-ratio: 597/541
+  //&.-col-3 .block--elements
+  //  @media(min-width: 1140px)
+  //    --col: 3
+  //    .card .card--image
+  //      aspect-ratio: 597/541
 
   .block--elements
     grid-area: elements
@@ -25,16 +25,15 @@
     @media(min-width: 998px)
       gap: 20px
   .block--wrapper
-    display: grid
-    gap: 0 var(--g-s)
-    grid-template-columns: 1fr auto
-    grid-template-areas: "heading heading" "showAll slider-controls"  "selection selection" "elements elements"
-    @media (min-width: 1024px)
-      grid-template-columns: 1fr auto auto
-      grid-template-areas: "heading showAll slider-controls" " heading showAll slider-controls" "selection showAll slider-controls" "elements elements elements"
+    display: flex
+    flex-direction: column
+    gap: var(--g-vertical-list) var(--g-s)
+
   .block--head
     grid-area: heading
-    max-width: 928px
+    max-width: 800px
+    margin: 0 auto
+    text-align: center
 
   .block--selection
     grid-area: selection
@@ -43,10 +42,8 @@
     align-items: flex-end
     justify-content: flex-end
     grid-area: slider-controls
-    margin-left: 6px
-    margin-top: 16px
-    @media(min-width: 998px)
-      margin-top: 0
+    margin: 0 auto
+    order: 1
     &:has(.swiper-button-lock)
       display: none
     //.swiper--prev,
@@ -68,5 +65,5 @@
       @media (min-width: 1024px)
         overflow: hidden
     .block--pagination
-      order: 1
+      order: 2
 

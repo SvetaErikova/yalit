@@ -14,12 +14,11 @@
 
 .swiper-notification
   display: none
+
 .block_list,
 .content_gallery
   .slider_controls
     gap: 4px
-    border: 1px solid var(--line-tertiary)
-    border-radius: 100px
     position: static
     overflow: hidden
     height: max-content
@@ -48,20 +47,18 @@
   align-items: center
   pointer-events: all
   transition: var(--transition)
-  width: var(--container-padding)
-  height: var(--container-padding)
   aspect-ratio: 1/1
-  min-width: 36px
-  min-height: 36px
+  width: var(--button-context-height)
   color: var(--text-neutral-primary)
-  @media(min-width: 769px)
-    width: 40px
-    height: 40px
+  background: var(--btn-bg-secondary-rest)
+  border-radius: 8px
+
   &:hover
-    background-color: var(--text-neutral-quatemary)
+    background-color: var(--btn-bg-secondary-hover)
   &.swiper-button-disabled
     pointer-events: none
-    color: var(--line-quatemary)
+    background-color: var(--btn-bg-disabled-secondary)
+    color: var(--text-quaternary)
   span
     font-size: var(--button-icon-size-2)
 

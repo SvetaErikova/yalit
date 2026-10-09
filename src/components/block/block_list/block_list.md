@@ -8,7 +8,6 @@
 Карточки внутри определяются контентом блока
 Список контента для сайта :
 - content_offers  - спецпредложения
-- content_reviews - отзывы
 - content_brand -  бренды
 - content_category - категории (ссылки на разделы)
 - content_category_short - категории компактные (ссылки на разделы)
@@ -23,12 +22,6 @@
 - content_vacancies -  вакансии
 - content_files - ссылки на файлы
 - content_locations - локации
-
-- content_advantages_short - преимущества короткие
-- content_advantages_short_label - преимущества с иконкой
-- content_advantages_ic - преимущества с иконкой
-- content_advantages - преимущества
-- content_advantages_extended - преимущества расширенные
 
 !Так как в блоках, где не может быть слайдера, элементы внутри не имею класса .card
 
