@@ -33,6 +33,28 @@
     -webkit-line-clamp: 3
     -webkit-box-orient: vertical
 
+  &--list
+    display: flex
+    flex-direction: column
+    font-size: var(--fs-caption-2)
+    line-height: 1.2
+    &_title
+      font-weight: 600
+    &_item
+      display: flex
+      align-items: center
+      gap: 8px
+      padding-block: 8px
+
+      &:not(:last-child)
+        border-bottom: 1px solid var(--line-neutral-tertiary)
+
+      [class^="icon-"],
+      [class*=" icon-"]
+        flex-shrink: 0
+        font-size: 1.4em
+        color: var(--surface-accent-primary)
+
   &--action
     display: flex
     align-items: center
@@ -80,33 +102,40 @@
 
 .content_cards,
 .content_article,
-.content_services
+.content_services,
+.content_rooms
   &.block_list
     --col: 1
     @media(min-width: 1025px)
       --col: 2
+
   .card
     background: var(--surface-secondary)
     border-radius: var(--border-corner)
+
     &--image
       aspect-ratio: 768/447
       overflow: hidden
+
     &--title
       font-size: var(--fs-heading-1)
       line-height: 1.3
       font-family: var(--ff-title)
+
     &--content
       line-height: 1.3
-      padding: 24px clamp(24px,  calc(24px  + (32 - 24)  * ((100vw - 1024px) / (1440 - 1024))), 32px)
+      padding: 24px clamp(24px, calc(24px + (32 - 24) * ((100vw - 768px) / (1440 - 768))), 32px)
       flex: 1
       //height: 100%
       font-size: var(--fs-body-1)
+
     &--captions
       display: flex
       align-content: center
       margin-bottom: 8px
       align-items: center
       order: -1
+
     &--text
       margin-top: 16px
 
@@ -118,97 +147,205 @@
         .button
           width: 100%
           justify-content: center
+
       .button
-        margin-top: clamp(18px,  calc(18px  + (24 - 18)  * ((100vw - 1024px) / (1440 - 1024))), 24px)
+        margin-top: clamp(18px, calc(18px + (24 - 18) * ((100vw - 768px) / (1440 - 768))), 24px)
 
     &--image img
       transition: var(--transition)
 
 
-.content_afisha
+.content_rooms
+  .card
+    &--content
+      padding: clamp(20px, calc(20px + (32 - 20) * ((100vw - 768px) / (1440 - 768))), 32px) clamp(18px, calc(18px + (32 - 18) * ((100vw - 768px) / (1440 - 768))), 32px)
+    &--list
+      @media (min-width: 1140px)
+        flex-direction: row
+        margin-top: 16px
+        &_item
+          border-bottom: none
+          padding-right: 12px
+          &:not(:last-child)
+            border-right: 1px solid var(--line-neutral-tertiary)
+          &:last-child
+            padding-right: 0
+          &:not(:first-child)
+            padding-left: 12px
+    &--action
+      display: flex
+      position: absolute
+      top:  24px
+      left: auto
+      right: clamp(20px, calc(20px + (32 - 20) * ((100vw - 768px) / (1440 - 768))), 32px)
+      margin: 0
+      .button
+        margin: 0
+
+.content_accommodation,
+.content_offers
   &.block_list
     --col: 1
-  .card
-    padding: var(--g-s) 0
-    --offers-gap: clamp(20px, calc(20px + (32 - 20) * ((100vw - 768px) / (1440 - 768))), 32px)
-    gap: var(--offers-gap)
-    border-bottom: 1px solid var(--line-tertiary)
-    border-top: 1px solid var(--line-tertiary)
-    transition: var(--transition)
-    border-color: var(--line-quatemary)
-    @media(min-width: 1025px)
-      border-top: none
-      border-color: var(--line-tertiary)
-      padding: var(--card-action-padding)
-      display: grid
-      grid-template-columns: 4fr 8fr
-      min-height: 258px
+    @media (min-width: 640px)
+      --col: 2
+    @media (min-width: 1140px)
+      --col: 3
 
-    &--date
-      text-transform: uppercase
+  .card
+    gap: 0
+    background: var(--surface-secondary)
+    border-radius: var(--border-corner)
+
+    &--top
+      display: flex
+      flex-direction: column
+      gap: 16px
+      @media(min-width: 640px)
+        gap: 8px
+
+    &--bottom
+      display: flex
+      flex-direction: column
+      gap: clamp(24px, calc(24px + (32 - 24) * ((100vw - 992px) / (1440 - 992))), 32px)
+      margin-top: auto
 
     &--image
-      aspect-ratio: 380/180
-      @media(min-width: 1025px)
-        aspect-ratio: initial
-        position: relative
-        img
-          position: absolute
-          inset: 0
+      aspect-ratio: 504/378
 
     &--content
-      row-gap: var(--offers-gap)
-      @media(min-width: 1025px)
-        display: grid
-        grid-template-columns: repeat(2, 1fr)
-        column-gap: var(--offers-gap)
-        row-gap: 0
+      display: flex
+      flex-direction: column
+      padding: 24px 20px
+      flex: 1
+      gap: clamp(16px, calc(16px + (18 - 16) * ((100vw - 768px) / (1440 - 768))), 18px)
+      @media(min-width: 640px)
+        padding: clamp(28px, calc(28px + (32 - 28) * ((100vw - 1024px) / (1440 - 1024))), 32px)
 
     &--title
-      font-size: var(--fs-subhead-1)
-
+      font-size: var(--fs-heading-1)
+      font-weight: 600
+      text-align: center
+      line-height: 1.4
 
     &--text
+      text-align: center
       font-size: var(--fs-body-1)
       -webkit-line-clamp: 6
       grid-row: span 2
       height: max-content
-      line-height: 1.6
-
-    &--action
-      align-items: end
-
-      .button
-        text-transform: uppercase
-        height: max-content
-
-    @media(min-width: 769px)
-      &:hover
-        color: var(--text-neutral-primary)
-        background: var(--bg-card)
-
-        .button
-          --button-bg-color: transparent
-          --button-border-color: transparent
-          --button-color: var(--text-neutral-primary)
-
-    &:first-child
-      border-top: 1px solid var(--line-tertiary)
-
+      line-height: 1.5
 
 .content_offers
+  .card--bottom
+    gap: 10px
+    flex-direction: row
+    justify-content: space-between
+
+  .card--price
+    display: flex
+    align-items: center
+    gap: 4px
+    text-align: center
+
+    &_value
+      color: var(--text-accent-heavy)
+      font-weight: 600
+      font-size: var(--fs-body-3)
+      line-height: 1.3
+
+    &_text
+      font-weight: 600
+      font-size: var(--fs-caption-2)
+      line-height: 1.3
+
+.content_accommodation
+  .card
+    &--image
+      position: relative
+
+      .card__image_slide
+        min-width: 100%
+        height: 100%
+        min-height: 100%
+        border-radius: var(--card-image-br)
+        overflow: hidden
+        z-index: 0
+        position: relative
+
+
+      &.swiper
+        .swiper-wrapper
+          height: 100%
+
+        .card__image_slide
+          opacity: 0 !important
+
+          &.swiper-slide-active
+            opacity: 1 !important
+            z-index: 1
+
+    &--action
+      flex-direction: column
+
+      .button
+        justify-content: center
+        width: 100%
+
+.room_images_hover
+  position: absolute
+  z-index: 4
+  top: 0
+  left: 0
+  display: flex
+  width: 100%
+  height: 100%
+
+  @media (max-width: 1023px)
+    pointer-events: none
+    display: none
+
+  div
+    flex: 1 1 auto
+    height: 100%
+
+.card_slider_controls
+  position: absolute
+  z-index: 5
+  left: 0
+  right: 0
+  bottom: 12px
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  pointer-events: none
+
+  .swiper-pagination
+    position: static
+    width: auto
+    pointer-events: auto
+
+  .card_swiper-button-prev,
+  .card_swiper-button-next
+    pointer-events: auto
+
+
+.content_special
   &.block_list
     --col: 1
-
     .block--elements
-      gap: clamp(32px, calc(32px + (64 - 32) * ((100vw - 768px) / (1440 - 768))), 64px)
-
+      gap: 0
+    &:not(.block_list-slider)
+      .card
+        padding: 56px 0
+      .card:not(:last-child)
+        border-bottom: 1px solid var(--line-neutral-secondary)
   .card
     overflow: visible
     border-radius: 0
     background: transparent
     gap: clamp(32px, calc(32px + (48 - 32) * ((100vw - 768px) / (1440 - 768))), 48px)
-
+    color: var(--text-primary)
     @media(min-width: 1025px)
       display: grid
       grid-template-columns: minmax(240px, 421px) minmax(0, 1fr)
@@ -243,8 +380,8 @@
     &--image_photo
       $frame-w: 421
       $frame-h: 561
-      $photo-w: 328
-      $photo-h: 399
+      $photo-w: 377
+      $photo-h: 460
       $inset: ($frame-w - $photo-w) * 0.5
       position: absolute
       z-index: 1
@@ -268,9 +405,9 @@
     &--image_decor
       position: absolute
       z-index: 2
-      top: 0
+      top: 1%
       left: 50%
-      width: calc(251 / 421 * 100%)
+      width: 70%
       height: auto
       transform: translateX(-50%)
       pointer-events: none
@@ -303,49 +440,30 @@
     &--action
       flex-wrap: wrap
 
-
-
-
-.content_special
-  @media(min-width: 640px)
+.content_category
+  &.block_list
     --col: 1
+    @media (min-width: 640px)
+      --col: 3
+    @media (min-width: 1140px)
+      --col: 4
+    .card
+      &--image
+        aspect-ratio: 372/280
+      &--content
+        position: absolute
+        justify-content: space-between
+        inset: 0
+        z-index: 1
+        color: var(--text-accent-heavy-contrast)
+        padding: 18px
+      &--title
+        font-size: var(--fs-body-1)
+        line-height: 1.2
+      &--action
+        order: -1
+        margin-left: auto
 
-  .card
-    padding: 0 clamp(0px, calc(0px + (32 - 0) * ((100vw - 768px) / (1440 - 768))), 32px)
-    gap: var(--card-v-padding-lg)
-    @media (min-width: 769px)
-      display: grid
-      grid-template-columns: 1fr 1fr
-
-    &--content
-      gap: clamp(18px, calc(18px + (24 - 18) * ((100vw - 768px) / (1440 - 768))), 24px)
-      @media (min-width: 769px)
-        place-self: center
-
-    &--image
-      justify-content: center
-
-      img
-        aspect-ratio: 606 / 664
-        height: auto
-        max-width: 606px
-
-    &--title
-      font-size: var(--fs-heading-1)
-      line-height: var(--lh-heading-1)
-
-    &--action
-      .button
-      width: 100%
-      --button-bg-color: var(--button-light-primary-bg-rest)
-      --button-border-color: var(--button-light-primary-bg-rest)
-      --button-color: var(--button-light-primary-text-rest)
-
-    &:hover
-      .button
-        --button-bg-color: var(--button-light-primary-bg-hover)
-        --button-border-color: var(--button-light-primary-bg-hover)
-        --button-color: var(--button-light-primary-text-hover)
 
 .popup-hotel_select
   .card

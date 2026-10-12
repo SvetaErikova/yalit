@@ -5,22 +5,39 @@ import { Nav } from '../nav/nav.jsx';
 import { HeaderInfo } from '../header/header-info.jsx';
 import { Card_hotel_select } from '../_ui/card/content/hotel_select.jsx';
 
-const PopupsLayout = ({ data, className, children, btnClose = true, popupTitle, popupActions }) => {
+const PopupsLayout = ({
+  data,
+  className,
+  children,
+  btnClose = true,
+  popupTitle,
+  popupIcon,
+  popupActions,
+}) => {
+  const hasHead = Boolean(popupTitle || popupIcon || btnClose);
+
   return (
     <div className={`popup ${className || ''}`} data-popup={data}>
-      <div className={'popup--content '}>
-        <div className="popup--close" data-closepopup="">
-          {popupTitle && (
-            <div class="popup--title">{popupTitle}</div>
-          )}
-          {btnClose && (
-            <span className={'icon-ic-close'}></span>
-          )}
-        </div>
+      <div className="popup--content">
+        {hasHead && (
+          <div className="popup--head">
+            {(popupIcon || popupTitle) && (
+              <div className="popup--title">
+                {popupIcon && <span className={popupIcon}></span>}
+                {popupTitle}
+              </div>
+            )}
+            {btnClose && (
+              <div className="popup--close" data-closepopup="">
+                <span className="icon-ic-close"></span>
+              </div>
+            )}
+          </div>
+        )}
         <div className="popup--content_wrapper">
-         {children}
+          {children}
         </div>
-        {popupActions && <div className="popup--actions">{popupActions}</div>}
+        {popupActions && <div className="popup--action">{popupActions}</div>}
       </div>
     </div>
   );
@@ -73,16 +90,21 @@ export const PopupCookies = () => {
     <PopupsLayout
       data="popup_for_cookies"
       btnClose={false}
-      popupTitle="Cookies"
+      popupTitle="Pop-up notification"
+      popupIcon={'icon-ic-phone'}
       popupActions={
-        <Button color="neutral" type="filled-primary" data-closepopup="" data-accept="" icon={'icon-ic-chevron-right'}>
-          Принять
-        </Button>
+   < >
+     <Button type="filled-primary" data-closepopup="" data-accept="" >
+       принять все
+     </Button>
+     <Button  type="filled-secondary" data-closepopup="" >
+       отказаться
+     </Button>
+   </>
       }
     >
       <p>
-        Lorem ipsum dolor sit amet consectetur. Pellentesque eleifend mauris amet ullamcorper mi dui at.
-        Augue libero volutpat libero aenean ornare neque justo proin consectetur.
+        Этот веб-сайт использует файлы cookie, чтобы помочь вам лучше и удобнее просматривать веб-сайт
       </p>
     </PopupsLayout>
   );
@@ -101,7 +123,7 @@ export const Popups = () => {
   return (
     <>
       <PopupHotelSelect></PopupHotelSelect>
-      {/*<PopupRoomAdvantages></PopupRoomAdvantages>*/}
+      <PopupRoomAdvantages></PopupRoomAdvantages>
       <PopupForm></PopupForm>
       <PopupCascade></PopupCascade>
       <PopupConfirmation></PopupConfirmation>

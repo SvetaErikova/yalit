@@ -137,15 +137,3 @@ window.addEventListener('load', () => {
 });
 // PopupManager.open('popup_for_cookies');
 // PopupManager.open('popup_for_confirmation', { title: 'Произошла ошибка', text: 'Попробуйте обновить страницу или попробовать позже', type: 'error' })
-
-function drawLogo(){
-  gsap.fromTo(".popup-menu__background-svg path",
-    {
-      drawSVG: "0%"
-    },
-    {
-      drawSVG: "100%",
-      duration: 2,
-      ease: "power2.inOut"
-    });
-}

@@ -27,6 +27,9 @@ export default function Home() {
             <Button link={"/contacts"} >
               Контакты
             </Button>
+            <Button link={"/spec"} >
+              спецпредложение разводящая
+            </Button>
             <Button link={"/events"} >
               афиша разводящая
             </Button>

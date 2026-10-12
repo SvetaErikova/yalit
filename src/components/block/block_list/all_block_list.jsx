@@ -1,20 +1,21 @@
-import { Button } from "../../_ui/button/button.jsx";
+import { Button } from '../../_ui/button/button.jsx';
 import {
   All_card_article,
-  All_card_afisha, All_card_default, All_card_offers, All_card_services,
+  All_card_default, All_card_offers, All_card_room, All_card_services, All_card_special, All_cards_accommodation,All_card_category
 } from '../../_ui/card/all_card.jsx';
-import { Card } from "../../_ui/card/content/card.jsx";
-import {Block_Head} from "../_ui/block--head/block--head.jsx";
-import {Block_pagination} from "../_ui/block--pagination/block--pagination.jsx";
-import {Block_selection} from "../_ui/block--selection/block--selection-comp.jsx";
-import {Block_List} from "./block_list.jsx";
+import { Card } from '../../_ui/card/content/card.jsx';
+import { Block_Head } from '../_ui/block--head/block--head.jsx';
+import { Block_pagination } from '../_ui/block--pagination/block--pagination.jsx';
+import { Block_selection } from '../_ui/block--selection/block--selection-comp.jsx';
+import { Block_List } from './block_list.jsx';
+
 
 export const All_block_list = () => {
   const tabs = [
-    { label: "Все" },
-    { label: "Номера" },
-    { label: "Рестораны и бары" },
-    { label: "Spa и бассейны" }
+    { label: 'Все' },
+    { label: 'Номера' },
+    { label: 'Рестораны и бары' },
+    { label: 'Spa и бассейны' },
   ];
   return (
     <>
@@ -23,9 +24,9 @@ export const All_block_list = () => {
         className="content_cards"
         title={
           <Block_Head
-            title={"Грид"}
-            subtitle={"Блок-список стандартный"}
-            caption={"Стандартные карточки грид без табов и пагинации"}
+            title={'Грид'}
+            subtitle={'Блок-список стандартный'}
+            caption={'Стандартные карточки грид без табов и пагинации'}
             headingLevel={2}
             action={
               <>
@@ -48,9 +49,9 @@ export const All_block_list = () => {
         className="block_list-slider  content_cards"
         title={
           <Block_Head
-            title={"Слайдер"}
-            subtitle={"Блок-список слайдер"}
-            caption={"Стандартные карточки слайдер без табов и пагинации"}
+            title={'Слайдер'}
+            subtitle={'Блок-список слайдер'}
+            caption={'Стандартные карточки слайдер без табов и пагинации'}
             headingLevel={2}
             action={
               <>
@@ -66,9 +67,9 @@ export const All_block_list = () => {
         <All_card_default></All_card_default>
 
         <Card
-          title={"Карточка попап"}
-          images={[{src: "../../assets/img/1.jpg"}]}
-          popup={"popup_for_cascade"}
+          title={'Карточка попап'}
+          images={[{ src: '../../assets/img/1.jpg' }]}
+          popup={'popup_for_cascade'}
           action={
             <Button icon={'icon-file'} className={'button-arrow button-dark'} />
           }
@@ -81,9 +82,9 @@ export const All_block_list = () => {
         slider={true}
         title={
           <Block_Head
-            title={"Слайдер"}
-            subtitle={"Блок-список слайдер"}
-            caption={"Стандартные карточки слайдер без табов и пагинации"}
+            title={'Слайдер'}
+            subtitle={'Блок-список слайдер'}
+            caption={'Стандартные карточки слайдер без табов и пагинации'}
             headingLevel={2}
 
             action={
@@ -100,9 +101,9 @@ export const All_block_list = () => {
         <All_card_default></All_card_default>
 
         <Card
-          title={"Карточка попап"}
-          images={[{src: "../../assets/img/1.jpg"}]}
-          popup={"popup_for_cascade"}
+          title={'Карточка попап'}
+          images={[{ src: '../../assets/img/1.jpg' }]}
+          popup={'popup_for_cascade'}
           action={
             <Button icon={'icon-file'} className={'button-arrow button-dark'} />
           }
@@ -114,9 +115,9 @@ export const All_block_list = () => {
         className="block_list-slider content_cards"
         title={
           <Block_Head
-            title={"Слайдер"}
-            subtitle={"Блок-список без класса контента"}
-            caption={"Стандартные карточки слайдер c табами и пагинации"}
+            title={'Слайдер'}
+            subtitle={'Блок-список без класса контента'}
+            caption={'Стандартные карточки слайдер c табами и пагинации'}
             headingLevel={2}
             action={
               <>
@@ -132,10 +133,10 @@ export const All_block_list = () => {
       >
         <All_card_default></All_card_default>
         <Card
-          title={"Карточка попап"}
-          images={[{src: "../../assets/img/1.jpg"}]}
-          popup={"popup_for_cascade"}
-          action={<Button type="tinted" color="neutral" icon={"icon-eye"}></Button>}
+          title={'Карточка попап'}
+          images={[{ src: '../../assets/img/1.jpg' }]}
+          popup={'popup_for_cascade'}
+          action={<Button type="tinted" color="neutral" icon={'icon-eye'}></Button>}
         />
       </Block_List>
 
@@ -144,9 +145,9 @@ export const All_block_list = () => {
         className="content_cards"
         title={
           <Block_Head
-            title={"Грид"}
-            subtitle={"Блок-список без класса контента "}
-            caption={"Стандартные карточки грид c табами и пагинацей"}
+            title={'Грид'}
+            subtitle={'Блок-список без класса контента '}
+            caption={'Стандартные карточки грид c табами и пагинацей'}
             headingLevel={2}
             action={
               <>
@@ -167,9 +168,9 @@ export const All_block_list = () => {
         className="content_article"
         title={
           <Block_Head
-            title={"Карточки статей"}
-            subtitle={"грид"}
-            caption={"грид"}
+            title={'Карточки статей'}
+            subtitle={'грид'}
+            caption={'грид'}
             headingLevel={2}
             action={
               <>
@@ -188,9 +189,9 @@ export const All_block_list = () => {
         slider={true}
         title={
           <Block_Head
-            title={"Карточки статей"}
-            subtitle={"Слайдер"}
-            caption={"Слайдер"}
+            title={'Карточки статей'}
+            subtitle={'Слайдер'}
+            caption={'Слайдер'}
             headingLevel={2}
             action={
               <>
@@ -205,14 +206,60 @@ export const All_block_list = () => {
         <All_card_article />
       </Block_List>
 
+      {/*карточки номеров*/}
+      <Block_List
+        className="content_rooms"
+        title={
+          <Block_Head
+            title={'Номера'}
+            subtitle={'content_rooms'}
+            caption={'Номера грид'}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_room />
+      </Block_List>
+
+      {/*карточки проживания*/}
+      <Block_List
+        className="content_accommodation"
+        title={
+          <Block_Head
+            title={'Проживание'}
+            subtitle={'content_accommodation'}
+            caption={'Проживание грид'}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_cards_accommodation />
+      </Block_List>
+
+      <Block_List
+        className="content_accommodation"
+        slider={true}
+        title={
+          <Block_Head
+            title={'Проживание'}
+            subtitle={'content_accommodation'}
+            caption={'Проживание слайдер'}
+            headingLevel={2}
+
+          ></Block_Head>
+        }
+      >
+        <All_cards_accommodation />
+      </Block_List>
+
       {/*карточки Услуг*/}
       <Block_List
         className="content_services"
         title={
           <Block_Head
-            title={"Услуги"}
-            subtitle={"content_services"}
-            caption={"Услуги грид"}
+            title={'Услуги'}
+            subtitle={'content_services'}
+            caption={'Услуги грид'}
             headingLevel={2}
           ></Block_Head>
         }
@@ -225,38 +272,23 @@ export const All_block_list = () => {
         slider={true}
         title={
           <Block_Head
-            title={"Услуги"}
-            subtitle={"content_services"}
-            caption={"Услуги слайдер"}
+            title={'Услуги'}
+            subtitle={'content_services'}
+            caption={'Услуги слайдер'}
             headingLevel={2}
           ></Block_Head>
         }
       >
         <All_card_services />
       </Block_List>
-      {/*карточки Афиши*/}
-      <Block_List
-        className="content_afisha"
-        title={
-          <Block_Head
-            title={"Афиша"}
-            subtitle={"content_afisha"}
-            caption={"Афиша грид "}
-            headingLevel={2}
-          ></Block_Head>
-        }
-      >
-        <All_card_afisha />
-      </Block_List>
-
-    {/*карточки Акций*/}
+      {/*карточки offers*/}
       <Block_List
         className="content_offers"
         title={
           <Block_Head
-            title={"Акции"}
-            subtitle={"content_offers"}
-            caption={"Акции грид "}
+            title={'Афиша'}
+            subtitle={'content_offers'}
+            caption={'Offers грид '}
             headingLevel={2}
           ></Block_Head>
         }
@@ -264,28 +296,71 @@ export const All_block_list = () => {
         <All_card_offers />
       </Block_List>
 
-      {/*карточки Акций*/}
+      {/*карточки special*/}
       <Block_List
-        className="content_offers"
+        className="content_special"
+        title={
+          <Block_Head
+            title={'Спецпредложения'}
+            subtitle={'content_special'}
+            caption={'Special грид '}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_special />
+      </Block_List>
+
+      {/*карточки special*/}
+      <Block_List
+        className="content_special"
         slider={true}
         title={
           <Block_Head
-            title={"Акции"}
-            subtitle={"content_offers"}
-            caption={"Акции слайдер "}
+            title={'Спецпредложения'}
+            subtitle={'content_special'}
+            caption={'Special слайдер '}
             headingLevel={2}
           ></Block_Head>
         }
       >
-        <All_card_offers />
+        <All_card_special />
         <Card
-          title={"Карточка ссылка"}
+          title={'Карточка ссылка'}
           text={
-            "In the heart of Altai, on the slope of Mount Malaya Sinyukha, there is a unique chalet complex"
+            'In the heart of Altai, on the slope of Mount Malaya Sinyukha, there is a unique chalet complex'
           }
-          image={"../../assets/img/2.jpg"}
-          link={"/"}
+          image={'../../assets/img/2.jpg'}
+          link={'/'}
         />
+      </Block_List>
+      {/*Карточки категорий*/}
+      <Block_List
+        className={'content_category'}
+        title={
+          <Block_Head
+            title={'Категории карточки'}
+            subtitle={'content_category'}
+            caption={'Категории грид '}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_category></All_card_category>
+      </Block_List>
+      <Block_List
+        className={'content_category'}
+        slider={true}
+        title={
+          <Block_Head
+            title={'Категории карточки'}
+            subtitle={'content_category'}
+            caption={'Категории слайдер '}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_category></All_card_category>
       </Block_List>
     </>
   );

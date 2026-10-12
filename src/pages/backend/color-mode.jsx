@@ -30,7 +30,7 @@ export default function Home() {
         <All_card_default></All_card_default>
       </Block_List>
       <Block_List
-        className="content_cards dark-mode"
+        className="content_cards"
         title={
           <Block_Head
             title={"Грид"}

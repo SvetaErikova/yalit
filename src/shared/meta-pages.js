@@ -39,10 +39,10 @@ export const metaPages = {
     description: "Карта курорта",
     path: "/scheme"
   },
-  'festival': {
-    title: "Festival",
-    description: "Festival",
-    path: "/festival"
+  'spec': {
+    title: "Спецпредложения",
+    description: "разводящая",
+    path: "/spec"
   }
 
 }

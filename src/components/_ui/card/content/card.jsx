@@ -1,6 +1,22 @@
 import clsx from 'clsx';
 import { Labels } from '../../labels/labels.jsx';
 
+export const Card_list = ({ list }) => {
+  if (!list?.length) return null;
+
+  return (
+    <div className="card--list">
+      {list.map((item, index) => (
+        <div className="card--list_item" key={`${item.icon ?? ''}-${item.title ?? ''}-${index}`}>
+          {item.icon ? <span className={item.icon}></span> : null}
+          {item.title ? <span className="card--list_title">{item.title}</span> : null}
+          {item.text ? <span className="card--list_text">{item.text}</span> : null}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export const Card = ({
   title,
   text,

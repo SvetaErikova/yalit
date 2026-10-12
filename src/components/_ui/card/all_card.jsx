@@ -2,18 +2,17 @@ import { Button } from '../button/button.jsx';
 import { Card } from './content/card.jsx';
 
 export { All_cards_accommodation } from './content/accommodation.jsx';
-export { All_card_afisha } from './content/afisha.jsx';
 export { All_card_offers } from './content/offers.jsx';
+export { All_card_room } from './content/room.jsx';
+export { All_card_special } from './content/special.jsx';
 export { All_card_services } from './content/service.jsx';
+export {All_card_category} from './content/category.jsx'
 
 export const All_card_default = () => {
-  return (
-    <>
+  return (<>
       <Card
         title={'Карточка ссылка'}
-        text={
-          'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'
-        }
+        text={'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'}
         image={'../../assets/img/2.jpg'}
         link={'/'}
         labels={[{ text: 'Label text' }]}
@@ -26,9 +25,7 @@ export const All_card_default = () => {
       </Card>
       <Card
         title={'Карточка попап c очень очень очень очень очень очень очень очень большим заголовком'}
-        text={
-          'In the heart of Altai, on the slope of Mount Malaya Sinyukha, there is a unique chalet complex'
-        }
+        text={'In the heart of Altai, on the slope of Mount Malaya Sinyukha, there is a unique chalet complex'}
         image={'../../assets/img/2.jpg'}
         popup={'popup_for_cascade'}
         labels={[{ text: 'Label text' }]}
@@ -63,8 +60,7 @@ export const All_card_default = () => {
           <span>15.06.2026</span>
         </div>
       </Card>
-    </>
-  );
+    </>);
 };
 
 // export const All_card_offers = () => {
@@ -96,13 +92,10 @@ export const All_card_default = () => {
 //   );
 // };
 export const All_card_article = () => {
-  return (
-    <>
+  return (<>
       <Card
         title={'Карточка ссылка '}
-        text={
-          'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'
-        }
+        text={'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'}
         image={'../../assets/img/2.jpg'}
         action={<><Button type={'filled-accent'}>забронировать</Button><Button type={'outlined'}>подробнее</Button></>}
       >
@@ -114,9 +107,7 @@ export const All_card_article = () => {
       </Card>
       <Card
         title={'Карточка ссылка '}
-        text={
-          'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'
-        }
+        text={'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'}
         image={'../../assets/img/2.jpg'}
         action={<><Button type={'filled-accent'}>забронировать</Button><Button type={'outlined'}>подробнее</Button></>}
       >
@@ -124,18 +115,14 @@ export const All_card_article = () => {
       </Card>
       <Card
         title={'Карточка ссылка '}
-        text={
-          'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'
-        }
+        text={'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'}
         image={'../../assets/img/2.jpg'}
         action={<><Button type={'filled-accent'}>забронировать</Button></>}
       >
       </Card>
       <Card
         title={'Карточка ссылка '}
-        text={
-          'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'
-        }
+        text={'Опциональное описание в три строки, при необходимости тоже уходящее в точечки или не уходящее, если текста мало'}
         image={'../../assets/img/2.jpg'}
         link={'/'}
       >
@@ -145,13 +132,12 @@ export const All_card_article = () => {
           <span>15.06.2026</span>
         </div>
       </Card>
-    </>
-  );
+    </>);
 };
 
+
 export const All_card_events = () => {
-  return (
-    <>
+  return (<>
       <Card
         image={'../../assets/img/event.jpg'}
         link={'/'}
@@ -172,19 +158,17 @@ export const All_card_events = () => {
         link={'/'}
         action={<Button type={'tinted'} mode={'dark'} color={'neutral'}>Подробнее</Button>}
       />
-    </>
-  );
+    </>);
 };
 export const All_card_job = () => {
-  return (
-    <>
+  return (<>
       <Card
         link={'/'}
         title="Администратор ресепшн"
-        labels={[
-          { text: 'от 75 000 ₽', icon: 'icon-currrecny', accent: true },
-          { text: 'Полная занятость', icon: 'icon-calendar' },
-        ]}
+        labels={[{ text: 'от 75 000 ₽', icon: 'icon-currrecny', accent: true }, {
+          text: 'Полная занятость',
+          icon: 'icon-calendar',
+        }]}
         text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
       >
         <div className="card--note">
@@ -205,10 +189,10 @@ export const All_card_job = () => {
       <Card
         link={'/'}
         title="Карточка ссылка"
-        labels={[
-          { text: 'Позвонить', icon: 'icon-currrecny', accent: true },
-          { text: 'У моря', icon: 'icon-calendar' },
-        ]}
+        labels={[{ text: 'Позвонить', icon: 'icon-currrecny', accent: true }, {
+          text: 'У моря',
+          icon: 'icon-calendar',
+        }]}
         text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
       >
         <div className="card--note">
@@ -229,10 +213,10 @@ export const All_card_job = () => {
       <Card
         link={'/'}
         title="Карточка ссылка"
-        labels={[
-          { text: 'Позвонить', icon: 'icon-currrecny', accent: true },
-          { text: 'У моря', icon: 'icon-calendar' },
-        ]}
+        labels={[{ text: 'Позвонить', icon: 'icon-currrecny', accent: true }, {
+          text: 'У моря',
+          icon: 'icon-calendar',
+        }]}
         text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
       >
         <div className="card--note">
@@ -253,10 +237,10 @@ export const All_card_job = () => {
       <Card
         link={'/'}
         title="Карточка ссылка"
-        labels={[
-          { text: 'Позвонить', icon: 'icon-currrecny', accent: true },
-          { text: 'У моря', icon: 'icon-calendar' },
-        ]}
+        labels={[{ text: 'Позвонить', icon: 'icon-currrecny', accent: true }, {
+          text: 'У моря',
+          icon: 'icon-calendar',
+        }]}
         text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       >
         <div className="card--note">
@@ -274,7 +258,6 @@ export const All_card_job = () => {
           </div>
         </div>
       </Card>
-    </>
-  );
+    </>);
 };
 

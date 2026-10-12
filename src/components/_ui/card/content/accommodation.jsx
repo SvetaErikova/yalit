@@ -1,28 +1,46 @@
 import { Button } from '../../button/button.jsx';
-import { Card } from './card.jsx';
+import { Card_list } from './card.jsx';
 
-export const Card_accommodation = ({ title, text, link, children, discount, discountPopup }) => {
+const accommodationList = [
+  { icon: 'icon-ic-copy', text: '18-31 м2' },
+  { icon: 'icon-ic-location', text: 'до 2 гостей' },
+  { icon: 'icon-ic-time', text: 'двуспальная кровать' },
+];
+
+const accommodationImages = [
+  { src: '/assets/img/1.jpg' },
+  { src: '/assets/img/2.jpg' },
+];
+
+export const Card_accommodation = ({ title, text, children, list, images = accommodationImages }) => {
   return (
-    <Card title={title}
-          text={text}
-          labels={['Корпус 1']}
-          discountPopup={discountPopup}
-          discount={discount}
-          images={[
-            { src: '/assets/img/1.jpg' },
-            { src: '/assets/img/2.jpg' },
-          ]}
-          action={<>
-            <Button link={'/'} type={'filled'} color={'accent'} icon={'icon-calendar'} icon_left={true} size={'s'}>
-              от 3500 ₽
-              <span class="night">/ ночь</span>
-            </Button>
-            <Button link={'/'} color={'neutral'} type={'filled'} size={'s'}>
-              Подробнее
-            </Button>
-          </>}
-
-    >     {children}</Card>
+    <div className="card">
+      <div className="card--image">
+        {images.map((img, index) => (
+          <img
+            key={`${img.src}-${index}`}
+            className={images.length > 1 ? 'card__image_slide' : undefined}
+            src={img.src}
+            alt=""
+            loading="lazy"
+          />
+        ))}
+      </div>
+      <div className="card--content">
+        <div className="card--top">
+          {title && <div className="card--title">{title}</div>}
+          {text && <div className="card--text">{text}</div>}
+        </div>
+        <Card_list list={list} />
+        {children}
+        <div className="card--bottom">
+          <div className="card--action">
+            <Button link="/" type="filled-primary">подробнее</Button>
+            <Button link="/" type="filled-accent">забронировать</Button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -30,57 +48,31 @@ export const All_cards_accommodation = () => {
   return (
     <>
       <Card_accommodation
-        discountPopup={true}
-        discount={true}
         title="Название документа в несколько строк"
         text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
+        list={accommodationList}
       >
-        <div className="is_cascade">
-          <div className="list-table">
-            <div className="item">
-              <p>Время работы</p>
-              <span>Ежедневно с 07:00 до 22:00</span>
-            </div>
-            <div className="item">
-              <p>left value</p>
-              <span>right value</span>
-            </div>
-          </div>
-        </div>
-        <div className="tags">
-          <div className="tags--item">
-            <span className="icon-beds"></span> 50 m2
-          </div>
-          <div className="tags--item">
-            <span className="icon-guests"></span> до 4
-          </div>
-          <div className="tags--item">
-            <span className="icon-bed"></span> 2 двуспальные
-          </div>
-          <div className="tags--item">
-            <span className="icon-eye-1"></span> Море, парк
-          </div>
-        </div>
+
       </Card_accommodation>
       <Card_accommodation
         title="Название документа "
         text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. "
-        link="/"
+        list={accommodationList}
       />
       <Card_accommodation
         title="Название документа в несколько строк"
         text="Lorem ipsum dolor sit amet consectetur. Lacus tortor cursus ut volutpat ut aliquam non. "
-        link="/"
+        list={accommodationList}
       />
       <Card_accommodation
         title="Название документа в несколько строк"
         text="Lorem ipsum dolor sit amet consectetur. "
-        link="/"
+        list={accommodationList}
       />
       <Card_accommodation
         title="Название документа в несколько строк"
         text="Lorem ipsum dolor sit amet consectetur. "
-        link="/"
+        list={accommodationList}
       />
     </>
   );

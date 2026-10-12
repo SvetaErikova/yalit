@@ -71,14 +71,8 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_per_view_mob = 1.1;
     break;
   case swiper_item.classList.contains('content_offers'):
-    slides_per_view_desktop = 1;
-    slides_per_view_desktop_small = 1;
-    slides_per_view_pad = 1;
-    slides_per_view_mob = 1;
-    break;
-  case swiper_item.classList.contains('content_afisha'):
     slides_per_view_desktop = 3;
-    slides_per_view_desktop_small = 2.4;
+    slides_per_view_desktop_small = 2.2;
     slides_per_view_pad = 2.1;
     slides_per_view_mob = 1.1;
     break;
@@ -93,6 +87,24 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_per_view_desktop = 1;
     slides_per_view_desktop_small = 1;
     slides_per_view_pad = 1;
+    slides_per_view_mob = 1;
+    break;
+  case swiper_item.classList.contains('content_rooms'):
+    slides_per_view_desktop = 2;
+    slides_per_view_desktop_small = 2;
+    slides_per_view_pad = 1.5;
+    slides_per_view_mob = 1.1;
+    break;
+  case swiper_item.classList.contains('content_accommodation'):
+    slides_per_view_desktop = 3;
+    slides_per_view_desktop_small = 3;
+    slides_per_view_pad = 1.5;
+    slides_per_view_mob = 1;
+    break;
+  case swiper_item.classList.contains('content_category'):
+    slides_per_view_desktop = 4;
+    slides_per_view_desktop_small = 3;
+    slides_per_view_pad = 1.5;
     slides_per_view_mob = 1;
     break;
 
@@ -206,4 +218,109 @@ let activateGallerySliders = (gallery) => {
 const galleries = document.querySelectorAll('.js-gallerySwiper');
 galleries.forEach((gallery) => {
   activateGallerySliders(gallery);
+});
+
+const isCardImageMobile = () => window.matchMedia('(max-width: 1023px)').matches;
+
+function limitCardImages(cards) {
+  const maxIndex = cards.length > 10 && isCardImageMobile() ? 0 : 4;
+  if (cards.length > 10 && !isCardImageMobile()) return;
+
+  cards.forEach((card) => {
+    card.querySelectorAll('.card__image_slide').forEach((mediaElement, index) => {
+      if (index > maxIndex) mediaElement.remove();
+    });
+  });
+}
+
+function initRoomCardsImages(card) {
+  const slider = card.querySelector('.card--image');
+  if (!slider) return;
+
+  const roomImages = slider.querySelectorAll('img, video');
+  if (roomImages.length <= 1) return;
+
+  const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+  const sliderControls = document.createElement('div');
+  sliderControls.classList.add('card_slider_controls');
+  slider.append(sliderControls);
+
+  const swiperPagination = document.createElement('div');
+  swiperPagination.classList.add('swiper-pagination');
+  sliderControls.append(swiperPagination);
+
+  const sliderPagination = {
+    el: swiperPagination,
+    clickable: true,
+    type: 'bullets',
+  };
+  let sliderNavigation = false;
+
+  if (isDesktop) {
+    const swiperNavPrev = document.createElement('div');
+    swiperNavPrev.classList.add('card_swiper-button-prev');
+    sliderControls.prepend(swiperNavPrev);
+
+    const swiperNavNext = document.createElement('div');
+    swiperNavNext.classList.add('card_swiper-button-next');
+    sliderControls.append(swiperNavNext);
+
+    sliderNavigation = {
+      nextEl: swiperNavNext,
+      prevEl: swiperNavPrev,
+    };
+  }
+
+  const cardRoomSlider = new Swiper(slider, {
+    createElements: true,
+    slidesPerView: 1,
+    allowTouchMove: isCardImageMobile(),
+    touchStartPreventDefault: false,
+    nested: true,
+    zoom: false,
+    grabCursor: true,
+    freeMode: false,
+    loop: false,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true,
+    },
+    slideClass: 'card__image_slide',
+    navigation: sliderNavigation,
+    pagination: sliderPagination,
+    on: {
+      init(swiper) {
+
+        if (swiper.slides.length <= swiper.params.slidesPerView) {
+          swiper.disable();
+          return;
+        }
+
+        const area = document.createElement('div');
+        area.classList.add('room_images_hover', 'swiper-no-swiping');
+        swiper.el.appendChild(area);
+        swiper.slides.forEach(() => {
+          const slideArea = document.createElement('div');
+          slideArea.classList.add('room_images_hover_item');
+          area.appendChild(slideArea);
+        });
+      },
+    },
+  });
+
+  if (!isDesktop) return;
+
+  slider.querySelectorAll('.room_images_hover_item').forEach((item, index) => {
+    item.addEventListener('mouseover', () => {
+      cardRoomSlider.slideTo(index);
+    });
+  });
+}
+
+['.content_accommodation .card', '.content_rooms .card'].forEach((selector) => {
+  const cards = document.querySelectorAll(selector);
+  limitCardImages(cards);
+  cards.forEach((card) => {
+    initRoomCardsImages(card);
+  });
 });
