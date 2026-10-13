@@ -81,30 +81,16 @@
 .block_image_text,
 .is_cascade .gallery
   .swiper--prev, .swiper--next
-    color: #fff
-    border: 1px solid var(--line-light-secondary)
-    &:hover
-      background: #0000004D
-
-
-.block_image_text,
-.is_cascade .gallery
-  .slider_controls
-    height: 100%
-    .swiper--prev
-      position: absolute
-      translate: 0 -50%
-      top: 50%
-
-    .swiper--next
-      position: absolute
-      translate: 0 -50%
-      top: 50%
-      left: auto
-      right: 0
-    .swiper-pagination
-      position: absolute
-      translate: -50% 0
-      bottom: 16px
-      left: 50%
+    background: var(--button-bg-color, transparent)
+    color: var(--button-color)
+    border: 1px solid var(--button-border-color, transparent)
+    --button-bg-color: var(--btn-bg-secondary-rest)
+    --button-border-color: var(--btn-bg-secondary-rest)
+    --button-color: var(--btn-text-secondary-rest)
+    &:hover,
+    &:focus,
+    &:active
+      --button-bg-color: var(--btn-bg-secondary-hover)
+      --button-border-color: var(--btn-bg-secondary-hover)
+      --button-color: var(--btn-text-secondary-hover)
 

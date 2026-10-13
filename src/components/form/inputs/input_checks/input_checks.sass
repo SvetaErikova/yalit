@@ -18,13 +18,17 @@
       flex-shrink: 0
       flex-grow: 0
       cursor: pointer
-
+  &:has( .radio),
+  &:has( .checkbox),
+  &:has( .toggle)
+    label
+      padding: 8px 0
   input[type="checkbox"]
     & ~ .checkbox
       transition: var(--transition)
       width: 20px
       height: 20px
-      border: 1px solid var(--line-quatemary)
+      border: 1px solid var(--line-neutral-tertiary)
       background-color: transparent
       position: relative
       display: flex
@@ -39,7 +43,7 @@
         font-family: 'icomoon' !important
         font-size: 20px
         line-height: 1
-        color: #482F0C
+        color: var(--text-accent-heavy-contrast)
         transition: 0.18s cubic-bezier(.36,.25,.56,1)
         scale: 0
         position: absolute
@@ -49,12 +53,12 @@
 
       &:hover,
       &:focus
-        border-color: var(--line-primary)
+        border-color: var(--line-accent-heavy)
 
     & ~ .toggle
       width: 46px
       height: 24px
-      border: 1px solid var(--line-quatemary)
+      border: 1px solid var(--line-neutral-tertiary)
       position: relative
       transition: var(--transition)
       display: flex
@@ -74,25 +78,27 @@
         left: 4px
         top: 5px
         border-radius: 50px
-        background-color: #482F0C
+        background-color: var(--text-accent-heavy)
         transition: var(--transition)
         z-index: 2
         flex-shrink: 0
         flex-grow: 0
       &:hover,
       &:focus
-        border-color: var(--line-primary)
+        border-color: var(--line-accent-heavy)
 
     &:checked
       & ~ .checkbox
-        border-color: var(--line-quatemary)
+        background-color: var(--surface-accent-heavy-primary)
+        border-color: var(--surface-accent-heavy-primary)
         &:after
           transition: 0.18s cubic-bezier(.36,.25,.56,1.82)
           scale: 1
       & ~ .toggle
-        background-color: transparent
-        border-color: var(--line-primary)
+        background-color: var(--text-accent-heavy)
+        border-color: var(--text-accent-heavy)
         &:after
+          background-color: #fff
           transform: translateX(20px)
 
   input[type="radio"]
@@ -100,7 +106,7 @@
       transition: var(--transition)
       width: 20px
       height: 20px
-      border: 1px solid var(--line-quatemary)
+      border: 1px solid var(--line-neutral-tertiary)
       background-color: transparent
       border-radius: 50%
       display: flex
@@ -120,17 +126,21 @@
         scale: 0
         width: 16px
         height: 16px
-        background-color: #482F0C
+        background-color: var(--surface-accent-heavy-primary)
         border-radius: 50px
         @media(min-width: 768px)
           width: 16px
           height: 16px
       &:hover,
       &:focus
-        border-color: var(--line-primary)
+        border-color: var(--line-accent-heavy)
     &:checked
       & ~ .radio
-        border-color: var(--line-quatemary)
-        &:after
-          transition: 0.18s cubic-bezier(.36,.25,.56,1.82)
-          scale: 1
+        background-color: var(--surface-accent-heavy-primary)
+        border-color: var(--surface-accent-heavy-primary)
+
+.form--input.error
+  input[type="checkbox"] ~ .checkbox,
+  input[type="radio"] ~ .radio,
+  input[type="checkbox"] ~ .toggle
+    border-color: var(--text-accent-heavy)

@@ -10,14 +10,12 @@
     padding: 0
   .block--head
     &_title
-      font-size: var(--fs-display-2)
-      line-height: var(--lh-display-2)
+      font-size: var(--fs-display-1)
+      line-height: 1.3
 
-.block_banner.block_banner-hero
-  min-height: 640px
-  height: 100vh
-
-
+.block_banner.block_banner-hero,
+.block_banner-custom
+  height: calc(100vh - var(--headerHeight) - var(--headerHeightBottom))
 
 .banner
   display: flex
@@ -28,8 +26,10 @@
   height: 100%
   overflow: hidden
   position: relative
-  justify-content: end
-  color: var(--text-fixed-light-primary)
+  justify-content: center
+  align-items: center
+  text-align: center
+
   .block--head
     max-width: 920px
   .block--head,
@@ -63,50 +63,67 @@
       z-index: 2
       top: 0
       left: 0
-      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 63.94%, rgba(0, 0, 0, 0.36) 100%)
+      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%)
+    &:before
+      content: ""
+      width: 100%
+      height: 50%
+      pointer-events: none
+      display: block
+      position: absolute
+      z-index: 2
+      top: 0
+      left: 0
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)
 
 
 .block_banner-group
   .slider_controls
     display: flex
-    color: #fff
-    left: auto
-    width: max-content
-    right: calc(var(--header-side-width) + var(--container-padding))
     z-index: 11
-  @media(max-width: 1140px)
-    .block--head
-      padding-bottom: 56px
+    left: 50%
+    right: auto
+    top: auto
+    bottom: 60px
+    translate:  -50% 0
+    width: calc(100% - var(--container-padding) * 2)
+    pointer-events: none
+    justify-content: center
+    @media(min-width: 640px)
+      justify-content: space-between
+      top: 50%
+      translate:  -50% -50%
+      left: 50%
 
-      //bottom: 100px
-      //left: 50%
-      //translate: -50% 0
+
 
 .block_banner:not(.block_banner-no_media)
-  .banner
-      min-height: 500px
-      @media(min-width: 999px)
-        min-height: 720px
+  min-height: 500px
+  @media(min-width: 999px)
+    min-height: 520px
 
-.block_banner.block_banner-hero
-  margin-bottom: var(--g-container-vertical)
   .block--head
-    padding-right: calc(var(--header-side-width) + var(--container-padding)  / 2)
-.block_banner:not(.block_banner-hero)
-  height: initial
-  padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container-padding)
-  .banner
-    height: max-content
-    overflow: hidden
-    border-radius: var(--border-corner)
-    justify-content: flex-start
-    padding: clamp(32px, calc(32px + (80 - 32) * ((100vw - 768px) / (1240 - 768))), 80px) var(--container-padding)
-    .block--head
-      max-width: 1200px
-      &_caption
-        max-width: 800px
+    &_title,
+    &_caption,
+    &_subtitle
+      color: var(--text-accent-heavy-contrast)
+
+.block_banner-custom
+  .block--head_title
+    font-size: var(--fs-display-2)
+    @media(min-width: 641px)
+      font-size: clamp(96px, calc(96px + (140 - 96) * ((100vw - 768px) / (1440 - 768))), 140px)
+
 .block_banner-no_media
   .banner
     min-height: auto
     .block--content:after
       content: none
+
+.block_banner.block_banner-fit_content
+  height: auto
+  min-height: 0
+  .banner
+    height: auto
+    min-height: 0
+    padding: var(--g-block-margin) var(--container-padding) calc(var(--g-block-margin) * 2)

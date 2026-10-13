@@ -8,7 +8,7 @@ export const Block_Head = ({
   const HeadingTag = `h${headingLevel}`;
 
   return (
-    <div class="block--head">
+    <div class={`block--head`} >
       {subtitle  && (
         <div className={`block--head_subtitle`}>
           <p>{subtitle}</p>

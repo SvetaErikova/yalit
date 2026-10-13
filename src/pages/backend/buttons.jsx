@@ -43,6 +43,15 @@ export default function Home() {
             <Button  type="flat">neutral flat</Button>
           </div>
         </div>
+        <div className="block--wrapper -fixed" style={{ padding: "2em", background: "rgba(0, 0, 0, 0.6)" }}>
+          <div className="ui_grid-5">
+            <Button  type="filled-primary"> filled-primary</Button>
+            <Button  type="filled-secondary"> filled-secondary</Button>
+            <Button  type="filled-accent"> filled-accent</Button>
+            <Button  type="outlined"> outlined</Button>
+            <Button  type="flat">neutral flat</Button>
+          </div>
+        </div>
 
       </div>
     </HeroLayoutWithBreadcrumbs>

@@ -4,6 +4,8 @@ window.addEventListener('load', () => {
 
   let header_height = document.querySelector('.header--main').getBoundingClientRect().height
   document.documentElement.style.setProperty('--headerHeight', `${header_height}px`)
+  let header_height_bottom = document.querySelector('.header--bottom').getBoundingClientRect().height
+  document.documentElement.style.setProperty('--headerHeightBottom', `${header_height_bottom}px`)
 
 });
 
@@ -17,15 +19,15 @@ window.addEventListener('resize', () => {
 
 let last_scroll = 0;
 
-window.addEventListener('scroll', (e) => {
-  document.documentElement.scrollTop > 0 ? document.querySelector('header').classList.add('is_scrolled') : document.querySelector('header').classList.remove('is_scrolled')
+// window.addEventListener('scroll', (e) => {
+//   document.documentElement.scrollTop > 0 ? document.querySelector('header').classList.add('is_scrolled') : document.querySelector('header').classList.remove('is_scrolled')
+//
+// })
 
-})
-
-window.addEventListener('load', (e) => {
-  document.documentElement.scrollTop > 0 ? document.querySelector('header').classList.add('is_scrolled') : document.querySelector('header').classList.remove('is_scrolled')
-
-}, {once:true})
+// window.addEventListener('load', (e) => {
+//   document.documentElement.scrollTop > 0 ? document.querySelector('header').classList.add('is_scrolled') : document.querySelector('header').classList.remove('is_scrolled')
+//
+// }, {once:true})
 
 // открытие меню
 const btn_openHotelSelect = document.querySelectorAll('.header--hotel_select')
@@ -38,16 +40,11 @@ btn_openHotelSelect.forEach(btn => {
 })
 
 /* Скролл хедера мобилка */
-// if (window.matchMedia('(max-width:992px)').matches) {
-//   window.addEventListener('scroll', (e) => {
-//     let current_scroll = window.scrollY || document.documentElement.scrollTop;
-//     current_scroll >= last_scroll && current_scroll ? document.querySelector('header').classList.add('scrolled-up') : document.querySelector('header').classList.remove('scrolled-up')
-//     last_scroll = current_scroll
-//   })
-//   let submenu_button = document.querySelector('#js-open_panel')
-//   if ( submenu_button ) {
-//     submenu_button.addEventListener('click', () => {
-//       submenu_button.nextElementSibling.classList.toggle('active')
-//     })
-//   }
-// }
+if (window.matchMedia('(min-width: 769px)')) {
+  window.addEventListener('scroll', (e) => {
+    let current_scroll = window.scrollY || document.documentElement.scrollTop;
+    current_scroll >= last_scroll && current_scroll ? document.querySelector('header').classList.add('scrolled-up') : document.querySelector('header').classList.remove('scrolled-up')
+    last_scroll = current_scroll
+  })
+
+}

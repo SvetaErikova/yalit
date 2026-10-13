@@ -4,38 +4,56 @@
   margin-bottom: 24px
   gap: 0
 
-  & > input, textarea
+  & > input,
+  & > textarea
     transition: var(--transition)
     width: 100%
-    padding: 10px 0
-    border: none
-    border-bottom: 1px solid var(--line-quatemary)
-    color: var(--text-neutral-quatemary)
-    border-radius: 0
+    color: var(--text-tertiary)
     background-color: transparent
     box-shadow: none
-    font-size: var(--fs-body-2)
+    font-size: var(--fs-body-1)
     line-height: var(--lh-body-1)
-    @media(min-width: 768px)
 
     &::placeholder,
     &:placeholder-shown
-      color: var(--text-neutral-quatemary)
+      color: var(--text-tertiary)
       font-weight: 400
 
     &:not(:placeholder-shown)
-      color: var(--text-neutral-primary)
-    &:hover,
-    &:focus,
-    &:focus-within
-      border-bottom-color: var(--line-secondary)
+      color: var(--text-primary)
 
     &[required] ~ span:after
       content: "*"
 
+  & > input
+    padding: 10px 0
+    border: none
+    border-bottom: 1px solid var(--line-neutral-tertiary)
+    border-radius: 0
+
+    &:hover,
+    &:focus,
+    &:focus-within
+      border-bottom-color: var(--line-neutral-secondary)
+
+  & > textarea
+    padding: 10px
+    border: 1px solid var(--line-neutral-tertiary)
+    border-radius: var(--border-corner)
+    resize: vertical
+    margin: 10px 0
+
+    &:hover,
+    &:focus,
+    &:focus-within
+      border-color: var(--line-neutral-secondary)
 
   &.error
-    & > input, textarea
+    & > input
+      border-bottom-color: var(--text-accent-heavy)
+
+    & > textarea
+      border-color: var(--text-accent-heavy)
 
     .form--input_error
       opacity: 1
@@ -43,8 +61,9 @@
       height: auto
       visibility: inherit
       margin-top: 8px
+
   &_error
-    color: var(--text-accent-primary)
+    color: var(--text-accent-heavy)
     font-size: var(--fs-caption-2)
     max-height: 0
     opacity: 0
@@ -60,6 +79,3 @@
   & > label
     display: flex
     align-items: flex-start
-
-
-

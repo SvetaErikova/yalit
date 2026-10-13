@@ -1,0 +1,90 @@
+.hotel-group
+  overflow: hidden
+  background: var(--bg-primary)
+  .block--top
+    margin: var(--g-block-margin)
+    .block--head
+      &_title
+        @media (min-width: 1241px)
+          font-size: var(--fs-display-1)
+      &_caption
+        font-size: var(--fs-body-1)
+        @media (min-width: 769px)
+          font-size: var(--fs-body-2)
+        @media (min-width: 1241px)
+          font-size: var(--fs-heading-1)
+  &_slider
+    --text-primary: var(--text-neutral-inverted-primary)
+    --text-secondary: var(--text-neutral-inverted-primary)
+    --text-accent-heavy: #7B2C16
+    position: relative
+    padding-top: var(--g-block-margin)
+    &:after
+      content: ''
+      position: absolute
+      inset: 0
+      clip-path: ellipse(60% 130% at 50% 100%)
+      background: var(--bg-page)
+      @media (min-width: 1241px)
+        clip-path: none
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0
+
+
+  .block--selection
+    position: relative
+    z-index: 2
+
+  .block--heads
+    display: grid
+    text-align: center
+
+    .block--head
+      grid-area: 1 / 1
+      justify-self: center
+      background: var(--bg-page)
+
+      width: 100%
+      opacity: 0
+      pointer-events: none
+      transition: opacity 0.6s ease
+      @media (min-width: 769px)
+        max-width: 44vw
+
+      &.is_active
+        opacity: 1
+        pointer-events: auto
+        z-index: 1
+  .block--head
+    &_title
+      @media (max-width: 769px)
+        font-size: var(--fs-heading-2)
+      @media (min-width: 769px) and (max-width: 1240px)
+        font-size: var(--fs-heading-3)
+    &_caption
+      @media (max-width: 769px)
+        font-size: var(--fs-body-1)
+        @media (min-width: 769px) and (max-width: 1240px)
+          font-size: var(--fs-body-2)
+
+  .block--elements
+    z-index: 2
+    margin-top: var(--g-vertical-list)
+
+    .card
+      aspect-ratio: 1923/707
+      height: auto
+
+    .card--image img
+      height: auto
+      object-fit: cover
+
+  .card
+    border-radius: 0
+
+    &--action
+      position: absolute
+      bottom: 40px
+      left: 50%
+      z-index: 2
+      translate: -50% 0
+

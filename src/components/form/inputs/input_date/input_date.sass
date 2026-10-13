@@ -3,7 +3,7 @@
   transition: var(--transition)
   width: 100%
   position: relative
-  border-bottom: 1px solid var(--line-quatemary)
+  border-bottom: 1px solid var(--line-neutral-tertiary)
   border-radius: 0
   background-color:  transparent
   display: flex
@@ -12,26 +12,29 @@
     content: "\e901"
     font-family: 'icomoon'
     font-size: 18px
-    color: var(--icon-primary)
+    color: var(--text-tertiary)
   input
-    line-height: 1.5
-    font-size: 16px
+    line-height: var(--lh-body-1)
+    font-size: var(--fs-body-1)
     background-color: transparent
     transition: var(--transition)
     width: 100%
-    padding: 8px 0
-    color: var(--text-neutral-quatemary)
-    @media(min-width: 768px)
-      padding: 12px 0
+    padding: 10px 0
+    color: var(--text-tertiary)
     &::placeholder,
     &:placeholder-shown
-      color: var(--text-neutral-quatemary)
+      color: var(--text-tertiary)
     &:not(:placeholder-shown)
-      color: var(--text-neutral-primary)
+      color: var(--text-primary)
   &:hover,
   &:focus,
   &:focus-within
-    border-color: var(--line-secondary)
+    border-color: var(--line-neutral-secondary)
+
+.form--input.error
+  .form--input_date,
+  .form--input_date-range
+    border-bottom-color: var(--text-accent-heavy)
 
 
 

@@ -32,7 +32,7 @@ import '../../components/form/form.js';
 import "../../components/form/inputs/input_date/input_date";
 
 
-// import '../../components/booking/booking.js';
+import '../../components/booking/booking.js';
 // content
 
 import '../../components/content/special/special.js';

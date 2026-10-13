@@ -5,19 +5,11 @@
   align-items: center
   z-index: 49
   margin: auto
-  --booking-text-color: var(--mos-beige-solid-085)
-  background: var(--mos-beige-solid-005)
+  --booking-text-color: var(--surface-inverted-primary)
+  background: #fff
   border-radius: var(--border-corner)
-  box-shadow: 0 6px 32px 0 #96240E1A
-  &_title
-    color: var(--mos-beige-solid-085)
-    font-weight: 900
-    font-size: var(--heading-6)
-    text-align: center
-    padding: var(--g-xxs) var(--g-xxs) 12px
-    border-bottom: 1px solid #3A2B2633
-    width: 100%
-    text-transform: uppercase
+  box-shadow: 0px 4px 16px 0px #00000014, 0px 0px 2px 0px #00000014
+
   .booking
     width: 100%
     position: relative
@@ -84,7 +76,7 @@
         flex-direction: column
         min-height: auto
         width: max-content
-        max-width: 8ch
+        min-width: 10ch
       [class^=icon-]
         font-size: 1.2em
         color: var(--mos-beige-alpha-mid-080)
@@ -183,116 +175,140 @@
 
     &__button
       .button
-        border-radius: var(--border-corner-s)
         @media(max-width: 768px)
           width: 100%
 
-.block_banner-hero + .block--search
+.block_banner + .block--search
   position: relative
   z-index: 5
-  flex-direction: column
-  margin: -60px auto var(--g-container-vertical)
+  margin: -64px auto var(--g-container-vertical)
   @media(min-width: 769px)
     margin: 0
     position: absolute
-    translate: var(--container-padding) calc(-100% - var(--g-m))
+    left: 50%
+    translate: -50%  calc(-100% - var(--g-block-margin) - 40px)
 
-  .booking
-    border-radius: 0
-    flex-direction: column
-    &__inputs
-      flex-direction: column
-      align-items: flex-start
-      gap: 0
-      padding: 0
-    &__input_title
-      display: none
-    &__calendar_wrapper,
-    &__guests
-      padding: clamp(10px, calc(10px + (20 - 10) * ((100vw - 768px) / (1440 - 768))), 20px) 16px
-    &__button
-      .button
-        width: 100%
+.block_banner.block_banner-fit_content + .block--search
+  translate: -50%  calc(-100% - var(--g-block-margin) * 2)
 
-.block_image_text
-  .block--content
-    overflow: inherit
-  .block--search
-    width: 100%
-    @media(min-width: 769px)
-      position: sticky
-      bottom: 16px
-    &_title
-      display: none
-    .booking
-      @media(min-width: 769px) and (max-width: 1240px)
-        flex-wrap: wrap
-    .booking__inputs
-      width: 100%
-      padding: 0
-      @media(max-width: 768px)
-        display: none
-    .booking__input_title
-      display: none
-    .booking__calendar_wrapper,
-    .booking__guests
-      width: 100%
-      padding: 14px 12px
-      background: #EEECE569
-      border-radius: var(--border-corner-s)
-    #booking__guests_input
-      width: auto
-    .booking__button
-      @media(min-width: 769px) and (max-width: 1240px)
-        width: 100%
-        margin-top: 6px
-      .button
-        height: 100%
-        width: 100%
+.booking-datepicker
+  --adp-font-family: var(--ff-default)
+  --adp-font-size: 14px
+  --adp-width: 320px
+  --adp-z-index: 100
+  --adp-padding: 12px
+  --adp-background-color: var(--surface-primary)
+  --adp-background-color-hover: var(--surface-secondary)
+  --adp-background-color-active: var(--surface-tertiary)
+  --adp-background-color-in-range: var(--surface-secondary)
+  --adp-background-color-in-range-focused: var(--surface-tertiary)
+  --adp-background-color-selected-other-month: var(--surface-accent-heavy-primary)
+  --adp-background-color-selected-other-month-focused: var(--surface-accent-heavy-secondary)
+  --adp-color: var(--text-primary)
+  --adp-color-secondary: var(--text-tertiary)
+  --adp-accent-color: var(--surface-accent-heavy-primary)
+  --adp-color-current-date: var(--text-accent-heavy)
+  --adp-color-other-month: var(--text-quaternary)
+  --adp-color-disabled: var(--text-quaternary)
+  --adp-color-disabled-in-range: var(--text-tertiary)
+  --adp-color-other-month-hover: var(--text-secondary)
+  --adp-border-color: var(--line-neutral-tertiary)
+  --adp-border-color-inner: var(--line-neutral-tertiary)
+  --adp-border-radius: var(--border-corner)
+  --adp-nav-height: 32px
+  --adp-nav-arrow-color: var(--text-primary)
+  --adp-nav-color-secondary: var(--text-secondary)
+  --adp-day-name-color: var(--text-tertiary)
+  --adp-day-name-color-hover: var(--text-secondary)
+  --adp-day-cell-height: 36px
+  --adp-month-cell-height: 42px
+  --adp-year-cell-height: 42px
+  --adp-cell-border-radius: var(--border-corner-button)
+  --adp-cell-background-color-hover: var(--surface-secondary)
+  --adp-cell-background-color-selected: var(--surface-accent-heavy-primary)
+  --adp-cell-background-color-selected-hover: var(--surface-accent-heavy-secondary)
+  --adp-cell-background-color-in-range: var(--surface-secondary)
+  --adp-cell-background-color-in-range-hover: var(--surface-tertiary)
+  --adp-cell-border-color-in-range: transparent
+  background: var(--adp-background-color)
+  color: var(--adp-color)
+  border: 1px solid var(--adp-border-color)
+  border-radius: var(--adp-border-radius)
+  box-shadow: 0 6px 32px 0 #96240E1A
+  font-family: var(--adp-font-family)
 
+  .air-datepicker-nav
+    border-bottom-color: transparent
 
-.polaroids,
-.banner-hero
-  .block--search
-    z-index: 1
-    @media(max-width: 768px)
-      flex-direction: column
-      order: 1
-      margin-top: var(--g-xl)
-      .booking
-        border-radius: 0
-        flex-direction: column
-        @media(min-width: 769px)
-          align-items: center
-        &__inputs
-          flex-direction: column
-          align-items: flex-start
-          gap: 0
-          padding: 0
-        &__input_title
-          display: none
-        &__calendar_wrapper,
-        &__guests
-          padding: clamp(10px, calc(10px + (20 - 10) * ((100vw - 768px) / (1440 - 768))), 20px) 16px
-        &__button
-          .button
-            width: 100%
-    .booking__inputs
-      @media(max-width: 768px)
-        flex-direction: column
+  .air-datepicker-nav--title
+    color: var(--text-primary)
+    font-family: var(--ff-default)
+    i
+      font-style: normal
+      color: var(--text-secondary)
 
-    &_title
-      @media(min-width: 769px)
-        display: none
-    .icon-calendar,
-    .icon-user
-      @media(min-width: 769px)
-        display: none
-// .banner-hero
-//     .block--search
-//       @media(min-width: 769px)
-//         &_title
-//           display: none
-//     .booking__inputs
-//       @media(max-width: 768px)
-//         flex-direction: column
+  .air-datepicker-nav--action
+    color: var(--text-primary)
+    border-radius: var(--border-corner-button)
+    &:hover
+      background: var(--surface-secondary)
+      color: var(--text-primary)
+
+  .air-datepicker-body--day-name
+    color: var(--text-tertiary)
+    font-size: 12px
+    font-weight: 400
+    text-transform: uppercase
+
+  .air-datepicker-cell
+    border-radius: var(--border-corner-button)
+
+  .air-datepicker-cell.-day-
+    color: var(--text-primary)
+    border: 1px solid transparent
+    font-size: 14px
+
+  .air-datepicker-cell.-day-.-other-month-
+    color: var(--text-quaternary)
+
+  .air-datepicker-cell.-day-.-disabled-,
+  .air-datepicker-cell.-day-.-disabled-.-other-month-
+    color: var(--text-quaternary)
+    background: transparent
+    border-color: transparent
+
+  .air-datepicker-cell.-day-.-current-:not(.-selected-):not(.-range-from-):not(.-range-to-)
+    color: var(--text-accent-heavy)
+    border-color: var(--line-accent-heavy)
+
+  .air-datepicker-cell.-day-.-focus-:not(.-selected-):not(.-range-from-):not(.-range-to-),
+  .air-datepicker-cell.-day-:hover:not(.-selected-):not(.-range-from-):not(.-range-to-)
+    color: var(--text-primary)
+    background: var(--surface-secondary)
+    border-color: transparent
+
+  .air-datepicker-cell.-day-.-in-range-
+    color: var(--text-primary)
+    background: var(--surface-secondary)
+    border-color: transparent
+
+  .air-datepicker-cell.-day-.-selected-,
+  .air-datepicker-cell.-day-.-selected-.-range-from-,
+  .air-datepicker-cell.-day-.-selected-.-range-to-,
+  .air-datepicker-cell.-day-.-range-from-,
+  .air-datepicker-cell.-day-.-range-to-,
+  .air-datepicker-cell.-selected-.-focus-,
+  .air-datepicker-cell.-month-.-selected-,
+  .air-datepicker-cell.-year-.-selected-
+    color: var(--text-accent-heavy-contrast)
+    background: var(--surface-accent-heavy-primary)
+    border-color: var(--surface-accent-heavy-primary)
+
+  .air-datepicker-cell.-day-.-range-from-:hover,
+  .air-datepicker-cell.-day-.-range-to-:hover,
+  .air-datepicker-cell.-day-.-range-to-.-focus-,
+  .air-datepicker-cell.-day-.-selected-:hover
+    color: var(--text-accent-heavy-contrast)
+    background: var(--surface-accent-heavy-secondary)
+    border-color: var(--surface-accent-heavy-secondary)
+

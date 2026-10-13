@@ -19,13 +19,13 @@ select
   width: 100%
   &:hover
     .select--button
-      border-bottom-color: var(--line-secondary)
+      border-bottom-color: var(--line-neutral-secondary)
   &--button
     position: relative
     cursor: pointer
     transition: var(--transition)
-    color: var(--text-neutral-quatemary)
-    font-size: var(--fs-body-2)
+    color: var(--text-tertiary)
+    font-size: var(--fs-body-1)
     line-height: var(--lh-body-1)
     width: 100%
     max-width: 100%
@@ -34,7 +34,7 @@ select
     justify-content: space-between
     overflow: hidden
     border: none
-    border-bottom: 1px solid var(--line-quatemary)
+    border-bottom: 1px solid var(--line-neutral-tertiary)
     border-radius: 0
     padding: 10px 0
     background-color: transparent
@@ -50,7 +50,7 @@ select
       height: 1em
       display: flex
       align-items: center
-      color: var(--icon-primary)
+      color: var(--text-tertiary)
     p
       margin: 0
       max-width: 100%
@@ -61,7 +61,7 @@ select
       -webkit-box-orient: vertical
   &:has(option[selected]:not([value=""]))
     .select--button
-      color: var(--text-neutral-primary)
+      color: var(--text-primary)
 
   &--option_wrapper
     opacity: 0
@@ -87,7 +87,7 @@ select
     border-radius: var(--border-corner-s)
     display: flex
     flex-direction: column
-    border: 1px solid var(--line-quatemary)
+    border: 1px solid var(--line-neutral-tertiary)
     overflow: hidden
     max-height: 320px
     overflow-y: auto
@@ -106,9 +106,9 @@ select
     &:hover,
     &:active,
     &:focus
-      background-color: var(--bg-illustration-light)
+      background-color: var(--surface-secondary)
     &.is_selected
-      background-color:  var(--line-quatemary)
+      background-color: var(--surface-tertiary)
 
 
     &[data-disabled="true"]
@@ -116,7 +116,7 @@ select
       opacity: 0.4
 select:has(option[selected]) ~ .select
   .select--button
-    color: var(--text-neutral-primary)
+    color: var(--text-primary)
 .form--input.error
   .select--button
-    border-bottom-color: var(--color-text-semantic-critical-main)
+    border-bottom-color: var(--text-accent-heavy)

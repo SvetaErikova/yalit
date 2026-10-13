@@ -4,10 +4,8 @@ import { Button } from '../_ui/button/button.jsx';
 export const Booking = ({className=''}) => {
   return (
     <div className={clsx("block--search", className)}>
-      <div className="block--search_title">Бронирование</div>
-      <div className="booking js-booking" data-booking="preselected_dates" data-lang="ru-Ru" data-format="DD.MM.YYYY">
+      <div className="booking js-booking" data-booking="preselected_dates" data-lang="ru-RU" data-format="DD.MM.YYYY">
         <div className="booking__inputs">
-
           <div className="booking__calendar_wrapper">
             <div className="booking__input_title">
               даты
@@ -87,7 +85,7 @@ export const Booking = ({className=''}) => {
           </div>
         </div>
         <div className="booking__button">
-          <Button type={'filled'} color={'accent'} size={'s'} className="js-guests_submit">
+          <Button type={'filled-accent'} className="js-guests_submit">
             Найти номера
           </Button>
         </div>

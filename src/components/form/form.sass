@@ -28,12 +28,13 @@ input[type="date"]
   &--input
     & > span
       order: -1
-      font-size: var(--fs-caption-1)
+      font-size: var(--fs-body-1)
+      line-height: var(--lh-body-1)
       transition: var(--transition)
       margin-bottom: 4px
       text-transform: uppercase
-    label + label
-      margin-top: 16px
+    //label + label
+    //  margin-top: 16px
 
 
 
@@ -45,7 +46,7 @@ input[type="date"]
     font-weight: 400
   &--subscription
     display: flex
-    border-bottom: 1px solid var(--line-quatemary)
+    border-bottom: 1px solid var(--line-neutral-tertiary)
     .form--input
       margin-bottom: 0
       width: 100%
@@ -67,7 +68,6 @@ input[type="date"]
   gap: var(--g-16)
   margin-top: var(--g-xxs)
   .button
-    width: 100%
     @media(min-width: 769px)
 
 .is_sending

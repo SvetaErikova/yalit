@@ -1,10 +1,13 @@
 .block_image_text
+  padding: clamp(56px, calc(56px + (120 - 56) * ((100vw - 768px) / (1440 - 768))), 120px) 0
+  margin: 0
+  background:  var(--bg-page)
   .block--wrapper
     display: flex
     flex-direction: column
-    gap: 32px
+    gap: 24px
     @media(min-width: 992px)
-      gap: var(--g-xxxs)
+      gap: var(--g-xl)
       display: grid
       grid-template-columns: 1fr 1fr
       grid-template-areas: 'content image'
@@ -20,8 +23,10 @@
     @media(min-width: 992px)
       gap: var(--g-xxs)
     &_subtitle
-      color: var(--color-text-brand-dark-main-1)
-      font-size: var(--body-s)
+      color: var(--text-accent-heavy)
+      font-size: var(--cascade-context-fs-paragraph)
+    .block--actions
+      justify-content: flex-start
   .block--image
     height: auto
     display: flex
@@ -54,8 +59,7 @@
     //border-radius: var(--border-corner)
     display: flex
     flex-direction: column
-
-    gap: var(--g-xxs)
+    gap: var(--g-s)
 
     &:only-child
       display: grid
@@ -69,6 +73,12 @@
         .is_cascade
           grid-column: 2
 
+
+  &.-primary,
+  &.-dark,
+  &.-green,
+  &.-accent
+    background: var(--bg-primary)
   &.block_image_text-reversed
     //.block--image
     //  order: 1

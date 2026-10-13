@@ -25,6 +25,70 @@ function activateQuantityInputs(block) {
   })
 }
 
+const BOOKING_DATE_LOCALES = {
+  'ru-RU': {
+    days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+    daysShort: ['Вос', 'Пон', 'Вто', 'Сре', 'Чет', 'Пят', 'Суб'],
+    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+    today: 'Сегодня',
+    clear: 'Очистить',
+    dateFormat: 'dd.MM.yyyy',
+    timeFormat: 'HH:mm',
+    firstDay: 1
+  },
+  'en-US': {
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    today: 'Today',
+    clear: 'Clear',
+    dateFormat: 'MM/dd/yyyy',
+    timeFormat: 'hh:mm aa',
+    firstDay: 0
+  }
+}
+
+function resolveBookingLocale(lang) {
+  const normalized = (lang || 'ru-RU').replace('_', '-').toLowerCase()
+  if (normalized.startsWith('en')) return BOOKING_DATE_LOCALES['en-US']
+  return BOOKING_DATE_LOCALES['ru-RU']
+}
+
+function toAirDateFormat(format) {
+  return format
+    .replace(/YYYY/g, 'yyyy')
+    .replace(/YY/g, 'yy')
+    .replace(/DD/g, 'dd')
+    .replace(/D/g, 'd')
+}
+
+function formatAirDate(date, format) {
+  const parts = {
+    yyyy: String(date.getFullYear()),
+    yy: String(date.getFullYear()).slice(-2),
+    MM: String(date.getMonth() + 1).padStart(2, '0'),
+    dd: String(date.getDate()).padStart(2, '0'),
+  }
+
+  return format.replace(/yyyy|yy|MM|dd/g, (token) => parts[token])
+}
+
+function toIsoDate(date) {
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${date.getFullYear()}-${month}-${day}`
+}
+
+function countNights(from, to) {
+  const start = Date.UTC(from.getFullYear(), from.getMonth(), from.getDate())
+  const end = Date.UTC(to.getFullYear(), to.getMonth(), to.getDate())
+  return Math.round((end - start) / 86400000)
+}
+
 /* Booking */
 function initBooking() {
 
@@ -42,77 +106,77 @@ function initBooking() {
 
 
   if (calendar_input) {
-    let date_el_1 = calendar_input.querySelector("#checkin")
-    let date_el_2 = calendar_input.querySelector("#checkout")
+    const AirDatepicker = window.AirDatepicker
 
-    let date_format = block.dataset.format ? block.dataset.format : 'DD-MM-YYYY'
-    let date_lang = block.dataset.lang ? block.dataset.lang : "ru-RU"
+    if (!AirDatepicker) {
+      console.error('AirDatepicker не найден в window. Проверь подключение main.libs.js')
+    } else {
+      let date_inputs = calendar_input.querySelectorAll('.booking__calendar-item')
+      let date_el_1 = date_inputs[0]
+      let date_el_2 = date_inputs[1]
 
-    let text_submit = "Применить"
-    // if ( SITE.LANG === "en" ) {
-    //   date_lang = "en-US";
-    //   text_submit = "Apply"
-    // }
+      if (date_el_1) {
+        let date_format = toAirDateFormat(block.dataset.format || 'DD.MM.YYYY')
+        let is_mobile = window.matchMedia('(max-width: 668px)').matches
+        let today_date = new Date()
+        today_date.setHours(0, 0, 0, 0)
+        let tomorrow_date = new Date(today_date)
+        tomorrow_date.setDate(today_date.getDate() + 1)
+        let is_preselected = block.dataset.booking === 'preselected_dates'
 
+        const syncRange = (dates) => {
+          let list = Array.isArray(dates) ? dates : []
+          date_el_1.value = list[0] ? formatAirDate(list[0], date_format) : ''
+          if (date_el_2) date_el_2.value = list[1] ? formatAirDate(list[1], date_format) : ''
+          arrival_date = list[0] ? toIsoDate(list[0]) : ''
+          leave_date = list[1] ? toIsoDate(list[1]) : ''
+          total_days = list[0] && list[1] ? countNights(list[0], list[1]) : ''
+        }
 
-    let current_date = new Date()
-    let today_date = current_date.setDate(current_date.getDate());
-    let tomorrow_date = current_date.setDate(current_date.getDate() + 1)
+        date_el_1.readOnly = true
+        if (date_el_2) date_el_2.readOnly = true
 
+        const picker = new AirDatepicker(date_el_1, {
+          classes: 'booking-datepicker',
+          locale: resolveBookingLocale(block.dataset.lang),
+          range: true,
+          minDate: today_date,
+          autoClose: true,
+          toggleSelected: false,
+          isMobile: is_mobile,
+          dateFormat: (date) => formatAirDate(date, date_format),
+          multipleDatesSeparator: ' - ',
+          selectedDates: is_preselected ? [today_date, tomorrow_date] : false,
+          prevHtml: '<span class="icon-ic-chevron-left"></span>',
+          nextHtml: '<span class="icon-ic-chevron-right"></span>',
+          position: is_mobile ? 'bottom left' : ({$datepicker, $pointer}) => {
+            let coords = calendar_input.getBoundingClientRect()
+            let dpHeight = $datepicker.clientHeight
+            let top = coords.top > window.innerHeight / 2
+              ? coords.top + window.scrollY - dpHeight - 8
+              : coords.bottom + window.scrollY + 4
 
-    const picker = new Litepicker({
-      element: date_el_1,
-      elementEnd: date_el_2,
-      singleMode: false,
-      startDate: today_date,
-      autoApply: !window.matchMedia('(max-width: 668px)').matches,
-      format: date_format,
-      lang: date_lang,
-      minDate: today_date,
-      position: 'left auto',
-      numberOfMonths: 2,
-      numberOfColumns: 2,
-      showTooltip: true,
-      tooltipText: {
-        one: 'ночь',
-        two: 'ночи',
-        few: 'ночи',
-        many: 'ночей'
-      },
-      tooltipNumber: (totalDays) => {
-        total_days = totalDays - 1
-        return totalDays - 1;
-      },
-      setup: (picker) => {
-        picker.on('selected', (date1, date2) => {
-          arrival_date = date1.format('YYYY-MM-DD')
-          leave_date = date2.format('YYYY-MM-DD')
-        });
-      },
-      plugins: ['mobilefriendly'],
-      mobilefriendly: {
-        breakpoint: 668,
-      },
-      buttonText: {"apply":text_submit,"cancel":"<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-          "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M4.39859 4.3986C4.69149 4.10571 5.16636 4.10571 5.45925 4.3986L12 10.9393L18.5407 4.3986C18.8336 4.10571 19.3085 4.10571 19.6014 4.3986C19.8943 4.69149 19.8943 5.16637 19.6014 5.45926L13.0607 12L19.6014 18.5407C19.8943 18.8336 19.8943 19.3085 19.6014 19.6014C19.3085 19.8943 18.8336 19.8943 18.5407 19.6014L12 13.0607L5.45925 19.6014C5.16636 19.8943 4.69149 19.8943 4.39859 19.6014C4.1057 19.3085 4.1057 18.8336 4.39859 18.5407L10.9393 12L4.39859 5.45926C4.1057 5.16637 4.1057 4.69149 4.39859 4.3986Z\" fill=\"white\"/>\n" +
-          "</svg>",}
-    });
+            $datepicker.style.left = `${coords.left}px`
+            $datepicker.style.top = `${top}px`
+            $pointer.style.display = 'none'
+          },
+          onSelect({date}) {
+            syncRange(Array.isArray(date) ? date : [])
+          },
+        })
 
-    const removePickerFooter = () => {
-      const footer = picker.ui?.container?.querySelector('.container__footer');
-      if (footer) {
-        footer.remove();
+        if (date_el_2) {
+          date_el_2.addEventListener('focus', () => {
+            picker.show()
+          })
+        }
+
+        if (is_preselected) {
+          syncRange(picker.selectedDates)
+          setTimeout(() => syncRange(picker.selectedDates), 0)
+        }
       }
-    };
-
-    removePickerFooter();
-    picker.on('render:footer', removePickerFooter);
-    picker.on('show', removePickerFooter);
-
-    if ( block.dataset.booking === "preselected_dates") {
-      picker.setDateRange(today_date, tomorrow_date)
     }
-
   }
 
   //Room inputs

@@ -108,6 +108,7 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_per_view_mob = 1;
     break;
 
+
   default:
     slides_per_view_desktop = 4;
     slides_per_view_desktop_small = 3;
@@ -324,3 +325,61 @@ function initRoomCardsImages(card) {
     initRoomCardsImages(card);
   });
 });
+
+function initHotelGroupSlider(block) {
+  const cardsEl = block.querySelector('.block--elements');
+  const headsEl = block.querySelector('.block--heads');
+  const tabs = [...block.querySelectorAll('.block--selection > a')];
+  if (!cardsEl || !headsEl || tabs.length < 2) return;
+
+  const speed = 600;
+  const heads = [...headsEl.querySelectorAll(':scope > .block--head')];
+
+  const cardsSlider = new Swiper(cardsEl, {
+    createElements: true,
+    slideClass: 'card',
+    effect: 'slide',
+    loop: true,
+    speed,
+    slidesPerView: 1,
+    allowTouchMove: false,
+    simulateTouch: false,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+  });
+
+  const visibleIndex = () => {
+    const slide = cardsSlider.slides[cardsSlider.activeIndex];
+    const index = slide?.getAttribute('data-swiper-slide-index');
+    return index === null ? cardsSlider.realIndex : Number(index);
+  };
+
+  const show = (index) => {
+    heads.forEach((head, headIndex) => {
+      head.classList.toggle('is_active', headIndex === index);
+    });
+    tabs.forEach((tab, tabIndex) => {
+      tab.classList.toggle('is_active', tabIndex === index);
+    });
+  };
+
+  show(visibleIndex());
+
+  cardsSlider.on('realIndexChange', () => {
+    show(visibleIndex());
+  });
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', (event) => {
+      event.preventDefault();
+      cardsSlider.autoplay.stop();
+      if (cardsSlider.realIndex !== index) cardsSlider.slideToLoop(index);
+    });
+  });
+}
+const hotel_group = document.querySelector('.hotel-group')
+if (hotel_group){
+  initHotelGroupSlider(hotel_group)
+}

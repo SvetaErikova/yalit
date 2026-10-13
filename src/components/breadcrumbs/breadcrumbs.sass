@@ -24,10 +24,9 @@
     font-size: var(--fs-caption-2)
     padding: 4px 0
     line-height: 1em
-    gap: 6px 0
+    gap: 8px
     @media(min-width: 1024px)
       padding: 8px 0
-      gap: 6px
     &:not(:last-child)
       &:hover,
       &:focus,
@@ -35,31 +34,24 @@
         opacity: 0.7
       &:after
         content: "/"
-        //display: flex
-        //align-items: center
-        //justify-content: center
-        //width: 1.3em
-        //height: 1.3em
-        //content: "\e904"
-        //font-family: 'icomoon' !important
+        margin-right: 8px
 
     &:last-child
       pointer-events: none
       color: var(--text-neutral-primary)
-body:has(.header-transparent)
+body:has(.block_banner-hero)
   .breadcrumbs
     padding-top: 0
     position: absolute
     z-index: 10
-    top: calc(var(--headerHeight) + var(--g-m))
+    top: var(--g-xxs)
     left: 0
     right: 0
-    --breadcrumbs-color: var(--text-softlight-primary)
+    --breadcrumbs-color: #FEF9F180
     @media(max-width: 1140px)
-      top: calc(var(--headerHeight) + 120px)
-      max-width: calc(100% - var(--header-side-width) )
     a:last-child
-      color: var(--text-fixed-light-primary)
+      opacity: 1
+      color: #fff
 
 .breadcrumbs ~ .block
   margin-top: 0
