@@ -6,7 +6,7 @@ export { All_card_offers } from './content/offers.jsx';
 export { All_card_room } from './content/room.jsx';
 export { All_card_special } from './content/special.jsx';
 export { All_card_services } from './content/service.jsx';
-export {All_card_category} from './content/category.jsx'
+export {All_card_galleries} from './content/galleries.jsx'
 
 export const All_card_default = () => {
   return (<>
@@ -16,12 +16,8 @@ export const All_card_default = () => {
         image={'../../assets/img/2.jpg'}
         link={'/'}
         labels={[{ text: 'Label text' }]}
+        action={<Button type={'filled-secondary'} icon={'icon-ic-eye'}></Button>}
       >
-        <div className={'card--captions'}>
-          <span>Статья</span>
-          <span className="icon-dot"></span>
-          <span>15.06.2026</span>
-        </div>
       </Card>
       <Card
         title={'Карточка попап c очень очень очень очень очень очень очень очень большим заголовком'}
@@ -29,12 +25,8 @@ export const All_card_default = () => {
         image={'../../assets/img/2.jpg'}
         popup={'popup_for_cascade'}
         labels={[{ text: 'Label text' }]}
+        action={<Button type={'filled-secondary'} icon={'icon-ic-uniq-arrow-right'}></Button>}
       >
-        <div className={'card--captions'}>
-          <span>Статья</span>
-          <span className="icon-dot"></span>
-          <span>15.06.2026</span>
-        </div>
       </Card>
       <Card
         title="Карточка не ссылка"
@@ -42,11 +34,6 @@ export const All_card_default = () => {
         text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
         labels={[{ text: 'Label text' }]}
       >
-        <div className={'card--captions'}>
-          <span>Статья</span>
-          <span className="icon-dot"></span>
-          <span>15.06.2026</span>
-        </div>
       </Card>
       <Card
         title="Карточка не ссылка"
@@ -54,11 +41,6 @@ export const All_card_default = () => {
         text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
         labels={[{ text: 'Label text' }]}
       >
-        <div className={'card--captions'}>
-          <span>Статья</span>
-          <span className="icon-dot"></span>
-          <span>15.06.2026</span>
-        </div>
       </Card>
     </>);
 };
