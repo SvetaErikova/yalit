@@ -12,40 +12,36 @@ export const ContactsContent = ({ className = '' }) => {
       <ul className="contacts-content_list">
         <li className="contacts-content_item">
           <div className="contacts-content_item-title">Адрес</div>
-          <div className="contacts-content_text">
-            Крым, улица, номер дома
+          <div className="contacts-content_list">
+            <span>Крым, улица, номер дома</span>
           </div>
         </li>
 
         <li className="contacts-content_item">
           <div className="contacts-content_item-title">Телефон</div>
-          <Button link={'tel:+7 499 999 99 99'} type={'link'} color={'neutral'}>
-            +7 499 999 99 99
-          </Button>
+          <div className="contacts-content_item-list">
+            <a href="mailto:someEmail@mail.ru"> someEmail@mail.ru</a>
+            <a href="mailto:someEmail@mail.ru"> someEmail@mail.ru</a>
+          </div>
         </li>
 
         <li className="contacts-content_item">
           <div className="contacts-content_item-title">Email</div>
-          <Button link={'mailto:someEmail@mail.ru'} type={'link'} color={'neutral'}>
-            someEmail@mail.ru
-          </Button>
+          <div class="contacts-content_item-list">
+            <a href="mailto:someEmail@mail.ru"> someEmail@mail.ru</a>
+          </div>
         </li>
 
         <li className="contacts-content_item">
           <div className="contacts-content_item-title">Социальные сети</div>
           <div className="contacts-content_social">
-            <Button link={'/'} type={'link'} color={'accent'} icon={'icon-telegram'} mode={'dark'}></Button>
-            <Button link={'/'} type={'link'} color={'accent'} icon={'icon-vk'} mode={'dark'}></Button>
-            <Button link={'/'} type={'link'} color={'accent'} icon={'icon-ok'} mode={'dark'}></Button>
-            <Button link={'/'} type={'link'} color={'accent'} icon={'icon-youtube'} mode={'dark'}></Button>
+            <Button link={'/'} type={'filled-secondary'} icon={'icon-telegram'} ></Button>
+            <Button link={'/'} type={'filled-secondary'} icon={'icon-vk'} ></Button>
+            <Button link={'/'} type={'filled-secondary'} icon={'icon-ok'} ></Button>
+            <Button link={'/'} type={'filled-secondary'} icon={'icon-youtube'} ></Button>
           </div>
         </li>
       </ul>
-
-      <div className="contacts-content_actions">
-        <a className="button button-filled button-neutral button-s">Связаться с нами</a>
-        <a className="button button-tinted button-neutral button-s">Построить маршрут</a>
-      </div>
     </div>
   );
 };

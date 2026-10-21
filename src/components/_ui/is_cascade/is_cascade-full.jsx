@@ -4,7 +4,7 @@ import { Gallery } from '../../gallery/gallery-comp.jsx';
 export const Is_cascade_full = () => {
   return (
     <div className={'is_cascade'}>
-      <h1 >Заголовок первого уровня</h1>
+      <h1>Заголовок первого уровня</h1>
       <h2>Заголовок второго уровня</h2>
       <h3>Заголовок третьего уровня</h3>
       <h4>Заголовок четвертого уровня</h4>
@@ -12,13 +12,14 @@ export const Is_cascade_full = () => {
       <h6>Заголовок шестого уровня</h6>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur iste iure, molestiae nihil perferendis
-        possimus praesentium quasi reprehenderit sed sunt tempore vero! <a href="" target="_blank">ссылка </a><b> bold</b></p>
-
+        possimus praesentium quasi reprehenderit sed sunt tempore
+        vero! <a href="" target="_blank">ссылка </a><b> bold</b></p>
+      <hr></hr>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et nisi quasi quis reprehenderit
         voluptatem.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque enim impedit in laboriosam nam
         necessitatibus rerum. A fugiat reiciendis repellendus rerum tempore totam unde voluptate.</p>
-      <ul >
+      <ul>
         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et nisi quasi quis reprehenderit
           voluptatem.
           <ul>
@@ -48,15 +49,16 @@ export const Is_cascade_full = () => {
           voluptatem.
         </li>
       </ol>
-      <blockquote className='blockquote' id={'blockquote'}>
+      <blockquote className="blockquote" id={'blockquote'}>
         <div className="blockquote--decor"></div>
         <div className="blockquote--text">
-          <p>Figma ipsum component variant main layer. Project link image bold arrow stroke. Horizontal connection stroke pencil duplicate.</p>
+          <p>Figma ipsum component variant main layer. Project link image bold arrow stroke. Horizontal connection
+            stroke pencil duplicate.</p>
           <span>Константин Константинопольский</span>
         </div>
       </blockquote>
       <figure>
-        <img src="/assets/img/1.jpg" alt=""/>
+        <img src="/assets/img/1.jpg" alt="" />
         <figcaption>Подпись к картинке</figcaption>
       </figure>
       <div className="is_cascade--table">
@@ -113,16 +115,50 @@ export const Is_cascade_full = () => {
           <span>1 600 ₽ </span>
         </div>
       </div>
+      <div class="callouts">
+        <p>Per aspera ad astra</p>
+        <span>Lucius Annaeus Sĕnĕca minor</span>
+      </div>
+      <div className="info-card">
+        <div className="item">
+          <span className="icon-ic-search"></span>
+          <p>25-32 м2</p>
+        </div>
+        <div className="item">
+          <span className="icon-ic-search"></span>
+          <p>25-32 м2</p>
+        </div>
+        <div className="item">
+          <span className="icon-ic-search"></span>
+          <p>25-32 м2</p>
+        </div>
+      </div>
+      <div className="info-card">
+        <div className="item">
+          <span className="icon-ic-search"></span>
+          <p>25-32 м2</p>
+        </div>
+        <div className="item">
+          <span className="icon-ic-search"></span>
+          <p>25-32 м2</p>
+        </div>
+      </div>
+      <div className="info-card">
+        <div className="item">
+          <span className="icon-ic-search"></span>
+          <p>25-32 м2</p>
+        </div>
 
-      <Accordion_full/>
+      </div>
+      <Accordion_full />
       <Gallery
         isSlider={true}
         images={[
-          {src: '../../assets/img/1.jpg'},
-          {src: '../../assets/img/2.jpg'},
-          {src: '../../assets/img/4.jpg', video: '../../assets/video/@lepragram.mp4'},
+          { src: '../../assets/img/1.jpg' },
+          { src: '../../assets/img/2.jpg' },
+          { src: '../../assets/img/4.jpg', video: '../../assets/video/@lepragram.mp4' },
         ]}
       ></Gallery>
     </div>
   );
-}
+};

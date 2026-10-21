@@ -7,15 +7,35 @@
       display: grid
       grid-template-columns: repeat(2, 1fr)
       gap: var(--g-xl) var(--g-xl)
-  .block--image
-    grid-column: 1
-    &:not(:has(img))
-      display: none
-    img
-      aspect-ratio: 16/9
-      height: auto
-      position: sticky
-      top: var(--headerHeight)
+
+  .block--head
+    grid-column: span 2
+    justify-content: center
+    text-align: center
   .block--content
-    grid-column: 2
-  .block--image
+    padding: var(--g-s)
+    background: #565A46
+    border-radius: var(--border-corner)
+    .form
+      --button-color: var(--btn-text-accent-heavy-rest)
+      --btn-text-disabled-primary: var(--btn-text-accent-heavy-rest)
+      fieldset
+        background: var(--bg-page)
+        padding: var(--g-xxs)
+        border-radius: var(--border-corner)
+
+      &--title
+        text-align: center
+        font-family: var(--ff-title)
+        font-size: var(--fs-heading-2)
+        color: var(--text-accent-heavy-contrast)
+      &--subtitle
+        text-align: center
+        color: var(--text-accent-heavy-contrast)
+        font-size: var(--fs-body-3)
+        margin-bottom: var(--g-s)
+
+  &:not(:has(.block--content))  .block--faq
+      max-width: 788px
+      grid-column: span 2
+      margin: 0 auto

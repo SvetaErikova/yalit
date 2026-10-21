@@ -1,8 +1,9 @@
 .is_cascade
-  --m-head-top: var(--cascade-margine-page-lg)
-  --m-bottom: var(--cascade-margine-page-md)
-  --m-text-top: var(--cascade-margine-page-md)
+  --m-head-top: var(--cascade-responsive-margin-page-lg)
+  --m-bottom: var(--cascade-responsive-margin-page-md)
+  --m-text-top: var(--cascade-responsive-margin-page-md)
   color: var(--text-secondary)
+  font-size: var(--cascade-context-fs-paragraph)
   & > *
     margin: var(--m-text-top) 0 var(--m-bottom)
 
@@ -18,30 +19,22 @@
     font-weight: 400
 
   h1
-    font-size: var(--fs-display-1)
-    line-height: var(--lh-display-1)
+    font-size: var(--fs-heading-2)
   h2
-    font-size: var(--fs-heading-1)
-    line-height: var(--lh-heading-1)
+    font-size: var(--cascade-context-fs-heading-2)
   h3
-    font-size: var(--fs-subhead-2)
-    line-height: var(--lh-subhead-2)
+    font-size: var(--cascade-context-fs-heading-3)
   h4,h5,h6
-    font-size: var(--fs-body-3)
-    line-height: var(--lh-body-3)
-
-  p, li
+    font-size: var(--fs-body-4)
 
   b, strong
     font-weight: 500
-  table
 
   p > a:not([class])
     text-decoration: underline
-
     &:hover,
     &:focus
-      color: var(--accent-2)
+      color: var(--surface-accent-heavy-primary)
 
   img,
   video
@@ -61,11 +54,12 @@
     img, video
       aspect-ratio: 16 / 9
     figcaption
+      font-size: var(--cascade-context-fs-media-caption)
       margin-top: 8px
-      color: var(--text-neutral-tertiary)
+      color: var(--text-tertiary)
 
   hr
-    border-color: var(--line-quatemary)
+    border-color: var(--btn-border-outlined-rest)
 
   .button_wrapper, .block--actions
     display: flex
@@ -82,13 +76,14 @@
       border-collapse: collapse
       border-radius: var(--border-corner)
       overflow: hidden
-      outline: 1px solid var(--line-quatemary)
+      outline: 1px solid var(--btn-border-outlined-rest)
       outline-offset: -1px
     thead
       background-color: var(--bg-illustration-light)
+      border-bottom: 1px solid var(--btn-border-outlined-rest)
 
     tr
-      border-bottom: 1px solid var(--line-quatemary)
+      border-bottom: 1px solid var(--btn-border-outlined-rest)
 
       &:last-child
         border-bottom: none
@@ -97,7 +92,7 @@
       text-align: center
       padding: 16px 24px
       &:not(:last-child)
-        border-right: 1px solid var(--line-quatemary)
+        border-right: 1px solid var(--btn-border-outlined-rest)
 
     .table-subhead
       background-color: #F2F9FA
@@ -109,27 +104,59 @@
   .block--actions
     margin: var(--m-text-top) 0 var(--m-bottom)
   //  new
+  &--accordion
+    gap: 16px
+    .accordion
+      border-radius: var(--border-corner)
+      background: var(--surface-secondary)
 
 .list-table
   display: flex
   flex-direction: column
-  text-transform: uppercase
-  font-size: var(--fs-body-1)
-  line-height: var(--lh-body-1)
+  font-size: var(--fs-body-2)
   .item
     display: grid
     align-items: center
     grid-template-columns: 2fr 2fr
     gap: 16px
-    padding: 24px 0
+    padding: var(--m-bottom) 0
     @media(min-width: 769px)
       grid-template-columns: 4fr 2.5fr
     &:not(:last-child)
-      border-bottom: 1px solid var(--text-neutral-tertiary)
+      border-bottom: 1px solid var(--btn-border-outlined-rest)
     span
       text-align: right
 
 
+.callouts
+  display: flex
+  flex-direction: column
+  gap: 8px
+  p
+    font-size: var(--cascade-context-fs-callout-text)
+    line-height: 1.5
+  span
+    font-size: var(--cascade-context-fs-callout-caption)
+    color: var(--text-secondary)
+.info-card
+  display: flex
+  gap: 8px
+  .item
+    border-radius: var(--border-corner)
+    background: var(--surface-secondary)
+    padding: 16px
+    flex: 1
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    gap: 8px
+  [class^=icon-]
+    font-size: 24px
+    color: var(--surface-accent-heavy-primary)
+  p
+    font-size: var(--fs-body-1)
+    font-weight: 500
 
 .is_cascade:has(.gallery)
   overflow: hidden
@@ -138,17 +165,13 @@
     border-radius: var(--border-corner)
     overflow: hidden
     .slider_controls
+      top: 16px
       bottom: 16px
-      right: 16px
-      gap: 8px
-
-      .swiper--next,
-      .swiper--prev
-        width: 44px
-        height: 44px
-        font-size: 1.4em
-        &:before
-          content: none
+    .swiper-pagination
+      position: absolute
+      left: 50%
+      translate: 0  -50%
+      bottom: 0
 
 // Video
 .is_cascade
@@ -169,19 +192,11 @@
 
 .blockquote
   margin: 16px 0
-  border-left:  10px solid var(--color-line-brand-main-1)
+  border-left:  10px solid var(--btn-border-outlined-rest)
   padding-left: var(--g-m)
   display: flex
   flex-direction: column
   gap: 16px
-  &--decor
-    &:after
-      content: ""
-      display: flex
-      width: 60px
-      aspect-ratio: 60/44
-      background-color: var(--color-text-brand-light-main-4)
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='61' height='45' viewBox='0 0 61 45' fill='none'%3E%3Cpath d='M59.9834 2.58594C58.4549 2.58598 56.4986 2.89412 54.1143 3.50977C51.7296 4.06393 49.3753 4.9258 47.0518 6.0957C44.7284 7.26555 42.802 8.7428 41.2734 10.5283C38.9499 13.2376 37.7881 15.4546 37.7881 17.1787C38.2772 16.5014 39.3778 15.9164 41.0898 15.4238C42.8018 14.8697 44.6362 14.5928 46.5928 14.5928C49.2832 14.5928 51.6375 15.2392 53.6553 16.5322C55.673 17.8253 57.2631 19.5802 58.4248 21.7969C59.5865 23.9519 60.167 26.3534 60.167 29.001C60.167 33.4343 58.7609 37.0982 55.9482 39.9922C53.1968 42.8861 49.4668 44.333 44.7588 44.333C41.5792 44.333 38.7048 43.5326 36.1367 41.9316C33.5688 40.3307 31.674 38.1136 30.4512 35.2812C29.2894 38.1137 27.4849 40.3307 25.0391 41.9316C22.5933 43.5324 19.6277 44.333 16.1426 44.333C11.5568 44.333 7.70429 42.7623 4.58594 39.6221C1.52896 36.4202 0 31.8328 0 25.8604C5.63006e-05 21.1193 1.25385 16.8088 3.76074 12.9297C6.32872 8.98921 9.96701 5.84951 14.6748 3.50977C19.444 1.17 24.3971 4.79028e-05 29.5332 0L31.3682 2.58594C29.8395 2.58594 27.8827 2.89403 25.498 3.50977C23.1134 4.06393 20.7591 4.92579 18.4355 6.0957C16.1122 7.26557 14.1858 8.74278 12.6572 10.5283C10.3337 13.2376 9.17188 15.4546 9.17188 17.1787C9.661 16.5014 10.7618 15.9164 12.4736 15.4238C14.1857 14.8697 16.0209 14.5928 17.9775 14.5928C22.8689 14.5929 26.599 16.6247 29.167 20.6885C30.0842 16.563 31.9184 12.9605 34.6699 9.88184C37.4825 6.80328 40.9069 4.40175 44.9424 2.67773C49.039 0.892196 53.4414 0 58.1494 0L59.9834 2.58594Z' fill='%23FF7C22' fill-opacity='0.5'/%3E%3C/svg%3E")
   &--text
     display: flex
     flex-direction: column
@@ -195,13 +210,13 @@
 
 
 .block--content .is_cascade
-  --m-head-top: var(--cascade-margine-block-lg)
-  --m-bottom: var(--cascade-margine-block-md)
-  --m-text-top: var(--cascade-margine-block-md)
+  --m-head-top: var(--cascade-responsive-margin-block-lg)
+  --m-bottom: var(--cascade-responsive-margin-block-md)
+  --m-text-top: var(--cascade-responsive-margin-block-md)
 .popup .is_cascade
-  --m-head-top: var(--cascade-margine-modal-lg)
-  --m-bottom: var(--cascade-margine-modal-md)
-  --m-text-top: var(--cascade-margine-modal-md)
+  --m-head-top: var(--cascade-responsive-margin-modal-lg)
+  --m-bottom: var(--cascade-responsive-margin-modal-md)
+  --m-text-top: var(--cascade-responsive-margin-modal-md)
 .block_html_code
   .block--content.is_cascade
     margin-top: var(--g-xl)

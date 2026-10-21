@@ -1,61 +1,39 @@
-/* Map Yandex Contacts */
-import mapMain from '../../assets/json/map-main.json';
-import MapFest from '../../assets/json/map-fest.json';
-
-const mapContacts = document.getElementById('map');
-
-if (mapContacts) {
+const map_contacts = document.getElementById("map");
+if (map_contacts) {
+  document.addEventListener("DOMContentLoaded", () => {
     initMap();
-}
-async function initMap() {
-  await ymaps3.ready;
-
-  const { YMap, YMapDefaultSchemeLayer, YMapMarker, YMapDefaultFeaturesLayer } = ymaps3;
-  const iconSize = 54;
-  const coordinates = [33.936221, 44.395664];
-
-  const map = new YMap(mapContacts, {
-    location: {
-      center: coordinates,
-      zoom: 16,
-    },
-    behaviors: ['drag', 'dblClick'],
   });
-  if (!document.querySelector('.page-fest')){
-    map.addChild(
-      new YMapDefaultSchemeLayer({
-        customization: mapMain,
-      })
-    );
+
+  function initMap() {
+    ymaps.ready(() => {
+      const coords = JSON.parse(map_contacts.dataset.coords);
+
+      const map = new ymaps.Map("map", {
+        center: coords,
+        zoom: 16,
+        controls: [],
+      });
+
+      map.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom',]);
+
+      var myGeoObject = new ymaps.GeoObject({
+        geometry: {
+          type: "Point",
+          coordinates: coords
+        },
+        // Добавляем свойства для тултипа
+        // properties: {
+        //   hintContent: 'Центральный офис',
+        //   balloonContent: 'Центральный офис'
+        // }
+      }, {
+        iconLayout: 'default#image',
+        // iconImageHref: '/assets/img/favicon.svg',
+        // iconImageSize: [60, 60],
+        // iconImageOffset: [-30, -30]
+      });
+
+      map.geoObjects.add(myGeoObject);
+    });
   }
-  else{
-    map.addChild(
-      new YMapDefaultSchemeLayer({
-        customization: MapFest,
-      })
-    );
-  }
-
-  map.addChild(new YMapDefaultFeaturesLayer());
-
-  const markerElement = document.createElement('div');
-  markerElement.className = 'marker-image';
-  markerElement.style.setProperty('--marker-size', `${iconSize}px`);
-
-  const markerImg = document.createElement('img');
-  markerImg.className = 'marker-image__icon';
-  markerImg.src = '/assets/img/pin.svg';
-  markerImg.alt = '';
-  markerElement.appendChild(markerImg);
-
-  map.addChild(
-    new YMapMarker(
-      {
-        coordinates,
-      },
-      markerElement
-    )
-  );
 }
-
-

@@ -66,11 +66,12 @@ export const Form_short = () => {
 						</label>
 					</div>
 				</div>
-				<div className="form--button">
-          <Button type={'filled-primary'} color={'neutral'} htmlType="submit" disabled="disabled" icon={'icon-ic-uniq-arrow-right'}>Отправить</Button>
 
-        </div>
 			</fieldset>
+      <div className="form--button">
+        <Button type={'filled-primary'} color={'neutral'} htmlType="submit" disabled="disabled" icon={'icon-ic-uniq-arrow-right'}>Отправить</Button>
+
+      </div>
 		</form>
 	);
 };
