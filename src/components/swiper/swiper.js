@@ -53,8 +53,8 @@ const activateBlocklistSlider = (swiper_item) => {
 
   switch (true) {
   case swiper_item.classList.contains('content_cards'):
-    slides_per_view_desktop = 2;
-    slides_per_view_desktop_small = 2;
+    slides_per_view_desktop = 4;
+    slides_per_view_desktop_small = 3;
     slides_per_view_pad = 1.5;
     slides_per_view_mob = 1.1;
     break;
@@ -101,7 +101,7 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_per_view_pad = 1.5;
     slides_per_view_mob = 1;
     break;
-  case swiper_item.classList.contains('content_category'):
+  case swiper_item.classList.contains('content_galleries'):
     slides_per_view_desktop = 4;
     slides_per_view_desktop_small = 3;
     slides_per_view_pad = 1.5;
