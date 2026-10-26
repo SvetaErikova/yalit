@@ -37,6 +37,8 @@ import '../../components/booking/booking.js';
 
 import '../../components/content/special/special.js';
 
+import '../../components/content/custom/info-clip/info-clip.js';
+
 Fancybox.bind('.gallery *[data-fancybox]', {
   infinite: false,
   groupAll: false,

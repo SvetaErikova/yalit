@@ -6,13 +6,14 @@ export const ContactsContent = ({ className = '' }) => {
   return (
     <div className={cx('contacts-content', className)}>
       <div className="contacts-content_title">
-        контакты
+        Гостиница «Ногай»
       </div>
 
       <ul className="contacts-content_list">
         <li className="contacts-content_item">
           <div className="contacts-content_item-title">Адрес</div>
-          <div className="contacts-content_list">
+          <div className="contacts-content_item-list">
+            <p></p>
             <span>Крым, улица, номер дома</span>
           </div>
         </li>

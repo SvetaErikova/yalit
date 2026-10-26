@@ -14,6 +14,8 @@ import { Input_textarea } from '../components/form/inputs/input_textarea/input_t
 import { Booking } from '../components/booking/booking-comp.jsx';
 import { HotelGroupComp } from '../components/content/custom/hotel-group/hotel-group-comp.jsx';
 import { Block_selection } from '../components/block/_ui/block--selection/block--selection-comp.jsx';
+import { InfoClip } from '../components/content/custom/info-clip/info-clip-comp.jsx';
+import { Form_short } from '../components/form/form_short.jsx';
 
 
 export default function Home() {
@@ -29,6 +31,7 @@ export default function Home() {
         className={"block_banner-custom"}
       ></Block_banner>
       <Booking></Booking>
+      <InfoClip></InfoClip>
       <HotelGroupComp></HotelGroupComp>
 
       {/*карточки special*/}
@@ -67,7 +70,9 @@ export default function Home() {
       </Block_List>
 
 
-      {/*<Faq image={false}></Faq>*/}
+      <Faq>
+        <Form_short></Form_short>
+      </Faq>
 
     </HeroLayout>
   );

@@ -3,13 +3,16 @@
   flex-direction: column
 
   &_title
-
+    font-size: var(--fs-heading-1)
+    font-weight: 600
+  ul
   &_list
     display: flex
     flex-direction: column
     gap: clamp(12px, calc(12px + (24 - 12) * ((100vw - 768px) / (1440 - 768))), 24px)
     list-style: none
     margin: 0
+    padding: 32px 0
 
   &_item
     display: flex

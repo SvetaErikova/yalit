@@ -5,15 +5,16 @@ import { Accordion_full } from '../../_ui/accordion/accordion-full.jsx';
 export const Faq = ({ title = 'Блок faq', image, children }) => {
   return (
     <Block title={<Block_Head title={title} />} className={'content_faq'}>
+
+      <div className="block--faq is_cascade">
+         <Accordion_full />
+      </div>
       {children && (
         <div className="block--content ">
           {children}
         </div>
       )}
 
-      <div className="block--faq is_cascade">
-         <Accordion_full />
-      </div>
     </Block>
   );
 };

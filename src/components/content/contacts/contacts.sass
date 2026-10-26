@@ -1,0 +1,14 @@
+.content_contacts
+  .block--wrapper
+    display: flex
+    flex-direction: column
+    gap: var(--g-vertical-list) 0
+    @media(min-width: 769px)
+      gap: var(--g-vertical-list) 24px
+      display: grid
+      grid-template-columns: 1fr 1fr
+    .block--head
+      grid-column: span 2
+      justify-content: center
+      text-align: center
+
