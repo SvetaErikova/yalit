@@ -79,6 +79,10 @@
   &.-green,
   &.-accent
     background: var(--bg-primary)
+    &.block_image_text-decor
+      padding: 0
+      .decor--line, .decor--corner
+        background-color : var(--line-neutral-inverted-primary)
   &.block_image_text-reversed
     //.block--image
     //  order: 1
@@ -100,6 +104,8 @@
         position: absolute
         inset: 0
         aspect-ratio: initial
+
+
         //height: 100%
 
   &.block_image_text_ar-16-9
@@ -121,3 +127,71 @@
   &.block_image_text-centered
     .block--content
       justify-content: center
+
+  &.block_image_text-decor
+    --decor-size: clamp(68px, calc(68px + (128 - 68) * ((100vw - 768px) / (1440 - 768))), 128px)
+    --decor-line: clamp(22px, calc(22px + (44 - 22) * ((100vw - 768px) / (1440 - 768))), 44px)
+    .block--wrapper
+      padding: 0
+      @media (min-width: 992px)
+        gap: 0
+    .block--image
+      .gallery
+        border-radius: 0
+    @media (min-width: 992px)
+      .block--image
+        position: relative
+      .gallery
+        position: absolute
+        inset: 0
+        aspect-ratio: auto
+        max-height: none
+    .block--content
+      position: relative
+      padding: calc(var(--decor-size) * 95 / 128 + var(--g-16))
+      @media (min-width: 1025px)
+        margin: var(--g-xxs)
+    .decor
+      position: absolute
+      inset: 0
+      display: grid
+      grid-template-columns: var(--decor-size) minmax(0, 1fr) var(--decor-size)
+      grid-template-rows: var(--decor-size) minmax(0, 1fr) var(--decor-size)
+      pointer-events: none
+    .decor--corner
+      background-color: var(--line-accent)
+      mask-image: url("/assets/img/decor/decor-corner.svg")
+      mask-repeat: no-repeat
+      mask-position: center
+      mask-size: 100% 100%
+      mask-mode: alpha
+      transform: scale(-1)
+      &.-flip-x
+        transform: scaleY(-1)
+      &.-flip-y
+        transform: scaleX(-1)
+      &.-flip-xy
+        transform: scale(1)
+    .decor--line
+      background-color: var(--line-accent)
+      &.-x
+        height: 1px
+        align-self: start
+        margin-top: var(--decor-line)
+        margin-left: calc(var(--decor-line) - var(--decor-size))
+        margin-right: calc(var(--decor-line) - var(--decor-size))
+        &.-end
+          align-self: end
+          margin-top: 0
+          margin-bottom: var(--decor-line)
+      &.-y
+        width: 1px
+        justify-self: start
+        margin-left: var(--decor-line)
+        margin-top: calc(var(--decor-line) - var(--decor-size))
+        margin-bottom: calc(var(--decor-line) - var(--decor-size))
+        &.-end
+          justify-self: end
+          margin-left: 0
+          margin-right: var(--decor-line)
+

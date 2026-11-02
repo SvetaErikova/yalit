@@ -37,6 +37,33 @@ export const All_block_image_text = () => {
 
   return (
     <>
+      <Block_image_text
+        decor
+        images={[
+          { src: '../../assets/img/1.jpg' },
+        ]}
+        title={demoHead('Картинка текст с декором')}
+        content={demoContent}
+      />
+      <Block_image_text
+        decor
+        reversed
+        images={[
+          { src: '../../assets/img/1.jpg' },
+        ]}
+        title={demoHead('Картинка текст с декором ревер&shy;сивный')}
+        content={demoContent}
+      />
+      <Block_image_text
+        decor
+        className="-green"
+        images={[
+          { src: '../../assets/img/1.jpg' },
+        ]}
+        title={demoHead('Картинка текст с декором на теме')}
+        content={demoContent}
+      />
+
       {/* Без изображения */}
       <Block_image_text title={demoHead('Картинка текст без картинки')} content={demoContent} />
       <Block_image_text title={demoHead('Картинка текст без картинки Ревер&shy;сивный')} content={demoContent} reversed />
