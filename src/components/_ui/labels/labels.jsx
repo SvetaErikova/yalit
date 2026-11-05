@@ -34,8 +34,8 @@ export const Labels = ({items = [], className, itemClassName}) => {
           <div
             class={clsx(
               'label',
-              accent && '-accent',
-              dark && '-dark',
+              accent && '-theme-accent',
+              dark && '-theme-dark',
               itemClass,
               itemClassName
             )}

@@ -5,6 +5,7 @@
   color: var(--text-secondary)
   font-size: var(--cascade-context-fs-paragraph)
   & > *
+    font-weight: 500
     margin: var(--m-text-top) 0 var(--m-bottom)
 
     &:first-child
@@ -15,8 +16,7 @@
 
   h1, h2, h3, h4, h5, h6
     margin: var(--m-head-top) 0 var(--m-bottom)
-    text-transform: uppercase
-    font-weight: 400
+    font-weight: 500
 
   h1
     font-size: var(--fs-heading-2)
@@ -28,14 +28,15 @@
     font-size: var(--fs-body-4)
 
   b, strong
-    font-weight: 500
+    font-weight: 600
 
   p > a:not([class])
     text-decoration: underline
     &:hover,
     &:focus
       color: var(--surface-accent-heavy-primary)
-
+  p
+    line-height: 1.5
   img,
   video
     height: auto
@@ -109,7 +110,21 @@
     .accordion
       border-radius: var(--border-corner)
       background: var(--surface-secondary)
-
+  .content_cards
+    .block--elements
+      --col: 3
+    .card
+      &--content
+        padding: 0
+      &--text
+        text-overflow: ellipsis
+        overflow: hidden
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+      img
+        aspect-ratio: inherit
+        height: 100%
 .list-table
   display: flex
   flex-direction: column
@@ -189,6 +204,26 @@
     height: 100%
     object-position: center
     object-fit: cover
+.accommodation--info
+  @media (min-width: 769px)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 16px
+    &_item
+      font-size: var(--fs-body-1)
+      padding: 20px 0
+      border-bottom: 1px solid var(--line-accent-heavy-secondary)
+      @media (min-width: 769px)
+        &:nth-child(5),
+        &:nth-child(6)
+          border-bottom: none
+        &:nth-child(n+ 7)
+          display: none
+      @media (max-width: 768px)
+        &:nth-child(3)
+          border-bottom: none
+        &:nth-child(n+ 4)
+          display: none
 
 .blockquote
   margin: 16px 0

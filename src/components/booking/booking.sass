@@ -1,28 +1,16 @@
 .block--search
-  width: max-content
+  width: 100%
   display: flex
-  justify-content: center
-  align-items: center
   z-index: 49
-  margin: auto
   --booking-text-color: var(--surface-inverted-primary)
-  background: #fff
-  border-radius: var(--border-corner)
-  box-shadow: 0px 4px 16px 0px #00000014, 0px 0px 2px 0px #00000014
 
   .booking
     width: 100%
     position: relative
     transition: var(--transition)
     display: flex
-    gap: 8px
-    padding: 6px
     flex-direction: column
-    border-radius: var(--border-corner)
-    @media(min-width: 769px)
-      flex-direction: row
-      gap: 4px
-      padding: 8px
+    gap: 12px
 
     input
       text-align: left
@@ -38,21 +26,19 @@
         -webkit-appearance: none
     &__input_title
       display: none
+      color: var(--text-primary)
       @media(min-width: 769px)
-        text-transform: uppercase
-        opacity: 0.6
         display: flex
         font-size: 14px
-        color: #463E3B
         margin-bottom: 4px
     &__calendar
       position: relative
       display: flex
-      justify-content: center
+      justify-content: flex-start
       align-items: center
       gap: 4px
-      height: max-content
-      //padding: 0 0 0 var(--g-xxs)
+      height: var(--button-context-height, 48px)
+      border-bottom: 1px solid var(--line-neutral-tertiary)
       grid-column: span 2
       &_wrapper
         display: flex
@@ -76,24 +62,23 @@
         flex-direction: column
         min-height: auto
         width: max-content
-        min-width: 10ch
       [class^=icon-]
         font-size: 1.2em
         color: var(--mos-beige-alpha-mid-080)
     &__guests
       position: relative
-      padding: 0 var(--g-xxs)
       &-input
         font-weight: 400
         display: flex
         gap: 4px
         align-items: center
         width: 100%
-        min-height: 100%
+        height: var(--button-context-height, 48px)
+        border-bottom: 1px solid var(--line-neutral-tertiary)
         cursor: pointer
         text-overflow: ellipsis
         overflow: hidden
-        justify-content: center
+        justify-content: flex-start
         line-height: 1em
         #booking__guests_input
           width: 100%
@@ -104,7 +89,7 @@
       &-popover
         position: absolute
         display: none
-        background-color: var(--mos-beige-solid-005)
+        background-color: var(--bg-primary)
         padding: 12px
         border-radius: var(--border-corner-s)
         z-index: 10
@@ -165,23 +150,77 @@
           padding-bottom: 12px
           gap: 8px
     &__inputs
-      font-size: var(--tag-m)
-      border-radius: 50px
+      width: 100%
+      font-size: var(--fs-body-2)
       display: flex
-      align-items: center
-      gap: 6px
-      color: var(--mos-beige-solid-085)
-      padding: 0 var(--g-s)
+      flex-direction: column
+      align-items: stretch
+      gap: 12px
+      color: #2A302A
+
+    &__calendar_wrapper,
+    &__guests,
+    &__button
+      width: 100%
 
     &__button
       .button
+        width: 100%
+
+.block_banner + .block--search
+  width: max-content
+  justify-content: center
+  align-items: center
+  margin: -64px auto var(--g-container-vertical)
+  background: #fff
+  border-radius: var(--border-corner)
+  box-shadow: 0px 4px 16px 0px #00000014, 0px 0px 2px 0px #00000014
+  position: relative
+  z-index: 5
+
+  .booking
+    gap: 8px
+    padding: 6px
+    @media(min-width: 769px)
+      flex-direction: row
+      gap: 4px
+      padding: 8px
+
+    &__inputs
+      width: auto
+      flex-direction: row
+      align-items: center
+      gap: 6px
+      padding: 0 var(--g-s)
+      border-radius: 50px
+    &__input
+      &_title
+        display: none
+    &__calendar
+      width: max-content
+      flex: none
+      border-bottom: none
+      &--item
+        flex: none
+        width: max-content
+      &-item
+        width: 10ch
+        min-width: 10ch
+        field-sizing: content
+    &__guests-input
+      border-bottom: none
+    &__calendar_wrapper,
+    &__guests,
+    &__button
+      width: auto
+    &__guests
+      padding: 0 var(--g-xxs)
+    &__button
+      .button
+        width: auto
         @media(max-width: 768px)
           width: 100%
 
-.block_banner + .block--search
-  position: relative
-  z-index: 5
-  margin: -64px auto var(--g-container-vertical)
   @media(min-width: 769px)
     margin: 0
     position: absolute

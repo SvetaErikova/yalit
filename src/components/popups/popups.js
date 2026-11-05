@@ -44,6 +44,27 @@ PopupManager.register(
     },
   },
 );
+PopupManager.register('popup_for_room_advantages',
+  {
+    is_block_scroll: true,
+    close_controls: true,
+  },
+  {
+    on_open: (popup_element, params) => {
+
+      let block_to_clone = params.block;
+      let block_content = block_to_clone.cloneNode(true);
+      popup_element.querySelector('.popup__content').append(block_content);
+
+    },
+    on_close: (popup_element, params) => {
+      setTimeout(() => {
+        popup_element.querySelector('.accommodation--info').remove()
+      }, 100)
+    }
+
+  }
+);
 
 // PopupManager.register(
 //   "popup_for_menu",

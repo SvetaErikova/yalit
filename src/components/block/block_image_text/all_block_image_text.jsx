@@ -56,7 +56,7 @@ export const All_block_image_text = () => {
       />
       <Block_image_text
         decor
-        className="-green"
+        className="-theme-green"
         images={[
           { src: '../../assets/img/1.jpg' },
         ]}
@@ -130,35 +130,35 @@ export const All_block_image_text = () => {
 
       {/*Цветовые темы*/}
       <Block_image_text
-        className={'-dark'}
+        className={'-theme-dark'}
         images={[
           { src: '../../assets/img/1.jpg' },
         ]}
-        title={demoHead('dark')}
+        title={demoHead('-theme-dark')}
         content={demoContent}
       />
       <Block_image_text
-        className={'-accent'}
+        className={'-theme-accent'}
         images={[
           { src: '../../assets/img/1.jpg' },
         ]}
-        title={demoHead('-accent')}
+        title={demoHead('-theme-accent')}
         content={demoContent}
       />
       <Block_image_text
-        className={'-green'}
+        className={'-theme-green'}
         images={[
           { src: '../../assets/img/1.jpg' },
         ]}
-        title={demoHead('-green')}
+        title={demoHead('-theme-green')}
         content={demoContent}
       />
       <Block_image_text
-        className={'-primary'}
+        className={'-theme-primary'}
         images={[
           { src: '../../assets/img/1.jpg' },
         ]}
-        title={demoHead('-primary')}
+        title={demoHead('-theme-primary')}
         content={demoContent}
       />
 

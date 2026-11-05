@@ -11,7 +11,7 @@ export const Booking = ({className=''}) => {
               даты
             </div>
             <label className="booking__calendar">
-              <span className='icon-calendar'></span>
+
               <div className="booking__calendar--item">
 
                 <input className="booking__calendar-item" id="checkin" placeholder="" />
@@ -21,7 +21,7 @@ export const Booking = ({className=''}) => {
 
                 <input className="booking__calendar-item" id="checkout" placeholder="" />
               </div>
-
+              <span className='icon-ic-calendar'></span>
             </label>
           </div>
 
@@ -31,24 +31,23 @@ export const Booking = ({className=''}) => {
             </div>
 
             <div className="booking__guests-input">
-              <span className="icon-user"></span>
               <span id="booking__guests_input">2 взрослых</span>
             </div>
             <div className="booking__guests-popover">
               <div className="booking__guests-popover-item">
                 <span>Взрослые:</span>
                 <div className="booking__guests-popover-input js-quantity_input">
-                  <Button className="js-decrement" type={'filled'} color={'secondary'} icon={'icon-minus'} size={'s'} />
+                  <Button className="js-decrement" type={'outlined'}  icon={'icon-ic-minus'} size={'s'} />
                   <input className="booking__guests-popover-input-number" data-adults="" type="number" placeholder="0" defaultValue="2" inputMode="numeric" />
-                  <Button className="js-increment" type={'filled'} color={'secondary'} icon={'icon-plus'} size={'s'} />
+                  <Button className="js-increment" type={'outlined'}  icon={'icon-ic-plus'} size={'s'} />
                 </div>
               </div>
               <div className="booking__guests-popover-item">
                 <span>Дети младше 12 лет:</span>
                 <div className="booking__guests-popover-input js-quantity_input">
-                  <Button className="js-decrement" type={'filled'} color={'secondary'} icon={'icon-minus'} size={'s'} />
+                  <Button className="js-decrement" type={'outlined'}  icon={'icon-ic-minus'} size={'s'} />
                   <input className="booking__guests-popover-input-number" data-children="" type="number" placeholder="0" defaultValue="0" inputMode="numeric" />
-                  <Button className="js-increment" type={'filled'} color={'secondary'} icon={'icon-plus'} size={'s'} />
+                  <Button className="js-increment" type={'outlined'}  icon={'icon-ic-plus'} size={'s'} />
                 </div>
                 <div className="booking__guests-popover-children is_hidden">
                   <span>Укажите возраст:</span>
@@ -77,7 +76,7 @@ export const Booking = ({className=''}) => {
                 </div>
               </div>
               <div className="booking__guests-popover-button">
-                <Button className=" js-guests_submit" type={'filled'} color={'secondary'}>
+                <Button className=" js-guests_submit" type={'filled-primary'}>
                   <span>Применить</span>
                 </Button>
               </div>
@@ -86,7 +85,7 @@ export const Booking = ({className=''}) => {
         </div>
         <div className="booking__button">
           <Button type={'filled-accent'} className="js-guests_submit">
-            Найти номера
+            Забронировать
           </Button>
         </div>
       </div>

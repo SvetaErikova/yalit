@@ -1,0 +1,52 @@
+.about-media
+  --about-media-width: clamp(260px, calc(260px + (504 - 260) * ((100vw - 768px) / (1440 - 768))), 504px)
+  position: relative
+  margin: calc(var(--about-media-width) * 561 / 421 / -2) 0 0
+  z-index: 2
+  &:after
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: var(--bg-primary)
+    mask: radial-gradient(80% 100% at 50% -50%, #0000 99.2%, #000 99.4%)
+  .block--wrapper
+    display: flex
+    justify-content: center
+  .block--content
+    position: relative
+    max-width: var(--about-media-width)
+    aspect-ratio: 421 / 561
+    img
+      object-fit: cover
+      position: relative
+      z-index: 2
+      mask-image: url("/assets/img/decor/mask-offer.svg")
+      mask-repeat: no-repeat
+      mask-position: center
+      mask-size: 100% 100%
+      mask-mode: alpha
+    &:after
+      content: ""
+      position: absolute
+      top: 50%
+      left: 50%
+      translate: -50% -50%
+      width: calc(100% + 30px)
+      height: calc(100% + 30px)
+      aspect-ratio: 421 / 561
+      mask-image: url("/assets/img/decor/mask-offer.svg")
+      mask-repeat: no-repeat
+      mask-position: center
+      mask-size: 100% 100%
+      mask-mode: alpha
+      background: var(--surface-quaternary)
+      z-index: 1
+    .button
+      position: absolute
+      translate: -50% 0
+      left: 50%
+      bottom: var(--g-xl)
+      z-index: 2

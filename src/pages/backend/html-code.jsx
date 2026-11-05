@@ -1,19 +1,20 @@
 import { metaPages } from '../../shared/meta-pages';
 import HeroLayoutWithBreadcrumbs from '../../layouts/HeroLayoutWithBreadcrumbs.jsx';
-import { Tariffs } from '../../components/content/tarifs/tarifs.jsx';
-import { Faq } from '../../components/content/faq/faq.jsx';
-import { Accommodation } from '../../components/content/accomodation/accommodation.jsx';
+
+import { InfoClip } from '../../components/content/custom/info-clip/info-clip-comp.jsx';
+import { HotelGroupComp } from '../../components/content/custom/hotel-group/hotel-group-comp.jsx';
+import { AboutMedia } from '../../components/content/custom/about-media/about-media.jsx';
+import { InfoMedia } from '../../components/content/custom/info-media/info-media.jsx';
 
 export default function Home() {
 
   return (
     <HeroLayoutWithBreadcrumbs meta={metaPages.home}>
-      <Accommodation></Accommodation>
-      <Tariffs/>
-      {/*Faq С картинкой*/}
-      <Faq image={true}></Faq>
-      {/*Faq ез картинки */}
-      <Faq image={false}></Faq>
+
+      <AboutMedia theme={'accent'}></AboutMedia>
+      <InfoMedia></InfoMedia>
+      <InfoClip></InfoClip>
+      <HotelGroupComp></HotelGroupComp>
     </HeroLayoutWithBreadcrumbs>
   );
 }

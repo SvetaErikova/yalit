@@ -1,0 +1,44 @@
+.block_image_text-decor,
+.accommodation_sidebar--sticky
+  --decor-size: clamp(64px, calc(64px + (128 - 64) * ((100vw - 768px) / (1440 - 768))), 128px)
+  --decor-line: clamp(22px, calc(22px + (44 - 22) * ((100vw - 768px) / (1440 - 768))), 44px)
+
+.decor
+  position: absolute
+  inset: 0
+  display: grid
+  grid-template-columns: var(--decor-size) minmax(0, 1fr) var(--decor-size)
+  grid-template-rows: var(--decor-size) minmax(0, 1fr) var(--decor-size)
+  pointer-events: none
+  &--corner
+    background-color: var(--line-accent)
+    mask-image: url("/assets/img/decor/decor-corner.svg")
+    mask-repeat: no-repeat
+    mask-position: center
+    mask-size: 100% 100%
+    mask-mode: alpha
+    transform: scale(-1)
+    &.-flip-x
+      transform: scaleY(-1)
+    &.-flip-y
+      transform: scaleX(-1)
+    &.-flip-xy
+      transform: scale(1)
+  &--line
+    background-color: var(--line-accent)
+    &.-x
+      height: 1px
+      align-self: start
+      margin-top: var(--decor-line)
+      &.-end
+        align-self: end
+        margin-top: 0
+        margin-bottom: var(--decor-line)
+    &.-y
+      width: 1px
+      justify-self: start
+      margin-left: var(--decor-line)
+      &.-end
+        justify-self: end
+        margin-left: 0
+        margin-right: var(--decor-line)

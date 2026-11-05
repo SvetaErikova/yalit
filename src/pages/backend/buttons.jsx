@@ -16,7 +16,7 @@ export default function Home() {
             <Button  type="flat">neutral flat</Button>
           </div>
         </div>
-        <div className="block--wrapper -dark" style={{ padding: "2em", background: "var(--bg-primary)" }}>
+        <div className="block--wrapper -theme-dark" style={{ padding: "2em", background: "var(--bg-primary)" }}>
           <div className="ui_grid-5">
             <Button  type="filled-primary"> filled-primary</Button>
             <Button  type="filled-secondary"> filled-secondary</Button>
@@ -25,7 +25,7 @@ export default function Home() {
             <Button  type="flat">neutral flat</Button>
           </div>
         </div>
-        <div className="block--wrapper -green" style={{ padding: "2em", background: "var(--bg-primary)" }}>
+        <div className="block--wrapper -theme-green" style={{ padding: "2em", background: "var(--bg-primary)" }}>
           <div className="ui_grid-5">
             <Button  type="filled-primary"> filled-primary</Button>
             <Button  type="filled-secondary"> filled-secondary</Button>
@@ -34,7 +34,7 @@ export default function Home() {
             <Button  type="flat">neutral flat</Button>
           </div>
         </div>
-        <div className="block--wrapper -accent" style={{ padding: "2em", background: "var(--bg-primary)" }}>
+        <div className="block--wrapper -theme-accent" style={{ padding: "2em", background: "var(--bg-primary)" }}>
           <div className="ui_grid-5">
             <Button  type="filled-primary"> filled-primary</Button>
             <Button  type="filled-secondary"> filled-secondary</Button>
@@ -43,7 +43,7 @@ export default function Home() {
             <Button  type="flat">neutral flat</Button>
           </div>
         </div>
-        <div className="block--wrapper -fixed" style={{ padding: "2em", background: "rgba(0, 0, 0, 0.6)" }}>
+        <div className="block--wrapper -theme-fixed" style={{ padding: "2em", background: "rgba(0, 0, 0, 0.6)" }}>
           <div className="ui_grid-5">
             <Button  type="filled-primary"> filled-primary</Button>
             <Button  type="filled-secondary"> filled-secondary</Button>

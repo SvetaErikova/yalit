@@ -1,55 +1,81 @@
 import { Block } from '../../block/block.jsx';
 import { Gallery } from '../../gallery/gallery-comp.jsx';
 import { Button } from '../../_ui/button/button.jsx';
+import { Block_List } from '../../block/block_list/block_list.jsx';
+import { Block_Head } from '../../block/_ui/block--head/block--head.jsx';
+import { All_card_default } from '../../_ui/card/all_card.jsx';
+import { Booking } from '../../booking/booking-comp.jsx';
+import { Decor } from '../custom/decor/decor.jsx';
 
 export const AccommodationDetails = () =>{
   return (
     <Block className={'block-detail content_accommodation'}>
      <div class={'accommodation_content is_cascade'}>
-       <Gallery
-         isSlider={true}
-         images={[
-           {src: '../../assets/img/1.jpg'},
-           {src: '../../assets/img/2.jpg'},
-           {src: '../../assets/img/4.jpg', video: '../../assets/video/@lepragram.mp4'},
-         ]}
-       ></Gallery>
-       <p>В интерьере виллы искусно сочетаются различные стили — от современной классики до хай-тека.</p>
-       <p>Пространство разделено на уровни и зоны, а концептуальный дизайн каждого помещения оптимально соответствует своему предназначению.</p>
-       <p>Мрамор, дерево, насыщенные акценты и сложные элементы декора создают в гостиной роскошную атмосферу. Технологичная кухня восхищает функциональностью. В элегантных светлых спальнях уютно и тихо — ничто не помешает вашему отдыху.</p>
-       <p>Персональный батлер позаботится о всех деталях вашего отдыха, предугадывая ваши желания и оставаясь незаметным, чтобы вы могли наслаждаться каждым мгновением. Система «Умный дом» создаст идеальные условия для пребывания на вилле.</p>
-       <p>Мрия СПА с финской сауной, зоной отдыха с джакузи, хамамом и тренажерным залом выполнен из природных и современных материалов.
-         На обширной территории виллы терраса с шезлонгами, частный бассейн и личный выход в Японский сад.
-         Панорамные окна президентской виллы покажут вам вид на Черное Море и горы Крыма. </p>
-       <p>Почему бы вам не насладиться красочным закатом прямо из гостиной или террасы вашей президентской виллы?</p>
+      <h2>О номере</h2>
+       <div className="info-card">
+         <div className="item">
+           <span className="icon-ic-search"></span>
+           <p>25-32 м2</p>
+         </div>
+         <div className="item">
+           <span className="icon-ic-search"></span>
+           <p>25-32 м2</p>
+         </div>
+         <div className="item">
+           <span className="icon-ic-search"></span>
+           <p>25-32 м2</p>
+         </div>
+       </div>
+       <p>Стандартный номер, вид из которого открывается на город, во внутренний двор отеля или на соседнее прилегающее здание. Для вас: Wi-Fi, система кондиционирования, Яндекс ТВ. Для комфортного отдыха двуспальная кровать с ортопедическим матрасом и гипоаллергенным бельём. Рабочая зона с чайной станцией, мини-баром, бутилированной водой и сейфом. В ванной комнате тропический душ, комплектация: халаты, тапочки, косметический набор и на выбор косметика Lucio Classic и Lucio Amber Wood.</p>
+       <h3>Оснащение номера</h3>
+       <div className="accommodation--info">
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+         <div className="accommodation--info_item">
+           <span className="icon-user"></span>
+           <span>Бесплатный завтрак</span>
+         </div>
+       </div>
+       <Button type={'filled-primary'} popup={'popup_for_room_advantages'}>Смотреть все</Button>
+
+       <div class="block_list content_cards">
+         <div class="block--elements">
+           <All_card_default></All_card_default>
+         </div>
+       </div>
+
      </div>
      <div class={'accommodation_sidebar'}>
        <div className="accommodation_sidebar--sticky">
-         <div className="list-table">
-           <div className="item">
-             <p>площадь</p>
-             <span>618  м2</span>
-           </div>
-           <div className="item">
-             <p>вместительность</p>
-             <span>До 8‑ми человек (также можно разместить до 4‑х детей до 3‑х лет включительно)</span>
-           </div>
-           <div className="item">
-             <p>Тип питания</p>
-             <span>Определяется в зависимости от тарифа</span>
-           </div>
-           <div className="item">
-             <p>Вид из окна</p>
-             <span>Море/горы</span>
-           </div>
-           <div className="item">
-             <p>Удобства</p>
-             <span>весь список</span>
-           </div>
-         </div>
-         <div className="block--actions">
-           <Button type={'filled-primary'} icon={'icon-ic-uniq-arrow-right'}>забронировать</Button>
-         </div>
+         <Decor />
+        <div class="price">
+          <p>от 25 000 Р</p>
+          <span>За ночь</span>
+        </div>
+         <Booking></Booking>
+
        </div>
      </div>
     </Block>

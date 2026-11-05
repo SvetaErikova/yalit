@@ -6,7 +6,7 @@ import { Button } from '../../../_ui/button/button.jsx';
 
 export const HotelGroupComp = () => {
   return<>
-      <section class={'block hotel-group  -accent '}>
+      <section class={'block hotel-group -theme-accent'}>
         <div class="block--wrapper ">
           <div class="block--top">
             <Block_Head title={'Группа отелей ЯЛИТ'} caption={'Это новая глава в истории казанского гостеприимства.\n' +

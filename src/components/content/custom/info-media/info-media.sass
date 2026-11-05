@@ -1,0 +1,56 @@
+.info-media
+  background: var(--bg-primary)
+  margin: 0
+  .block--wrapper
+    position: relative
+    overflow: hidden
+
+    @media (min-width: 1241px)
+      padding: 0
+  .block--content
+
+    padding: var(--g-container-vertical) 0
+    @media (min-width: 1241px)
+      max-width: clamp(480px, calc(480px + (760 - 480) * ((100vw - 1240px) / (1440 - 1240))), 760px)
+      margin: 0 auto
+  .block--head
+    text-align: center
+  .is_cascade
+    padding: var(--g-m) 0
+  .button
+    margin: 0 auto
+  .block--media
+    display: flex
+    justify-content: space-between
+    align-items: stretch
+    img
+      mask-image: url("/assets/img/decor/mask-offer.svg")
+      mask-repeat: no-repeat
+      mask-position: center
+      mask-size: 100% 100%
+      mask-mode: alpha
+      object-fit: cover
+      width: stretch
+      height: 100%
+
+      &:first-child
+        transform: translateX(0)
+
+      &:last-child
+        transform: translateX(0)
+
+      @media (min-width: 1241px)
+        position: absolute
+        top: 0
+        bottom: 0
+
+        &:first-child
+          left: 0
+          transform: translateX(-50%)
+
+        &:last-child
+          left: auto
+          right: 0
+          transform: translateX(50%)
+      @media (max-width: 1240px)
+        max-width: 40vw

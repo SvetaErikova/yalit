@@ -1,5 +1,6 @@
 import { Accordion_full } from '../accordion/accordion-full.jsx';
 import { Gallery } from '../../gallery/gallery-comp.jsx';
+import { Button } from '../button/button.jsx';
 
 export const Is_cascade_full = () => {
   return (
@@ -150,6 +151,38 @@ export const Is_cascade_full = () => {
         </div>
 
       </div>
+      <h3>Оснащение номера</h3>
+      <div className="accommodation--info">
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+        <div className="accommodation--info_item">
+          <span className="icon-user"></span>
+          <span>Бесплатный завтрак</span>
+        </div>
+      </div>
+      <Button type={'filled-primary'} popup={'popup_for_room_advantages'}>Смотреть все</Button>
       <Accordion_full />
       <Gallery
         isSlider={true}

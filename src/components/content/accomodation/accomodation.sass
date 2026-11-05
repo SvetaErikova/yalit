@@ -2,24 +2,34 @@
   .block--wrapper
     display: flex
     flex-direction: column
-    gap: 16px
-    @media(min-width: 769px)
+    gap: 32px
+    @media(min-width: 1025px)
       display: grid
       grid-template-columns: repeat(2, 1fr)
-  .accommodation_content
-    @media(min-width: 769px)
-      margin-right: var(--g-m)
+      gap: 24px
+    .accommodation_content
+
   .accommodation_sidebar
     height: 100%
     &--sticky
-      @media(min-width: 769px)
-        top: calc(var(--headerHeight) + 16px)
+      position: relative
+      display: flex
+      flex-direction: column
+      gap: 32px
+      padding: calc(var(--decor-size) * 95 / 128 + var(--g-16))
+      @media(min-width: 1025px)
+        top: calc(var(--headerHeight) + 42px)
         position: sticky
-    .block--actions
-      margin-top: var(--g-s)
-      .button
-        width: 100%
-        justify-content: space-between
-    .list-table
-      .item span
-        text-align: left
+
+    .price
+      p
+        font-size: var(--fs-heading-2)
+        font-family: var(--ff-title)
+      span
+        color: var(--text-accent-heavy)
+        font-size: var(--cascade-context-fs-paragraph)
+    .booking
+      gap: 32px
+      &__button
+        .button
+          justify-content: center

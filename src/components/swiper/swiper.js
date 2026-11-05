@@ -159,7 +159,6 @@ let activateGallerySliders = (gallery) => {
     return;
   }
   const content_gallery = gallery.closest('.content_gallery');
-  const isFestivalGallery = Boolean(gallery.closest('.page-fest'));
 
   let controlsSet;
   if (content_gallery) {
@@ -183,28 +182,20 @@ let activateGallerySliders = (gallery) => {
         type: 'bullets',
         clickable: true,
       };
-  const breakpoints = isFestivalGallery
-    ? {
-        220: { slidesPerView: 1 },
-        640: { slidesPerView: 2.2 },
-        768: { slidesPerView: 3 },
-        1240: { slidesPerView: 4 },
-      }
-    : {
-      220: { spaceBetween: 8 },
-      768: { spaceBetween: 16 },
-      1240: { spaceBetween: 32 },
+  const breakpoints =  {
+      220: { spaceBetween: 8, slidesPerView: 1.2 },
+      768: { spaceBetween: 16, slidesPerView: 2 },
+      1240: { spaceBetween: 32, slidesPerView: 3 },
     };
 
   const swiperOptions = withNavigationAndPagination(
     {
       slideClass: 'gallery--item',
-      slidesPerView: isFestivalGallery ? 1 : content_gallery ? 1.3 : 1,
+      slidesPerView: 1.2,
       spaceBetween: 8,
       freeMode: false,
       // loop: content_gallery ? false : true,
       loop: true,
-      centeredSlides: isFestivalGallery ? false : true,
       grabCursor: true,
       navigation: true,
       pagination: paginationConfig,
