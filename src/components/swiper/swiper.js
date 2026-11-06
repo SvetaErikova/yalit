@@ -97,15 +97,16 @@ const activateBlocklistSlider = (swiper_item) => {
     break;
   case swiper_item.classList.contains('content_accommodation'):
     slides_per_view_desktop = 3;
-    slides_per_view_desktop_small = 3;
+    slides_per_view_desktop_small = 2;
     slides_per_view_pad = 1.5;
     slides_per_view_mob = 1;
     break;
-  case swiper_item.classList.contains('content_galleries'):
-    slides_per_view_desktop = 4;
-    slides_per_view_desktop_small = 3;
-    slides_per_view_pad = 1.5;
-    slides_per_view_mob = 1;
+  case swiper_item.classList.contains('content_gallery'):
+    slides_per_view_desktop = 3;
+    slides_per_view_desktop_small = 2;
+    slides_per_view_pad = 1.2;
+    slides_per_view_mob = 1.2;
+    space_between = 8;
     break;
 
 
@@ -119,6 +120,7 @@ const activateBlocklistSlider = (swiper_item) => {
 
   const { controls, prev, next } = buildControls({ pagination: false });
   const blockElements = swiper_item.querySelector('.block--elements');
+  const gallerySlider = swiper_item.classList.contains('content_gallery');
 
   blockElements.append(controls);
 
@@ -134,13 +136,13 @@ const activateBlocklistSlider = (swiper_item) => {
         thumbs: false,
         watchOverflow: true,
         pagination: false,
-        autoHeight: false,
+        // autoHeight: false,
         centeredSlides: slides_centered,
         breakpoints: {
-          220: { slidesPerView: slides_per_view_mob },
-          640: { slidesPerView: slides_per_view_pad },
-          768: { slidesPerView: slides_per_view_desktop_small },
-          1240: { slidesPerView: slides_per_view_desktop },
+          220: { slidesPerView: slides_per_view_mob, spaceBetween: gallerySlider ? 8 : space_between },
+          640: { slidesPerView: slides_per_view_pad, spaceBetween: gallerySlider ? 8 : space_between },
+          768: { slidesPerView: slides_per_view_desktop_small, spaceBetween: gallerySlider ? 16 : space_between },
+          1240: { slidesPerView: slides_per_view_desktop, spaceBetween: gallerySlider ? 24 : space_between },
         },
       },
       { pagination: false, prev, next },
@@ -214,16 +216,6 @@ galleries.forEach((gallery) => {
 
 const isCardImageMobile = () => window.matchMedia('(max-width: 1023px)').matches;
 
-function limitCardImages(cards) {
-  const maxIndex = cards.length > 10 && isCardImageMobile() ? 0 : 4;
-  if (cards.length > 10 && !isCardImageMobile()) return;
-
-  cards.forEach((card) => {
-    card.querySelectorAll('.card__image_slide').forEach((mediaElement, index) => {
-      if (index > maxIndex) mediaElement.remove();
-    });
-  });
-}
 
 function initRoomCardsImages(card) {
   const slider = card.querySelector('.card--image');
@@ -248,20 +240,20 @@ function initRoomCardsImages(card) {
   };
   let sliderNavigation = false;
 
-  if (isDesktop) {
-    const swiperNavPrev = document.createElement('div');
-    swiperNavPrev.classList.add('card_swiper-button-prev');
-    sliderControls.prepend(swiperNavPrev);
-
-    const swiperNavNext = document.createElement('div');
-    swiperNavNext.classList.add('card_swiper-button-next');
-    sliderControls.append(swiperNavNext);
-
-    sliderNavigation = {
-      nextEl: swiperNavNext,
-      prevEl: swiperNavPrev,
-    };
-  }
+  // if (isDesktop) {
+  //   const swiperNavPrev = document.createElement('div');
+  //   swiperNavPrev.classList.add('card_swiper-button-prev');
+  //   sliderControls.prepend(swiperNavPrev);
+  //
+  //   const swiperNavNext = document.createElement('div');
+  //   swiperNavNext.classList.add('card_swiper-button-next');
+  //   sliderControls.append(swiperNavNext);
+  //
+  //   sliderNavigation = {
+  //     nextEl: swiperNavNext,
+  //     prevEl: swiperNavPrev,
+  //   };
+  // }
 
   const cardRoomSlider = new Swiper(slider, {
     createElements: true,
@@ -311,7 +303,6 @@ function initRoomCardsImages(card) {
 
 ['.content_accommodation .card', '.content_rooms .card'].forEach((selector) => {
   const cards = document.querySelectorAll(selector);
-  limitCardImages(cards);
   cards.forEach((card) => {
     initRoomCardsImages(card);
   });

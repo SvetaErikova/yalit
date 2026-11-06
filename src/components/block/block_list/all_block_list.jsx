@@ -15,6 +15,9 @@ export const All_block_list = () => {
     { label: 'Все' },
     { label: 'Номера' },
     { label: 'Рестораны и бары' },
+    { label: 'Рестораны и бары' },
+    { label: 'Рестораны и бары' },
+    { label: 'Рестораны и бары' },
     { label: 'Spa и бассейны' },
   ];
   return (
@@ -334,33 +337,35 @@ export const All_block_list = () => {
           link={'/'}
         />
       </Block_List>
-      {/*Карточки категорий*/}
+      {/*Галерея*/}
       <Block_List
-        className={'content_galleries'}
+        className={'content_gallery'}
+        link={true}
         title={
           <Block_Head
             title={'Галерея карточки'}
-            subtitle={'content_galleries'}
+            subtitle={'content_gallery'}
             caption={'Галерея грид '}
             headingLevel={2}
           ></Block_Head>
         }
       >
-        <All_card_galleries></All_card_galleries>
+        <All_card_galleries group={'gallery-grid'}></All_card_galleries>
       </Block_List>
       <Block_List
-        className={'content_galleries'}
+        className={'content_gallery -theme-dark'}
+        link={true}
         slider={true}
         title={
           <Block_Head
             title={'Галерея карточки'}
-            subtitle={'content_galleries'}
+            subtitle={'content_gallery'}
             caption={'Галерея слайдер '}
             headingLevel={2}
           ></Block_Head>
         }
       >
-        <All_card_galleries></All_card_galleries>
+        <All_card_galleries group={'gallery-slider'}></All_card_galleries>
       </Block_List>
     </>
   );

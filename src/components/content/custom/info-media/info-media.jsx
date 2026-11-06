@@ -4,7 +4,7 @@ import { Button } from '../../../_ui/button/button.jsx';
 
 export const InfoMedia = ({theme}) => {
   return(
-    <Block className={'info-media -theme-accent'}>
+    <Block className={'info-media -theme-neutral'}>
       <div class="block--content">
         <Block_Head title={'Попробуйте всё'}></Block_Head>
         <div class="is_cascade">

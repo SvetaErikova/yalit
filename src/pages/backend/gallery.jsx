@@ -3,104 +3,60 @@ import { metaPages } from "../../shared/meta-pages";
 import { GalleryFull } from '../../components/gallery/galleryFull.jsx';
 import { Block_Head } from '../../components/block/_ui/block--head/block--head.jsx';
 
-export default function Home() {
-  const defaultImages = [
-    { src: "/assets/img/1.jpg" },
-    { video: "/assets/video/@lepragram.mp4", poster: "/assets/img/1.jpg" },
-    { src: "/assets/img/1.jpg" },
-    { src: "/assets/img/1.jpg" },
-  ];
-  const imagesWithCaption = [
-    { src: "/assets/img/1.jpg", text: "Подпись поверх изображения" },
-    { src: "/assets/img/1.jpg" },
-    { src: "/assets/img/1.jpg" },
-  ];
+const card = (title) => ({
+  title,
+  images: [
+    { src: '/assets/img/1.jpg' },
+    { src: '/assets/img/2.jpg' },
+    { src: '/assets/img/1.jpg' },
+  ],
+});
 
+export default function Home() {
   return (
     <HeroLayoutWithBreadcrumbs meta={metaPages.home}>
       <GalleryFull
         title={
           <Block_Head
-            title="2 картинки"
-            subtitle="Галерея"
+            title="Фотогалерея"
             headingLevel={2}
           />
         }
-        images={[{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" }]}
-        isSlider={false}
-        group="gallery-grid-triple"
-        showSelection={false}
+        galleries={[
+          {
+            title: 'Номера',
+            group: 'gallery-rooms',
+            cards: [
+              card('Номер первой категории с видом на сад'),
+              card('Номер первой категории с видом на Волгу'),
+              card('Номер первой категории с двумя кроватями с видом на сад'),
+              card('Джуниор сюит с видом на сад'),
+              card('Номер первой категории с видом на Волгу'),
+              card('Люкс с панорамным видом на Волгу'),
+              card('Номер первой категории с видом на сад'),
+              card('Джуниор сюит с видом на сад'),
+            ],
+          },
+          {
+            title: 'Рестораны',
+            group: 'gallery-restaurants',
+            cards: [
+              card('Основной ресторан'),
+              card('Ресторан «Буффет»'),
+            ],
+          },
+          {
+            title: 'Развлечения',
+            group: 'gallery-entertainment',
+            cards: [
+              card('Бильярдная комната'),
+              card('Детская комната'),
+              card('Караоке-бар'),
+              card('Игровой зал виртуальной реальности'),
+            ],
+          },
+        ]}
       />
-      <GalleryFull
-        title={
-          <Block_Head
-            title="3 картинки"
-            subtitle="Галерея"
-            caption="isSlider=false, col=3"
-            headingLevel={2}
-          />
-        }
-        images={[{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" }]}
-        isSlider={false}
-        group="gallery-grid-triple"
-        showSelection={false}
-      />
-      <GalleryFull
-        title={
-          <Block_Head
-            title="4 картинки"
-            subtitle="Галерея"
-            headingLevel={2}
-          />
-        }
-        images={[{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" }]}
-        isSlider={false}
-        group="gallery-grid-triple"
-        showSelection={false}
-      />
-      <GalleryFull
-        title={
-          <Block_Head
-            title="5 картинки"
-            subtitle="Галерея"
-            headingLevel={2}
-          />
-        }
-        images={[{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },]}
-        isSlider={false}
-        group="gallery-grid-triple"
-        showSelection={false}
-      />
-      <GalleryFull
-        title={
-          <Block_Head
-            title="больше 5 картинок"
-            subtitle="Галерея"
-            headingLevel={2}
-          />
-        }
-        images={[{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },{ src: "/assets/img/1.jpg" },]}
-        isSlider={false}
-        showSelection={false}
-        buttonMore={true}
-        group={'gallery-more'}
-      />
-
-      <GalleryFull
-        link={true}
-        title={
-          <Block_Head
-            title="Слайдер с одной картинкой"
-            subtitle="Галерея"
-            headingLevel={2}
-          />
-        }
-        images={defaultImages}
-        isSlider={true}
-        showSelection={false}
-
-      />
-
     </HeroLayoutWithBreadcrumbs>
   );
 }

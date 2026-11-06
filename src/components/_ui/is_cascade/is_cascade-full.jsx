@@ -151,6 +151,37 @@ export const Is_cascade_full = () => {
         </div>
 
       </div>
+
+      <div className="advantages-cards">
+        <div className="card">
+          <div className="card--image">
+            <img src="/assets/img/1.jpg" alt="" />
+          </div>
+          <div className="card--content">
+            <div className="card--title"> Посещение спа-зоны</div>
+            <Button type={'filled-secondary'} icon={'icon-ic-eye'}></Button>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card--image">
+            <img src="/assets/img/1.jpg" alt="" />
+          </div>
+          <div className="card--content">
+            <div className="card--title"> Посещение спа-зоны</div>
+            <Button type={'filled-secondary'} icon={'icon-ic-eye'}></Button>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card--image">
+            <img src="/assets/img/1.jpg" alt="" />
+          </div>
+          <div className="card--content">
+            <div className="card--title"> Посещение спа-зоны</div>
+            <Button type={'filled-secondary'} icon={'icon-ic-eye'}></Button>
+          </div>
+        </div>
+      </div>
+
       <h3>Оснащение номера</h3>
       <div className="accommodation--info">
         <div className="accommodation--info_item">

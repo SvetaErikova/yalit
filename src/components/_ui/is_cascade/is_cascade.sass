@@ -205,25 +205,27 @@
     object-position: center
     object-fit: cover
 .accommodation--info
+  display: flex
+  flex-direction: column
   @media (min-width: 769px)
     display: grid
     grid-template-columns: 1fr 1fr
-    gap: 16px
-    &_item
-      font-size: var(--fs-body-1)
-      padding: 20px 0
-      border-bottom: 1px solid var(--line-accent-heavy-secondary)
-      @media (min-width: 769px)
-        &:nth-child(5),
-        &:nth-child(6)
-          border-bottom: none
-        &:nth-child(n+ 7)
-          display: none
-      @media (max-width: 768px)
-        &:nth-child(3)
-          border-bottom: none
-        &:nth-child(n+ 4)
-          display: none
+    gap: 0 16px
+  &_item
+    font-size: var(--fs-body-1)
+    padding: 20px 0
+    border-bottom: 1px solid var(--line-accent-heavy-secondary)
+    @media (min-width: 769px)
+      &:nth-child(5),
+      &:nth-child(6)
+        border-bottom: none
+      &:nth-child(n+ 7)
+        display: none
+    @media (max-width: 768px)
+      &:nth-child(3)
+        border-bottom: none
+      &:nth-child(n+ 4)
+        display: none
 
 .blockquote
   margin: 16px 0
@@ -243,7 +245,42 @@
       font-size: var(--caption-xl)
       color: var(--color-text-basic-main-3)
 
+.advantages-cards
+  display: flex
+  flex-direction: column
+  gap: 8px
+  @media(min-width: 675px)
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+  @media(min-width: 999px)
+    grid-template-columns: repeat(3, 1fr)
 
+  .card
+    position: relative
+    &--content
+      position: absolute
+      flex-direction: column-reverse
+      justify-content: space-between
+      inset: 0
+      padding: 16px
+    &--image
+      aspect-ratio: 1/1
+      height: 100%
+      img
+        height: 100%
+    &--title
+      font-size: var(--cascade-context-fs-paragraph)
+      text-transform: none
+      color: var(--text-accent-heavy-contrast)
+      text-align: left
+    .button
+      margin-left: auto
+      backdrop-filter: blur(10px)
+      --button-border-color: transparent
+      --btn-bg-secondary-rest: rgba(42, 48, 42, 0.4)
+      --btn-text-secondary-rest: #FEF9F1
+      --btn-bg-secondary-hover: rgba(42, 48, 42, 0.6)
+      --btn-text-secondary-hover: #FFFFFF
 .block--content .is_cascade
   --m-head-top: var(--cascade-responsive-margin-block-lg)
   --m-bottom: var(--cascade-responsive-margin-block-md)

@@ -23,6 +23,8 @@
     display: flex
     justify-content: space-between
     align-items: stretch
+    @media (max-width: 1240px)
+      justify-content: center
     img
       mask-image: url("/assets/img/decor/mask-offer.svg")
       mask-repeat: no-repeat
@@ -32,25 +34,32 @@
       object-fit: cover
       width: stretch
       height: 100%
-
+      aspect-ratio: 345/363
       &:first-child
         transform: translateX(0)
-
       &:last-child
         transform: translateX(0)
-
       @media (min-width: 1241px)
         position: absolute
         top: 0
         bottom: 0
-
+        aspect-ratio: initial
         &:first-child
           left: 0
           transform: translateX(-50%)
-
         &:last-child
           left: auto
           right: 0
           transform: translateX(50%)
       @media (max-width: 1240px)
-        max-width: 40vw
+        max-width: 50vw
+        &:first-child
+          transform: translateX(-30%)
+        &:last-child
+          transform: translateX(30%)
+      @media (max-width: 768px)
+        max-width: 90vw
+        &:first-child
+          transform: translateX(-10%)
+        &:last-child
+          transform: translateX(10%)

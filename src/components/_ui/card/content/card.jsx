@@ -29,6 +29,7 @@ export const Card = ({
   poster,
   link,
   popup,
+  fancybox,
   labels = [],
   children,
   className,
@@ -65,11 +66,19 @@ export const Card = ({
     </>
   );
 
-  return link ? (
-    <a class={clsx('card', className)} href={link}>
-      {cardContent}
-    </a>
-  ) : (
+  if (link || fancybox) {
+    return (
+      <a
+        class={clsx('card', className)}
+        href={fancybox ? image || link : link}
+        data-fancybox={fancybox || undefined}
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
     <div class={clsx('card', className)} data-openpopup={popup}>
       {cardContent}
     </div>

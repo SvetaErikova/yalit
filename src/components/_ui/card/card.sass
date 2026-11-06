@@ -5,7 +5,6 @@
   flex-direction: column
   position: relative
   width: 100%
-  height: 100%
   transition: none
   //gap: 8px
   border-radius: var(--border-corner)
@@ -64,11 +63,7 @@
     .button
       height: var(--button-height)
 
-  //&:hover
-  //  .button
-  //    --button-bg-color: var(--button-light-outlined-bg-hover)
-  //    --button-border-color: var(--button-light-outlined-bg-rest)
-  //    --button-color: var(--button-light-outlined-text-hover)
+
 
   &--image
     display: flex
@@ -100,8 +95,7 @@
     .icon:after
       content: "\e949"
 
-.content_cards,
-.content_galleries
+.content_cards
   .card
     aspect-ratio: 380/484
     @media(min-width: 769px) and (max-width: 1024px)
@@ -131,27 +125,88 @@
         height: 40%
         pointer-events: none
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0A0A0ACC 100%)
+
+      img
+        transition: scale var(--transition)
     &--action
       position: absolute
       top: 0
       left: auto
       right: 0
-    .button
-      backdrop-filter: blur(10px)
-      --button-border-color: transparent
-      --btn-bg-secondary-rest: rgba(42, 48, 42, 0.4)
-      --btn-text-secondary-rest: #FEF9F1
-      --btn-bg-secondary-hover: rgba(42, 48, 42, 0.6)
-      --btn-text-secondary-hover: #FFFFFF
-.content_galleries
+
+
+.content_gallery
   .card
-    aspect-ratio: 372/279
+    position: relative
+    overflow: hidden
+    width: 100%
+    min-width: 0
+    border-radius: var(--border-corner)
+
+    &--content
+      display: none
+
+    &--image
+      width: 100%
+      aspect-ratio: 920/695
+
+      img, video
+        width: 100%
+        height: 100%
+        object-fit: cover
+        object-position: center
+
+  &.block_list:not(.block_list-slider)
+    .block--elements
+      display: flex
+      flex-direction: column
+      gap: 8px
+      place-items: stretch
+      @media (min-width: 769px)
+        display: grid
+        gap: var(--g-16)
+        grid-template-columns: 6fr 3fr 3fr
+        grid-template-rows: repeat(2, 1fr)
+        &:has(.card:nth-child(2)):not(:has(.card:nth-child(5)))
+          .card:nth-child(2)
+            grid-column: span 2
+
+    .card
+      @media (min-width: 769px)
+        height: 100%
+        min-height: 0
+        transition: var(--transition)
+        &:first-child
+          aspect-ratio: 920/695
+          grid-row: span 2
+        &:last-child:nth-child(2)
+          grid-row: span 2
+        &:last-child:nth-child(3)
+          grid-column: span 2
+        &:nth-child(n + 6)
+          display: none
+        &--image
+          position: absolute
+          inset: 0
+          height: 100%
+          aspect-ratio: auto
+
+  &.block_list-slider
+    .card
+      aspect-ratio: 504/378
+      height: auto
+      &--image
+        position: absolute
+        inset: 0
+        height: 100%
+        aspect-ratio: auto
+
 .content_article,
 .content_services,
 .content_rooms
   &.block_list
     --col: 1
-    @media(min-width: 1025px)
+    @media(min-width: 769px)
       --col: 2
 
   .card
@@ -202,6 +257,29 @@
 
 .content_rooms
   .card
+    &--image
+      .swiper-wrapper
+        width: 100%
+        height: 100%
+
+      .card__image_slide
+        width: 100%
+        min-width: 100%
+        height: 100%
+        min-height: 100%
+        flex-shrink: 0
+        object-fit: cover
+        transition: opacity var(--transition)
+        opacity: 0
+
+      &.swiper
+        .card__image_slide
+          opacity: 0 !important
+
+          &.swiper-slide-active
+            opacity: 1 !important
+            z-index: 1
+
     &--content
       padding: clamp(20px, calc(20px + (32 - 20) * ((100vw - 768px) / (1440 - 768))), 32px) clamp(18px, calc(18px + (32 - 18) * ((100vw - 768px) / (1440 - 768))), 32px)
     &--list
@@ -255,7 +333,7 @@
       margin-top: auto
 
     &--image
-      aspect-ratio: 504/378
+      aspect-ratio: 16/9
 
     &--content
       display: flex
@@ -263,6 +341,7 @@
       padding: 24px 20px
       flex: 1
       gap: clamp(16px, calc(16px + (18 - 16) * ((100vw - 768px) / (1440 - 768))), 18px)
+
       @media(min-width: 640px)
         padding: clamp(28px, calc(28px + (32 - 28) * ((100vw - 1024px) / (1440 - 1024))), 32px)
 
@@ -275,11 +354,12 @@
     &--text
       text-align: center
       font-size: var(--fs-body-1)
-      -webkit-line-clamp: 6
+      -webkit-line-clamp: 3
       grid-row: span 2
       height: max-content
       line-height: 1.5
-
+    &--list:nth-child(n+3)
+      display: none
 .content_offers
   .card--bottom
     gap: 10px
@@ -306,20 +386,26 @@
 .content_accommodation
   .card
     &--image
+      display: grid
       position: relative
 
       .card__image_slide
-        min-width: 100%
+        grid-area: 1 / 1
+        width: 100%
         height: 100%
+        min-width: 100%
         min-height: 100%
+        object-fit: cover
         border-radius: var(--card-image-br)
-        overflow: hidden
         z-index: 0
-        position: relative
 
+        &:not(:first-child)
+          opacity: 0
 
       &.swiper
         .swiper-wrapper
+          grid-area: 1 / 1
+          width: 100%
           height: 100%
 
         .card__image_slide
@@ -378,26 +464,31 @@
 .content_special
   &.block_list
     --col: 1
+
     .block--elements
       gap: 0
+
     &:not(.block_list-slider)
       .card
         padding: 56px 0
-      .card:not(:last-child)
-        border-bottom: 1px solid var(--line-neutral-secondary)
+
+        &:not(:last-child)
+          border-bottom: 1px solid var(--line-neutral-secondary)
+
   .card
     overflow: visible
     border-radius: 0
     background: transparent
-    gap: clamp(32px, calc(32px + (48 - 32) * ((100vw - 768px) / (1440 - 768))), 48px)
+    gap: clamp(32px, calc(32px + 16 * (100vw - 768px) / 672), 48px)
     color: var(--text-primary)
-    @media(min-width: 1025px)
+
+    @media (min-width: 999px)
       display: grid
       grid-template-columns: minmax(240px, 421px) minmax(0, 1fr)
       align-items: center
 
     &:nth-child(even)
-      @media(min-width: 1025px)
+      @media (min-width: 999px)
         grid-template-columns: minmax(0, 1fr) minmax(240px, 421px)
 
         .card--image
@@ -414,59 +505,53 @@
       margin-inline: auto
       overflow: visible
 
-    &--image_bg
-      position: absolute
-      inset: 0
-      width: 100%
-      height: 100%
-      object-fit: fill
-      pointer-events: none
+      &_bg
+        position: absolute
+        inset: 0
+        width: 100%
+        height: 100%
+        object-fit: fill
+        pointer-events: none
 
-    &--image_photo
-      $frame-w: 421
-      $frame-h: 561
-      $photo-w: 377
-      $photo-h: 460
-      $inset: ($frame-w - $photo-w) * 0.5
-      position: absolute
-      z-index: 1
-      left: 50%
-      top: calc(100% * #{$frame-h - $photo-h - $inset} / #{$frame-h})
-      width: calc(100% * #{$photo-w} / #{$frame-w})
-      height: calc(100% * #{$photo-h} / #{$frame-h})
-      aspect-ratio: #{$photo-w} / #{$photo-h}
-      transform: translateX(-50%)
-      object-fit: cover
-      mask-image: url("/assets/img/decor/mask-offer.svg")
-      mask-repeat: no-repeat
-      mask-position: center
-      mask-size: 100% 100%
-      mask-mode: alpha
-      -webkit-mask-image: url("/assets/img/decor/mask-offer.svg")
-      -webkit-mask-repeat: no-repeat
-      -webkit-mask-position: center
-      -webkit-mask-size: 100% 100%
+      &_photo
+        $frame-w: 421
+        $frame-h: 561
+        $photo-w: 377
+        $photo-h: 460
+        $inset: ($frame-w - $photo-w) * 0.5
 
-    &--image_decor
-      position: absolute
-      z-index: 2
-      top: 1%
-      left: 50%
-      width: 70%
-      height: auto
-      transform: translateX(-50%)
-      pointer-events: none
+        position: absolute
+        z-index: 1
+        left: 50%
+        top: calc(100% * #{$frame-h - $photo-h - $inset} / #{$frame-h})
+        width: calc(100% * #{$photo-w} / #{$frame-w})
+        height: calc(100% * #{$photo-h} / #{$frame-h})
+        aspect-ratio: #{$photo-w} / #{$photo-h}
+        transform: translateX(-50%)
+        object-fit: cover
+        mask: url("/assets/img/decor/mask-offer.svg") no-repeat center / 100% 100% alpha
+
+      &_decor
+        position: absolute
+        z-index: 2
+        top: 1%
+        left: 50%
+        width: 70%
+        height: auto
+        transform: translateX(-50%)
+        pointer-events: none
 
     &--content
-      align-items: flex-start
-      gap: clamp(16px, calc(16px + (24 - 16) * ((100vw - 768px) / (1440 - 768))), 24px)
+      display: flex
+      flex-direction: column
+      align-items: center
+      gap: clamp(16px, calc(16px + 8 * (100vw - 768px) / 672), 24px)
       text-align: center
-      @media(min-width: 1025px)
+
+      @media (min-width: 999px)
         justify-content: center
-        align-items: center
         max-width: 776px
         margin: 0 auto
-
 
     &--title
       font-family: var(--ff-title)
@@ -483,8 +568,8 @@
       -webkit-line-clamp: unset
 
     &--action
+      display: flex
       flex-wrap: wrap
-
 .popup-hotel_select
   .card
     border-radius: 0
@@ -519,3 +604,24 @@
       font-size: 14px
       line-height: 1
       color: #77796A
+
+.content_rooms,
+.content_cards
+  .button
+    backdrop-filter: blur(10px)
+    --button-border-color: transparent
+    --btn-bg-secondary-rest: rgba(42, 48, 42, 0.4)
+    --btn-text-secondary-rest: #FEF9F1
+
+  .card:hover
+    .button
+      --btn-bg-secondary-rest: var( --btn-bg-secondary-hover)
+      --btn-text-secondary-rest: var(--btn-text-secondary-hover)
+
+.content_cards
+  .card
+    &:hover
+      .card--image
+        img
+          scale: 1.05
+

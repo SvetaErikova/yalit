@@ -16,7 +16,7 @@
       svg, img
         width: 100%
         aspect-ratio: 152/52
-        max-width: 152px
+        max-width: 136px
 
   &--main
     position: relative
@@ -54,7 +54,7 @@
     @media(min-width: 640px)
       display: flex
   &--nav
-    padding: clamp(16px, calc(16px + (20 - 16) * ((100vw - 575px) / (1024 - 575))), 20px) var(--container-padding)
+    padding: 16px var(--container-padding)
   &.scrolled-up
     .header--bottom
       translate: 0 -100%

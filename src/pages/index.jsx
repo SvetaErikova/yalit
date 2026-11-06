@@ -12,10 +12,10 @@ export default function Home() {
 						<Button link={"/main"} >
 							Главная
 						</Button>
-            <Button link={"/accommodation-detail"} >
+            <Button link={"/accommodation"} >
               Проживание разводящая
             </Button>
-            <Button link={"/accommodation-detail"} >
+            <Button link={"/accommodation-corp"} >
               Проживание разводящая по корп
             </Button>
             <Button link={"/accommodation-detail"} >

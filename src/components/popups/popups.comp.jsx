@@ -35,6 +35,7 @@ const PopupsLayout = ({
           </div>
         )}
         <div className="popup--content_wrapper">
+          {/*переделать загловок*/}
           {children}
         </div>
         {popupActions && <div className="popup--action">{popupActions}</div>}
@@ -62,6 +63,7 @@ export const PopupCascade = () => {
   return (
     <PopupsLayout data={'popup_for_cascade'}
                   popupTitle={'Попап каскад'}>
+
       <Is_cascade_mini></Is_cascade_mini>
     </PopupsLayout>
   );
