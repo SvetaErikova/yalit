@@ -87,6 +87,15 @@ export const PopupRoomAdvantages = () => {
     </PopupsLayout>
   );
 };
+export const PopupFilter = () => {
+  return (
+    <PopupsLayout data={'popup_for_filters'} className={'popup-filters'}>
+      <div class="popup--filters">
+
+      </div>
+    </PopupsLayout>
+  );
+};
 export const PopupCookies = () => {
   return (
     <PopupsLayout
@@ -129,6 +138,7 @@ export const Popups = () => {
       <PopupForm></PopupForm>
       <PopupCascade></PopupCascade>
       <PopupConfirmation></PopupConfirmation>
+      <PopupFilter></PopupFilter>
       <PopupCookies></PopupCookies>
     </>
   );

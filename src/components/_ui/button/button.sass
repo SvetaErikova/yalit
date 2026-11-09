@@ -27,7 +27,7 @@
     text-align: center
     //line-height: 1
     &:only-child
-      padding: 0 8px
+      padding: 0 6px
 
   span[class^="icon-"],
   span[class*=" icon-"],
@@ -39,7 +39,8 @@
     display: flex
     align-items: center
     justify-content: center
-  &:has(span[class^="icon-"]:only-child)
+  &:has(span[class^="icon-"]:only-child),
+  &.is_dropdown:has(span[class^="icon-"])
     aspect-ratio: 1/1
     padding: 0
     justify-content: center

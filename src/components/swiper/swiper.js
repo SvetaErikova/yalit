@@ -108,6 +108,13 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_per_view_mob = 1.2;
     space_between = 8;
     break;
+  case swiper_item.classList.contains('content_vacancies'):
+    slides_per_view_desktop = 2;
+    slides_per_view_desktop_small = 1;
+    slides_per_view_pad = 1;
+    slides_per_view_mob = 1;
+    space_between = 0;
+    break;
 
 
   default:

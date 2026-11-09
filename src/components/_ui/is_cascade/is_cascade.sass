@@ -72,6 +72,7 @@
     width: 100%
     margin: var(--m-text-top) 0 var(--m-bottom)
     overflow: auto
+    max-width: calc(100vw - var(--container-padding) * 2)
     table
       width: 100%
       border-collapse: collapse
@@ -176,9 +177,11 @@
 .is_cascade:has(.gallery)
   overflow: hidden
   .gallery
+    position: relative
     aspect-ratio: 800/533
     border-radius: var(--border-corner)
     overflow: hidden
+    max-width: calc(100vw - var(--container-padding) * 2)
     .slider_controls
       top: 16px
       bottom: 16px

@@ -278,7 +278,7 @@
       },
       "nav-menu-v-padding": {
         "$type": "number",
-        "$value": 20,
+        "$value": 16,
         "$extensions": {
           "com.figma.variableId": "VariableID:450:96134",
           "com.figma.scopes": [
@@ -288,7 +288,7 @@
       },
       "nav-actions-v-padding": {
         "$type": "number",
-        "$value": 20,
+        "$value": 16,
         "$extensions": {
           "com.figma.variableId": "VariableID:450:96135",
           "com.figma.scopes": [
@@ -464,7 +464,7 @@
       },
       "--button-height-page": {
         "$type": "number",
-        "$value": 44,
+        "$value": 40,
         "$extensions": {
           "com.figma.variableId": "VariableID:2040:44732",
           "com.figma.scopes": [
@@ -474,7 +474,7 @@
       },
       "--button-height-block": {
         "$type": "number",
-        "$value": 44,
+        "$value": 40,
         "$extensions": {
           "com.figma.variableId": "VariableID:2040:44733",
           "com.figma.scopes": [

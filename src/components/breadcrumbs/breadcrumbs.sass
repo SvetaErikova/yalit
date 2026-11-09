@@ -53,6 +53,7 @@ body:has(.block_banner-hero)
       opacity: 1
       color: #fff
 
-.breadcrumbs ~ .block:first-of-type
+.breadcrumbs ~ .block.block_banner-hero:first-of-type
   margin-top: 0
-
+.breadcrumbs ~ .block:first-of-type:not(.block_banner-hero)
+  margin-top: var(--block-margin-template-top)

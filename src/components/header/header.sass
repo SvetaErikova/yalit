@@ -15,8 +15,8 @@
       align-items: center
       svg, img
         width: 100%
-        aspect-ratio: 152/52
-        max-width: 136px
+        aspect-ratio: 136/47
+        max-width: clamp(117px,  calc(117px  + (136 - 117)  * ((100vw - 1024px) / (1540 - 1024))), 136px)
 
   &--main
     position: relative
@@ -33,11 +33,10 @@
       grid-template-columns: repeat(3, 1fr)
 
   &--logo
-    margin: 0 auto
-    width: 105px
     flex-shrink: 0
     @media(min-width: 1025px)
-      width: clamp(117px,  calc(117px  + (152 - 117)  * ((100vw - 1024px) / (1540 - 1024))), 152px)
+      margin: 0 auto
+
   &--actions
     display: flex
     margin-left: auto
@@ -49,14 +48,19 @@
   &--bottom
     transition: var(--transition)
     background: var(--surface-secondary)
+
   &--hotel_select
     display: none
     @media(min-width: 640px)
       display: flex
   &--nav
     padding: 16px var(--container-padding)
+    @media(max-width: 768px)
+
+      overflow: auto
   &.scrolled-up
     .header--bottom
       translate: 0 -100%
   .is_dropdown
     overflow: visible
+

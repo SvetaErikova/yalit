@@ -3,7 +3,7 @@
   position: relative
   padding: 0
   margin: 0
-  height: calc(100vh - var(--headerHeight))
+  height: calc(100vh - var(--headerHeight) - var(--headerHeightBottom))
   .block--wrapper
     height: 100%
     position: relative
@@ -15,7 +15,7 @@
 
 .block_banner.block_banner-hero,
 .block_banner-custom
-  height: calc(100vh - var(--headerHeight) - var(--headerHeightBottom))
+  // height: calc(100vh - var(--headerHeight,92px) - var(--headerHeightBottom,64px))
 
 .banner
   display: flex
@@ -30,8 +30,7 @@
   align-items: center
   text-align: center
 
-  .block--head
-    max-width: 920px
+
   .block--head,
   .block--actions
     z-index: 3
@@ -52,6 +51,7 @@
       height: 100%
       object-position: center
       object-fit: cover
+      scale: 1.25
       z-index: 1
     &:after
       content: ""
@@ -123,7 +123,11 @@
 .block_banner.block_banner-fit_content
   height: auto
   min-height: 0
+  margin: 0
   .banner
     height: auto
     min-height: 0
     padding: var(--g-block-margin) var(--container-padding) calc(var(--g-block-margin) * 2)
+
+
+

@@ -56,7 +56,7 @@ export const Header = ({ transparent = false, hotel = false }) => {
             <Button type={'filled-secondary'} icon={'icon-ic-search'}>
             </Button>
             <Button type={'filled-accent'}>
-              <span>забронировать</span>
+              забронировать
             </Button>
 
 

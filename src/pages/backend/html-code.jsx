@@ -5,12 +5,13 @@ import { InfoClip } from '../../components/content/custom/info-clip/info-clip-co
 import { HotelGroupComp } from '../../components/content/custom/hotel-group/hotel-group-comp.jsx';
 import { AboutMedia } from '../../components/content/custom/about-media/about-media.jsx';
 import { InfoMedia } from '../../components/content/custom/info-media/info-media.jsx';
+import { InfoSlider } from '../../components/content/custom/info-slider/info-slider.jsx';
 
 export default function Home() {
 
   return (
     <HeroLayoutWithBreadcrumbs meta={metaPages.home}>
-
+      <InfoSlider></InfoSlider>
       <AboutMedia theme={'accent'}></AboutMedia>
       <InfoMedia></InfoMedia>
       <InfoClip></InfoClip>

@@ -1264,19 +1264,7 @@
             "com.figma.variableId": "VariableID:450:96228",
             "com.figma.scopes": [
               "ALL_SCOPES"
-            ],
-            "com.figma.composedColor": {
-              "colorArg": {
-                "type": "alias",
-                "alias": {
-                  "targetVariableName": "Text/--text-accent-contrast"
-                }
-              },
-              "opacityArg": {
-                "type": "number",
-                "value": 50
-              }
-            }
+            ]
           }
         },
         "btn-bg-disabled-accent": {

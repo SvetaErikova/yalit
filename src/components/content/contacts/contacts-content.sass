@@ -1,34 +1,68 @@
 .contacts-content
+  .is_cascade--accordion
+    gap: var(--cascade-responsive-margin-page-md)
+  .accordion
+    background: var(--surface-primary)
+
+    .accordion--button
+      background: transparent
+      padding: 0
+    &.is_open
+      .accordion--content
+        padding: 24px 0
+  .accordion--content > .contact
+    width: 100%
+    min-height: 0
+    overflow: hidden
+    grid-row: 1 / span 2
+
+.contact
   display: flex
   flex-direction: column
+  gap: 24px
 
-  &_title
-    font-size: var(--fs-heading-1)
-    font-weight: 600
-  ul
-  &_list
+  &--group
     display: flex
     flex-direction: column
-    gap: clamp(12px, calc(12px + (24 - 12) * ((100vw - 768px) / (1440 - 768))), 24px)
-    list-style: none
-    margin: 0
-    padding: 32px 0
+    gap: 10px
 
-  &_item
-    display: flex
-    flex-direction: column
-    gap: 8px
-
-    & > a:hover
-      color: #5C4C47
-
-  &_item-title
+  &--title
     font-size: var(--fs-caption-2)
     font-weight: 500
+    letter-spacing: 0.04em
+    text-transform: uppercase
     color: var(--text-tertiary)
 
-  &_text
-    color: #5C4C47
+  &--item
+    display: flex
+    align-items: flex-start
+    gap: 16px
+
+    > .icon
+      flex-shrink: 0
+      margin-top: 2px
+      font-size: var(--button-icon-size)
+      line-height: 1
+
+
+  .contact-info
+    display: flex
+    flex-direction: column
+    gap: 4px
+    min-width: 0
+
+    a,
+    p
+      margin: 0
+      color: var(--text-primary)
+      text-decoration: none
+
+    a:hover
+      color: #5C4C47
+
+    > span
+      font-size: var(--fs-caption-2)
+      color: var(--text-tertiary)
 
   &_social
     display: flex

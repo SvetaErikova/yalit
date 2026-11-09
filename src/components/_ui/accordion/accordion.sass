@@ -4,14 +4,6 @@
 .accordion
   overflow: hidden
   position: relative
-
-  border-bottom: 1px solid var(--line-tertiary)
-  &:first-child
-    border-top: 1px solid var(--line-tertiary)
-
-
-  &:not(:last-child)
-
   &.is_open
     .accordion--content
       pointer-events: auto
@@ -59,7 +51,6 @@
     pointer-events: none
     overflow: hidden
     transition: grid-template-rows 0.21s ease-out
-    color: var(--text-neutral-secondary)
 
     .is_cascade
       width: 100%

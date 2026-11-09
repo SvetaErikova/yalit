@@ -5,9 +5,6 @@ export const Filter = () => {
   return (
     <div class="filter">
       <form class="form">
-        <div class="filter--title">
-          <h3>Фильтр вакансий</h3>
-        </div>
         <Input_checks
           type={"checkbox"}
           name={"checkbox"}
@@ -21,8 +18,8 @@ export const Filter = () => {
           input={[{ text: "Описание конкретного итема 1" }, { text: "Описание конкретного итема 2" }]}
         ></Input_checks>
         <div class="form--actions">
-          <Button color={'neutral'} type={'tinted'}>Сбросить фильтр</Button>
-          <Button color={'neutral'} type={'filled'}>Применить</Button>
+          <Button type={'outlined'}>Сбросить фильтр</Button>
+          <Button type={'filled-secondary'}>Применить</Button>
         </div>
 
       </form>

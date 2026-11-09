@@ -625,3 +625,68 @@
         img
           scale: 1.05
 
+
+.content_vacancies
+  &.block_list:not(.block_list-slider)
+    .block--elements
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      gap: 0
+
+  .card
+    width: 100%
+    border-radius: 0
+    background: transparent
+    overflow: visible
+    border-bottom: 1px solid var(--line-neutral-tertiary)
+    padding-block: 28px
+
+    &--content
+      display: flex
+      flex-direction: column
+      gap: 12px
+
+    &--title
+      display: inline-flex
+      align-items: center
+      gap: 4px
+      color: var(--text-primary)
+      font-size: var(--fs-body-3)
+      font-weight: 600
+      line-height: 1.2
+      text-transform: none
+      text-decoration: none
+      overflow: visible
+      -webkit-line-clamp: unset
+
+      [class^="icon-"],
+      [class*=" icon-"]
+        flex-shrink: 0
+        font-size: var(--button-icon-size)
+        line-height: 1
+
+    &--text
+      display: block
+      margin: 0
+      overflow: visible
+      font-size: var(--fs-body-1)
+      -webkit-line-clamp: unset
+
+    &--list
+      flex-direction: row
+      flex-wrap: wrap
+      align-items: center
+      gap: 8px
+      font-size: var(--fs-body-1)
+
+      &_item
+        padding: 0
+        border: none
+
+        &:not(:last-child)
+          border: none
+
+    &--action
+      margin-top: 20px
+

@@ -1,7 +1,7 @@
 import { Button } from '../../_ui/button/button.jsx';
 import {
   All_card_article,
-  All_card_default, All_card_offers, All_card_room, All_card_services, All_card_special, All_cards_accommodation,All_card_galleries
+  All_card_default, All_card_offers, All_card_room, All_card_services, All_card_special, All_cards_accommodation,All_card_galleries, All_card_vacancies
 } from '../../_ui/card/all_card.jsx';
 import { Card } from '../../_ui/card/content/card.jsx';
 import { Block_Head } from '../_ui/block--head/block--head.jsx';
@@ -366,6 +366,35 @@ export const All_block_list = () => {
         }
       >
         <All_card_galleries group={'gallery-slider'}></All_card_galleries>
+      </Block_List>
+
+      {/*карточки вакансий*/}
+      <Block_List
+        className="content_vacancies"
+        title={
+          <Block_Head
+            title={'Вакансии'}
+            subtitle={'content_vacancies'}
+            caption={'Вакансии грид'}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_vacancies />
+      </Block_List>
+      <Block_List
+        className="content_vacancies"
+        slider={true}
+        title={
+          <Block_Head
+            title={'Вакансии'}
+            subtitle={'content_vacancies'}
+            caption={'Вакансии слайдер'}
+            headingLevel={2}
+          ></Block_Head>
+        }
+      >
+        <All_card_vacancies />
       </Block_List>
     </>
   );

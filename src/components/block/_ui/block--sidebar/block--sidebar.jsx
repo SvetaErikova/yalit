@@ -4,16 +4,7 @@ export const Block_Sidebar = () => {
   return (
     <div class={'block--sidebar'}>
       <div class={'is_cascade'}>
-        <h6>Заработная плата</h6>
-        <p>65 000 ₽ на руки</p>
-        <h6>Занятость</h6>
-        <p>Полная</p>
-        <ul>
-          <li>График 5/2</li>
-          <li>Питание</li>
-          <li>Медицинское обслуживание</li>
-        </ul>
-        <Button type={'filled'} color={'accent '}>Оставить резюме</Button>
+        <img src="/assets/img/1.jpg" alt="" />
       </div>
     </div>
   )

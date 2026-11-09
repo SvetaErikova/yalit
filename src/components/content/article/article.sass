@@ -1,7 +1,25 @@
 .content_article:not(.block_list)
+  display: flex
+  flex-direction: column
+  align-items: center
   .block--wrapper
-    max-width: calc(960px + var(--container-padding) * 2)
-    margin: 0 auto
+    max-width: 780px
+    padding: 0
+    margin: 0 var(--container-padding)
 
-
-
+  &:has(.block--sidebar) .block--wrapper
+    display: flex
+    flex-direction: column
+    gap: var(--g-m)
+    max-width: initial
+    @media(min-width: 999px)
+      display: grid
+      grid-template-columns: 1fr 1fr
+    .block--sidebar
+      grid-row: span 2
+      @media(max-width: 998px)
+        order: -1
+    .block--head
+      justify-content: flex-start
+      text-align: left
+      max-width: initial

@@ -65,6 +65,26 @@ PopupManager.register('popup_for_room_advantages',
 
   }
 );
+PopupManager.register(
+  "popup_for_filters",
+  {
+    additional_close_controls: true,
+    is_block_scroll: true
+  },
+  {
+    on_open: (popup_element, params) => {
+      let filters = document.querySelector(".popup--filters");
+      let block_to_clone = params.block;
+      let block_content = block_to_clone.cloneNode(true);
+      filters.appendChild(block_content);
+    },
+    on_close: (popup_element, params) => {
+      setTimeout(() => {
+        popup_element.querySelector(".popup--filters").innerHTML = "";
+      }, 110);
+    }
+  }
+);
 
 // PopupManager.register(
 //   "popup_for_menu",
@@ -135,6 +155,12 @@ function activatePopupButtons(block) {
         let block_to_clone = b.previousElementSibling;
         if (block_to_clone) {
           PopupManager.open(b.dataset.openpopup, {block: block_to_clone})
+        }
+      }
+      if (b.dataset.openpopup === "popup_for_filters") {
+        let block_to_clone = b.parentElement.querySelector(".filter");
+        if (block_to_clone) {
+          PopupManager.open(b.dataset.openpopup, {block: block_to_clone});
         }
       }
       else {

@@ -12,6 +12,9 @@ export default function Home() {
 						<Button link={"/main"} >
 							Главная
 						</Button>
+            <Button link={"/main-hotel"} >
+              Главная отеля
+            </Button>
             <Button link={"/accommodation"} >
               Проживание разводящая
             </Button>
@@ -39,11 +42,17 @@ export default function Home() {
 						<Button link={"/faq"} >
 							FAQ
 						</Button>
+            <Button link={"/vacancies"} >
+              Вакансии
+            </Button>
             {/*<Button link={"/scheme"} >*/}
             {/*  Карта*/}
             {/*</Button>*/}
             <Button  link={"/article"} >
-              article
+              Статья
+            </Button>
+            <Button  link={"/articleWithSidebar"} >
+              Статья с сайдбаром
             </Button>
 						<Button link={"/404"} >
 							404

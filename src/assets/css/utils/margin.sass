@@ -1,0 +1,63 @@
+// ============================================================
+// MARGIN — BASE (по умолчанию)
+// ============================================================
+\:root,
+[data-margin="base"]
+  --cascade-margin-heading-top: var(--cascade-context-margin-lg)
+  --cascade-margin-heading-bottom: var(--cascade-context-margin-md)
+  --cascade-margin-other-top: var(--cascade-context-margin-md)
+  --cascade-margin-other-bottom: var(--cascade-context-margin-md)
+  --cascade-margin-divider-top: var(--cascade-context-margin-lg)
+  --cascade-margin-divider-bottom: var(--cascade-context-margin-lg)
+  --block-margin-top: var(--block-margin-responsive-1)
+  --block-margin-template-top: var(--block-margin-responsive-2)
+  --block-margin-bottom: var(--block-margin-responsive-1)
+  --block-margin-template-bottom: var(--block-margin-responsive-2)
+
+
+// ============================================================
+// MARGIN — NONE
+// ============================================================
+[data-margin="none"]
+  --cascade-margin-heading-top: 0
+  --cascade-margin-heading-bottom: 0
+  --cascade-margin-other-top: 0
+  --cascade-margin-other-bottom: 0
+  --cascade-margin-divider-top: 0
+  --cascade-margin-divider-bottom: 0
+  --block-margin-top: 0
+  --block-margin-template-top: 0
+  --block-margin-bottom: 0
+  --block-margin-template-bottom: 0
+
+
+// ============================================================
+// MARGIN — TOP
+// ============================================================
+[data-margin="top"]
+  --cascade-margin-heading-top: var(--cascade-context-margin-lg)
+  --cascade-margin-heading-bottom: 0
+  --cascade-margin-other-top: var(--cascade-context-margin-md)
+  --cascade-margin-other-bottom: 0
+  --cascade-margin-divider-top: var(--cascade-context-margin-lg)
+  --cascade-margin-divider-bottom: 0
+  --block-margin-top: var(--block-margin-responsive-1)
+  --block-margin-template-top: var(--block-margin-responsive-2)
+  --block-margin-bottom: 0
+  --block-margin-template-bottom: 0
+
+
+// ============================================================
+// MARGIN — BOTTOM
+// ============================================================
+[data-margin="bottom"]
+  --cascade-margin-heading-top: 0
+  --cascade-margin-heading-bottom: var(--cascade-context-margin-md)
+  --cascade-margin-other-top: 0
+  --cascade-margin-other-bottom: var(--cascade-context-margin-md)
+  --cascade-margin-divider-top: 0
+  --cascade-margin-divider-bottom: var(--cascade-context-margin-lg)
+  --block-margin-top: 0
+  --block-margin-template-top: 0
+  --block-margin-bottom: var(--block-margin-responsive-1)
+  --block-margin-template-bottom: var(--block-margin-responsive-2)

@@ -928,7 +928,7 @@
               0.1882352977991104,
               0.16470588743686676
             ],
-            "alpha": 0.20000000298023224,
+            "alpha": 0.4000000059604645,
             "hex": "#2A302A"
           },
           "$extensions": {
@@ -1194,7 +1194,16 @@
         },
         "btn-text-disabled-primary": {
           "$type": "color",
-          "$value": "{Text.--text-quaternary}",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.18979117274284363,
+              0.18979117274284363,
+              0.18979117274284363
+            ],
+            "alpha": 0.5,
+            "hex": "#303030"
+          },
           "$extensions": {
             "com.figma.variableId": "VariableID:450:96226",
             "com.figma.scopes": [
@@ -1207,12 +1216,12 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              1,
-              1,
-              1
+              0.16470588743686676,
+              0.1882352977991104,
+              0.16470588743686676
             ],
-            "alpha": 0.5,
-            "hex": "#FFFFFF"
+            "alpha": 0.30000001192092896,
+            "hex": "#2A302A"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:450:96227",
@@ -1223,7 +1232,16 @@
         },
         "btn-text-disabled-secondary": {
           "$type": "color",
-          "$value": "{Text.--text-quaternary}",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9960784316062927,
+              0.9764705896377563,
+              0.9450980424880981
+            ],
+            "alpha": 0.30000001192092896,
+            "hex": "#FEF9F1"
+          },
           "$extensions": {
             "com.figma.variableId": "VariableID:450:96228",
             "com.figma.scopes": [
@@ -1281,7 +1299,16 @@
         },
         "btn-text-disabled-accent-heavy": {
           "$type": "color",
-          "$value": "{Text.--text-quaternary}",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.16470588743686676,
+              0.1882352977991104,
+              0.16470588743686676
+            ],
+            "alpha": 0.6000000238418579,
+            "hex": "#2A302A"
+          },
           "$extensions": {
             "com.figma.variableId": "VariableID:450:96232",
             "com.figma.scopes": [

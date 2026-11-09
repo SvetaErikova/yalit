@@ -7,6 +7,7 @@ export { All_card_room } from './content/room.jsx';
 export { All_card_special } from './content/special.jsx';
 export { All_card_services } from './content/service.jsx';
 export {All_card_galleries} from './content/galleries.jsx'
+export { All_card_vacancies } from './content/vacancies.jsx';
 
 export const All_card_default = () => {
   return (<>
@@ -142,104 +143,5 @@ export const All_card_events = () => {
       />
     </>);
 };
-export const All_card_job = () => {
-  return (<>
-      <Card
-        link={'/'}
-        title="Администратор ресепшн"
-        labels={[{ text: 'от 75 000 ₽', icon: 'icon-currrecny', accent: true }, {
-          text: 'Полная занятость',
-          icon: 'icon-calendar',
-        }]}
-        text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
-      >
-        <div className="card--note">
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> Возможно удалить</p>
-          </div>
-          <div className="item">
-            <span className={'icon-food'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-        </div>
-      </Card>
-      <Card
-        link={'/'}
-        title="Карточка ссылка"
-        labels={[{ text: 'Позвонить', icon: 'icon-currrecny', accent: true }, {
-          text: 'У моря',
-          icon: 'icon-calendar',
-        }]}
-        text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
-      >
-        <div className="card--note">
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-food'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-        </div>
-      </Card>
-      <Card
-        link={'/'}
-        title="Карточка ссылка"
-        labels={[{ text: 'Позвонить', icon: 'icon-currrecny', accent: true }, {
-          text: 'У моря',
-          icon: 'icon-calendar',
-        }]}
-        text="Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. Lorem ipsum dolor sit amet consectetur. Vitae non integer egestas sociis vulputate mi amet vestibulum. Lacus tortor cursus ut volutpat ut aliquam non. "
-      >
-        <div className="card--note">
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-food'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-        </div>
-      </Card>
-      <Card
-        link={'/'}
-        title="Карточка ссылка"
-        labels={[{ text: 'Позвонить', icon: 'icon-currrecny', accent: true }, {
-          text: 'У моря',
-          icon: 'icon-calendar',
-        }]}
-        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      >
-        <div className="card--note">
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-food'}></span>
-            <p> График 5/2</p>
-          </div>
-          <div className="item">
-            <span className={'icon-stopwatch'}></span>
-            <p> График 5/2</p>
-          </div>
-        </div>
-      </Card>
-    </>);
-};
+
 

@@ -41,19 +41,36 @@
     &.is-revealed
       animation: reveal-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both
 
-.block_list .card
+.content_galleries .block--group_title
+  &.is-revealed
+    animation: title-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both
+
+.block_list .card,
+.accordion,
+.content_galleries .gallery--item
   opacity: 0
   animation-delay: var(--reveal-delay, 0ms)
 
   &.is-revealed
     animation: reveal-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards
 
+.header
+  &--logo,
+  &--hotel_select,
+  &--actions > .button,
+  &--nav > .nav > .nav--item
+    animation: reveal-fade 1s cubic-bezier(0.22, 1, 0.36, 1) both
+
 @media (prefers-reduced-motion: reduce)
   .block--head_title,
   .block--head_subtitle,
   .block--head_caption,
   .block--head .block--actions,
-  .block_list .card
+  .block_list .card,
+  .header--logo,
+  .header--hotel_select,
+  .header--actions > .button,
+  .header--nav > .nav > .nav--item
     opacity: 1 !important
     clip-path: none !important
     transform: none !important
@@ -69,3 +86,31 @@
     clip-path: none !important
     transform: none !important
     animation: none !important
+
+// Parallax
+@keyframes parallax
+  from
+    translate: 0 -30%
+  to
+      translate: 0 30%
+
+@supports (animation-timeline: --parallax)
+  .block_banner
+    view-timeline-name: --parallax
+    view-timeline-axis: block
+
+  .banner .block--content
+    img, video
+      scale: 1.65
+      animation-name: parallax
+      animation-duration: auto
+      animation-timing-function: linear
+      animation-fill-mode: both
+      animation-timeline: --parallax
+      animation-range: cover
+
+@media (prefers-reduced-motion: reduce)
+  .banner .block--content
+    img, video
+      scale: 1.25
+      animation: none

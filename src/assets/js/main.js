@@ -38,6 +38,7 @@ import '../../components/booking/booking.js';
 import '../../components/content/special/special.js';
 
 import '../../components/content/custom/info-clip/info-clip.js';
+import '../../components/content/custom/info-slider/info-slider.js';
 import '../../components/content/custom/animate/animate.js';
 
 Fancybox.bind('.gallery *[data-fancybox], .content_gallery .card[data-fancybox]', {
