@@ -57,18 +57,18 @@ export const All_block_banner = () => {
 			>
       </Block_banner>
       <br/>
-      {/*Баннер custom*/}
+      {/*Баннер main*/}
 			<Block_banner
 				banners={[
 					{
-						title: <Block_Head title="block_banner-custom" subtitle="Подзаголовок" caption="Баннер custom" headingLevel={2} action={<>
+						title: <Block_Head title="block_banner-main" subtitle="Подзаголовок" caption="Баннер main" headingLevel={2} action={<>
               <Button type="filled-secondary"  icon="icon-ic-uniq-arrow-right">Подробнее</Button>
               <Button type="outlined"  icon="icon-ic-uniq-arrow-right">Условия</Button>
             </>} />,
 						imageSrc: "/assets/img/1.jpg",
 					},
 				]}
-				className={"block_banner-custom"}
+				className={"block_banner-main"}
 			></Block_banner>
       <br/>
       {/*Баннер по высоте контента*/}

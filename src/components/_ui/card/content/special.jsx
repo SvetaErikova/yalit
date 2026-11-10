@@ -4,9 +4,8 @@ export const Card_special = ({ image, title, text, action }) => {
   return (
     <div className="card">
       <div className="card--image">
-        <img className="card--image_bg" src="/assets/img/decor/decor-bg-offer.svg" alt="" />
         <img className="card--image_photo" src={image} alt="" loading="lazy" />
-        <img className="card--image_decor" src="/assets/img/decor/decor-offer.svg" alt="" />
+        <div className="card--image_decor" />
       </div>
       <div className="card--content">
         {title && <div className="card--title">{title}</div>}

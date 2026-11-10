@@ -499,47 +499,74 @@
 
     &--image
       position: relative
-      width: 100%
-      max-width: 421px
+      width: min(100%, 421px)
       aspect-ratio: 421 / 561
       margin-inline: auto
+      margin-top: calc(min(100%, 421px) * 0.7 * 131 / 302 / 2)
       overflow: visible
 
-      &_bg
-        position: absolute
-        inset: 0
-        width: 100%
-        height: 100%
-        object-fit: fill
-        pointer-events: none
+      &_photo,
+      &:after
+        mask-image: url("/assets/img/decor/mask-offer.svg")
+        mask-repeat: no-repeat
+        mask-position: center
+        mask-size: 100% 100%
+        mask-mode: alpha
 
       &_photo
-        $frame-w: 421
-        $frame-h: 561
-        $photo-w: 377
-        $photo-h: 460
-        $inset: ($frame-w - $photo-w) * 0.5
+        position: absolute
+        inset: 0
+        z-index: 2
+        width: 100%
+        height: 100%
+        object-fit: cover
 
+      &:after
+        content: ""
         position: absolute
         z-index: 1
+        top: 50%
         left: 50%
-        top: calc(100% * #{$frame-h - $photo-h - $inset} / #{$frame-h})
-        width: calc(100% * #{$photo-w} / #{$frame-w})
-        height: calc(100% * #{$photo-h} / #{$frame-h})
-        aspect-ratio: #{$photo-w} / #{$photo-h}
-        transform: translateX(-50%)
-        object-fit: cover
-        mask: url("/assets/img/decor/mask-offer.svg") no-repeat center / 100% 100% alpha
+        translate: -50% -50%
+        width: calc(100% + 30px)
+        height: calc(100% + 30px)
+        background: var(--surface-secondary)
+        pointer-events: none
 
       &_decor
         position: absolute
-        z-index: 2
-        top: 1%
+        z-index: 3
+        top: 0
         left: 50%
         width: 70%
-        height: auto
-        transform: translateX(-50%)
+        aspect-ratio: 302 / 131
+        translate: -50% -50%
         pointer-events: none
+
+        &:before,
+        &:after
+          content: ""
+          position: absolute
+          mask-repeat: no-repeat
+          mask-position: center
+          mask-size: 100% 100%
+          mask-mode: alpha
+
+        &:before
+          inset: 0
+          z-index: 1
+          background-color: var(--surface-accent-primary)
+          mask-image: url("/assets/img/decor/decor-offer.svg")
+
+        &:after
+          z-index: 0
+          top: 50%
+          left: 50%
+          width: 105%
+          height: 105%
+          translate: -50% -50%
+          background-color: var(--surface-secondary)
+          mask-image: url("/assets/img/decor/decor-bg-offer.svg")
 
     &--content
       display: flex
@@ -570,6 +597,11 @@
     &--action
       display: flex
       flex-wrap: wrap
+    &.-theme-dark
+      .card--image::after,
+      .card--image_decor::after
+        --surface-secondary: var(--surface-quaternary)
+
 .popup-hotel_select
   .card
     border-radius: 0

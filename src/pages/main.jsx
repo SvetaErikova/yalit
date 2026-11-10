@@ -22,7 +22,7 @@ export default function Home() {
             imageSrc: "/assets/img/1.jpg",
           },
         ]}
-        className={"block_banner-custom"}
+        className={"block_banner-main"}
       ></Block_banner>
       <Booking></Booking>
       <InfoClip></InfoClip>

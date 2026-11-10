@@ -18,17 +18,17 @@ export const Header = ({ transparent = false, hotel = false }) => {
           <HeaderLogo hotel={hotel} />
           <div className="header--actions ">
             <div className={'button button-filled-secondary is_dropdown'}>
-              <span className={'icon-ic-chevron-down'}></span>
+              <span className={'icon-ic-language-ru'}></span>
               <div className="is_dropdown--wrapper">
                 <div className="is_dropdown--content">
                   <div className="nav--item">
-                    <a href="" className="nav--item_link"><span>RU</span></a>
+                    <a href="" className="nav--item_link"><span class={'icon-ic-language-ru'}></span></a>
                   </div>
                   <div className="nav--item">
-                    <a href="" className="nav--item_link"><span>EN</span></a>
+                    <a href="" className="nav--item_link"><span class={'icon-ic-language-en'}></span></a>
                   </div>
                   <div className="nav--item">
-                    <a href="" className="nav--item_link"><span>TT</span></a>
+                    <a href="" className="nav--item_link"><span class={'icon-ic-language-tt'}></span></a>
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@ export const Header = ({ transparent = false, hotel = false }) => {
               </div>
             </div>
 
-            <Button type={'filled-secondary'} icon={'icon-ic-search'}>
+            <Button type={'filled-secondary'} icon={'icon-ic-user'}>
             </Button>
             <Button type={'filled-accent'}>
               забронировать

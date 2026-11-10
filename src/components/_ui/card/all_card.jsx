@@ -26,7 +26,7 @@ export const All_card_default = () => {
         image={'../../assets/img/2.jpg'}
         popup={'popup_for_cascade'}
         labels={[{ text: 'Label text' }]}
-        action={<Button type={'filled-secondary'} icon={'icon-ic-uniq-arrow-right'}></Button>}
+        action={<Button type={'filled-secondary'} icon={'icon-ic-arrow'}></Button>}
       >
       </Card>
       <Card

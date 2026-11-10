@@ -5,30 +5,21 @@ import { Block_Head } from '../components/block/_ui/block--head/block--head.jsx'
 import {
   All_card_galleries,
   All_card_offers,
-  All_card_room,
-  All_card_services,
   All_card_special, All_cards_accommodation,
 } from '../components/_ui/card/all_card.jsx';
 import { Block_banner } from '../components/block/block_banner/block_banner.jsx';
-import { Button } from '../components/_ui/button/button.jsx';
-import { Accommodation } from '../components/content/accomodation/accommodation.jsx';
-import { Block_image_text } from '../components/block/block_image_text/block_image_text.jsx';
 import { Faq } from '../components/content/faq/faq.jsx';
-import { Input } from '../components/form/inputs/input/input_comp.jsx';
-import { Form_policy } from '../components/form/form_policy.jsx';
-import { Input_textarea } from '../components/form/inputs/input_textarea/input_textarea_comp.jsx';
 import { Booking } from '../components/booking/booking-comp.jsx';
-import { InfoClip } from '../components/content/custom/info-clip/info-clip-comp.jsx';
-import { HotelGroupComp } from '../components/content/custom/hotel-group/hotel-group-comp.jsx';
 import { Block_selection } from '../components/block/_ui/block--selection/block--selection-comp.jsx';
 import { Form_short } from '../components/form/form_short.jsx';
 import { Contacts } from '../components/content/contacts/contacts-comp.jsx';
 import HotelLayout from '../layouts/HotelLayout.jsx';
+import { InfoSlider } from '../components/content/custom/info-slider/info-slider.jsx';
 
 
 export default function Home() {
   return (
-    <HotelLayout meta={metaPages.home} className={'page-main'}>
+    <HotelLayout meta={metaPages.home} className={'page-main-hotel'}>
       <Block_banner
         banners={[
           {
@@ -36,9 +27,10 @@ export default function Home() {
             imageSrc: "/assets/img/1.jpg",
           },
         ]}
-        className={"block_banner-custom"}
+        className={"block_banner-main"}
       ></Block_banner>
       <Booking></Booking>
+      <InfoSlider></InfoSlider>
 
       <Block_List
         className="content_accommodation"
