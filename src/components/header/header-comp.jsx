@@ -68,6 +68,10 @@ export const Header = ({ transparent = false, hotel = false }) => {
           </div>
         </div>
       </header>
+      <div class="header--mobile_panel">
+        <Button type={'filled-primary'} data-openpopup={'popup_for_hotels_select'}>выбрать отель</Button>
+        <Button href={'/booking'} type={'filled-accent'}>Забронировать</Button>
+      </div>
     </>
 
   );

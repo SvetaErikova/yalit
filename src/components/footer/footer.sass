@@ -3,15 +3,18 @@
   //a:hover
   //  color: var(--text-neutral-tertiary)
   color: #FEF9F1
+  @media (max-width: 640px)
+    padding-bottom: calc(var(--button-context-height) + var(--g-m))
   &--main
     position: relative
     z-index: 1
     display: flex
     flex-direction: column
     padding: 46px var(--container-padding) 56px
+    gap: 48px
     @media (min-width: 1025px)
       display: grid
-      grid-template-columns: 4fr 2fr 6fr
+      grid-template-columns: minmax(0, 4fr) minmax(0, 2fr) minmax(0, 6fr)
       padding: 100px var(--container-padding) 100px
   &--logo
     display: flex
@@ -25,9 +28,16 @@
   &--col
     display: flex
     flex-direction: column
+    gap: var(--g-m)
+    &:has(.footer--contacts)
+      @media (min-width: 769px) and (max-width: 1024px)
+        display: grid
+        grid-template-columns: 5fr 3fr
+        grid-template-areas: 'contacts awards' 'form awards'
     &:has(.footer--nav)
       @media (min-width: 1025px)
         grid-column: 3
+
   [class*=_title]
     font-size: var(--fs-body-2)
     line-height: 1
@@ -58,13 +68,14 @@
         font-size: var(--fs-caption-2)
         line-height: 1.5
         list-style-type: none
-
+  .form
+    grid-area: form
   &--contacts
     display: flex
     flex-direction: column
     gap: 20px
     font-size: var(--fs-body-1)
-
+    grid-area: contacts
     &_list
       display: flex
       flex-direction: column
@@ -80,12 +91,21 @@
   &--awards
     display: flex
     flex-direction: column
+    grid-area: awards
     gap: var(--g-xxs)
     &_list
       display: flex
       gap: 16px
       .item
-        max-width: 150px
+        max-width: 100%
+        min-width: 0
+    
+        width: max-content
+        img
+          max-height: 84px
+          width: auto
+          object-fit: contain
+
 
   &--note
     border-top: 1px solid var(--line-neutral-tertiary)

@@ -1,19 +1,19 @@
 window.addEventListener('load', () => {
   let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`)
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-  let header_height = document.querySelector('.header--main').getBoundingClientRect().height
-  document.documentElement.style.setProperty('--headerHeight', `${header_height}px`)
-  let header_height_bottom = document.querySelector('.header--bottom').getBoundingClientRect().height
-  document.documentElement.style.setProperty('--headerHeightBottom', `${header_height_bottom}px`)
+  let header_height = document.querySelector('.header--main').getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--headerHeight', `${header_height}px`);
+  let header_height_bottom = document.querySelector('.header--bottom').getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--headerHeightBottom', `${header_height_bottom}px`);
 
 });
 
 window.addEventListener('resize', () => {
   let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`)
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-})
+});
 
 /* Скролл хедера */
 
@@ -30,21 +30,19 @@ let last_scroll = 0;
 // }, {once:true})
 
 // открытие меню
-const btn_openHotelSelect = document.querySelectorAll('.header--hotel_select')
-const popupHotelSelect = document.querySelector('[data-popup="popup_for_hotels_select"]')
+const btn_openHotelSelect = document.querySelectorAll('.header--hotel_select');
+const popupHotelSelect = document.querySelector('[data-popup="popup_for_hotels_select"]');
 
 btn_openHotelSelect.forEach(btn => {
   btn.addEventListener('click', () => {
-    popupHotelSelect.classList.contains('is_active') ? PopupManager.close('popup_for_hotels_select') : PopupManager.open('popup_for_hotels_select')
-  })
-})
+    popupHotelSelect.classList.contains('is_active') ? PopupManager.close('popup_for_hotels_select') : PopupManager.open('popup_for_hotels_select');
+  });
+});
 
-/* Скролл хедера мобилка */
-if (window.matchMedia('(min-width: 769px)')) {
-  window.addEventListener('scroll', (e) => {
-    let current_scroll = window.scrollY || document.documentElement.scrollTop;
-    current_scroll >= last_scroll && current_scroll ? document.querySelector('header').classList.add('scrolled-up') : document.querySelector('header').classList.remove('scrolled-up')
-    last_scroll = current_scroll
-  })
+/* Скролл хедера  */
+window.addEventListener('scroll', (e) => {
+  let current_scroll = window.scrollY || document.documentElement.scrollTop;
+  current_scroll >= last_scroll && current_scroll ? document.querySelector('header').classList.add('scrolled-up') : document.querySelector('header').classList.remove('scrolled-up');
+  last_scroll = current_scroll;
+});
 
-}

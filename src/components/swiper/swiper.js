@@ -372,3 +372,68 @@ const hotel_group = document.querySelector('.hotel-group')
 if (hotel_group){
   initHotelGroupSlider(hotel_group)
 }
+
+function initHeaderNavSlider(block) {
+  const nav = block.querySelector(':scope > .nav');
+  if (!nav) return;
+
+  const controlsSet = buildControls({
+    pagination: false,
+    navigation: true,
+  });
+  nav.before(controlsSet.prev);
+  nav.after(controlsSet.next);
+
+  const desktopArrows = window.matchMedia('(min-width: 769px)');
+
+  const navSlider = new Swiper(
+    nav,
+    withNavigationAndPagination(
+      {
+        slideClass: 'nav--item',
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        watchOverflow: true,
+        loop: false,
+        focusableElements: 'button, input, select, textarea, label, video',
+        allowTouchMove: true,
+        simulateTouch: true,
+        navigation: {
+          enabled: false,
+        },
+        breakpoints: {
+          769: {
+            allowTouchMove: false,
+            simulateTouch: false,
+            navigation: {
+              enabled: true,
+            },
+          },
+        },
+      },
+      controlsSet,
+    ),
+  );
+
+  const syncArrows = () => {
+    const showArrows = desktopArrows.matches && !navSlider.isLocked;
+    controlsSet.prev.hidden = !showArrows;
+    controlsSet.next.hidden = !showArrows;
+  };
+
+  syncArrows();
+  navSlider.on('lock', syncArrows);
+  navSlider.on('unlock', syncArrows);
+  navSlider.on('breakpoint', syncArrows);
+
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      navSlider.update();
+      syncArrows();
+    });
+  }
+}
+const header_nav = document.querySelector('.header--bottom .header--nav')
+if(header_nav){
+  initHeaderNavSlider(header_nav)
+}

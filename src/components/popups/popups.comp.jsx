@@ -54,6 +54,11 @@ export const PopupHotelSelect =() =>{
             <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Миллениум Панорама'} subtitle={'казань'}></Card_hotel_select>
             <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'рисала'} subtitle={'казань'}></Card_hotel_select>
           </div>
+        <div class="popup--close">
+          <button  class="button button-filled-primary" data-closepopup={'popup_for_hotels_select'}>
+            <span>закрыть</span>
+          </button>
+        </div>
       </div>
     </div>
   )

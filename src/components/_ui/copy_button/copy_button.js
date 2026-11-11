@@ -47,3 +47,51 @@ let activateCopyButtons = (block) => {
 };
 
 activateCopyButtons(document);
+
+
+function initImageTextSliders(block){
+  let imageText_swiper = block.querySelectorAll('.js-imageTextSwiper');
+
+  imageText_swiper.forEach(block => {
+
+    let slider_controls = document.createElement('div');
+    slider_controls.classList.add('slider_controls');
+
+    let swiper_nav_prev = document.createElement('div');
+    swiper_nav_prev.classList.add('swiper-button-prev');
+    slider_controls.append(swiper_nav_prev);
+
+    let swiper_nav_next = document.createElement('div');
+    swiper_nav_next.classList.add('swiper-button-next');
+    slider_controls.append(swiper_nav_next);
+
+    const swiper = new Swiper(block, {
+      createElements: true,
+      freeMode: false,
+      grabCursor: true,
+      simulateTouch: true,
+      allowTouchMove: true,
+      touchStartPreventDefault: false,
+      zoom: false,
+      slidesPerView: 1,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      slideClass: 'block_image_text',
+      navigation: {
+        nextEl: swiper_nav_next,
+        prevEl: swiper_nav_prev,
+      },
+      on: {
+        init: function (swiper) {
+          if ( swiper.slides.length < swiper.params.slidesPerView ) {
+            swiper.disable()
+          }
+        }
+      }
+    });
+    block.append(slider_controls);
+  })
+}
+
+initImageTextSliders(document);

@@ -6,8 +6,12 @@
   overflow: hidden
 
 .block--map
-  height: calc(100vh - var(--headerHeight))
+  height: auto
   width: 100%
+  aspect-ratio: 1/1
+  @media (min-width: 641px)
+    height: calc(100vh - var(--headerHeight))
+    aspect-ratio: inherit
 
 
 

@@ -5,7 +5,7 @@
   width: 100%
   max-width: 100vw
   transition: 0.18s linear
-  z-index: 50
+  z-index: 51
   color: var(--text-primary)
   &--logo
     display: flex
@@ -46,21 +46,80 @@
       @media(min-width: 769px)
         display: flex
   &--bottom
+    overflow-x: clip
     transition: var(--transition)
     background: var(--surface-secondary)
 
+  &--nav
+    padding: 16px var(--container-padding)
+    mask-image: linear-gradient( to right, transparent 0, black var(--container-padding), black calc(100% - var(--container-padding)), transparent 100%)
+    @media(min-width: 769px)
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 8px
+    .swiper--prev, .swiper--next
+      display: none
+      flex-shrink: 0
+      width: var(--nav-menu-item-height)
+      --arrow-icon-size: 16px
+      background: var(--surface-primary)
+      &:hover
+        background: var(--surface-tertiary)
+      @media(min-width: 769px)
+        display: flex
+      &[hidden],
+      &.swiper-button-lock
+        display: none
+    .nav
+      min-width: 0
+      &.swiper
+        display: block
+      @media(min-width: 769px)
+        flex: 1 1 auto
+        width: auto
+        max-width: 944px
+      &.swiper-lock
+        flex: 0 0 auto
+        width: max-content
+        max-width: 100%
   &--hotel_select
     display: none
     @media(min-width: 640px)
       display: flex
-  &--nav
-    padding: 16px var(--container-padding)
-    @media(max-width: 768px)
 
-      overflow: auto
   &.scrolled-up
     .header--bottom
       translate: 0 -100%
   .is_dropdown
     overflow: visible
 
+body:has(.popup-hotel_select.is_active)
+
+  .header--bottom
+    opacity: 0
+  .header--hotel_select .icon-ic-chevron-down:before
+    content: '\e907'
+
+.header--mobile_panel
+  position: fixed
+  gap: 8px
+  bottom: 16px
+  left: 16px
+  right: 16px
+  width: 100%
+  display: flex
+  flex-wrap: nowrap
+  z-index: 10
+  translate: 0 calc(100% + 16px)
+  transition: translate var(--transition)
+
+  .button
+    flex-basis: 45%
+    justify-content: center
+  @media(min-width: 640px)
+    display: none
+
+body:has(.header.scrolled-up)
+  .header--mobile_panel
+    translate: 0 0
