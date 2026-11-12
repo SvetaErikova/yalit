@@ -3,17 +3,87 @@
   background: var(--bg-primary)
   margin-top: 0
   .block--top
-    margin: var(--g-block-margin)
+    padding: var(--g-block-margin) 0
+    display: flex
+    flex-direction: column
+    gap: var(--g-m)
+    position: relative
+    @media (min-width: 999px)
+      padding: var(--g-block-margin)
     .block--head
+      text-align: center
+      @media (min-width: 999px)
+        max-width: 1020px
+        margin: 0 auto
       &_title
+        font-size: var(--fs-heading-3)
         @media (min-width: 1241px)
           font-size: var(--fs-display-1)
       &_caption
+        color: var(--text-accent-heavy-contrast)
         font-size: var(--fs-body-1)
         @media (min-width: 769px)
           font-size: var(--fs-body-2)
         @media (min-width: 1241px)
           font-size: var(--fs-heading-1)
+    .block--stats
+      display: flex
+      flex-direction: column
+      gap: 32px
+      color: var(--text-accent-heavy-contrast)
+      justify-content: center
+      text-align: center
+      @media (min-width: 769px)
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        gap: 8px
+        justify-items: center
+      .item
+        display: flex
+        flex-direction: column
+        gap: 16px
+      p
+        font-size: var(--fs-display-1)
+        line-height: 1
+        font-family: var(--ff-title)
+      span
+        font-size: var(--fs-body-2)
+    &:before,
+    &:after
+      content: ''
+      mask-repeat: no-repeat
+      mask-position: center
+      mask-size: 100% 100%
+      mask-mode: alpha
+      mask-image: url("/assets/img/decor/decor-vertical.svg")
+      background: linear-gradient(0deg, #C17B3F 0%, #BA5439 100%)
+      position: absolute
+      aspect-ratio: 181 / 453
+      width: 8vw
+      top: 50%
+      translate: 0 -50%
+      @media (max-width: 998px)
+        mask-image: url("/assets/img/decor/decor-horizontal.svg")
+        aspect-ratio: 251 / 101
+        position: static
+        top: auto
+        right: auto
+        left: auto
+        translate: none
+        width: 98vw
+        max-width: 412px
+        align-self: center
+        flex-shrink: 0
+
+    &:before
+      left: 0
+      right: auto
+      rotate: 0deg
+
+    &:after
+      left: auto
+      right: 0
+      rotate: -180deg
   &_slider
     --text-primary: var(--text-neutral-inverted-primary)
     --text-secondary: var(--text-neutral-inverted-primary)
@@ -24,16 +94,18 @@
       content: ''
       position: absolute
       inset: 0
-      clip-path: ellipse(60% 130% at 50% 100%)
+      border-radius: 50% 50% 0 0 / 60% 60% 0 0
       background: var(--bg-page)
       @media (min-width: 1241px)
         clip-path: none
         border-radius: 50% 50% 0 0 / 100% 100% 0 0
 
 
+
   .block--selection
     position: relative
     z-index: 2
+    justify-content: center
 
   .block--heads
     display: grid

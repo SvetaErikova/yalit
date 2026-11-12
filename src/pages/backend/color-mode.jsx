@@ -30,11 +30,53 @@ export default function Home() {
         <All_card_default></All_card_default>
       </Block_List>
       <Block_List
-        className="content_cards"
+        className="content_cards -theme-dark"
         title={
           <Block_Head
             title={"Грид"}
             subtitle={"Темный фон"}
+            caption={"Стандартные карточки грид без табов и пагинации"}
+            headingLevel={2}
+            action={
+              <>
+                <Button type="filled" color="brand">
+                  <span>Кнопка 1</span>
+                </Button>
+                <Button type="tinted" color="neutral">Кнопка 2</Button>
+              </>
+            }
+          ></Block_Head>
+        }
+      >
+        <All_card_default></All_card_default>
+      </Block_List>
+      <Block_List
+        className="content_cards -theme-accent"
+        title={
+          <Block_Head
+            title={"Грид"}
+            subtitle={"Акцентный фон"}
+            caption={"Стандартные карточки грид без табов и пагинации"}
+            headingLevel={2}
+            action={
+              <>
+                <Button type="filled" color="brand">
+                  <span>Кнопка 1</span>
+                </Button>
+                <Button type="tinted" color="neutral">Кнопка 2</Button>
+              </>
+            }
+          ></Block_Head>
+        }
+      >
+        <All_card_default></All_card_default>
+      </Block_List>
+      <Block_List
+        className="content_cards -theme-neutral"
+        title={
+          <Block_Head
+            title={"Грид"}
+            subtitle={"Нейтральный фон"}
             caption={"Стандартные карточки грид без табов и пагинации"}
             headingLevel={2}
             action={

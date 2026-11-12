@@ -109,39 +109,20 @@ PopupManager.register(
 // );
 
 
-PopupManager.register(
-	"popup_for_confirmation",
-	{
-		additional_close_controls: true,
-		is_block_scroll: false,
-	},
-	{
-		on_open: (popup_element, params = {}) => {
-			const text = popup_element.querySelector(".popup--content_wrapper p");
-			const title = popup_element.querySelector(".popup--title");
-			const popup_type = params.type || "";
-			title.textContent = params.title || "";
-			text.innerHTML = params.text || "";
-			title.classList.toggle("is_hidden", !params.title);
+PopupManager.register('popup_for_confirmation',
+  {
+    is_block_scroll: true,
+    close_controls: true,
+  },
+  {
+    on_open: (popup, params) => {
+      let title_container = popup.querySelector('.popup--title'),
+        text_container = popup.querySelector('.popup--content_wrapper p');
 
-			if (popup_type) {
-				popup_element.classList.add(popup_type);
-			}
-
-			popup_element.popup_confirmation_timeout = setTimeout(() => {
-				PopupManager.close("popup_for_confirmation");
-			}, 5000);
-		},
-		on_close: (popup_element) => {
-			setTimeout(() => {
-				const text = popup_element.querySelector(".popup--content_wrapper p");
-				const title = popup_element.querySelector(".popup--title");
-				title.textContent = "";
-				text.innerHTML = "";
-					popup_element.classList.remove(popup_element.dataset.popupType);
-			}, 110);
-		},
-	},
+      if( title_container ) title_container.innerHTML = params.title ?? 'Действие выполнено';
+      if( text_container ) text_container.innerHTML = params.text ?? '';
+    },
+  }
 );
 
 // Add event Listeners to open Popups
@@ -182,5 +163,5 @@ window.addEventListener('load', () => {
     })
   }
 });
-// PopupManager.open('popup_for_cookies');
-// PopupManager.open('popup_for_confirmation', { title: 'Произошла ошибка', text: 'Попробуйте обновить страницу или попробовать позже', type: 'error' })
+//
+// PopupManager.open('popup_for_confirmation', { title: 'Произошла ошибка', text: 'Попробуйте обновить страницу или попробовать позже'})

@@ -45,7 +45,6 @@
         flex-direction: column
       &-item
         display: flex
-        width: 100%
         min-height: 100%
         cursor: pointer
         align-items: center
@@ -53,6 +52,9 @@
         text-align: center
         background-color: transparent
         color: var(--booking-text-color)
+        width: 10ch
+        min-width: 10ch
+        field-sizing: content
         &:placeholder-shown,
         &::placeholder
           color: var(--booking-text-color)
@@ -64,7 +66,8 @@
         width: max-content
       [class^=icon-]
         font-size: 1.2em
-        color: var(--mos-beige-alpha-mid-080)
+        color: var(--text-primary)
+        margin-left: auto
     &__guests
       position: relative
       &-input
@@ -84,7 +87,7 @@
           width: 100%
         [class^=icon-]
           font-size: 1.2em
-          color: var(--mos-beige-alpha-mid-080)
+          color: var(--text-secondary)
 
       &-popover
         position: absolute
@@ -145,8 +148,9 @@
           width: 100%
           .button
             width: 100%
+            justify-content: center
       &__button
-        &--button
+        .button
           padding-bottom: 12px
           gap: 8px
     &__inputs
@@ -202,11 +206,7 @@
       border-bottom: none
       &--item
         flex: none
-        width: max-content
-      &-item
-        width: 10ch
-        min-width: 10ch
-        field-sizing: content
+
     &__guests-input
       border-bottom: none
     &__calendar_wrapper,

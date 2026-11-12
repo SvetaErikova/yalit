@@ -7,7 +7,7 @@ const ContactItem = ({ icon, href, note, children }) => {
 
   return (
     <div className="contact--item">
-      {icon && <span className={cx('icon', icon)} />}
+      {icon && <span className={cx( icon)} />}
       <div className="contact-info">
         <Tag {...(href ? { href } : {})}>{children}</Tag>
         {note && <span>{note}</span>}
@@ -26,10 +26,13 @@ const ContactGroup = ({ title, items = [], action, social }) => (
     ))}
     {social && (
       <div className="contact_social">
-        <Button link={'/'} type={'filled-secondary'} icon={'icon-telegram'} />
-        <Button link={'/'} type={'filled-secondary'} icon={'icon-vk'} />
-        <Button link={'/'} type={'filled-secondary'} icon={'icon-ok'} />
-        <Button link={'/'} type={'filled-secondary'} icon={'icon-youtube'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-max'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-vk'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-ok'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-telegram'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-youtube'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-rutube'} />
+        <Button link={'/'} type={'filled-secondary'} icon={'icon-ic-whatsapp'} />
       </div>
     )}
     {action && (
@@ -62,7 +65,7 @@ const hotelGroups = [
   {
     items: [
       {
-        icon: 'icon-ic-location',
+        icon: 'icon-ic-place',
         text: '420126, Россия, Республика Татарстан, Казань, ул. Фатыха Амирхана, 1И',
         note: '55.8117, 49.1322',
       },
@@ -73,21 +76,21 @@ const hotelGroups = [
     title: 'Служба приёма и размещения',
     items: [
       { icon: 'icon-ic-phone', text: '+7 (800) 201-74-00', href: 'tel:+78002017400' },
-      { icon: 'icon-ic-email', text: 'info@mp-hotelskazan.com', href: 'mailto:info@mp-hotelskazan.com' },
+      { icon: 'icon-ic-envelope', text: 'info@mp-hotelskazan.com', href: 'mailto:info@mp-hotelskazan.com' },
     ],
   },
   {
     title: 'Отдел бронирования',
     items: [
       { icon: 'icon-ic-phone', text: 'reservation@hotelnogai.ru', href: 'tel:+78002017400' },
-      { icon: 'icon-ic-email', text: 'reservation@hotelnogai.ru', href: 'mailto:reservation@hotelnogai.ru' },
+      { icon: 'icon-ic-envelope', text: 'reservation@hotelnogai.ru', href: 'mailto:reservation@hotelnogai.ru' },
     ],
   },
   {
     title: 'Отдел продаж и маркетинга',
     items: [
       { icon: 'icon-ic-phone', text: 'reservation@hotelnogai.ru', href: 'tel:+78002017400' },
-      { icon: 'icon-ic-email', text: 'reservation@hotelnogai.ru', href: 'mailto:reservation@hotelnogai.ru' },
+      { icon: 'icon-ic-envelope', text: 'reservation@hotelnogai.ru', href: 'mailto:reservation@hotelnogai.ru' },
     ],
   },
   {

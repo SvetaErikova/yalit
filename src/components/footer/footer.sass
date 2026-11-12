@@ -68,6 +68,8 @@
         font-size: var(--fs-caption-2)
         line-height: 1.5
         list-style-type: none
+        a:hover
+          opacity: 0.7
   .form
     grid-area: form
   &--contacts
@@ -95,11 +97,12 @@
     gap: var(--g-xxs)
     &_list
       display: flex
+      flex-wrap: wrap
       gap: 16px
       .item
         max-width: 100%
         min-width: 0
-    
+
         width: max-content
         img
           max-height: 84px

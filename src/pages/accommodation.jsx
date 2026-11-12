@@ -18,9 +18,9 @@ const roomTabs = [
 ];
 
 const roomList = [
-  { icon: "icon-ic-copy", text: "25-32 м2" },
-  { icon: "icon-ic-location", text: "до 2 гостей" },
-  { icon: "icon-ic-time", text: "двуспальная кровать" },
+  { icon: "icon-ic-radix", text: "25-32 м2" },
+  { icon: "icon-ic-user", text: "до 2 гостей" },
+  { icon: "icon-ic-bed", text: "двуспальная кровать" },
 ];
 
 const roomText = "Улучшенный стандартный номер с увеличенной площадью и дополнительным пространством для отдыха или работы";

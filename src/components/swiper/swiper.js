@@ -416,9 +416,11 @@ function initHeaderNavSlider(block) {
   );
 
   const syncArrows = () => {
-    const showArrows = desktopArrows.matches && !navSlider.isLocked;
+    const fits = navSlider.isLocked;
+    const showArrows = desktopArrows.matches && !fits;
     controlsSet.prev.hidden = !showArrows;
     controlsSet.next.hidden = !showArrows;
+    nav.classList.toggle('swiper-lock', fits);
   };
 
   syncArrows();
@@ -426,12 +428,12 @@ function initHeaderNavSlider(block) {
   navSlider.on('unlock', syncArrows);
   navSlider.on('breakpoint', syncArrows);
 
-  if (document.fonts) {
-    document.fonts.ready.then(() => {
-      navSlider.update();
-      syncArrows();
-    });
-  }
+  // if (document.fonts) {
+  //   document.fonts.ready.then(() => {
+  //     navSlider.update();
+  //     syncArrows();
+  //   });
+  // }
 }
 const header_nav = document.querySelector('.header--bottom .header--nav')
 if(header_nav){

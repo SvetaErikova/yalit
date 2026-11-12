@@ -11,6 +11,20 @@ export const HotelGroupComp = () => {
           <div class="block--top">
             <Block_Head title={'Группа отелей ЯЛИТ'} caption={'Это новая глава в истории казанского гостеприимства.\n' +
               'Четыре уникальных отеля, объединённых философией искреннего радушия, безупречного сервиса и глубокого уважения к татарским традициям. Мы создаём не просто отели, а пространства для незабываемых впечатлений'}></Block_Head>
+              <div className="block--stats">
+                <div className="item">
+                  <p>4</p>
+                  <span>современных отеля</span>
+                </div>
+                <div className="item">
+                  <p>500</p>
+                  <span>номеров</span>
+                </div>
+                <div className="item">
+                  <p>12 000+</p>
+                  <span>гостей в месяц</span>
+                </div>
+              </div>
           </div>
           <div>ТУТ БУДУТ ИСТОРИИ ВИДСТЕР</div>
         </div>

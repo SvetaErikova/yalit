@@ -2,9 +2,9 @@ import { Button } from '../../button/button.jsx';
 import { Card, Card_list } from './card.jsx';
 
 const roomList = [
-  { icon: 'icon-ic-copy', text: '18-31 м2' },
-  { icon: 'icon-ic-location', text: 'до 2 гостей' },
-  { icon: 'icon-ic-time', text: 'двуспальная кровать' },
+  { icon: "icon-ic-radix", text: "25-32 м2" },
+  { icon: "icon-ic-user", text: "до 2 гостей" },
+  { icon: "icon-ic-bed", text: "двуспальная кровать" },
 ];
 
 const roomImages = [
@@ -25,7 +25,7 @@ export const Card_room = ({
       title={title}
       text={text}
       images={images}
-      action={<Button  type="filled-secondary" icon="icon-ic-uniq-arrow-right" />}
+      action={<Button  type="filled-secondary" icon="icon-ic-arrow" />}
     >
       <Card_list list={list} />
       {children}

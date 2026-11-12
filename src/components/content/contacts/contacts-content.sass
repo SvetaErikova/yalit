@@ -38,7 +38,7 @@
     align-items: flex-start
     gap: 16px
 
-    > .icon
+    > [class^=icon-]
       flex-shrink: 0
       margin-top: 2px
       font-size: var(--button-icon-size)
@@ -74,3 +74,5 @@
     a:has(span[class^=icon-]:only-child)
       font-size: 16px
       --button-padding: 0
+      span
+        rotate: 0deg

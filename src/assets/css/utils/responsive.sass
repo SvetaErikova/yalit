@@ -23,7 +23,6 @@
   --cascade-responsive-margin-modal-lg: 24px
   --cascade-responsive-margin-modal-md: 16px
 
-
   // ---------- Navigation / Header ----------
   --nav-menu-item-height: 16px
   --nav-menu-v-padding: 16px
@@ -70,7 +69,7 @@
 
 // ============================================================
 // TABLET: 768 → 1024
-// clamp(mobile, mobile + (tablet - mobile) * ((100vw - 768) / 256), tablet)
+
 // ============================================================
 @media (min-width: 768px)
   \:root
@@ -80,42 +79,22 @@
     --fs-display-1: clamp(36px, calc(36px + (56 - 36) * ((100vw - 768px) / (1024 - 768))), 56px)
     --fs-heading-3: clamp(32px, calc(32px + (40 - 32) * ((100vw - 768px) / (1024 - 768))), 40px)
     --fs-heading-2: clamp(20px, calc(20px + (24 - 20) * ((100vw - 768px) / (1024 - 768))), 24px)
-    --fs-heading-1: 20px
-    --fs-body-3:    18px
-    --fs-body-2:    16px
-    --fs-body-1:    14px
-    --fs-caption-2: 12px
-    --fs-caption-1: 10px
-
-    // ---------- Cascade / layout ----------
-    --cascade-responsive-margin-page-lg:  40px
-    --cascade-responsive-margin-page-md:  20px
-    --cascade-responsive-margin-block-lg: 32px
-    --cascade-responsive-margin-block-md: 20px
-    --cascade-responsive-margin-modal-lg: 24px
-    --cascade-responsive-margin-modal-md: 16px
-
 
     // ---------- Navigation ----------
     --nav-menu-item-height: clamp(16px, calc(16px + (24 - 16) * ((100vw - 768px) / (1024 - 768))), 24px)
-    --nav-menu-v-padding: 16px
-    --nav-actions-v-padding: 16px
-    --nav-menu-slider-control-item-icon-size: 16px
     --breadcrumbs-v-padding: clamp(16px, calc(16px + (20 - 16) * ((100vw - 768px) / (1024 - 768))), 20px)
-    --nav-menu-gap: 16px
 
     // ---------- Blocks ----------
-    --banner-max-height: clamp(916px, calc(916px + (872 - 916) * ((100vw - 768px) / (1024 - 768))), 872px)
+    --banner-max-height: clamp(872px, calc(916px + (872 - 916) * ((100vw - 768px) / (1024 - 768))), 916px)
     --block-list-gap: clamp(32px, calc(32px + (40 - 32) * ((100vw - 768px) / (1024 - 768))), 40px)
     --imagetext-decor-size: clamp(64px, calc(64px + (80 - 64) * ((100vw - 768px) / (1024 - 768))), 80px)
 
     // ---------- Elements / Booking ----------
-    --booking-input-height: 40px
     --booking-max-width: clamp(380px, calc(380px + (984 - 380) * ((100vw - 768px) / (1024 - 768))), 984px)
 
     // ---------- Grid ----------
     --grid-viewport-width: clamp(412px, calc(412px + (1024 - 412) * ((100vw - 768px) / (1024 - 768))), 1024px)
-    --grid-viewport-height: clamp(916px, calc(916px + (768 - 916) * ((100vw - 768px) / (1024 - 768))), 768px)
+    --grid-viewport-height: clamp(768px, calc(916px + (768 - 916) * ((100vw - 768px) / (1024 - 768))), 916px)
     --grid-margin: clamp(16px, calc(16px + (40 - 16) * ((100vw - 768px) / (1024 - 768))), 40px)
     --grid-columns: 8
     --grid-gutter: clamp(16px, calc(16px + (20 - 16) * ((100vw - 768px) / (1024 - 768))), 20px)
@@ -124,25 +103,15 @@
     --grid-d1-t1-m1: clamp(380px, calc(380px + (944 - 380) * ((100vw - 768px) / (1024 - 768))), 944px)
     --grid-d2-t2-m2: clamp(182px, calc(182px + (462 - 182) * ((100vw - 768px) / (1024 - 768))), 462px)
 
-    // ---------- Templates ----------
-    --filter-section-width: 240px
-
     // ---------- Components / Button ----------
-    --button-text-h-padding: 8px
-    --button-ic-size-page: 20px
-    --button-ic-size-block: 20px
-    --button-ic-size-modal: 16px
     --button-text-fs-page: clamp(12px, calc(12px + (14 - 12) * ((100vw - 768px) / (1024 - 768))), 14px)
     --button-text-fs-block: clamp(12px, calc(12px + (14 - 12) * ((100vw - 768px) / (1024 - 768))), 14px)
     --button-text-fs-modal: clamp(12px, calc(12px + (14 - 12) * ((100vw - 768px) / (1024 - 768))), 14px)
-    --button-height-page: 40px
-    --button-height-block: 40px
     --button-height-modal: clamp(36px, calc(36px + (40 - 36) * ((100vw - 768px) / (1024 - 768))), 40px)
 
 
 // ============================================================
-// DESKTOP: 1024 → 1920
-// clamp(tablet, tablet + (desktop - tablet) * ((100vw - 1024) / 896), desktop)
+// DESKTOP: ≥ 1024
 // ============================================================
 @media (min-width: 1024px)
   \:root
@@ -164,14 +133,9 @@
     --cascade-responsive-margin-page-md:  clamp(20px, calc(20px + (24 - 20) * ((100vw - 1024px) / (1920 - 1024))), 24px)
     --cascade-responsive-margin-block-lg: clamp(32px, calc(32px + (40 - 32) * ((100vw - 1024px) / (1920 - 1024))), 40px)
     --cascade-responsive-margin-block-md: clamp(20px, calc(20px + (24 - 20) * ((100vw - 1024px) / (1920 - 1024))), 24px)
-    --cascade-responsive-margin-modal-lg: 24px
-    --cascade-responsive-margin-modal-md: 16px
-
 
     // ---------- Navigation ----------
     --nav-menu-item-height: clamp(24px, calc(24px + (32 - 24) * ((100vw - 1024px) / (1920 - 1024))), 32px)
-    --nav-menu-v-padding: 16px
-    --nav-actions-v-padding: 16px
     --nav-menu-slider-control-item-icon-size: clamp(16px, calc(16px + (18 - 16) * ((100vw - 1024px) / (1920 - 1024))), 18px)
     --breadcrumbs-v-padding: clamp(20px, calc(20px + (24 - 20) * ((100vw - 1024px) / (1920 - 1024))), 24px)
     --nav-menu-gap: clamp(16px, calc(16px + (20 - 16) * ((100vw - 1024px) / (1920 - 1024))), 20px)
@@ -200,84 +164,5 @@
     --filter-section-width: clamp(240px, calc(240px + (320 - 240) * ((100vw - 1024px) / (1920 - 1024))), 320px)
 
     // ---------- Components / Button ----------
-    --button-text-h-padding: 8px
-    --button-ic-size-page: 20px
     --button-ic-size-block: clamp(20px, calc(20px + (24 - 20) * ((100vw - 1024px) / (1920 - 1024))), 24px)
     --button-ic-size-modal: clamp(16px, calc(16px + (20 - 16) * ((100vw - 1024px) / (1920 - 1024))), 20px)
-    --button-text-fs-page: 14px
-    --button-text-fs-block: 14px
-    --button-text-fs-modal: 14px
-    --button-height-page: 40px
-    --button-height-block: 40px
-    --button-height-modal: 40px
-
-
-// ============================================================
-// WIDE: ≥ 1920 (фикс)
-// ============================================================
-@media (min-width: 1920px)
-  \:root
-    // ---------- Typography ----------
-    --fs-display-3: 200px
-    --fs-display-2: 80px
-    --fs-display-1: 64px
-    --fs-heading-3: 48px
-    --fs-heading-2: 32px
-    --fs-heading-1: 24px
-    --fs-body-3:    20px
-    --fs-body-2:    18px
-    --fs-body-1:    16px
-    --fs-caption-2: 14px
-    --fs-caption-1: 12px
-
-    // ---------- Cascade / layout ----------
-    --cascade-responsive-margin-page-lg:  48px
-    --cascade-responsive-margin-page-md:  24px
-    --cascade-responsive-margin-block-lg: 40px
-    --cascade-responsive-margin-block-md: 24px
-    --cascade-responsive-margin-modal-lg: 24px
-    --cascade-responsive-margin-modal-md: 16px
-
-
-    // ---------- Navigation ----------
-    --nav-menu-item-height: 32px
-    --nav-menu-v-padding: 16px
-    --nav-actions-v-padding: 16px
-    --nav-menu-slider-control-item-icon-size: 18px
-    --breadcrumbs-v-padding: 24px
-    --nav-menu-gap: 20px
-
-    // ---------- Blocks ----------
-    --banner-max-height: 916px
-    --block-list-gap: 56px
-    --imagetext-decor-size: 128px
-
-    // ---------- Elements / Booking ----------
-    --booking-input-height: 48px
-    --booking-max-width: 1200px
-
-    // ---------- Grid ----------
-    --grid-viewport-width: 1920px
-    --grid-viewport-height: 1080px
-    --grid-margin: 180px
-    --grid-columns: 12
-    --grid-gutter: 24px
-    --block-margin-responsive-1: 120px
-    --block-margin-responsive-2: 48px
-    --grid-d1-t1-m1: 1560px
-    --grid-d2-t2-m2: 768px
-
-    // ---------- Templates ----------
-    --filter-section-width: 320px
-
-    // ---------- Components / Button ----------
-    --button-text-h-padding: 8px
-    --button-ic-size-page: 20px
-    --button-ic-size-block: 24px
-    --button-ic-size-modal: 20px
-    --button-text-fs-page: 14px
-    --button-text-fs-block: 14px
-    --button-text-fs-modal: 14px
-    --button-height-page: 40px
-    --button-height-block: 40px
-    --button-height-modal: 40px

@@ -26,6 +26,8 @@ export const hotelLinks = [
   { label: 'Проживание', href: '/accommodation' },
   { label: 'Наши услуги', href: '' },
   { label: 'Спецпредложения', href: '/offer' },
+  { label: 'Спецпредложения', href: '/offer' },
+  { label: 'Спецпредложения', href: '/offer' },
   { label: 'Спа и фитнес', href: '/spa' },
   { label: 'Рестораны и бары', href: '' },
   { label: 'События', href: '/events' },
