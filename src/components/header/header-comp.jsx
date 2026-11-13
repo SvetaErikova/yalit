@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { Button } from '../_ui/button/button.jsx';
 import { Nav } from '../nav/nav.jsx';
-import { Dropdown } from '../_ui/dropdown/dropdown.jsx';
 import { HeaderContacts } from './header-contacts.jsx';
 import { HeaderInfo } from './header-info.jsx';
 import { HeaderLogo } from './header-logo.jsx';
@@ -17,10 +16,10 @@ export const Header = ({ transparent = false, hotel = false }) => {
 
           <HeaderLogo hotel={hotel} />
           <div className="header--actions ">
-            <div className={'button button-filled-secondary is_dropdown'}>
+            <div className={'button button-filled-secondary dropdown'}>
               <span className={'icon-ic-language-ru'}></span>
-              <div className="is_dropdown--wrapper">
-                <div className="is_dropdown--content">
+              <div className="dropdown--wrapper">
+                <div className="dropdown--content">
                   <div className="nav--item">
                     <a href="" className="nav--item_link"><span class={'icon-ic-language-ru'}></span></a>
                   </div>
@@ -33,10 +32,10 @@ export const Header = ({ transparent = false, hotel = false }) => {
                 </div>
               </div>
             </div>
-            <div className={'button button-filled-secondary is_dropdown'}>
+            <div className={'button button-filled-secondary dropdown'}>
               <span className={'icon-ic-phone'}></span>
-              <div className="is_dropdown--wrapper">
-                <div className="is_dropdown--content">
+              <div className="dropdown--wrapper">
+                <div className="dropdown--content">
                   <div className="nav--item">
                     <a href="" className="nav--item_link">
                       <span class={'icon-ic-phone'}></span>

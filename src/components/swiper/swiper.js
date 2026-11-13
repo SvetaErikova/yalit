@@ -3,7 +3,6 @@ import {
   withNavigationAndPagination,
   defaultSwiperOptions
 } from './helpers';
-import { doc } from 'prettier';
 
 
 /* Slider for banners */
@@ -73,7 +72,7 @@ const activateBlocklistSlider = (swiper_item) => {
   case swiper_item.classList.contains('content_offers'):
     slides_per_view_desktop = 3;
     slides_per_view_desktop_small = 2.2;
-    slides_per_view_pad = 2.1;
+    slides_per_view_pad = 1.8;
     slides_per_view_mob = 1.1;
     break;
 
@@ -128,8 +127,9 @@ const activateBlocklistSlider = (swiper_item) => {
   const { controls, prev, next } = buildControls({ pagination: false });
   const blockElements = swiper_item.querySelector('.block--elements');
   const gallerySlider = swiper_item.classList.contains('content_gallery');
+  const wrapper = swiper_item.querySelector('.block--wrapper');
 
-  blockElements.append(controls);
+  wrapper.append(controls);
 
 
   const swiper = new Swiper(

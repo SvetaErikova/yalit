@@ -14,8 +14,12 @@ export const InfoMedia = ({theme}) => {
         </div>
       </div>
       <div class="block--media">
-        <img src="/assets/img/1.jpg" alt="" />
-        <img src="/assets/img/1.jpg" alt="" />
+        <div class="item">
+          <img src="/assets/img/1.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="/assets/img/1.jpg" alt="" />
+        </div>
       </div>
     </Block>
   )

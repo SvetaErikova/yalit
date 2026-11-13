@@ -10,7 +10,7 @@ export const Dropdown = ({ children, className, ...props }) => {
     <div className={clsx('dropdown', className)} {...props}>
       {trigger}
       <div className="dropdown--wrapper">
-        <div className="dropdown--list">
+        <div className="dropdown--content">
           {content}
         </div>
       </div>

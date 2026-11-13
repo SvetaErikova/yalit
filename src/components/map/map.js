@@ -1,39 +1,56 @@
 const map_contacts = document.getElementById("map");
+
 if (map_contacts) {
+  const HOTEL_POINTS = (typeof HOTEL_MAP_ARRAY === "undefined" || HOTEL_MAP_ARRAY === null)
+    ? [
+      {
+        coords: [55.761239, 49.261562],
+        title: "Ногай",
+      },
+      {
+        coords: [54.982239, 49.022628],
+        title: "Кол Гали",
+      },
+      {
+        coords: [55.810117, 48.857670],
+        title: "Ак Барс Гольф Резорт",
+      },
+      {
+        coords: [55.815246, 49.131603],
+        title: "Миллениум Панорама",
+      },
+    ]
+    : [...HOTEL_MAP_ARRAY];
+
   document.addEventListener("DOMContentLoaded", () => {
     initMap();
   });
 
   function initMap() {
     ymaps.ready(() => {
-      const coords = JSON.parse(map_contacts.dataset.coords);
-
       const map = new ymaps.Map("map", {
-        center: coords,
+        center: HOTEL_POINTS[0].coords,
         zoom: 16,
         controls: [],
       });
 
-      map.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom',]);
+      map.behaviors.disable(["drag", "scrollZoom", "dblClickZoom"]);
 
-      var myGeoObject = new ymaps.GeoObject({
-        geometry: {
-          type: "Point",
-          coordinates: coords
-        },
-        // Добавляем свойства для тултипа
-        // properties: {
-        //   hintContent: 'Центральный офис',
-        //   balloonContent: 'Центральный офис'
-        // }
-      }, {
-        iconLayout: 'default#image',
-        // iconImageHref: '/assets/img/favicon.svg',
-        // iconImageSize: [60, 60],
-        // iconImageOffset: [-30, -30]
+      HOTEL_POINTS.forEach((point) => {
+        const placemark = new ymaps.Placemark(point.coords, {
+          hintContent: point.title,
+          balloonContent: point.title,
+        });
+
+        map.geoObjects.add(placemark);
       });
 
-      map.geoObjects.add(myGeoObject);
+      if (HOTEL_POINTS.length > 1) {
+        map.setBounds(map.geoObjects.getBounds(), {
+          checkZoomRange: true,
+          zoomMargin: 24,
+        });
+      }
     });
   }
 }

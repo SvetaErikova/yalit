@@ -1,7 +1,6 @@
 // ui
 import '../../components/_ui/accordion/accordion.js';
 import '../../components/_ui/copy_button/copy_button.js';
-import '../../components/_ui/dropdown/dropdown.js';
 import '../../components/_ui/is_cascade/is_cascade.js';
 import '../../components/block/_ui/block--selection/block--selection.js';
 

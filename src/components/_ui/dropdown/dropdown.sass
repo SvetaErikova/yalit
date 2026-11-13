@@ -1,73 +1,55 @@
 .dropdown
   position: relative
+  overflow: visible
+
+  > a [class*="icon-ic-chevron"],
+  > [class*="icon-ic-chevron"]
+    transition: rotate var(--transition)
 
   &:hover
-    @media(min-width: 769px)
-      .dropdown--wrapper
-        opacity: 1
-        visibility: visible
-        pointer-events: auto
-        transform: translateY(0)
-  @media(max-width: 768px)
-    & > a
-      pointer-events: none
-  &.is_active
     .dropdown--wrapper
       opacity: 1
-      visibility: visible
-      pointer-events: auto
-      transform: translateY(0)
+      pointer-events: all
+      top: 100%
+
+    > a [class*="icon-ic-chevron"],
+    > [class*="icon-ic-chevron"]
+      rotate: 180deg
+
+  @media (max-width: 768px)
+    > a,
+    > a *
+      pointer-events: none
+
   &--wrapper
     position: absolute
-    top: 100%
-    padding-top: 8px
-    right: 0
-    min-width: 320px
     opacity: 0
-    visibility: hidden
     pointer-events: none
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease
-    transform: translateY(-10px)
-    z-index: 1000
-    @media(max-width: 768px)
-      position: fixed
-      top: auto
-      left: 0
-      right: 0
-      min-width: auto
-      width: 100%
-      border-radius: 24px 24px 0 0
-      max-height: 80vh
-      overflow-y: auto
+    transform-origin: center
+    top: 110%
+    left: 50%
+    transition: var(--transition)
+    z-index: 48
+    display: flex
+    padding: 8px
+    translate: -50% 0
 
-  &--list
+  &--content
     background: #FFFFFF
-    border-radius: 24px
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
-    padding: 24px
-    display: flex
-    flex-direction: column
-    gap: 20px
+    border-radius: 8px
+    padding: 4px 8px
+    box-shadow: 0 1px 3px 0 #0000001A, 1px 5px 5px 0 #00000017, 3px 22px 9px 0 #00000003, 5px 34px 10px 0 #00000000
 
-  &--item
-    display: flex
-    flex-direction: column
-    gap: 8px
-    color: #203750
-    .button span[class*="icon-"]
-      font-size: 2em
-    & > span
-      font-size: var(--subtitle-s)
-      color: #64788F
-      font-weight: 500
-    & > p
-      font-size: var(--caption-s)
+    .nav--item
+      &:not(:last-child)
+        border-bottom: 1px solid var(--line-neutral-tertiary)
 
-    & > p + a
-      margin-top: 4px
-      font-weight: 500
-    & > div
-      display: flex
-      gap: 12px
-      align-items: center
+      &_link
+        padding: 0 12px
+        height: var(--booking-input-height)
 
+        &:hover
+          color: var(--text-accent-heavy)
+
+.button.dropdown
+  overflow: visible

@@ -42,7 +42,14 @@ btn_openHotelSelect.forEach(btn => {
 /* Скролл хедера  */
 window.addEventListener('scroll', (e) => {
   let current_scroll = window.scrollY || document.documentElement.scrollTop;
-  current_scroll >= last_scroll && current_scroll ? document.querySelector('header').classList.add('scrolled-up') : document.querySelector('header').classList.remove('scrolled-up');
+  const header = document.querySelector('header');
+
+  if (current_scroll >= last_scroll && current_scroll > 60) {
+    header.classList.add('scrolled-up');
+  } else {
+    header.classList.remove('scrolled-up');
+  }
+
   last_scroll = current_scroll;
 });
 

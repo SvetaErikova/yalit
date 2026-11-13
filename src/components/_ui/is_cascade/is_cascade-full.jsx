@@ -153,7 +153,16 @@ export const Is_cascade_full = () => {
       </div>
 
       <div className="advantages-cards">
-        <div className="card">
+        <a href={'/'} className="card">
+          <div className="card--image">
+            <img src="/assets/img/1.jpg" alt="" />
+          </div>
+          <div className="card--content">
+            <div className="card--title"> Посещение спа-зоны</div>
+            <Button type={'filled-secondary'} icon={'icon-ic-arrow'}></Button>
+          </div>
+        </a>
+        <div className="card" data-openpopup={'popup_for_cascade'}>
           <div className="card--image">
             <img src="/assets/img/1.jpg" alt="" />
           </div>
@@ -168,20 +177,22 @@ export const Is_cascade_full = () => {
           </div>
           <div className="card--content">
             <div className="card--title"> Посещение спа-зоны</div>
-            <Button type={'filled-secondary'} icon={'icon-ic-eye'}></Button>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card--image">
-            <img src="/assets/img/1.jpg" alt="" />
-          </div>
-          <div className="card--content">
-            <div className="card--title"> Посещение спа-зоны</div>
-            <Button type={'filled-secondary'} icon={'icon-ic-eye'}></Button>
           </div>
         </div>
       </div>
+      <h3>Картинка с кнопкой</h3>
+      <div class="image-link">
+        <img src="/assets/img/1.jpg" alt="" />
+        <Button type={'filled-primary'}>
+          Смотреть 3д-тур
+        </Button>
+      </div>
 
+      <h3>Разворачиваемый текст</h3>
+      <p class={'js-hidden-content '}>Стандартный номер, вид из которого открывается на город, во внутренний двор отеля или на соседнее прилегающее здание. Для вас: Wi-Fi, система кондиционирования, Яндекс ТВ. Для комфортного отдыха двуспальная кровать с ортопедическим матрасом и гипоаллергенным бельём. Рабочая зона с чайной станцией, мини-баром, бутилированной водой и сейфом. В ванной комнате тропический душ, комплектация: халаты, тапочки, косметический набор и на выбор косметика Lucio Classic и Lucio Amber Wood.</p>
+      <button className="js-show-content button button-outlined" data-expand={'Развернуть'} data-collapse={'Свернуть'}>
+        <span></span>
+      </button>
       <h3>Оснащение номера</h3>
       <div className="accommodation--info">
         <div className="accommodation--info_item">

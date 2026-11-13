@@ -60,11 +60,6 @@
     gap: 8px
     transition: var(--transition)
 
-    .button
-      height: var(--button-height)
-
-
-
   &--image
     display: flex
     align-items: flex-start
@@ -365,7 +360,22 @@
     gap: 10px
     flex-direction: row
     justify-content: space-between
-
+  .card--logo
+    position: absolute
+    top: 12px
+    left: auto
+    right: 12px
+    aspect-ratio: 121/52
+    width: 121px
+    background: var(--surface-primary)
+    border-radius: 4px
+    display: flex
+    justify-content: center
+    align-items: center
+    img,svg
+      aspect-ratio: 152/52
+      width: 105px
+      height: auto
   .card--price
     display: flex
     align-items: center
@@ -377,6 +387,7 @@
       font-weight: 600
       font-size: var(--fs-body-3)
       line-height: 1.3
+      white-space: nowrap
 
     &_text
       font-weight: 600
@@ -473,7 +484,7 @@
         padding: 56px 0
 
         &:not(:last-child)
-          border-bottom: 1px solid var(--line-neutral-secondary)
+          border-bottom: 1px solid var(--line-neutral-tertiary)
 
   .card
     overflow: visible
@@ -504,6 +515,7 @@
       margin-inline: auto
       margin-top: calc(min(100%, 421px) * 0.7 * 131 / 302 / 2)
       overflow: visible
+      max-width: calc(100vw - var(--container-padding) * 2 - 30px)
 
       &_photo,
       &:after
@@ -644,6 +656,9 @@
     --button-border-color: transparent
     --btn-bg-secondary-rest: rgba(42, 48, 42, 0.4)
     --btn-text-secondary-rest: #FEF9F1
+    --btn-bg-secondary-hover: rgba(42, 48, 42, 0.6)
+    --btn-text-secondary-hover: #FFFFFF
+    --button-icon-size: 20px
 
   .card:hover
     .button

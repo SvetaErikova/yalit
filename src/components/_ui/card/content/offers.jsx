@@ -18,6 +18,9 @@ export const Card_offers = ({ image, title, text, action, list, price }) => {
       <div class="card--image">
         <img src={image} alt="" loading="lazy" />
       </div>
+      <span class="card--logo">
+        <img src="/assets/img/logo/logo-hotels.svg" alt="" />
+      </span>
       <div class="card--content">
         <div class="card--top">
           <div class="card--title">{title}</div>

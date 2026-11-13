@@ -13,9 +13,11 @@ function initReveal() {
   const accordions = document.querySelectorAll('.accordion');
   const galleries = document.querySelectorAll('.content_galleries .gallery--item')
   const galleriesTitle = document.querySelectorAll('.content_galleries .block--group_title')
+  const cascade = document.querySelectorAll('.is_cascade')
+  const footer_main = document.querySelector('.footer--main');
 
   const reduced = window.matchMedia(REDUCED_QUERY).matches;
-  const nodes = [...headParts, ...cards, ...accordions, ...galleries, ...galleriesTitle];
+  const nodes = [...headParts, ...cards, ...accordions, ...galleries, ...galleriesTitle, ...cascade, footer_main];
 
   if (reduced || !('IntersectionObserver' in window)) {
     reveal(nodes);

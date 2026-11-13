@@ -8,6 +8,8 @@
   z-index: 49
   color: var(--text-primary)
   pointer-events: none
+
+  overflow: hidden
   &--logo
     flex-shrink: 0
     display: flex
@@ -108,7 +110,7 @@
     .header--bottom
       translate: 0 -100%
       pointer-events: none
-  .is_dropdown
+  .dropdown
     overflow: visible
 
 body:has(.popup-hotel_select.is_active)

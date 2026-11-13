@@ -10,7 +10,7 @@ export const Nav = ({ className, hotel = false, ...props }) => {
         const hasChildren = Boolean(item.children?.length);
 
         return (
-          <div className={clsx('nav--item', { is_dropdown: hasChildren })} key={item.label}>
+          <div className={clsx('nav--item', { dropdown: hasChildren })} key={item.label}>
             <a href={item.href} className="nav--item_link">
               <span>{item.label}</span>
               {hasChildren && (
@@ -18,8 +18,8 @@ export const Nav = ({ className, hotel = false, ...props }) => {
               )}
             </a>
             {hasChildren && (
-              <div className="is_dropdown--wrapper">
-                <div className="is_dropdown--content">
+              <div className="dropdown--wrapper">
+                <div className="dropdown--content">
                   {item.children.map((child) => (
                     <div className="nav--item" key={child.label}>
                       <a href={child.href} className="nav--item_link">

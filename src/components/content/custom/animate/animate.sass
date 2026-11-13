@@ -13,11 +13,12 @@
     opacity: 0
   to
     opacity: 1
+    transform: translateY(0)
 
 @keyframes reveal-rise
   from
     opacity: 0
-    transform: translateY(20px)
+    transform: translateY(15px)
   to
     opacity: 1
     transform: translateY(0)
@@ -36,7 +37,7 @@
   &_caption,
   .block--actions
     opacity: 0
-    transform: translateY(20px)
+    transform: translateY(15px)
 
     &.is-revealed
       animation: reveal-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both
@@ -45,10 +46,17 @@
   &.is-revealed
     animation: title-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both
 
+.is_cascade
+  opacity: 0
+  &.is-revealed
+    animation: reveal-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both
+
 .block_list .card,
 .accordion,
-.content_galleries .gallery--item
+.content_galleries .gallery--item,
+.footer--main
   opacity: 0
+  transform: translateY(15px)
   animation-delay: var(--reveal-delay, 0ms)
 
   &.is-revealed
@@ -61,10 +69,7 @@
   .block--head_caption,
   .block--head .block--actions,
   .block_list .card,
-  .header--logo,
-  .header--hotel_select,
-  .header--actions > .button,
-  .header--nav > .nav > .nav--item
+  .is_cascade
     opacity: 1 !important
     clip-path: none !important
     transform: none !important
@@ -93,18 +98,31 @@
     view-timeline-name: --parallax
     view-timeline-axis: block
 
+  .info-media
+    view-timeline-name: --info-parallax
+    view-timeline-axis: block
+
+  .banner .block--content img,
+  .banner .block--content video,
+  .info-media .block--media .item img
+    scale: 1.65
+    animation-name: parallax
+    animation-duration: auto
+    animation-timing-function: linear
+    animation-fill-mode: both
+    animation-range: cover
+
   .banner .block--content
     img, video
-      scale: 1.65
-      animation-name: parallax
-      animation-duration: auto
-      animation-timing-function: linear
-      animation-fill-mode: both
       animation-timeline: --parallax
-      animation-range: cover
+
+  .info-media .block--media .item
+    img
+      animation-timeline: --info-parallax
 
 @media (prefers-reduced-motion: reduce)
-  .banner .block--content
+  .banner .block--content,
+  .info-media .block--media .item
     img, video
       scale: 1.25
       animation: none

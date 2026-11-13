@@ -55,7 +55,7 @@ export const Card = ({
       </div>
 
       <div className="card--content">
-        {/*<Labels items={labels} />*/}
+        <Labels items={labels} />
         {subhead && <div className={'card--subhead'}>{subhead}</div>}
         {title && <div className={'card--title'}>{title}</div>}
         {text && <div className={'card--text'}>{text}</div>}
