@@ -1,4 +1,8 @@
 .preloader
+  --preloader-red: #8E3821
+  --preloader-black: #565A46
+  --preloader-decor: #C05C41
+  --preloader-play: 2.4s
   position: fixed
   inset: 0
   z-index: 1200
@@ -6,40 +10,104 @@
   align-items: center
   justify-content: center
   padding: 24px
-  background: #fff
+  background: var(--surface-secondary)
   transition: opacity 0.3s ease, visibility 0.3s ease
-  opacity: 0
-  visibility: hidden
-  pointer-events: none
-  &.is_active
-    opacity: 1
-    visibility: visible
-  //&.is-hidden
-  //  opacity: 0
-  //  visibility: hidden
-  //  pointer-events: none
+  opacity: 1
+  visibility: visible
+  pointer-events: auto
+
+  &.is_done
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
 
   &__inner
     display: flex
+    flex-direction: column
     align-items: center
-    justify-content: center
+    width: min(440px, 86vw)
+    gap: clamp(20px, 4vw, 36px)
 
-  &__svg
-    width: min(395px, 90vw)
-    height: auto
+  &__logo
     display: block
+    width: 100%
+    height: auto
+    color: var(--preloader-red)
+    max-width: 58%
 
-  &__circle-rise
-    transform: scaleY(0)
-    transform-box: fill-box
-    transform-origin: 50% 100%
-    animation: preloader-circle-fill 2s ease-in-out forwards
+  &__arch
+    position: relative
+    width: 58%
+    aspect-ratio: 328.46 / 399.924
 
-@keyframes preloader-circle-fill
+  &__arch-frame
+    position: absolute
+    top: 50%
+    left: 50%
+    z-index: 1
+    width: calc(100% + 30px)
+    height: calc(100% + 30px)
+    translate: -50% -50%
+    background: #DFCAA4
+    mask-image: url("/assets/img/decor/mask-offer.svg")
+    mask-repeat: no-repeat
+    mask-position: center
+    mask-size: 100% 100%
+    mask-mode: alpha
+
+  &__arch-shape
+    position: absolute
+    inset: 0
+    z-index: 2
+    overflow: hidden
+    mask-image: url("/assets/img/decor/mask-offer.svg")
+    mask-repeat: no-repeat
+    mask-position: center
+    mask-size: 100% 100%
+    mask-mode: alpha
+
+  &__scene
+    position: absolute
+    inset: 0
+
+  &__scene--next
+    clip-path: inset(100% 0 0 0)
+
+    .preloader__fill
+      background: var(--preloader-black)
+
+    .preloader__ornament
+      background: var(--surface-secondary)
+
+  &__fill
+    position: absolute
+    inset: 0
+    background: var(--preloader-red)
+
+  &__ornament
+    position: absolute
+    inset: 0
+    background: var(--preloader-decor)
+    mask-image: url("/assets/img/decor/decor-horizontal.svg")
+    mask-repeat: no-repeat
+    mask-position:  50% 20%
+    mask-size: 150%
+    mask-mode: alpha
+
+@keyframes preloader-rise
   to
-    transform: scaleY(1)
+    clip-path: inset(0 0 0 0)
+
+html.preloader-show .preloader__scene--next
+  animation: preloader-rise var(--preloader-play) linear forwards
+
+html.preloader-skip .preloader
+  display: none
+
+html.preloader-show:has(.preloader:not(.is_done))
+  overflow: hidden
 
 @media (prefers-reduced-motion: reduce)
-  .preloader__circle-rise
+  html.preloader-show .preloader__scene--next
     animation: none
-    transform: scaleY(1)
+    clip-path: inset(0 0 0 0)

@@ -76,7 +76,7 @@ export const Booking = ({className=''}) => {
                 </div>
               </div>
               <div className="booking__guests-popover-button">
-                <Button className=" js-guests_submit" type={'filled-primary'}>
+                <Button className=" js-guests_submit" type={'outlined'}>
                   <span>Применить</span>
                 </Button>
               </div>

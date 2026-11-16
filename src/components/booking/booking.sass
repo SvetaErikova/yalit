@@ -181,22 +181,28 @@
   box-shadow: 0px 4px 16px 0px #00000014, 0px 0px 2px 0px #00000014
   position: relative
   z-index: 5
+  @media(max-width: 768px)
+    display: none
 
   .booking
     gap: 8px
     padding: 6px
     @media(min-width: 769px)
       flex-direction: row
-      gap: 4px
-      padding: 8px
+      gap: var(--g-xxs)
+      padding: 16px
 
     &__inputs
       width: auto
       flex-direction: row
       align-items: center
       gap: 6px
-      padding: 0 var(--g-s)
       border-radius: 50px
+      & > div
+        border-right: 1px solid var(--surface-accent-primary)
+    &__calendar_wrapper,
+    &__guests
+      padding: 0 var(--g-xxs)
     &__input
       &_title
         display: none
@@ -206,7 +212,6 @@
       border-bottom: none
       &--item
         flex: none
-
     &__guests-input
       border-bottom: none
     &__calendar_wrapper,
@@ -229,6 +234,7 @@
 
 .block_banner.block_banner-fit_content + .block--search
   translate: -50%  calc(-100% - var(--g-block-margin) )
+
 
 .booking-datepicker
   --adp-font-family: var(--ff-default)

@@ -47,15 +47,45 @@ export const PopupHotelSelect =() =>{
   return (
     <div className={'popup popup-hotel_select'} data-popup={'popup_for_hotels_select'}>
       <div className={'popup--content '}>
-          <div class="block--elements">
-            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Отель кол гали'} subtitle={'Болгар'}></Card_hotel_select>
-            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'4'} title={'Отель ногай'} subtitle={'казань'}></Card_hotel_select>
-            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'ак барс резорт'} subtitle={'казань'}></Card_hotel_select>
-            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Миллениум Панорама'} subtitle={'казань'}></Card_hotel_select>
-            <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'рисала'} subtitle={'казань'}></Card_hotel_select>
-          </div>
+        <div className="block--elements">
+          <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Отель кол гали'} subtitle={'Болгар'}></Card_hotel_select>
+          <Card_hotel_select img={'/assets/img/1.jpg'} rating={'4'} title={'Отель ногай'} subtitle={'казань'}></Card_hotel_select>
+          <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'ак барс резорт'} subtitle={'казань'}></Card_hotel_select>
+          <a href={'/'} className={'card'}>
+            <div className="card--image">
+              <img src={'/assets/img/1.jpg'}  />
+            </div>
+            <div className="card--content">
+              <div className="card--stars">
+                <svg className="star-rate" viewBox="0 0 160 32" itemProp="ratingValue" content={'5'}>
+                  <g mask="url(#stars-mask)">
+                    <rect width="100%" height="100%" fill="var(--inactive_stars)"></rect>
+                  </g>
+                  <g mask="url(#stars-mask)">
+                    <rect width={`${(5 / 5) * 100}%`} height="100%" fill="var(--star-color)"></rect>
+                  </g>
+                </svg>
+                <span>/</span>
+                <svg className="star-rate" viewBox="0 0 160 32" itemProp="ratingValue" content={'4'}>
+                  <g mask="url(#stars-mask)">
+                    <rect width="100%" height="100%" fill="var(--inactive_stars)"></rect>
+                  </g>
+                  <g mask="url(#stars-mask)">
+                    <rect width={`${(4 / 5) * 100}%`} height="100%" fill="var(--star-color)"></rect>
+                  </g>
+                </svg>
+              </div>
+
+              <div className="card--title">Миллениум Панорама</div>
+              <div className="card--subtitle">казань</div>
+
+            </div>
+          </a>
+          <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'Миллениум Панорама'} subtitle={'казань'}></Card_hotel_select>
+          <Card_hotel_select img={'/assets/img/1.jpg'} rating={'5'} title={'рисала'} subtitle={'казань'}></Card_hotel_select>
+        </div>
         <div class="popup--close">
-          <button  class="button button-filled-primary" data-closepopup={'popup_for_hotels_select'}>
+          <button class="button button-filled-primary" data-closepopup={'popup_for_hotels_select'}>
             <span>закрыть</span>
           </button>
         </div>

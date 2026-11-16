@@ -1,15 +1,19 @@
 .nav
   display: flex
-  justify-content: center
+
   gap: 20px
-  //max-width: 946px
   text-transform: uppercase
   height: var(--nav-menu-item-height,32px)
+  @media (min-width: 769px)
+    justify-content: center
   &--item
     display: flex
+    flex-shrink: 0
     align-items: center
     gap: 4px
     font-size: var(--fs-caption-2)
+    &[hidden]
+      display: none
     &_link
       display: flex
       align-items: center
@@ -17,4 +21,10 @@
       white-space: nowrap
       &:hover
         color: var(--text-tertiary)
+    &-more
+      position: relative
+      z-index: 3
+      @media (max-width: 768px)
+        display: none
+
 

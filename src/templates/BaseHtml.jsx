@@ -7,6 +7,18 @@ export default function BaseHtml({ children, meta, colorMode = '', className }) 
 		<html lang="ru">
     <head>
       <meta charSet="UTF-8"/>
+      <script dangerouslySetInnerHTML={{ __html: `
+        (function () {
+          try {
+            if (sessionStorage.getItem("preloaderShown") === "true") {
+              document.documentElement.classList.add("preloader-skip");
+            } else {
+              document.documentElement.classList.add("preloader-show");
+              sessionStorage.setItem("preloaderShown", "true");
+            }
+          } catch (e) {}
+        })();
+      ` }} />
       <title>{meta.title}</title>
       <meta name="description" content={meta.description}/>
       <link rel="stylesheet" href="/assets/css/libs.min.css"/>
@@ -19,7 +31,7 @@ export default function BaseHtml({ children, meta, colorMode = '', className }) 
       <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body class={clsx( colorMode, className)}>
-    {/*<Preloader />*/}
+    <Preloader />
     {/*<Transition/>*/}
 
     {children}

@@ -1,6 +1,7 @@
 .dropdown
-  position: relative
   overflow: visible
+  @media (min-width: 769px)
+    position: relative
 
   > a [class*="icon-ic-chevron"],
   > [class*="icon-ic-chevron"]
@@ -12,6 +13,7 @@
       pointer-events: all
       top: 100%
 
+
     > a [class*="icon-ic-chevron"],
     > [class*="icon-ic-chevron"]
       rotate: 180deg
@@ -20,6 +22,29 @@
     > a,
     > a *
       pointer-events: none
+
+    &.nav--item
+      cursor: pointer
+
+      &:hover
+        .dropdown--wrapper
+          opacity: 0
+          pointer-events: none
+
+        > a [class*="icon-ic-chevron"],
+        > [class*="icon-ic-chevron"]
+          rotate: 0deg
+
+      &.is_active,
+      &.is_active:hover
+        .dropdown--wrapper
+          opacity: 1
+          pointer-events: all
+          top: calc(100% + 8px)
+
+        > a [class*="icon-ic-chevron"],
+        > [class*="icon-ic-chevron"]
+          rotate: 180deg
 
   &--wrapper
     position: absolute
@@ -33,13 +58,19 @@
     display: flex
     padding: 8px
     translate: -50% 0
+    @media (max-width: 768px)
+      max-width: 90vw
+      width: 100%
+      min-width: min-content
+
 
   &--content
     background: #FFFFFF
     border-radius: 8px
     padding: 4px 8px
     box-shadow: 0 1px 3px 0 #0000001A, 1px 5px 5px 0 #00000017, 3px 22px 9px 0 #00000003, 5px 34px 10px 0 #00000000
-
+    @media (max-width: 768px)
+      width: 100%
     .nav--item
       &:not(:last-child)
         border-bottom: 1px solid var(--line-neutral-tertiary)

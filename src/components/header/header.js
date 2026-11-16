@@ -1,3 +1,109 @@
+import { OverflowNav } from '../../scripts/overflow-nav.js';
+
+const readNavItem = (item) => {
+  const link = item.querySelector('a.nav--item_link');
+  if (!link) return null;
+
+  const labelSpan = link.querySelector('span:not([class*="icon"])');
+  const label = (labelSpan?.textContent || link.textContent).trim();
+  if (!label) return null;
+
+  return {
+    href: link.getAttribute('href') ?? '',
+    label,
+  };
+};
+
+const createOverflowNavItem = ({ href, label }) => {
+  const item = document.createElement('div');
+  item.className = 'nav--item';
+
+  const link = document.createElement('a');
+  link.className = 'nav--item_link';
+  link.href = href;
+
+  const labelNode = document.createElement('span');
+  labelNode.textContent = label;
+
+  link.append(labelNode);
+  item.append(link);
+  return item;
+};
+
+const overflowNavMedia = window.matchMedia('(min-width: 769px)');
+
+const initHeaderOverflowNav = () => {
+  const controllers = [];
+
+  document.querySelectorAll('.header .header--nav .nav').forEach((nav) => {
+    const list = nav.querySelector('.nav--item-more [data-overflow-nav]');
+    if (!list) return;
+
+    const copies = new WeakMap();
+    let overflowNav = null;
+
+    const enable = () => {
+      if (overflowNav?._inited) return;
+
+      overflowNav = new OverflowNav({
+        rootElement: nav,
+        selectors: {
+          root: '.nav',
+          more: '.nav--item-more',
+        },
+        changeItemFn(item, { direction }) {
+          const copy = copies.get(item);
+
+          if (direction === 'toMain') {
+            copy?.remove();
+            return;
+          }
+
+          if (copy) {
+            list.append(copy);
+            return;
+          }
+
+          const data = readNavItem(item);
+          if (!data) return;
+
+          const next = createOverflowNavItem(data);
+          list.append(next);
+          copies.set(item, next);
+        },
+      });
+    };
+
+    const disable = () => {
+      overflowNav?.destroy();
+      overflowNav = null;
+      list.replaceChildren();
+    };
+
+    controllers.push({
+      enable,
+      disable,
+      redistribute: () => overflowNav?.redistribute(),
+    });
+  });
+
+  const sync = () => {
+    controllers.forEach(({ enable, disable }) => {
+      if (overflowNavMedia.matches) enable();
+      else disable();
+    });
+  };
+
+  sync();
+  overflowNavMedia.addEventListener('change', sync);
+  document.fonts?.ready.then(() => {
+    if (!overflowNavMedia.matches) return;
+    controllers.forEach(({ redistribute }) => redistribute());
+  });
+};
+
+initHeaderOverflowNav();
+
 window.addEventListener('load', () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -39,6 +145,35 @@ btn_openHotelSelect.forEach(btn => {
   });
 });
 
+const navDropdownMedia = window.matchMedia('(max-width: 768px)');
+
+const closeNavDropdowns = () => {
+  document.querySelectorAll('.header .nav--item.dropdown.is_active').forEach((item) => {
+    item.classList.remove('is_active');
+  });
+};
+if(window.matchMedia('(max-width: 768px)').matches) {
+  document.addEventListener('click', (event) => {
+    if (!navDropdownMedia.matches) {
+      closeNavDropdowns();
+      return;
+    }
+    const item = event.target.closest('.header .nav--item.dropdown');
+  
+    if (!item) {
+      closeNavDropdowns();
+      return;
+    }
+  
+    event.preventDefault();
+    const willOpen = !item.classList.contains('is_active');
+    closeNavDropdowns();
+    if (willOpen) item.classList.add('is_active');
+  });
+}
+
+
+
 /* Скролл хедера  */
 window.addEventListener('scroll', (e) => {
   let current_scroll = window.scrollY || document.documentElement.scrollTop;
@@ -46,6 +181,9 @@ window.addEventListener('scroll', (e) => {
 
   if (current_scroll >= last_scroll && current_scroll > 60) {
     header.classList.add('scrolled-up');
+    header.querySelectorAll('.dropdown.is_active').forEach((item) => {
+      item.classList.remove('is_active');
+    });
   } else {
     header.classList.remove('scrolled-up');
   }

@@ -23,7 +23,7 @@ export default function Home() {
       <Block_banner
         banners={[
           {
-            title: <Block_Head title="ялит" subtitle="Исследуйте татарстан с отелями" headingLevel={1} />,
+            title: <Block_Head title="ногай" caption="современный отель в доме печати" headingLevel={1} />,
             imageSrc: "/assets/img/1.jpg",
           },
         ]}

@@ -6,34 +6,46 @@ if (infoClip) {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  const tl = gsap.timeline({
-    defaults: { ease: 'none' },
-    scrollTrigger: {
-      trigger: infoClip,
-      start: 'top top',
-      end: () => '+=' + window.innerHeight * 1.6,
-      pin: true,
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
+  const createClip = (expandDuration, scrollDistance) => {
+    const tl = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: infoClip,
+        start: 'top top',
+        end: () => '+=' + window.innerHeight * scrollDistance,
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    })
+
+    tl.to(blockClip, {
+      width: '100%',
+      height: '170vh',
+      duration: expandDuration,
+    })
+    tl.to(blockClip, {
+      borderRadius: 0,
+      duration: expandDuration / 2,
+    }, `<${expandDuration / 2}`)
+
+    tl.fromTo(clipHead, {
+      opacity: 0,
+      y: 72,
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.35,
+    })
+  }
+
+  const mm = gsap.matchMedia()
+
+  mm.add('(max-width: 768px)', () => {
+    createClip(0.75, 1.25)
   })
 
-  tl.to(blockClip, {
-    width: '100%',
-    height: '170vh',
-    duration: 1,
-  })
-  tl.to(blockClip, {
-    borderRadius: 0,
-    duration: 0.5
-  }, '<0.5')
-
-  tl.fromTo(clipHead, {
-    opacity: 0,
-    y: 72,
-  }, {
-    opacity: 1,
-    y: 0,
-    duration: 0.35,
+  mm.add('(min-width: 769px)', () => {
+    createClip(1, 1.6)
   })
 }

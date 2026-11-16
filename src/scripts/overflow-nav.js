@@ -42,6 +42,7 @@ export class OverflowNav {
   // инициализация
   init() {
     if (this._inited) return this;
+    this._inited = true;
     const schedule =
       this.opts.debounce > 0
         ? this._debounce(() => this.redistribute(), this.opts.debounce)
@@ -58,13 +59,13 @@ export class OverflowNav {
     window.addEventListener("load", this._onLoad);
 
     this.redistribute();
-    this._inited = true;
     return this;
   }
 
   // уничтожение
   destroy() {
     if (!this._inited) return this;
+    this._inited = false;
     if (this._ro) {
       try {
         this._ro.disconnect();
@@ -81,7 +82,6 @@ export class OverflowNav {
     });
 
     this.more.hidden = true;
-    this._inited = false;
     return this;
   }
 
@@ -113,6 +113,7 @@ export class OverflowNav {
 
   // перераспределение элементов
   redistribute() {
+    if (!this._inited) return;
     // вернуть видимость всем пунктам
     this._children().forEach((el) => {
       el.hidden = false;
