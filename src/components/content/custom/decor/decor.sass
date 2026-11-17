@@ -42,3 +42,17 @@
         justify-self: end
         margin-left: 0
         margin-right: var(--decor-line)
+.block.-decor
+
+  padding: var(--g-block-margin) 0
+  overflow: hidden
+  &:after
+    content: ''
+    mask-image: url("/assets/img/decor/decorative-pattern.svg")
+    mask-repeat: repeat
+    height: 80px
+    display: flex
+    background: var(--text-primary)
+    margin: var(--g-vertical-list) calc(var(--container-padding) * -1) calc(var(--g-block-margin)* -1)
+
+

@@ -3,7 +3,6 @@
   @media (min-width: 769px)
     position: relative
 
-  > a [class*="icon-ic-chevron"],
   > [class*="icon-ic-chevron"]
     transition: rotate var(--transition)
 
@@ -13,8 +12,6 @@
       pointer-events: all
       top: 100%
 
-
-    > a [class*="icon-ic-chevron"],
     > [class*="icon-ic-chevron"]
       rotate: 180deg
 
@@ -31,7 +28,6 @@
           opacity: 0
           pointer-events: none
 
-        > a [class*="icon-ic-chevron"],
         > [class*="icon-ic-chevron"]
           rotate: 0deg
 
@@ -42,7 +38,6 @@
           pointer-events: all
           top: calc(100% + 8px)
 
-        > a [class*="icon-ic-chevron"],
         > [class*="icon-ic-chevron"]
           rotate: 180deg
 
@@ -77,7 +72,7 @@
 
       &_link
         padding: 0 12px
-        height: var(--booking-input-height)
+        height: var(--button-context-height)
 
         &:hover
           color: var(--text-accent-heavy)

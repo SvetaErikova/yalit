@@ -10,14 +10,9 @@ export const Card_vacancy = ({ title, text, list = [], link }) => {
   );
 
   return (
-    <div className="card">
+    <a href={link} className="card">
       <div className="card--content">
-        {title && link && (
-          <a className="card--title" href={link}>
-            {titleContent}
-          </a>
-        )}
-        {title && !link && (
+        {title  && (
           <div className="card--title">{titleContent}</div>
         )}
         {text && <div className="card--text">{text}</div>}
@@ -26,7 +21,7 @@ export const Card_vacancy = ({ title, text, list = [], link }) => {
           <Button type="filled-primary">Откликнуться</Button>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
