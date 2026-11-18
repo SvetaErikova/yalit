@@ -143,7 +143,7 @@ const activateBlocklistSlider = (swiper_item) => {
         thumbs: false,
         watchOverflow: true,
         pagination: false,
-        // autoHeight: false,
+        autoHeight: false,
         centeredSlides: slides_centered,
         breakpoints: {
           220: { slidesPerView: slides_per_view_mob, spaceBetween: gallerySlider ? 8 : space_between },

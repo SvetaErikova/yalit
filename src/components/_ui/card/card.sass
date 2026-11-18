@@ -6,9 +6,10 @@
   position: relative
   width: 100%
   transition: none
-  //gap: 8px
   border-radius: var(--border-corner)
   overflow: hidden
+  min-width: 0
+
 
   &--content
     display: flex
@@ -92,9 +93,7 @@
 
 .content_cards
   .card
-    aspect-ratio: 380/484
-    @media(min-width: 769px) and (max-width: 1024px)
-      aspect-ratio: 480/484
+
     &--content
       position: absolute
       inset: 18px
@@ -108,7 +107,10 @@
     &--text
       font-size: var(--fs-caption-2)
     &--image
-      height: 100%
+      aspect-ratio: 380/484
+      @media(min-width: 769px) and (max-width: 1024px)
+        aspect-ratio: 480/484
+
       &:after
         content: ''
         position: absolute
@@ -134,17 +136,12 @@
   .card
     position: relative
     overflow: hidden
-    width: 100%
-    min-width: 0
     border-radius: var(--border-corner)
-
     &--content
       display: none
-
     &--image
       width: 100%
       aspect-ratio: 920/695
-
       img, video
         width: 100%
         height: 100%
@@ -189,7 +186,7 @@
   &.block_list-slider
     .card
       aspect-ratio: 504/378
-      height: auto
+      height: 100%
       &--image
         position: absolute
         inset: 0
@@ -215,7 +212,7 @@
     &--title
       font-size: var(--fs-heading-1)
       line-height: 1.3
-      font-family: var(--ff-title)
+      font-family: var(--ff-title, sans-serif)
 
     &--content
       line-height: 1.3
@@ -253,27 +250,21 @@
 .content_rooms
   .card
     &--image
-      .swiper-wrapper
-        width: 100%
-        height: 100%
+      width: 100%
+      //.swiper-wrapper
+      //  width: 100%
+      //  height: 100%
 
       .card__image_slide
         width: 100%
         min-width: 100%
         height: 100%
         min-height: 100%
-        flex-shrink: 0
         object-fit: cover
         transition: opacity var(--transition)
         opacity: 0
-
-      &.swiper
-        .card__image_slide
-          opacity: 0 !important
-
-          &.swiper-slide-active
-            opacity: 1 !important
-            z-index: 1
+        flex: 0 0 auto
+        display: block
 
     &--content
       padding: clamp(20px, calc(20px + (32 - 20) * ((100vw - 768px) / (1440 - 768))), 32px) clamp(18px, calc(18px + (32 - 18) * ((100vw - 768px) / (1440 - 768))), 32px)
@@ -569,7 +560,7 @@
         margin: 0 auto
 
     &--title
-      font-family: var(--ff-title)
+      font-family: var(--ff-title, sans-serif)
       font-size: var(--fs-heading-3)
       line-height: 1
       -webkit-line-clamp: 3
@@ -608,7 +599,7 @@
     &--title
       font-size: 24px
       line-height: 1.2
-      font-family: var(--ff-title)
+      font-family: var(--ff-title, sans-serif)
 
     &--stars
       --inactive_stars: transparent

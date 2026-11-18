@@ -18,7 +18,7 @@ export const Filter = () => {
           input={[{ text: "Описание конкретного итема 1" }, { text: "Описание конкретного итема 2" }]}
         ></Input_checks>
         <div class="form--actions">
-          <Button type={'outlined'}>Сбросить фильтр</Button>
+          <Button type={'outlined'} >Сбросить фильтр</Button>
           <Button type={'filled-secondary'}>Применить</Button>
         </div>
 

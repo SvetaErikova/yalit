@@ -4,7 +4,7 @@ if (infoClip) {
   const blockClip = infoClip.querySelector('.block-clip')
   const clipHead = blockClip.querySelector('.block--head')
 
-  gsap.registerPlugin(ScrollTrigger)
+  ScrollTrigger.normalizeScroll(true);
 
   const createClip = (expandDuration, scrollDistance) => {
     const tl = gsap.timeline({

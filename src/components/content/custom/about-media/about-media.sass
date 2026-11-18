@@ -1,7 +1,6 @@
 .about-media
   --about-media-width: clamp(260px, calc(260px + (504 - 260) * ((100vw - 768px) / (1440 - 768))), 504px)
   position: relative
-
   z-index: 2
   &:after
     content: ""
@@ -53,3 +52,5 @@
       z-index: 2
 .block_banner ~ .about-media
   margin: calc(var(--about-media-width) * 561 / 421 / -2) 0 -1px
+.block.about-media
+  background: transparent

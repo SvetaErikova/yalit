@@ -1,6 +1,6 @@
 @font-face
   font-family: 'involve'
-  src: url("/assets/fonts/Involve/Involve-Regular.ttf") format("truetype")
+  src: url("/assets/fonts/Involve/Involve-Regular-2.ttf") format("truetype")
   font-display: swap
   font-style: normal
   font-weight: 400
@@ -10,12 +10,15 @@
   font-display: swap
   font-style: normal
   font-weight: 500
+
 @font-face
   font-family: 'involve'
   src: url("/assets/fonts/Involve/Involve-SemiBold.ttf") format("truetype")
   font-display: swap
   font-style: normal
   font-weight: 600
+
+
 @font-face
   font-family: 'involve'
   src: url("/assets/fonts/Involve/Involve-Bold.ttf") format("truetype")
@@ -34,7 +37,7 @@
 html
   font-size: var(--fs-body-2)
   line-height: var(--lh-body-2)
-  font-family: var(--ff-default)
+  font-family: var(--ff-default, sans-serif)
   font-weight: 400
   text-size-adjust: none
   -webkit-text-size-adjust: none
@@ -53,8 +56,6 @@ h1, h2, h3, h4, h5, h6
 
   font-weight: 300
 
-h1, h2, h3
-h4, h5, h6
 .f-h1
   font-size: var(--display-2)
 .f-h2

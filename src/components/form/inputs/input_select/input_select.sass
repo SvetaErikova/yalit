@@ -25,7 +25,7 @@ select
     cursor: pointer
     transition: var(--transition)
     color: var(--text-tertiary)
-    font-size: var(--fs-body-1)
+
     line-height: var(--lh-body-1)
     width: 100%
     max-width: 100%
@@ -41,7 +41,7 @@ select
     box-shadow: none
     &:after
       font-family: 'icomoon' !important
-      content: "\e902"
+      content: "\e903"
       transform: scaleY(1)
       transition: var(--transition)
       transform-origin: center
@@ -94,13 +94,14 @@ select
     &_title
       padding: 20px 20px 8px
       font-weight: 500
-      font-size: var(--body-s)
+      font-size: var(--fs-body-1)
   &--option
     padding: 10px 12px
     transition: var(--transition)
     cursor: pointer
     display: flex
     align-items: center
+    font-size: var(--fs-body-1)
     @media(min-width: 768px)
       padding: 12px 16px
     &:hover,

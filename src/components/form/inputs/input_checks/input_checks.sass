@@ -72,11 +72,11 @@
         display: flex
         align-items: center
         justify-content: center
-        width: 12px
-        height: 12px
+        width: 20px
+        height: 20px
         position: absolute
-        left: 4px
-        top: 5px
+        left: 1px
+        top: 1px
         border-radius: 50px
         background-color: var(--text-accent-heavy)
         transition: var(--transition)
@@ -117,20 +117,17 @@
         width: 24px
         height: 24px
       &:after
-        content: ""
+        content: "\e91e"
+        font-family: 'icomoon' !important
+        font-size: 1em
+        line-height: 1
+        color: var(--text-accent-heavy-contrast)
+        transition: 0.18s cubic-bezier(.36,.25,.56,1)
+        scale: 0
         position: absolute
         translate: -50% -50%
         top: 50%
         left: 50%
-        transition: 0.18s cubic-bezier(.36,.25,.56,1)
-        scale: 0
-        width: 16px
-        height: 16px
-        background-color: var(--surface-accent-heavy-primary)
-        border-radius: 50px
-        @media(min-width: 768px)
-          width: 16px
-          height: 16px
       &:hover,
       &:focus
         border-color: var(--line-accent-heavy)
@@ -138,7 +135,9 @@
       & ~ .radio
         background-color: var(--surface-accent-heavy-primary)
         border-color: var(--surface-accent-heavy-primary)
-
+        &:after
+          transition: 0.18s cubic-bezier(.36,.25,.56,1.82)
+          scale: 1
 .form--input.error
   input[type="checkbox"] ~ .checkbox,
   input[type="radio"] ~ .radio,

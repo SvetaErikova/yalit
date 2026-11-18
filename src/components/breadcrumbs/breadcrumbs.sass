@@ -7,6 +7,13 @@
   padding: var(--breadcrumbs-v-padding) 0
   color: var(--breadcrumbs-color)
   text-transform: uppercase
+  display: flex
+  flex-wrap: nowrap
+  align-items: center
+  gap: 4px
+  overflow-x: auto
+  overflow-y: hidden
+  padding-inline: var(--container-padding)
   &::before,
   &::after
     content: ''
@@ -22,14 +29,7 @@
   &::after
     right: 0
     background: linear-gradient(to left, var(--breadcrumbs-fade), transparent)
-  &--track
-    display: flex
-    flex-wrap: nowrap
-    align-items: center
-    gap: 4px
-    overflow-x: auto
-    overflow-y: hidden
-    padding-inline: var(--container-padding)
+
   a
     transition: var(--transition)
     display: flex
@@ -44,20 +44,23 @@
     padding: 4px 0
     line-height: 1em
     gap: 8px
+    opacity: 0.7
     @media(min-width: 1024px)
       padding: 8px 0
     &:not(:last-child)
       &:hover,
       &:focus,
       &:active
-        opacity: 0.7
+        opacity: 1
+
       &:after
         content: "/"
         margin-right: 8px
 
     &:last-child
       pointer-events: none
-      color: var(--text-neutral-primary)
+      opacity: 1
+      color: var(--text-primary)
 body:has(.block_banner-hero)
   .breadcrumbs
     padding-top: 0

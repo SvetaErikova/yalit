@@ -1,7 +1,6 @@
 .info-clip
   --info-clip-height: min(50vw, 38svh)
   margin: 0
-  height: 100vh
   height: 100svh
   @media (min-width: 645px)
     --info-clip-height: min(max(240px, 18vw), 40svh)
@@ -11,7 +10,6 @@
     height: 100%
   .block-top
     .block--head
-      height: calc(100vh - var(--headerHeight) - var(--info-clip-height))
       height: calc(100svh - var(--headerHeight) - var(--info-clip-height))
       &_title
         font-size: clamp(40px, calc(40px + (115 - 40) * ((100vw - 768px) / (1024 - 768))), 115px)
@@ -28,6 +26,7 @@
     transform: translateX(-50%)
     border-radius: 50rem 50rem 0 0
     overflow: clip
+    will-change: width, height
     @media (min-width: 645px)
       width: 395px
     img

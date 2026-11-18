@@ -53,16 +53,18 @@ export const Card = ({
           </div>
         )}
       </div>
+      {title && (
+        <div className="card--content">
+          <Labels items={labels}/>
+          {subhead && <div className={'card--subhead'}>{subhead}</div>}
+          {title && <div className={'card--title'}>{title}</div>}
+          {text && <div className={'card--text'}>{text}</div>}
 
-      <div className="card--content">
-        <Labels items={labels} />
-        {subhead && <div className={'card--subhead'}>{subhead}</div>}
-        {title && <div className={'card--title'}>{title}</div>}
-        {text && <div className={'card--text'}>{text}</div>}
+          {children}
+          {action && <div className="card--action">{action}</div>}
+        </div>
+      )}
 
-        {children}
-        {action && <div className="card--action">{action}</div>}
-      </div>
     </>
   );
 

@@ -1,7 +1,6 @@
 export const Breadcrumbs = () => {
 	return (
 		<div class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
-			<div class="breadcrumbs--track">
 				<a itemProp="itemListElement" itemScope="" itemType="https://schema.org/ListItem" href="/riders-lodge/">
 					<span itemProp="name">главная</span>
 				</a>
@@ -11,7 +10,6 @@ export const Breadcrumbs = () => {
 				<a itemProp="itemListElement" itemScope="" itemType="https://schema.org/ListItem" href="/riders-lodge/offers">
 					<span itemProp="name">входной билет</span>
 				</a>
-			</div>
 		</div>
 	);
 };

@@ -16,16 +16,15 @@
   padding: var(--button-padding)
   color: var(--button-color)
   --button-fs: var(--button-context-text-fs)
-  line-height: 1.5
 
-
+  &:has(span:not([class]):only-child)
+    justify-content: center
   span
-    //transition: var(--transition)
     color: inherit
   span:not([class])
     white-space: nowrap
     text-align: center
-    //line-height: 1
+    line-height: 1
     &:only-child
       padding: 0 6px
 
@@ -54,6 +53,7 @@
     span
       opacity: 0.6
 
+
 .button[class*="filled-"], .button-outlined
   border-radius: var(--border-corner-button)
   position: relative
@@ -65,9 +65,6 @@
   --button-padding: 0 12px
   --border-corner-button: 6px
 
-
-
-.button-flat
 
 /* Button  colors  */
 .button
@@ -173,6 +170,4 @@
 .content_gallery [data-fancybox-trigger]
   .button-filled-secondary
     backdrop-filter: blur(10px)
-
-
 

@@ -137,7 +137,8 @@ export const Is_cascade_full = () => {
       <div className="info-card">
         <div className="item">
           <span className="icon-ic-search"></span>
-          <p>25-32 м2</p>
+          <p>25-32 м
+            <sup>2</sup></p>
         </div>
         <div className="item">
           <span className="icon-ic-search"></span>
