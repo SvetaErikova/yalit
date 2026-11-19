@@ -1,22 +1,43 @@
 .content_error
   height: calc(100lvh - var(--headerHeight) - 60px )
   min-height: min-content
+  margin: 0
+  padding: var(--g-s) 0
+  &:after
+    content: ""
+    position: absolute
+    inset: 0
+    background-image: url("/assets/img/decor/decor-error.svg")
+    background-size: cover
+    z-index: -1
+    mask: linear-gradient(90deg,rgba(41, 44, 33, 1) 0%, rgba(41, 44, 33, 0) 25%, rgba(41, 44, 33, 0) 75%, rgba(41, 44, 33, 1) 100%)
   .block--wrapper
     max-width: 1046px
     margin: auto
     display: flex
     flex-direction: column
-    gap: var(--g-container-vertical)
+    gap: var(--g-s)
   .block--head
     justify-content: center
     align-items: center
     text-align: center
-    gap: var(--g-s)
+    gap: 8px
   .block--actions
     width: 100%
     justify-content: center
-  &.error-500
-    .block--head_subtitle
-      color: var(--text-accent-primary)
-      font-size: clamp(48px, calc(48px + (96 - 48) * ((100vw - 768px) / (1440 - 768))), 96px)
-      line-height: 1.2
+  .error-img
+    display: flex
+    margin: 0 auto
+    max-width: 250px
+  .button-wrapper
+    justify-content: center
+    display: flex
+    flex-wrap: wrap
+    gap: 32px 14px
+    .button-link
+      color: #C1B296
+      text-transform: uppercase
+      font-size: 16px
+      text-decoration: underline
+      &:hover
+        color: var(--btn-bg-accent-heavy-rest)

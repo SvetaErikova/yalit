@@ -43,31 +43,40 @@ function processDirectory(dir) {
         continue;
       }
       processDirectory(fullPath);
+      continue;
     }
 
     // Обработка HTML
     if (stat.isFile() && item.endsWith(".html")) {
       fixHtml(fullPath);
     }
+
+    // Обработка CSS
+    if (stat.isFile() && item.endsWith(".css")) {
+      fixCss(fullPath);
+    }
   }
+}
+
+// Вычисление относительного пути к assets от указанной директории
+function getRelativeAssets(fromDir) {
+  const assetsPath = path.join(distPath, "assets");
+  let relativeAssets = path.relative(fromDir, assetsPath).replace(/\\/g, "/");
+
+  // Если файл в корне — делаем ./assets
+  if (!relativeAssets.startsWith(".")) {
+    relativeAssets = "./" + relativeAssets;
+  }
+
+  return relativeAssets;
 }
 
 // Обработка HTML файла
 function fixHtml(filePath) {
   let content = fs.readFileSync(filePath, "utf8");
 
-  // Путь к assets в корне dist
   const htmlDir = path.dirname(filePath);
-  const assetsPath = path.join(distPath, "assets");
-
-  // Вычисляем относительный путь
-  let relativeAssets = path.relative(htmlDir, assetsPath).replace(/\\/g, "/");
-
-  // ВАЖНО: если файл в корне — делаем ./assets
-  if (!relativeAssets.startsWith(".")) {
-    relativeAssets = "./" + relativeAssets;
-  }
-
+  const relativeAssets = getRelativeAssets(htmlDir);
 
   // Регулярки:
   // src="/assets/..."  href="/assets/..."  url(/assets/...)
@@ -87,13 +96,6 @@ function fixHtml(filePath) {
     },
   ];
 
-  // Пропуск абсолютных URL
-  const skipAbsolute = /(['"(])(https?:\/\/|\/\/)/;
-
-  if (skipAbsolute.test(content)) {
-    // Мы не удаляем абсолютные URL — просто избегаем их вредного изменения
-  }
-
   let newContent = content;
   patterns.forEach((p) => {
     newContent = newContent.replace(p.regex, p.replacement);
@@ -101,7 +103,47 @@ function fixHtml(filePath) {
 
   fs.writeFileSync(filePath, newContent, "utf8");
 
-  console.log("Обработан:", filePath, `→ ${relativeAssets}`);
+  console.log("Обработан HTML:", filePath, `→ ${relativeAssets}`);
+}
+
+// Обработка CSS файла
+function fixCss(filePath) {
+  let content = fs.readFileSync(filePath, "utf8");
+
+  const cssDir = path.dirname(filePath);
+  const relativeAssets = getRelativeAssets(cssDir);
+
+  let newContent = content;
+
+  // url(/assets/...), url('/assets/...'), url("/assets/...")
+  // Не трогаем абсолютные URL (http://, https://, //, data:),
+  // т.к. regex требует /assets/ сразу после url( или кавычки.
+  const urlRegex = /url\(\s*(['"]?)\/assets\/([^'")]+)\1\s*\)/g;
+  newContent = newContent.replace(
+    urlRegex,
+    (m, quote, file) => `url(${quote}${relativeAssets}/${file}${quote})`
+  );
+
+  // @import "/assets/..."  и  @import '/assets/...'
+  const importRegex = /@import\s+(['"])\/assets\/([^'"]+)\1/g;
+  newContent = newContent.replace(
+    importRegex,
+    (m, quote, file) => `@import ${quote}${relativeAssets}/${file}${quote}`
+  );
+
+  // sourceMappingURL=/assets/...
+  const sourceMapRegex = /\/\*#\s*sourceMappingURL=\/assets\/([^*]+)\*\//g;
+  newContent = newContent.replace(
+    sourceMapRegex,
+    (m, file) => `/*# sourceMappingURL=${relativeAssets}/${file}*/`
+  );
+
+  if (newContent !== content) {
+    fs.writeFileSync(filePath, newContent, "utf8");
+    console.log("Обработан CSS:", filePath, `→ ${relativeAssets}`);
+  } else {
+    console.log("Без изменений CSS:", filePath);
+  }
 }
 
 // Запуск
