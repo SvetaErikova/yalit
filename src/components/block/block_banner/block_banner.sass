@@ -13,10 +13,6 @@
       font-size: var(--fs-display-1)
       line-height: 1.3
 
-.block_banner.block_banner-hero,
-.block_banner-main
-  // height: calc(100vh - var(--headerHeight,92px) - var(--headerHeightBottom,64px))
-
 .banner
   display: flex
   flex-direction: column
@@ -117,7 +113,8 @@
 .block_banner-no_media
   .banner
     min-height: auto
-    .block--content:after
+    .block--content:after,
+    .block--content::before
       content: none
 
 .block_banner.block_banner-fit_content

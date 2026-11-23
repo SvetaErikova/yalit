@@ -4,9 +4,8 @@ if (infoClip) {
   const blockClip = infoClip.querySelector('.block-clip')
   const clipHead = blockClip.querySelector('.block--head')
 
-  ScrollTrigger.normalizeScroll(true);
 
-  const createClip = (expandDuration, scrollDistance) => {
+  const createClip = (expandDuration, scrollDistance, scale) => {
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -21,7 +20,7 @@ if (infoClip) {
 
     tl.to(blockClip, {
       width: '100%',
-      height: '170vh',
+      height: `${scale}vh`,
       duration: expandDuration,
     })
     tl.to(blockClip, {
@@ -39,13 +38,14 @@ if (infoClip) {
     })
   }
 
+
   const mm = gsap.matchMedia()
 
   mm.add('(max-width: 768px)', () => {
-    createClip(0.75, 1.25)
+    createClip(0.75, 1.25, 120)
   })
 
   mm.add('(min-width: 769px)', () => {
-    createClip(1, 1.6)
+    createClip(1, 1.6, 170)
   })
 }

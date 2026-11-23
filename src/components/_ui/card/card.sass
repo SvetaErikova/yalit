@@ -595,6 +595,8 @@
     &--image
       border-radius: var(--border-corner)
       aspect-ratio: 370/207
+      img
+        transition: var(--transition)
 
     &--title
       font-size: 24px
@@ -617,7 +619,9 @@
       font-size: 14px
       line-height: 1
       color: #77796A
-
+    &:hover
+      .card--image img
+        scale: 1.05
 .content_rooms,
 .content_cards
   .button

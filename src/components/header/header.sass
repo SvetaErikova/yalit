@@ -142,7 +142,6 @@ body:has(.popup-hotel_select.is_active)
   display: flex
   flex-wrap: nowrap
   z-index: 10
-  translate: 0 calc(100% + 16px)
   transition: translate var(--transition)
 
   .button
@@ -154,6 +153,3 @@ body:has(.popup-hotel_select.is_active)
   @media(min-width: 769px)
     display: none
 
-body:has(.header.scrolled-up)
-  .header--mobile_panel
-    translate: 0 0

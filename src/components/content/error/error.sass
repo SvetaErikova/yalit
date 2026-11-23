@@ -10,7 +10,9 @@
     background-image: url("/assets/img/decor/decor-error.svg")
     background-size: cover
     z-index: -1
-    mask: linear-gradient(90deg,rgba(41, 44, 33, 1) 0%, rgba(41, 44, 33, 0) 25%, rgba(41, 44, 33, 0) 75%, rgba(41, 44, 33, 1) 100%)
+    mask: linear-gradient(90deg,rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.4) 100%)
+    @media(min-width: 769px)
+      mask: linear-gradient(90deg,rgba(41, 44, 33, 0.7) 0%, rgba(41, 44, 33, 0) 25%, rgba(41, 44, 33, 0) 75%, rgba(41, 44, 33, 0.7) 100%)
   .block--wrapper
     max-width: 1046px
     margin: auto

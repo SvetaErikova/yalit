@@ -100,7 +100,7 @@ const hotelGroups = [
 ];
 
 const hotels = [
-  { title: 'Гостиница «Миллениум Панорама»', open: true, groups: hotelGroups },
+  { title: 'Гостиница «Миллениум Панорама»',  groups: hotelGroups },
   { title: 'Название отеля', groups: hotelGroups },
   { title: 'Название отеля', groups: hotelGroups },
   { title: 'Название отеля', groups: hotelGroups },

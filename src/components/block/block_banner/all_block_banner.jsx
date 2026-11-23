@@ -10,8 +10,9 @@ export const All_block_banner = () => {
       <Block_banner
         banners={[
           {
-            title: <Block_Head title="block_banner-hero" subtitle="Подзаголовок" headingSize={'f-h1'}  caption="Баннер Hero" headingLevel={1} action={<>
-              <Button type="filled-primary"  icon="icon-ic-uniq-arrow-right">Подробнее</Button>
+            title: <Block_Head title="block_banner-hero " subtitle="Подзаголовок" headingSize={'f-h1'}  caption="Баннер Hero" headingLevel={1} action={<>
+              <Button type="filled-accent" >Подробнее</Button>
+              <Button type="outlined" >Подробнее</Button>
             </>} />,
             imageSrc: "/assets/img/1.jpg",
           },

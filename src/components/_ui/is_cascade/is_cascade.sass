@@ -107,7 +107,9 @@
     margin: var(--m-text-top) 0 var(--m-bottom)
   //  new
   &--accordion
-    gap: 16px
+    display: flex
+    flex-direction: column
+    gap: 8px
     .accordion
       border-radius: var(--border-corner)
       background: var(--surface-secondary)
@@ -188,18 +190,24 @@
     font-size: var(--cascade-context-fs-callout-caption)
     color: var(--text-secondary)
 .info-card
-  display: flex
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
   gap: 8px
   .item
     border-radius: var(--border-corner)
     background: var(--surface-secondary)
     padding: 16px
-    flex: 1
+    grid-column: span 2
     display: flex
     justify-content: center
     align-items: center
     flex-direction: column
     gap: 8px
+    &:last-child:nth-child(3n + 1)
+      grid-column: 1 / -1
+    &:nth-child(3n + 1):nth-last-child(2),
+    &:nth-child(3n + 2):last-child
+      grid-column: span 3
   [class^=icon-]
     font-size: 24px
     color: var(--surface-accent-heavy-primary)

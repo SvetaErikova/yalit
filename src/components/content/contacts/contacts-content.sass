@@ -4,6 +4,11 @@
   .accordion
     background: var(--surface-primary)
     border-radius: 0
+    &:only-child
+      .accordion--button
+        pointer-events: none
+        .icon-ic-plus
+          display: none
 
     .accordion--button
       background: transparent

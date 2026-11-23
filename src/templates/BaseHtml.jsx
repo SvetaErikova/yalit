@@ -23,10 +23,10 @@ export default function BaseHtml({ children, meta, colorMode = '', className }) 
       <meta name="description" content={meta.description}/>
       <link rel="stylesheet" href="/assets/css/libs.min.css"/>
       <link rel="stylesheet" href="/assets/css/main.css"/>
-      <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
-      <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
-      <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="/assets/fimg/avicon/favicon.svg" />
+      <link rel="shortcut icon" href="/assets/favicon/img/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
 
       <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>

@@ -73,6 +73,27 @@
         .is_cascade
           grid-column: 2
 
+  .slider_controls
+    inset: 0
+    translate: none
+    .swiper--prev,
+    .swiper--next
+      position: absolute
+      top: 50%
+      translate: 0 -50%
+    .swiper--prev
+      left: var(--g-s)
+    .swiper--next
+      right: var(--g-s)
+    .swiper-pagination
+      position: absolute
+      left: 50%
+      top: auto
+      bottom: var(--g-s)
+      translate: -50% 0
+      pointer-events: all
+
+
 
   &[class*="-theme"]
     background: var(--bg-primary)

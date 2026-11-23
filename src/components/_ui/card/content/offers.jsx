@@ -50,7 +50,7 @@ export const All_card_offers = () => {
         image={'../../assets/img/2.jpg'}
         list={offersList}
         price={offersPrice}
-        action={<Button type={'filled-accent'} icon={'icon-ic-eye'}></Button>}
+        action={<Button type={'filled-accent'} icon={'icon-ic-arrow'}></Button>}
       />
       <Card_offers
         title={'Фестиваль «цветущая сакура»'}
@@ -58,7 +58,7 @@ export const All_card_offers = () => {
         image={'../../assets/img/2.jpg'}
         list={offersList}
         price={offersPrice}
-        action={<Button type={'filled-accent'} icon={'icon-ic-eye'}></Button>}
+        action={<Button type={'filled-accent'} icon={'icon-ic-arrow'}></Button>}
       />
       <Card_offers
         title="Фестиваль «цветущая сакура»"
@@ -66,7 +66,7 @@ export const All_card_offers = () => {
         image={'../../assets/img/1.jpg'}
         list={offersList}
         price={offersPrice}
-        action={<Button type={'filled-accent'} icon={'icon-ic-eye'}></Button>}
+        action={<Button type={'filled-accent'} icon={'icon-ic-arrow'}></Button>}
       />
       <Card_offers
         title="Фестиваль «цветущая сакура»"
@@ -74,7 +74,7 @@ export const All_card_offers = () => {
         image={'../../assets/img/1.jpg'}
         list={offersList}
         price={offersPrice}
-        action={<Button type={'filled-accent'} icon={'icon-ic-eye'}></Button>}
+        action={<Button type={'filled-accent'} icon={'icon-ic-arrow'}></Button>}
       />
     </>
   );
