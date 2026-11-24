@@ -1,5 +1,3 @@
-// Small utilities to standardize Swiper controls and options
-
 export function buildControls(options = {}) {
   const { navigation = true, pagination: needPagination = true } = options;
 
@@ -29,7 +27,6 @@ export function buildControls(options = {}) {
     next.appendChild(arrow_right);
   }
 
-  // Добавляем элементы в controls только если они созданы
   const elementsToAppend = [];
   if (pagination) elementsToAppend.push(pagination);
   if (prev) elementsToAppend.push(prev);
@@ -42,22 +39,16 @@ export function buildControls(options = {}) {
   return { controls, pagination, prev, next };
 }
 
-export const defaultSwiperOptions = (() => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  return {
-    createElements: true,
-    grabCursor: true,
-    simulateTouch: true,
-    allowTouchMove: true,
-    mousewheel: { forceToAxis: true },
-    // mousewheel: false,
-    // simulateTouch: isMobile,
-    // allowTouchMove: isMobile,
-    watchOverflow: true,
-    uniqueNavElements: true,
-    focusableElements: "a, button, input, select, textarea, label, video",
-  };
-})();
+export const defaultSwiperOptions = {
+  createElements: true,
+  grabCursor: true,
+  simulateTouch: true,
+  allowTouchMove: true,
+  mousewheel: { forceToAxis: true },
+  watchOverflow: true,
+  uniqueNavElements: true,
+  focusableElements: "a, button, input, select, textarea, label, video",
+};
 
 export function withNavigationAndPagination(options, controls) {
   const { pagination, prev, next } = controls;

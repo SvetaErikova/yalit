@@ -3,7 +3,7 @@ const infoClip = document.querySelector('.info-clip')
 if (infoClip) {
   const blockClip = infoClip.querySelector('.block-clip')
   const clipHead = blockClip.querySelector('.block--head')
-
+  ScrollTrigger?.config({ ignoreMobileResize: true })
 
   const createClip = (expandDuration, scrollDistance, scale) => {
     const tl = gsap.timeline({
@@ -38,14 +38,9 @@ if (infoClip) {
     })
   }
 
-
-  const mm = gsap.matchMedia()
-
-  mm.add('(max-width: 768px)', () => {
+  if (window.matchMedia('(max-width: 768px)').matches) {
     createClip(0.75, 1.25, 120)
-  })
-
-  mm.add('(min-width: 769px)', () => {
+  } else {
     createClip(1, 1.6, 170)
-  })
+  }
 }

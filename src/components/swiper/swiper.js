@@ -75,13 +75,6 @@ const activateBlocklistSlider = (swiper_item) => {
     slides_per_view_pad = 1.8;
     slides_per_view_mob = 1.1;
     break;
-
-  // case swiper_item.classList.contains('-col-3'):
-  //   slides_per_view_desktop = 3;
-  //   slides_per_view_desktop_small = 3;
-  //   slides_per_view_pad = 2.2;
-  //   slides_per_view_mob = 1.1;
-  //   break;
   case swiper_item.classList.contains('content_special'):
     slides_per_view_desktop = 1;
     slides_per_view_desktop_small = 1;
@@ -203,7 +196,6 @@ let activateGallerySliders = (gallery) => {
       slidesPerView: 1.2,
       spaceBetween: 8,
       freeMode: false,
-      // loop: content_gallery ? false : true,
       loop: true,
       grabCursor: true,
       navigation: true,
@@ -246,21 +238,6 @@ function initRoomCardsImages(card) {
     type: 'bullets',
   };
   let sliderNavigation = false;
-
-  // if (isDesktop) {
-  //   const swiperNavPrev = document.createElement('div');
-  //   swiperNavPrev.classList.add('card_swiper-button-prev');
-  //   sliderControls.prepend(swiperNavPrev);
-  //
-  //   const swiperNavNext = document.createElement('div');
-  //   swiperNavNext.classList.add('card_swiper-button-next');
-  //   sliderControls.append(swiperNavNext);
-  //
-  //   sliderNavigation = {
-  //     nextEl: swiperNavNext,
-  //     prevEl: swiperNavPrev,
-  //   };
-  // }
 
   const cardRoomSlider = new Swiper(slider, {
     createElements: true,

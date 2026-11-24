@@ -46,34 +46,6 @@ export const All_card_default = () => {
     </>);
 };
 
-// export const All_card_offers = () => {
-//   return (
-//     <>
-//       <Card
-//         title={'Карточка ссылка '}
-//         image={'../../assets/img/2.jpg'}
-//         link={'/'}
-//         labels={['до 28.02.2026']}
-//       />
-//       <Card
-//         title={
-//           'Карточка попап c очень очень очень очень очень очень очень очень большим заголовком'
-//         }
-//         image={'../../assets/img/2.jpg'}
-//         popup={'popup_for_cascade'}
-//         labels={['до 28.02.2026']}
-//       />
-//       <Card
-//         title="Заголовок в две строки, уходящий в точечки"
-//         image={'../../assets/img/1.jpg'}
-//       />
-//       <Card
-//         title="Заголовок в две строки, уходящий в точечки"
-//         image={'../../assets/img/1.jpg'}
-//       />
-//     </>
-//   );
-// };
 export const All_card_article = () => {
   return (<>
       <Card

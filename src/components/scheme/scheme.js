@@ -1,8 +1,6 @@
 const blockScheme = document.querySelectorAll('.content_scheme');
 const SCHEME_WIDTH = 1920;
 
-
-// Перенести для только авторизовавшихся в админке
 function copiedCoord() {
   let scheme_svg = document.querySelector('.content_scheme .scheme_svg svg');
   scheme_svg.addEventListener('click', (e) => {
@@ -44,7 +42,6 @@ blockScheme.forEach((block) => {
     scheme.append(tooltip);
     tooltip.append(tooltipTitle);
     tooltip.dataset.popup_cascade = pm.dataset.popup_cascade;
-    // tooltip.dataset.openpopup = pm.dataset.openpopup;
 
     tooltip.classList.add('scheme--tooltip');
     tooltipTitle.textContent = title;
@@ -84,7 +81,6 @@ blockScheme.forEach((block) => {
     });
   });
 
-  // scroll scheme start
   const syncMiniMap = () => {
     const { clientWidth, scrollLeft, scrollWidth } = scheme;
 
@@ -124,7 +120,6 @@ blockScheme.forEach((block) => {
   });
 
   copiedCoord();
-//   scroll scheme end
 });
 
 

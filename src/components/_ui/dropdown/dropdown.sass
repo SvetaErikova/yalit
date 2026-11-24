@@ -3,43 +3,33 @@
   @media (min-width: 769px)
     position: relative
 
+    &:hover
+      .dropdown--wrapper
+        opacity: 1
+        pointer-events: all
+        top: 100%
+
+      > [class*="icon-ic-chevron"]
+        rotate: 180deg
+
   > [class*="icon-ic-chevron"]
     transition: rotate var(--transition)
 
-  &:hover
-    .dropdown--wrapper
-      opacity: 1
-      pointer-events: all
-      top: 100%
-
-    > [class*="icon-ic-chevron"]
-      rotate: 180deg
-
   @media (max-width: 768px)
+    cursor: pointer
+
     > a,
     > a *
       pointer-events: none
 
-    &.nav--item
-      cursor: pointer
+    &.is_active
+      .dropdown--wrapper
+        opacity: 1
+        pointer-events: all
+        top: 100%
 
-      &:hover
-        .dropdown--wrapper
-          opacity: 0
-          pointer-events: none
-
-        > [class*="icon-ic-chevron"]
-          rotate: 0deg
-
-      &.is_active,
-      &.is_active:hover
-        .dropdown--wrapper
-          opacity: 1
-          pointer-events: all
-          top: 100%
-
-        > [class*="icon-ic-chevron"]
-          rotate: 180deg
+      > [class*="icon-ic-chevron"]
+        rotate: 180deg
 
   &--wrapper
     position: absolute
@@ -77,5 +67,8 @@
         &:hover
           color: var(--text-accent-heavy)
 
-.button.dropdown
-  overflow: visible
+  &.btn-booking
+    .dropdown--wrapper
+      left: 0
+      translate: 0
+      padding: 8px 0

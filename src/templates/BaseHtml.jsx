@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { Preloader } from '../components/preloader/preloader-comp.jsx';
-import { Transition } from '../components/transition/transition.jsx';
 
 export default function BaseHtml({ children, meta, colorMode = '', className }) {
 	return (
@@ -32,7 +31,6 @@ export default function BaseHtml({ children, meta, colorMode = '', className }) 
     </head>
     <body class={clsx( colorMode, className)}>
     <Preloader />
-    {/*<Transition/>*/}
 
     {children}
     <svg style="position: absolute" viewBox="0 0 32 32" width="0" height="0">

@@ -110,7 +110,7 @@ window.addEventListener('load', () => {
 
   let header_height = document.querySelector('.header--main').getBoundingClientRect().height;
   document.documentElement.style.setProperty('--headerHeight', `${header_height}px`);
-  let header_height_bottom = document.querySelector('.header--bottom').getBoundingClientRect().height;
+  let header_height_bottom = document.querySelector('.header--bottom')?.getBoundingClientRect().height;
   document.documentElement.style.setProperty('--headerHeightBottom', `${header_height_bottom}px`);
 
 });
@@ -121,21 +121,8 @@ window.addEventListener('resize', () => {
 
 });
 
-/* Скролл хедера */
-
 let last_scroll = 0;
 
-// window.addEventListener('scroll', (e) => {
-//   document.documentElement.scrollTop > 0 ? document.querySelector('header').classList.add('is_scrolled') : document.querySelector('header').classList.remove('is_scrolled')
-//
-// })
-
-// window.addEventListener('load', (e) => {
-//   document.documentElement.scrollTop > 0 ? document.querySelector('header').classList.add('is_scrolled') : document.querySelector('header').classList.remove('is_scrolled')
-//
-// }, {once:true})
-
-// открытие меню
 const btn_openHotelSelect = document.querySelectorAll('.header--hotel_select');
 const popupHotelSelect = document.querySelector('[data-popup="popup_for_hotels_select"]');
 
@@ -145,45 +132,12 @@ btn_openHotelSelect.forEach(btn => {
   });
 });
 
-const navDropdownMedia = window.matchMedia('(max-width: 768px)');
-
-const closeNavDropdowns = () => {
-  document.querySelectorAll('.header .nav--item.dropdown.is_active').forEach((item) => {
-    item.classList.remove('is_active');
-  });
-};
-if(window.matchMedia('(max-width: 768px)').matches) {
-  document.addEventListener('click', (event) => {
-    if (!navDropdownMedia.matches) {
-      closeNavDropdowns();
-      return;
-    }
-    const item = event.target.closest('.header .nav--item.dropdown');
-  
-    if (!item) {
-      closeNavDropdowns();
-      return;
-    }
-  
-    event.preventDefault();
-    const willOpen = !item.classList.contains('is_active');
-    closeNavDropdowns();
-    if (willOpen) item.classList.add('is_active');
-  });
-}
-
-
-
-/* Скролл хедера  */
 window.addEventListener('scroll', (e) => {
   let current_scroll = window.scrollY || document.documentElement.scrollTop;
   const header = document.querySelector('header');
 
   if (current_scroll >= last_scroll && current_scroll > 60) {
     header.classList.add('scrolled-up');
-    header.querySelectorAll('.dropdown.is_active').forEach((item) => {
-      item.classList.remove('is_active');
-    });
   } else {
     header.classList.remove('scrolled-up');
   }

@@ -45,9 +45,9 @@ export default function Home() {
             <Button link={"/vacancies"} >
               Вакансии
             </Button>
-            {/*<Button link={"/scheme"} >*/}
-            {/*  Карта*/}
-            {/*</Button>*/}
+            <Button link={"/booking"} >
+              букинг
+            </Button>
             <Button  link={"/article"} >
               Статья
             </Button>

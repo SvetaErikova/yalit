@@ -1,5 +1,3 @@
-/* Инпут даты */
-
 let activateDateInputs = ()=> {
   const AirDatepicker = window.AirDatepicker;
 
@@ -14,7 +12,6 @@ let activateDateInputs = ()=> {
     let date_lang = input.dataset.lang ? input.dataset.lang : "ru-RU";
     let locales = date_lang
     let range_picker = input.dataset.airpicker === 'range' ? true : false;
-    let is_mobile = window.matchMedia('(max-width: 1023px)').matches;
     let date_apply_base = input.dataset.apply_base ? input.dataset.apply_base : "Применить";
     let date_apply_submit = input.dataset.apply_submit ? input.dataset.apply_submit : "Выбрать ";
     let date_timepicker = input.hasAttribute('data-timepicker') ? true : false;
@@ -57,7 +54,6 @@ let activateDateInputs = ()=> {
       view: view_mode,
       range: range_picker,
       multipleDatesSeparator: ' - ',
-      // isMobile: is_mobile,
       position({$datepicker, $target, $pointer}) {
         let coords = $target.getBoundingClientRect(),
           dpHeight = $datepicker.clientHeight;
@@ -86,7 +82,6 @@ let activateDateInputs = ()=> {
     }
 
     if ( input.dataset.value ) {
-      //airPicker.update({selectedDates: input.dataset.value })
       airPicker.selectDate(input.dataset.value)
       input.value = input.dataset.value
     }

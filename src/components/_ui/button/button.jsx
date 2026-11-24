@@ -11,14 +11,6 @@ const BUTTON_TYPE_MAP = {
   "filled-accent": "filled-accent",
 };
 
-const BUTTON_COLOR_MAP = {
-  neutral: "neutral",
-  primary: "neutral",
-  brand: "brand",
-  secondary: "brand",
-  accent: "brand",
-};
-
 /**
  * A custom button component.
  *
@@ -59,14 +51,12 @@ export const Button = ({
     : { type: htmlType, "data-openpopup": popup, "data-closepopup": closePopup };
 
   const normalizedType = BUTTON_TYPE_MAP[String(type).trim()] ?? "filled-primary";
-  const normalizedColor =  BUTTON_COLOR_MAP[String(color).trim()] ?? "neutral";
 
   const buttonClasses = clsx(
     classProp,
     className,
     "button",
     `button-${normalizedType}`,
-    // `button-${normalizedColor}`,
     size && `button-${size}`,
   );
 
