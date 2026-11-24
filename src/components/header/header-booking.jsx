@@ -41,7 +41,7 @@ export const HeaderBooking = () => {
         <HeaderLogo hotel={true} />
         <div class="header--booking_contacts">
           <p>Бронирование на официальном сайте</p>
-          <span>Помощь: +7 (843) 294-70-78</span>
+          <a href="tel:+78432947078">Помощь: +7 (843) 294-70-78</a>
         </div>
       </div>
     </header>
