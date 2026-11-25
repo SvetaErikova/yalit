@@ -86,29 +86,6 @@ PopupManager.register(
   }
 );
 
-// PopupManager.register(
-//   "popup_for_menu",
-//   {
-//     additional_close_controls: false,
-//     is_block_scroll: false,
-//   },
-//   {
-//     on_open: (popup_element) => {
-//       if (window.matchMedia("(min-width: 769px)").matches) {
-//         setTimeout(()=>{
-//           drawLogo(popup_element);
-//         }, 500)
-//       }
-//     },
-//     on_close: (popup_element) => {
-//       popup_element.querySelectorAll(".menu--mobile_item").forEach((item) => {
-//         item.classList.remove("is-open");
-//       });
-//     },
-//   },
-// );
-
-
 PopupManager.register('popup_for_confirmation',
   {
     is_block_scroll: true,
@@ -124,8 +101,6 @@ PopupManager.register('popup_for_confirmation',
     },
   }
 );
-
-// Add event Listeners to open Popups
 
 function activatePopupButtons(block) {
   let open_popup_buttons = block.querySelectorAll("[data-openpopup]");
@@ -163,5 +138,3 @@ window.addEventListener('load', () => {
     })
   }
 });
-//
-// PopupManager.open('popup_for_confirmation', { title: 'Произошла ошибка', text: 'Попробуйте обновить страницу или попробовать позже'})

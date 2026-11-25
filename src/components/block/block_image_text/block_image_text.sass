@@ -39,12 +39,10 @@
       border-radius: var(--border-corner)
       overflow: hidden
       display: flex
-      // max-width: 100vw
       width: 100%
       aspect-ratio: 1 / 1
       max-height: calc(100vh - var(--headerHeight) - 16px)
       @media(min-width: 992px)
-        // max-width: 50vw
         position: sticky
         top: var(--headerHeight)
 
@@ -56,7 +54,6 @@
       object-position: center
   .block--content
     overflow: hidden
-    //border-radius: var(--border-corner)
     display: flex
     flex-direction: column
     gap: var(--g-s)
@@ -102,8 +99,6 @@
       .decor--line, .decor--corner
         background-color : var(--line-neutral-inverted-primary)
   &.block_image_text-reversed
-    //.block--image
-    //  order: 1
     .block--wrapper
       @media(min-width: 992px)
         grid-template-areas: 'image content'
@@ -122,9 +117,6 @@
         position: absolute
         inset: 0
         aspect-ratio: initial
-
-
-        //height: 100%
 
   &.block_image_text_ar-16-9
     .gallery

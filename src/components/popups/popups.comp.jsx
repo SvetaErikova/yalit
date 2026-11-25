@@ -35,7 +35,6 @@ const PopupsLayout = ({
           </div>
         )}
         <div className="popup--content_wrapper">
-          {/*переделать загловок*/}
           {children}
         </div>
         {popupActions && <div className="popup--action">{popupActions}</div>}

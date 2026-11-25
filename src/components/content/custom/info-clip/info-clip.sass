@@ -1,16 +1,16 @@
 .info-clip
-  --info-clip-height: min(50vw, 38svh)
+  --info-clip-height: min(50vw, 38lvh)
   margin: 0
-  height: 100vh
+  height: 100lvh
   @media (min-width: 645px)
-    --info-clip-height: min(max(240px, 18vw), 40svh)
+    --info-clip-height: min(max(240px, 18vw), 40vh)
   .block--wrapper
     padding: 0
     position: relative
     height: 100%
   .block-top
     .block--head
-      height: calc(100svh - var(--headerHeight) - var(--info-clip-height))
+      height: calc(100lvh - var(--headerHeight) - var(--info-clip-height))
       &_title
         font-size: clamp(40px, calc(40px + (115 - 40) * ((100vw - 768px) / (1024 - 768))), 115px)
       &_caption
@@ -40,7 +40,7 @@
       left: 0
       right: 0
       bottom: 0
-      height: 100vh
+      height: 100lvh
       z-index: 2
       opacity: 0
       transform: translateY(72px)

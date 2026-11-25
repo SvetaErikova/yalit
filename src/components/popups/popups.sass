@@ -101,7 +101,7 @@
     position: sticky
     margin-left: 0
     margin-top: var(--g-m)
-    bottom: var(--g-xxs)
+    bottom: 0
     @media(min-width: 769px)
       display: none
 
@@ -110,6 +110,7 @@
     z-index: 48
     .popup--content
       pointer-events: auto
+      overflow-y: auto
 [data-popup="popup_for_cascade"]
   .popup--content
     min-height: 50vh

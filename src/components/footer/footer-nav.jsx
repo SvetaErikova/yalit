@@ -5,9 +5,6 @@ export const FooterNav = () => {
     <nav className="footer--nav">
       {footerNav.map((section) => (
         <>
-          {/*{section.title && (*/}
-          {/*  <p className="footer--nav_title">{section.title}</p>*/}
-          {/*)}*/}
           {section.groups.map((group) => (
             <div className="footer--nav_group">
               <p className="footer--nav_group_title">{group.title}</p>

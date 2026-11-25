@@ -1,5 +1,3 @@
-// /* Кнопка скопировать номер */
-
 const copyToClipboard = (content, el) => {
 	if (window.isSecureContext && navigator.clipboard) {
 		navigator.clipboard.writeText(content);
@@ -40,7 +38,6 @@ let activateCopyButtons = (block) => {
 
 			setTimeout(() => {
 				PopupManager.close("popup_for_notification");
-				// b.classList.remove('is_copying')
 			}, 1400);
 		});
 	});

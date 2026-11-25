@@ -57,7 +57,6 @@
 
 
   &--bottom
-    //overflow-x: clip
     transition: var(--transition)
     background: var(--surface-secondary)
     pointer-events: auto
@@ -124,7 +123,24 @@
       pointer-events: none
   .dropdown
     overflow: visible
-
+  &--booking_contacts
+    display: none
+    @media (min-width: 769px)
+      display: flex
+      flex-direction: column
+      gap: 10px
+      max-width: 360px
+      width: 100%
+      margin-left: auto
+      p
+        font-weight: 700
+        font-size: 14px
+      span, a
+        font-size: 13px
+        color: var(--text-tertiary)
+  .btn-booking
+    & > span:not([class^='icon-'])
+      padding: 0 6px
 body:has(.popup-hotel_select.is_active)
 
   .header--bottom

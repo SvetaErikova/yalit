@@ -67,7 +67,6 @@ window.addEventListener("load", () => {
 	let forms = document.querySelectorAll(".form");
 
 	forms.forEach((form) => {
-		// createCustomSelect(form);
 		validateInputs(form);
 	});
 });

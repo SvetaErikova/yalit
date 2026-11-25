@@ -2,8 +2,6 @@ import { Form_policy } from "./form_policy.jsx";
 import { Input } from "./inputs/input/input_comp.jsx";
 import { Input_checks } from "./inputs/input_checks/input_checks-comp.jsx";
 import { Input_date } from "./inputs/input_date/input_date_comp.jsx";
-import { Input_file } from "./inputs/input_file/input_file_comp.jsx";
-import { Input_qunity } from "./inputs/input_quantity/input_qunity_comp.jsx";
 import { Input_select } from "./inputs/input_select/input_select_comp.jsx";
 import { Input_textarea } from "./inputs/input_textarea/input_textarea_comp.jsx";
 import { Button } from '../_ui/button/button.jsx';
@@ -66,9 +64,6 @@ export const Form = () => {
           input={[{ text: "Значение пункта радио кнопки 1" }, { text: "Значение пункта радио кнопки 2" }]}
         ></Input_checks>
         <Input_checks type={"checkbox"} name={"toggle"} title={"Тоггл"} input={[{ text: "Описание значения тоггла" }]}></Input_checks>
-        {/*<Input_file title={"Резюме"} hint={".doc, .pdf, .txt до 5MB"} accept={"application/pdf,application/doc"} maxsize={(1024*1024) * 5}></Input_file>*/}
-        {/*<Input_file title={"Поле для загрузки картинок"} hint={".jpeg, .png, .jpg до 2MB"} accept={"image/jpeg,image/png,image/jpg"} maxsize={(1024*1024) * 2}></Input_file>*/}
-        {/*<Input_qunity></Input_qunity>*/}
         <Form_policy></Form_policy>
 
       </fieldset>

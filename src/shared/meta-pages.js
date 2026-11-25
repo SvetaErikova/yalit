@@ -43,6 +43,11 @@ export const metaPages = {
     title: "Спецпредложения",
     description: "разводящая",
     path: "/spec"
-  }
+  },
+  "booking": {
+    title: "Бронирование",
+    description: "Бронирование",
+    path: "/booking"
+  },
 
 }
