@@ -40,6 +40,7 @@ import '../../components/content/special/special.js';
 import '../../components/content/custom/info-clip/info-clip.js';
 import '../../components/content/custom/info-slider/info-slider.js';
 import '../../components/content/custom/animate/animate.js';
+import '../../components/content/custom/book/book.js';
 
 Fancybox.bind('.gallery *[data-fancybox], .content_gallery .card[data-fancybox]', {
   infinite: false,

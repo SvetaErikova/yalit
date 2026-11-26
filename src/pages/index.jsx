@@ -48,6 +48,9 @@ export default function Home() {
             <Button link={"/booking"} >
               букинг
             </Button>
+            <Button link={"/book"} >
+              книга
+            </Button>
             <Button  link={"/article"} >
               Статья
             </Button>

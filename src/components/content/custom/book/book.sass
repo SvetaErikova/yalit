@@ -1,0 +1,117 @@
+.content_book
+  margin: 0
+  padding: calc(var(--g-block-margin) /2) 0
+  .block--head
+    margin-bottom: var(--g-vertical-list)
+    &_title
+      @media (max-width: 475px)
+        font-size: var(--fs-heading-3)
+.book
+  width: 100%
+  max-width: 930px
+  margin-inline: auto
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: clamp(16px, 8px, 40px)
+
+  &--stage
+    position: relative
+    z-index: 1
+    width: 100%
+    aspect-ratio: 354 / 460
+    overflow: visible
+    @media (min-width: 769px)
+      aspect-ratio: 930 / 612
+  &--stack,
+  &--edge
+    position: absolute
+    pointer-events: none
+
+  &--stack
+    top: 0
+    bottom: 0
+    left: 2px
+    width: 12px
+    background: repeating-linear-gradient(90deg, #F7F1E6 0 0.67px, rgba(112, 88, 64, 0.42) 0.67px 1.33px)
+    &:not(.-right)
+      @media (max-width: 768px)
+        display: none
+    &.-right
+      left: auto
+      right: 2px
+
+
+  &--canvas
+    position: absolute
+    left: 0
+    right: 0
+    top: -10%
+    z-index: 1
+    width: 100%
+    height: 120%
+    pointer-events: none
+
+  &--sources
+    position: absolute
+    width: 1px
+    height: 1px
+    margin: -1px
+    padding: 0
+    overflow: hidden
+    clip: rect(0 0 0 0)
+    clip-path: inset(50%)
+    pointer-events: none
+
+  &--notes
+    display: block
+    width: 100%
+    overflow: hidden
+    color: var(--text-primary)
+    font-size: var(--fs-caption-2)
+    @media (min-width: 769px)
+      display: none
+
+  &--controls
+    position: relative
+    z-index: 2
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 12px
+
+  .page
+    background: #FFF9F2
+    color: #2C2824
+    box-sizing: border-box
+    overflow: hidden
+    container-type: inline-size
+    width: var(--book-page-w, auto)
+    height: var(--book-page-h, auto)
+    padding: 40px 16px
+    display: flex
+    flex-direction: column
+    gap: clamp(16px, calc(16px + (20 - 16) * ((100vw - 992px) / (1440 - 992))), 20px)
+    @media (min-width: 769px)
+      padding: 2cqw 2cqw
+    h3
+      font-family: var(--ff-title)
+      font-size: var(--fs-heading-1)
+      color: var(--bg-primary)
+      text-align: center
+    img
+      aspect-ratio: 1 / 1
+      height: auto
+      @media (min-width: 769px)
+        aspect-ratio: 396/212
+    p
+      font-size: var(--fs-caption-2)
+      @media (max-width: 768px)
+        display: none
+
+@media (max-width: 475px)
+  .book--notes .swiper-slide
+    font-size: 16px
+
+
+
