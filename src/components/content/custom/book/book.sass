@@ -14,6 +14,8 @@
   flex-direction: column
   align-items: center
   gap: clamp(16px, 8px, 40px)
+  @media (max-width: 768px)
+    max-width: 412px
 
   &--stage
     position: relative
@@ -21,6 +23,7 @@
     width: 100%
     aspect-ratio: 354 / 460
     overflow: visible
+
     @media (min-width: 769px)
       aspect-ratio: 930 / 612
   &--stack,
@@ -34,12 +37,15 @@
     left: 2px
     width: 12px
     background: repeating-linear-gradient(90deg, #F7F1E6 0 0.67px, rgba(112, 88, 64, 0.42) 0.67px 1.33px)
+    clip-path: polygon(0 4px, 100% 0, 100% 100%, 0 calc(100% - 4px))
     &:not(.-right)
       @media (max-width: 768px)
         display: none
     &.-right
       left: auto
       right: 2px
+      clip-path: polygon(0 0, 100% 4px, 100% calc(100% - 4px), 0 100%)
+
 
 
   &--canvas
@@ -51,6 +57,15 @@
     width: 100%
     height: 120%
     pointer-events: none
+
+  &--hit
+    position: absolute
+    z-index: 2
+    inset: 0
+    touch-action: pan-y
+    overscroll-behavior-x: contain
+    cursor: grab
+    user-select: none
 
   &--sources
     position: absolute
@@ -71,6 +86,12 @@
     font-size: var(--fs-caption-2)
     @media (min-width: 769px)
       display: none
+    .swiper-slide
+      display: flex
+      flex-direction: column
+      gap: 10px
+    p
+      margin: 0
 
   &--controls
     position: relative
@@ -79,6 +100,10 @@
     align-items: center
     justify-content: center
     gap: 12px
+    .button
+      --button-bg-color: var(--btn-bg-primary-rest)
+      --button-border-color: var(--btn-bg-primary-rest)
+      --button-color: var(--btn-text-primary-rest)
 
   .page
     background: #FFF9F2
@@ -88,26 +113,51 @@
     container-type: inline-size
     width: var(--book-page-w, auto)
     height: var(--book-page-h, auto)
-    padding: 40px 16px
+    padding: 40px 16px 32px
     display: flex
     flex-direction: column
-    gap: clamp(16px, calc(16px + (20 - 16) * ((100vw - 992px) / (1440 - 992))), 20px)
+    gap: 30px
     @media (min-width: 769px)
       padding: 2cqw 2cqw
+      gap: clamp(16px, calc(16px + (20 - 16) * ((100vw - 992px) / (1440 - 992))), 20px)
     h3
       font-family: var(--ff-title)
-      font-size: var(--fs-heading-1)
+      font-size: 24px
       color: var(--bg-primary)
       text-align: center
+      @media (min-width: 769px)
+        font-size: var(--fs-heading-1)
     img
-      aspect-ratio: 1 / 1
-      height: auto
+      aspect-ratio: initial
+      height: 100%
+      object-fit: cover
       @media (min-width: 769px)
         aspect-ratio: 396/212
-    p
-      font-size: var(--fs-caption-2)
+        height: auto
+    &--copy
+      display: flex
+      flex-direction: column
+      gap: 10px
       @media (max-width: 768px)
         display: none
+    p
+      margin: 0
+      font-size: var(--fs-caption-2)
+      line-height: 1.5
+    i
+      font-weight: 600
+    span
+      text-wrap: nowrap
+    //&:last-child
+    //  align-items: center
+    //  justify-content: center
+    //  @media (max-width: 768px)
+    //    display: none
+    //  img
+    //    width: 100%
+    //    height: auto
+    //    aspect-ratio: 1
+    //    object-fit: cover
 
 @media (max-width: 475px)
   .book--notes .swiper-slide

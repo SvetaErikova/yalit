@@ -11,3 +11,4 @@ import "../../libs/airpicker/airpicker.js";
 import "../../libs/gsap/gsap.min.js";
 import "../../libs/gsap/ScrollTrigger.min.js";
 import "../../libs/gsap/SplitText.min.js";
+import "../../libs/book/book.js";
