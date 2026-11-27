@@ -1,713 +1,614 @@
-/**
- * Перелистывание разворота на canvas.
- * Угол страницы едет по дуге, лист режется клипом — без перетаскивания, только стрелки.
- */
-const PAPER = "#fffff8";
-const FLIP_MS = 1100;
+const PAPER = '#FFF9F2';
+const FLIP_MS = 1220;
+const BEND = 0.86;
+const LEAD = 0.58;
+const DEPTH = 0.42;
 
-const cornerPoint = (progress, pageWidth, pageHeight) => {
-	const lift = Math.min(28, pageHeight * 0.045);
-	const startX = pageWidth - lift;
-	const startY = pageHeight - lift;
-	const endX = -pageWidth;
-	const endY = pageHeight;
-
-	return {
-		x: startX + (endX - startX) * progress,
-		y: startY + (endY - startY) * progress,
-	};
-};
-
-const distance = (a, b) => {
-	if (!a || !b) return Infinity;
-	return Math.hypot(a.x - b.x, a.y - b.y);
-};
-
-const rotatePoint = (point, origin, angle) => {
-	const cos = Math.cos(angle);
-	const sin = Math.sin(angle);
+function projectPoint(u, v, turn, geom) {
+	const lead = Math.sin(turn) * LEAD * v;
+	const base = Math.min(Math.PI, Math.max(0, turn + lead));
+	const curl = Math.sin(base) * BEND * u ** 1.45;
+	const angle = Math.min(Math.PI, base + curl);
+	const radius = u * geom.pageW;
+	const zLift = Math.sin(angle) * radius * DEPTH;
+	const scale = geom.focal / (geom.focal - zLift);
 
 	return {
-		x: point.x * cos + point.y * sin + origin.x,
-		y: point.y * cos - point.x * sin + origin.y,
-	};
-};
-
-const limitToCircle = (center, radius, point) => {
-	if (distance(center, point) <= radius) return point;
-
-	const dx = center.x - point.x;
-	const dy = center.y - point.y;
-	const length = Math.hypot(dx, dy) || 1;
-
-	return {
-		x: center.x - (dx / length) * radius,
-		y: center.y - (dy / length) * radius,
-	};
-};
-
-const lineIntersect = (one, two) => {
-	const a1 = one[0].y - one[1].y;
-	const a2 = two[0].y - two[1].y;
-	const b1 = one[1].x - one[0].x;
-	const b2 = two[1].x - two[0].x;
-	const c1 = one[0].x * one[1].y - one[1].x * one[0].y;
-	const c2 = two[0].x * two[1].y - two[1].x * two[0].y;
-	const det = a1 * b2 - a2 * b1;
-
-	if (!Number.isFinite(det) || Math.abs(det) < 1e-6) return null;
-
-	const x = -((c1 * b2 - c2 * b1) / det);
-	const y = -((a1 * c2 - a2 * c1) / det);
-
-	if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
-
-	return { x, y };
-};
-
-const intersectInRect = (rect, one, two) => {
-	const point = lineIntersect(one, two);
-
-	if (!point) return null;
-	if (point.x < rect.left || point.x > rect.left + rect.width) return null;
-	if (point.y < rect.top || point.y > rect.top + rect.height) return null;
-
-	return point;
-};
-
-const buildPage = (pos, pageWidth, pageHeight) => {
-	const left = pageWidth - pos.x + 1;
-	const top = pageHeight - pos.y;
-	const hypotenuse = Math.hypot(top, left);
-
-	if (hypotenuse < 1) return null;
-
-	const ratio = Math.min(1, Math.max(-1, left / hypotenuse));
-	let angle = 2 * Math.acos(ratio);
-
-	if (top < 0) angle = -angle;
-
-	const delta = Math.PI - angle;
-
-	if (!Number.isFinite(angle) || (delta >= 0 && delta < 0.003)) return null;
-
-	angle = -angle;
-
-	const base = [
-		{ x: 0, y: -pageHeight },
-		{ x: pageWidth, y: -pageHeight },
-		{ x: 0, y: 0 },
-		{ x: pageWidth, y: 0 },
-	].map((point) => rotatePoint(point, pos, angle));
-
-	return {
+		x: geom.spine + Math.cos(angle) * radius * scale,
+		y: geom.centerY + (v - 0.5) * geom.pageH * scale,
+		z: zLift,
 		angle,
-		rect: {
-			topLeft: base[0],
-			topRight: base[1],
-			bottomLeft: base[2],
-			bottomRight: base[3],
-		},
+		u,
+		v,
 	};
-};
+}
 
-const computeCurl = (localPos, pageWidth, pageHeight) => {
-	let position = localPos;
-	let page = buildPage(position, pageWidth, pageHeight);
+function buildGrid(turn, geom) {
+	const cols = geom.pageW < 240 ? 28 : 42;
+	const line = (v) => Array.from({ length: cols + 1 }, (_, col) => projectPoint(col / cols, v, turn, geom));
+	return [line(0), line(1)];
+}
 
-	if (!page) return null;
+function traceOutline(ctx, grid) {
+	const [top, bottom] = grid;
+	ctx.beginPath();
+	top.forEach((point, index) => (index ? ctx.lineTo(point.x, point.y) : ctx.moveTo(point.x, point.y)));
+	for (let index = bottom.length - 1; index >= 0; index -= 1) ctx.lineTo(bottom[index].x, bottom[index].y);
+	ctx.closePath();
+}
 
-	const refresh = (next) => {
-		position = next;
-		page = buildPage(position, pageWidth, pageHeight);
-	};
+function triangleArea(a, b, c) {
+	return Math.abs((b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y));
+}
 
-	const withinWidth = limitToCircle({ x: 0, y: pageHeight }, pageWidth, position);
+function mapTriangle(s0, s1, s2, d0, d1, d2) {
+	const denom = s0.x * (s1.y - s2.y) + s1.x * (s2.y - s0.y) + s2.x * (s0.y - s1.y);
+	if (Math.abs(denom) < 1e-4) return null;
 
-	if (withinWidth !== position) refresh(withinWidth);
-	if (!page) return null;
-
-	if (page.rect.topRight.x <= 0) {
-		refresh(limitToCircle({ x: 0, y: 0 }, Math.hypot(pageWidth, pageHeight), page.rect.bottomLeft));
-	}
-
-	if (!page) return null;
-	if (Math.abs(position.x - pageWidth) < 1 && Math.abs(position.y) < 1) return null;
-
-	const bounds = { left: -1, top: -1, width: pageWidth + 2, height: pageHeight + 2 };
-	const topLine = [
-		{ x: 0, y: 0 },
-		{ x: pageWidth, y: 0 },
-	];
-	const sideLine = [
-		{ x: pageWidth, y: 0 },
-		{ x: pageWidth, y: pageHeight },
-	];
-	const bottomLine = [
-		{ x: 0, y: pageHeight },
-		{ x: pageWidth, y: pageHeight },
-	];
-
-	const topIntersect = intersectInRect(bounds, [page.rect.topLeft, page.rect.topRight], topLine);
-	const sideIntersect = intersectInRect(bounds, [position, page.rect.topLeft], sideLine);
-	const bottomIntersect = intersectInRect(bounds, [page.rect.bottomLeft, page.rect.bottomRight], bottomLine);
-
-	const progress = Math.abs(((position.x - pageWidth) / (2 * pageWidth)) * 100);
-
-	return {
-		angle: page.angle,
-		position,
-		rect: page.rect,
-		topIntersect,
-		sideIntersect,
-		bottomIntersect,
-		progress,
-	};
-};
-
-const clipsFor = (curl, pageWidth, pageHeight) => {
-	const flipping = [curl.rect.topLeft, curl.topIntersect];
-
-	if (curl.sideIntersect) flipping.push(curl.sideIntersect);
-	flipping.push(curl.bottomIntersect);
-	flipping.push(curl.rect.bottomLeft);
-
-	const bottom = [curl.topIntersect];
-
-	if (curl.topIntersect) bottom.push({ x: pageWidth, y: 0 });
-	bottom.push({ x: pageWidth, y: pageHeight });
-
-	if (curl.sideIntersect && distance(curl.sideIntersect, curl.topIntersect) >= 10) {
-		bottom.push(curl.sideIntersect);
-	}
-
-	bottom.push(curl.bottomIntersect, curl.topIntersect);
-
-	return {
-		flipping: flipping.filter(Boolean),
-		bottom: bottom.filter(Boolean),
-	};
-};
-
-const toGlobal = (point, direction, pageWidth) => {
-	if (direction === "back") return { x: pageWidth - point.x, y: point.y };
-	return { x: pageWidth + point.x, y: point.y };
-};
-
-const easeInOut = (value) => {
-	return value < 0.5 ? 2 * value * value : 1 - (-2 * value + 2) ** 2 / 2;
-};
-
-const readSpec = (node) => {
-	if (!node) return { title: "", paragraphs: [], src: "" };
-
-	const title = node.querySelector(".book__title");
-	const image = node.querySelector(".book__img");
-	const paragraphs = Array.prototype.map.call(node.querySelectorAll(".book__text"), (item) => item.textContent.trim()).filter(Boolean);
-
-	return {
-		title: title ? title.textContent.trim() : "",
-		paragraphs,
-		src: image ? image.getAttribute("src") : "",
-	};
-};
-
-const loadImage = (src) => {
-	if (!src) return Promise.resolve(null);
-
-	return new Promise((resolve) => {
-		const image = new Image();
-		image.onload = () => resolve(image);
-		image.onerror = () => resolve(null);
-		image.src = src;
+	const map = (axis) => ({
+		a: (d0[axis] * (s1.y - s2.y) + d1[axis] * (s2.y - s0.y) + d2[axis] * (s0.y - s1.y)) / denom,
+		c: (d0[axis] * (s2.x - s1.x) + d1[axis] * (s0.x - s2.x) + d2[axis] * (s1.x - s0.x)) / denom,
+		e: (d0[axis] * (s1.x * s2.y - s2.x * s1.y) + d1[axis] * (s2.x * s0.y - s0.x * s2.y) + d2[axis] * (s0.x * s1.y - s1.x * s0.y)) / denom,
 	});
-};
+	const x = map('x');
+	const y = map('y');
+	return { a: x.a, b: y.a, c: x.c, d: y.c, e: x.e, f: y.e };
+}
 
-const wrapLine = (ctx, text, maxWidth) => {
-	const words = text.split(/\s+/).filter(Boolean);
-	const lines = [];
-	let line = "";
+function expandTriangle(a, b, c, amount) {
+	const cx = (a.x + b.x + c.x) / 3;
+	const cy = (a.y + b.y + c.y) / 3;
+	const push = (point) => {
+		const dx = point.x - cx;
+		const dy = point.y - cy;
+		const length = Math.hypot(dx, dy) || 1;
+		return { x: point.x + (dx / length) * amount, y: point.y + (dy / length) * amount };
+	};
+	return [push(a), push(b), push(c)];
+}
 
-	words.forEach((word) => {
-		const next = line ? `${line} ${word}` : word;
+function sourcePoint(point, texture, face) {
+	const x = face === 'left' ? (1 - point.u) * texture.width : point.u * texture.width;
+	return { x, y: point.v * texture.height };
+}
 
-		if (ctx.measureText(next).width > maxWidth && line) {
-			lines.push(line);
-			line = word;
-			return;
-		}
-
-		line = next;
-	});
-
-	if (line) lines.push(line);
-
-	return lines;
-};
-
-const drawCover = (ctx, image, x, y, width, height) => {
-	const scale = Math.max(width / image.width, height / image.height);
-	const drawWidth = image.width * scale;
-	const drawHeight = image.height * scale;
+function drawTexturedTriangle(ctx, texture, s0, s1, s2, d0, d1, d2) {
+	if (triangleArea(d0, d1, d2) < 0.35) return;
+	const matrix = mapTriangle(s0, s1, s2, d0, d1, d2);
+	if (!matrix) return;
+	const [e0, e1, e2] = expandTriangle(d0, d1, d2, 0.75);
 
 	ctx.save();
 	ctx.beginPath();
-	ctx.rect(x, y, width, height);
+	ctx.moveTo(e0.x, e0.y);
+	ctx.lineTo(e1.x, e1.y);
+	ctx.lineTo(e2.x, e2.y);
+	ctx.closePath();
 	ctx.clip();
-	ctx.drawImage(image, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
+	ctx.transform(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
+	ctx.drawImage(texture, 0, 0);
 	ctx.restore();
-};
+}
 
-const drawJustified = (ctx, line, x, y, maxWidth, isLast) => {
-	const words = line.split(" ");
+function paintTriangle(ctx, a, b, c, rightTex, leftTex) {
+	const angle = (a.angle + b.angle + c.angle) / 3;
+	const face = angle > Math.PI / 2 ? 'left' : 'right';
+	const texture = face === 'left' ? leftTex : rightTex;
+	if (!texture) return;
+	drawTexturedTriangle(ctx, texture, sourcePoint(a, texture, face), sourcePoint(b, texture, face), sourcePoint(c, texture, face), a, b, c);
+}
 
-	if (isLast || words.length < 2) {
-		ctx.fillText(line, x, y);
-		return;
-	}
+function shadeSheet(ctx, grid, turn) {
+	const lift = Math.sin(turn);
+	if (lift < 0.04) return;
+	const points = grid.flat();
+	const minX = Math.min(...points.map((point) => point.x));
+	const maxX = Math.max(...points.map((point) => point.x));
+	const minY = Math.min(...points.map((point) => point.y));
+	const maxY = Math.max(...points.map((point) => point.y));
 
-	const wordsWidth = words.reduce((sum, word) => sum + ctx.measureText(word).width, 0);
-	const gap = Math.max(0, (maxWidth - wordsWidth) / (words.length - 1));
+	ctx.save();
+	traceOutline(ctx, grid);
+	ctx.clip();
+	const wash = ctx.createLinearGradient(minX, minY, maxX, maxY);
+	wash.addColorStop(0, `rgba(255, 250, 242, ${0.05 * lift})`);
+	wash.addColorStop(0.45, `rgba(255, 250, 242, ${0.14 * lift})`);
+	wash.addColorStop(1, `rgba(36, 20, 12, ${0.22 * lift})`);
+	ctx.fillStyle = wash;
+	ctx.fillRect(minX, minY, maxX - minX, maxY - minY);
+	ctx.restore();
+}
 
-	if (gap > 3.5) {
-		ctx.fillText(line, x, y);
-		return;
-	}
-	let cursor = x;
+function renderSheet(ctx, geom, turn, rightTex, leftTex) {
+	const grid = buildGrid(turn, geom);
 
-	words.forEach((word) => {
-		ctx.fillText(word, cursor, y);
-		cursor += ctx.measureText(word).width + gap;
-	});
-};
-
-const paintPage = (canvas, spec, image, pageWidth, pageHeight, dpr) => {
-	canvas.width = Math.max(1, Math.round(pageWidth * dpr));
-	canvas.height = Math.max(1, Math.round(pageHeight * dpr));
-
-	const ctx = canvas.getContext("2d");
-	ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+	ctx.save();
+	traceOutline(ctx, grid);
 	ctx.fillStyle = PAPER;
-	ctx.fillRect(0, 0, pageWidth, pageHeight);
-
-	if (!spec.title && !spec.paragraphs.length && !image) return;
-
-	const padX = pageWidth * 0.1;
-	const padY = pageHeight * 0.062;
-	const contentWidth = pageWidth - padX * 2;
-	let cursorY = padY;
-
-	if (spec.title) {
-		let titleSize = Math.max(16, pageWidth * 0.046);
-		const label = spec.title.toLocaleUpperCase("ru");
-		ctx.fillStyle = "#8E3821";
-		ctx.textAlign = "center";
-		ctx.textBaseline = "top";
-
-		const fitTitle = () => {
-			ctx.font = `400 ${titleSize}px literaturedecor, "Times New Roman", serif`;
-			ctx.letterSpacing = `${titleSize * 0.14}px`;
-		};
-
-		fitTitle();
-
-		while (ctx.measureText(label).width > contentWidth && titleSize > 13) {
-			titleSize -= 1;
-			fitTitle();
-		}
-
-		ctx.fillText(label, pageWidth / 2, cursorY);
-		ctx.letterSpacing = "0px";
-		cursorY += titleSize * 1.45;
-	}
-
-	if (image) {
-		const imageHeight = pageHeight * 0.245;
-		drawCover(ctx, image, padX, cursorY, contentWidth, imageHeight);
-		cursorY += imageHeight + pageHeight * 0.03;
-	}
-
-	if (!spec.paragraphs.length) return;
-
-	const bodySize = Math.max(12, pageWidth * 0.03);
-	const lineHeight = bodySize * 1.36;
-	ctx.fillStyle = "#2A302A";
-	ctx.font = `400 ${bodySize}px involve, sans-serif`;
-	ctx.textAlign = "left";
-	ctx.textBaseline = "top";
-
-	spec.paragraphs.forEach((paragraph, paragraphIndex) => {
-		const lines = wrapLine(ctx, paragraph, contentWidth);
-		const room = pageHeight - padY;
-
-		lines.forEach((line, lineIndex) => {
-			if (cursorY + lineHeight > room) return;
-			const isLast = lineIndex === lines.length - 1;
-			drawJustified(ctx, line, padX, cursorY, contentWidth, isLast);
-			cursorY += lineHeight;
-		});
-
-		if (paragraphIndex < spec.paragraphs.length - 1) cursorY += lineHeight * 0.45;
-	});
-};
-
-const trace = (ctx, points, map) => {
-	ctx.beginPath();
-	points.forEach((point, index) => {
-		const next = map(point);
-		if (index === 0) ctx.moveTo(next.x, next.y);
-		else ctx.lineTo(next.x, next.y);
-	});
-	ctx.closePath();
-};
-
-const drawShaped = (ctx, bitmap, points, anchor, rotation, direction, pageWidth, pageHeight) => {
-	if (!bitmap || bitmap.width < 2 || !anchor || points.length < 3) return;
-
-	const origin = toGlobal(anchor, direction, pageWidth);
-
-	ctx.save();
-	ctx.translate(origin.x, origin.y);
-	trace(ctx, points, (point) => {
-		const global = toGlobal(point, direction, pageWidth);
-		return { x: global.x - origin.x, y: global.y - origin.y };
-	});
-	ctx.rotate(rotation);
-	ctx.clip();
-	ctx.drawImage(bitmap, 0, 0, pageWidth, pageHeight);
-	ctx.restore();
-};
-
-const drawSpine = (ctx, pageWidth, pageHeight) => {
-	const size = Math.max(18, pageWidth * 0.16);
-	const x = pageWidth - size / 2;
-	const gradient = ctx.createLinearGradient(x, 0, x + size, 0);
-
-	gradient.addColorStop(0, "rgba(60, 32, 18, 0)");
-	gradient.addColorStop(0.42, "rgba(60, 32, 18, 0.05)");
-	gradient.addColorStop(0.5, "rgba(40, 18, 10, 0.28)");
-	gradient.addColorStop(0.58, "rgba(60, 32, 18, 0.05)");
-	gradient.addColorStop(1, "rgba(60, 32, 18, 0)");
-
-	ctx.save();
-	ctx.fillStyle = gradient;
-	ctx.fillRect(x, 0, size, pageHeight);
-	ctx.restore();
-};
-
-const foldEnds = (curl) => {
-	const start = curl.topIntersect || curl.sideIntersect;
-	const end = curl.bottomIntersect || curl.sideIntersect;
-
-	if (!start || !end) return null;
-
-	return [start, end];
-};
-
-const shadeFold = (ctx, curl, direction, pageWidth, pageHeight, mode) => {
-	const ends = foldEnds(curl);
-
-	if (!ends) return;
-
-	const [start, end] = ends;
-	const from = toGlobal(start, direction, pageWidth);
-	const to = toGlobal(end, direction, pageWidth);
-	const dx = to.x - from.x;
-	const dy = to.y - from.y;
-	const length = Math.hypot(dx, dy) || 1;
-	let nx = dy / length;
-	let ny = -dx / length;
-
-	if (direction === "forward" && nx < 0) {
-		nx = -nx;
-		ny = -ny;
-	}
-
-	if (direction === "back" && nx > 0) {
-		nx = -nx;
-		ny = -ny;
-	}
-
-	const strength = Math.sin((Math.min(curl.progress, 100) / 100) * Math.PI);
-	const cast = Math.max(14, pageWidth * 0.26 * strength);
-	const opacity = 0.16 + strength * 0.2;
-	const width = mode === "crease" ? cast * 0.42 : cast;
-	const sign = mode === "crease" ? -1 : 1;
-
-	ctx.save();
-	ctx.beginPath();
-	ctx.rect(0, 0, pageWidth * 2, pageHeight);
-	ctx.clip();
-
-	const gradient = ctx.createLinearGradient(from.x, from.y, from.x + nx * sign * width, from.y + ny * sign * width);
-	gradient.addColorStop(0, `rgba(42, 22, 12, ${mode === "crease" ? opacity * 0.85 : opacity})`);
-	gradient.addColorStop(mode === "crease" ? 0.4 : 1, "rgba(42, 22, 12, 0)");
-	if (mode === "crease") gradient.addColorStop(1, "rgba(42, 22, 12, 0)");
-
-	ctx.fillStyle = gradient;
-	ctx.beginPath();
-	ctx.moveTo(from.x, from.y);
-	ctx.lineTo(to.x, to.y);
-	ctx.lineTo(to.x + nx * sign * width, to.y + ny * sign * width);
-	ctx.lineTo(from.x + nx * sign * width, from.y + ny * sign * width);
-	ctx.closePath();
 	ctx.fill();
+	ctx.restore();
 
-	if (mode === "cast") {
-		ctx.beginPath();
-		ctx.moveTo(from.x, from.y);
-		ctx.lineTo(to.x, to.y);
-		ctx.strokeStyle = "rgba(70, 42, 28, 0.28)";
-		ctx.lineWidth = 1;
-		ctx.stroke();
+	const cells = [];
+	for (let row = 0; row < grid.length - 1; row += 1) {
+		for (let col = 0; col < grid[0].length - 1; col += 1) {
+			const p00 = grid[row][col];
+			const p10 = grid[row][col + 1];
+			const p01 = grid[row + 1][col];
+			const p11 = grid[row + 1][col + 1];
+			cells.push({
+				p00,
+				p10,
+				p01,
+				p11,
+				z: (p00.z + p10.z + p01.z + p11.z) / 4,
+			});
+		}
+	}
+	cells.sort((a, b) => a.z - b.z);
+	for (const cell of cells) {
+		paintTriangle(ctx, cell.p00, cell.p10, cell.p11, rightTex, leftTex);
+		paintTriangle(ctx, cell.p00, cell.p11, cell.p01, rightTex, leftTex);
 	}
 
-	ctx.restore();
+	shadeSheet(ctx, grid, turn);
+}
+
+function renderPage(ctx, geom, texture, side) {
+	const x = side === 'left' ? geom.leftX : geom.spine;
+	ctx.fillStyle = PAPER;
+	ctx.fillRect(x, geom.pageTop, geom.pageW, geom.pageH);
+	if (texture) ctx.drawImage(texture, x, geom.pageTop, geom.pageW, geom.pageH);
+}
+
+const GUTTER = {
+	left: { band: 0.55, stops: [[0, 0], [0.3, 0.03], [0.62, 0.07], [0.86, 0.12], [0.97, 0.18], [0.996, 0.24], [1, 0.38]] },
+	right: { band: 0.3, stops: [[0, 0.38], [0.006, 0.24], [0.05, 0.16], [0.22, 0.1], [0.5, 0.05], [1, 0]] },
 };
 
-const initBook = (target) => {
-	const root = typeof target === "string" ? document.querySelector(target) : target;
+function paintGutter(ctx, width, height, side) {
+	const { band, stops } = GUTTER[side];
+	const size = width * band;
+	const x = side === 'left' ? width - size : 0;
+	const gutter = ctx.createLinearGradient(x, 0, x + size, 0);
+	for (const [offset, alpha] of stops) gutter.addColorStop(offset, `rgba(42, 22, 14, ${alpha})`);
+	ctx.fillStyle = gutter;
+	ctx.fillRect(x, 0, size, height);
+}
 
-	if (!root || root.dataset.bookReady === "true") return null;
+function drawFlipShadow(ctx, geom, turn) {
+	const lift = Math.sin(turn);
+	if (lift < 0.02) return;
+	const grid = buildGrid(turn, geom);
+	ctx.save();
+	ctx.beginPath();
+	ctx.rect(geom.leftX, geom.pageTop, geom.pageW * geom.pages, geom.pageH);
+	ctx.clip();
+	ctx.translate(0, 12);
+	traceOutline(ctx, grid);
+	ctx.filter = 'blur(14px)';
+	ctx.fillStyle = `rgba(32, 16, 10, ${0.2 * lift})`;
+	ctx.fill();
+	ctx.restore();
+}
 
-	const stage = root.querySelector(".book__stage");
-	const canvas = root.querySelector("[data-book-canvas]");
-	const btnPrev = root.querySelector("[data-book-prev]");
-	const btnNext = root.querySelector("[data-book-next]");
-	const counter = root.querySelector("[data-book-counter]");
+function textLines(node) {
+	const text = node.textContent;
+	if (!text || !text.trim()) return [];
+	const range = document.createRange();
+	const lines = [];
+	let index = 0;
+	while (index < text.length) {
+		while (index < text.length && /\s/.test(text[index])) index += 1;
+		if (index >= text.length) break;
+		range.setStart(node, index);
+		range.setEnd(node, index + 1);
+		const first = range.getBoundingClientRect();
+		if (first.width < 0.5 && first.height < 0.5) {
+			index += 1;
+			continue;
+		}
+		const midY = (first.top + first.bottom) / 2;
+		let end = index + 1;
+		while (end < text.length) {
+			range.setStart(node, end);
+			range.setEnd(node, end + 1);
+			const rect = range.getBoundingClientRect();
+			if (rect.width < 0.5 && rect.height < 0.5) {
+				end += 1;
+				continue;
+			}
+			const y = (rect.top + rect.bottom) / 2;
+			if (Math.abs(y - midY) > Math.max(2, first.height * 0.6)) break;
+			end += 1;
+		}
+		const slice = text.slice(index, end).replace(/\s+/g, ' ').trim();
+		range.setStart(node, index);
+		range.setEnd(node, end);
+		const box = range.getBoundingClientRect();
+		if (slice && box.width > 0) lines.push({ text: slice, box });
+		index = end;
+	}
+	return lines;
+}
 
-	if (!stage || !canvas) return null;
+function paintText(ctx, node, origin) {
+	const parent = node.parentElement;
+	if (!parent) return;
+	const style = getComputedStyle(parent);
+	const lines = textLines(node);
+	if (!lines.length) return;
+	ctx.save();
+	ctx.font = style.font;
+	ctx.fillStyle = style.color;
+	ctx.textBaseline = 'middle';
+	if ('letterSpacing' in ctx && style.letterSpacing && style.letterSpacing !== 'normal') ctx.letterSpacing = style.letterSpacing;
+	for (const line of lines) {
+		let content = line.text;
+		if (style.textTransform === 'uppercase') content = content.toUpperCase();
+		else if (style.textTransform === 'lowercase') content = content.toLowerCase();
+		const x = line.box.left - origin.left;
+		const y = line.box.top - origin.top + line.box.height / 2;
+		ctx.fillText(content, x, y);
+	}
+	ctx.restore();
+}
 
-	const ctx = canvas.getContext("2d");
+function paintImage(ctx, img, origin) {
+	if (!img.naturalWidth) return;
+	const rect = img.getBoundingClientRect();
+	if (rect.width < 1 || rect.height < 1) return;
+	const style = getComputedStyle(img);
+	const radius = parseFloat(style.borderTopLeftRadius) || 0;
+	const x = rect.left - origin.left;
+	const y = rect.top - origin.top;
+	ctx.save();
+	ctx.beginPath();
+	if (radius > 0 && typeof ctx.roundRect === 'function') ctx.roundRect(x, y, rect.width, rect.height, radius);
+	else ctx.rect(x, y, rect.width, rect.height);
+	ctx.clip();
+	const fit = style.objectFit;
+	if (fit === 'cover' || fit === 'contain') {
+		const scale = fit === 'cover'
+			? Math.max(rect.width / img.naturalWidth, rect.height / img.naturalHeight)
+			: Math.min(rect.width / img.naturalWidth, rect.height / img.naturalHeight);
+		const sw = rect.width / scale;
+		const sh = rect.height / scale;
+		ctx.drawImage(img, (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) / 2, sw, sh, x, y, rect.width, rect.height);
+	} else {
+		ctx.drawImage(img, x, y, rect.width, rect.height);
+	}
+	ctx.restore();
+}
 
-	if (!ctx) return null;
+function paintNode(ctx, node, origin) {
+	if (node.nodeType === Node.TEXT_NODE) {
+		paintText(ctx, node, origin);
+		return;
+	}
+	if (node.nodeType !== Node.ELEMENT_NODE) return;
+	if (node.tagName === 'IMG') {
+		paintImage(ctx, node, origin);
+		return;
+	}
+	const style = getComputedStyle(node);
+	if (style.backgroundColor && style.backgroundColor !== 'rgba(0, 0, 0, 0)' && style.backgroundColor !== 'transparent') {
+		const rect = node.getBoundingClientRect();
+		ctx.fillStyle = style.backgroundColor;
+		ctx.fillRect(rect.left - origin.left, rect.top - origin.top, rect.width, rect.height);
+	}
+	for (const child of node.childNodes) paintNode(ctx, child, origin);
+}
 
-	root.dataset.bookReady = "true";
+function paintPage(ctx, page, width, height) {
+	const origin = page.getBoundingClientRect();
+	const style = getComputedStyle(page);
+	ctx.fillStyle = style.backgroundColor && style.backgroundColor !== 'rgba(0, 0, 0, 0)' ? style.backgroundColor : PAPER;
+	ctx.fillRect(0, 0, width, height);
+	for (const child of page.childNodes) paintNode(ctx, child, origin);
+}
 
-	const specs = Array.prototype.map.call(root.querySelectorAll(".book__page"), (node) => readSpec(node));
+function capturePage(page, width, height, dpr, side) {
+	const canvas = document.createElement('canvas');
+	canvas.width = Math.max(1, Math.round(width * dpr));
+	canvas.height = Math.max(1, Math.round(height * dpr));
+	const ctx = canvas.getContext('2d');
+	ctx.scale(dpr, dpr);
+	try {
+		paintPage(ctx, page, width, height);
+	} catch {
+		ctx.fillStyle = PAPER;
+		ctx.fillRect(0, 0, width, height);
+	}
+	paintGutter(ctx, width, height, side);
+	return canvas;
+}
 
-	if (specs.length % 2 === 1) specs.push({ title: "", paragraphs: [], src: "" });
+async function whenReady(root) {
+	if (document.fonts?.ready) await document.fonts.ready.catch(() => {});
+	const images = [...root.querySelectorAll('.book--sources img')];
+	await Promise.all(images.map((img) => {
+		if (img.complete) return Promise.resolve();
+		return new Promise((resolve) => {
+			img.addEventListener('load', resolve, { once: true });
+			img.addEventListener('error', resolve, { once: true });
+		});
+	}));
+}
 
-	const spreads = [];
+function initBook(root) {
+	if (root.dataset.ready === 'true') return;
+	const stage = root.querySelector('.book--stage');
+	const canvas = root.querySelector('.book--canvas');
+	const sources = [...root.querySelectorAll('.book--sources .page')];
+	const prev = root.querySelector('[data-prev]');
+	const next = root.querySelector('[data-next]');
+	if (!stage || !canvas || sources.length < 2 || !prev || !next) return;
 
-	for (let index = 0; index < specs.length; index += 2) {
-		spreads.push(index + 1 < specs.length ? [index, index + 1] : [index]);
+	root.dataset.ready = 'true';
+	const ctx = canvas.getContext('2d');
+	const mobileQuery = window.matchMedia('(max-width: 768px)');
+	const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const notes = root.querySelector('.book--notes');
+
+	let spread = 0;
+	let single = mobileQuery.matches;
+	let busy = false;
+	let notesSwiper = null;
+	let notesLock = false;
+	let anim = null;
+	let textures = [];
+	let resizeTimer = 0;
+	let pendingResize = false;
+
+	const pageCount = () => (single ? sources.length : Math.ceil(sources.length / 2));
+	const pageSide = (index) => (!single && index % 2 === 0 ? 'left' : 'right');
+
+	function measure() {
+		const stageRect = stage.getBoundingClientRect();
+		const canvasRect = canvas.getBoundingClientRect();
+		const dpr = Math.min(window.devicePixelRatio || 1, 2);
+		const stack = single ? 0 : 14;
+		const edge = 14;
+		const pageW = Math.round(single ? stageRect.width - edge : (stageRect.width - stack - edge) / 2);
+		const pageH = Math.round(stageRect.height);
+		const leftX = Math.round(stageRect.left - canvasRect.left + stack);
+		const pageTop = Math.round(stageRect.top - canvasRect.top);
+		if (pageW < 8 || pageH < 8) return null;
+		return {
+			dpr,
+			cssW: canvas.clientWidth,
+			cssH: canvas.clientHeight,
+			pageW,
+			pageH,
+			pages: single ? 1 : 2,
+			leftX,
+			pageTop,
+			spine: single ? leftX : leftX + pageW,
+			centerY: pageTop + pageH / 2,
+			focal: Math.max(pageW * 3.5, 980),
+		};
 	}
 
-	const bitmaps = specs.map(() => document.createElement("canvas"));
-	const images = specs.map(() => null);
+	function prepare(geom) {
+		const width = Math.max(1, Math.round(geom.cssW * geom.dpr));
+		const height = Math.max(1, Math.round(geom.cssH * geom.dpr));
+		if (canvas.width !== width || canvas.height !== height) {
+			canvas.width = width;
+			canvas.height = height;
+		}
+		ctx.setTransform(geom.dpr, 0, 0, geom.dpr, 0, 0);
+		ctx.imageSmoothingEnabled = true;
+		ctx.imageSmoothingQuality = 'high';
+		ctx.clearRect(0, 0, geom.cssW, geom.cssH);
+	}
 
-	let spreadIndex = 0;
-	let flipping = null;
-	let frameId = 0;
-	let pageWidth = 0;
-	let pageHeight = 0;
-	let dpr = 1;
+	function drawPages(geom, leftIndex, rightIndex) {
+		renderPage(ctx, geom, textures[rightIndex], 'right');
+		renderPage(ctx, geom, textures[leftIndex], 'left');
+	}
 
-	const sheet = (index) => {
-		if (index === undefined || index === null) return null;
-		return bitmaps[index] || null;
-	};
+	function draw() {
+		const geom = measure();
+		if (!geom) return;
+		prepare(geom);
+		if (single) {
+			if (!anim) {
+				renderPage(ctx, geom, textures[spread], 'right');
+				return;
+			}
+			const { turn, dir, fromSpread, toSpread } = anim;
+			renderPage(ctx, geom, textures[dir > 0 ? toSpread : fromSpread], 'right');
+			drawFlipShadow(ctx, geom, turn);
+			renderSheet(ctx, geom, turn, textures[dir > 0 ? fromSpread : toSpread], null);
+			return;
+		}
+		if (!anim) {
+			drawPages(geom, spread * 2, spread * 2 + 1);
+			return;
+		}
 
-	const paintAll = () => {
-		if (pageWidth < 2 || pageHeight < 2) return;
+		const { turn, dir, fromSpread, toSpread } = anim;
+		const front = dir > 0 ? fromSpread * 2 + 1 : toSpread * 2 + 1;
+		const back = dir > 0 ? toSpread * 2 : fromSpread * 2;
+		drawPages(geom, dir > 0 ? fromSpread * 2 : toSpread * 2, dir > 0 ? toSpread * 2 + 1 : fromSpread * 2 + 1);
+		drawFlipShadow(ctx, geom, turn);
+		renderSheet(ctx, geom, turn, textures[front], textures[back]);
+	}
 
-		specs.forEach((spec, index) => {
-			paintPage(bitmaps[index], spec, images[index], pageWidth, pageHeight, dpr);
+	function mountNotes() {
+		if (!notes || typeof Swiper === 'undefined') return;
+		if (!single) {
+			notesSwiper?.destroy(true, true);
+			notesSwiper = null;
+			return;
+		}
+		if (notesSwiper) {
+			notesSwiper.updateAutoHeight(0);
+			return;
+		}
+		notesSwiper = new Swiper(notes, {
+			effect: 'fade',
+			fadeEffect: { crossFade: true },
+			autoHeight: true,
+			speed: reduced ? 0 : FLIP_MS,
+			slidesPerView: 1,
+			allowTouchMove: true,
+			watchOverflow: true,
+			on: {
+				slideChange(swiper) {
+					if (notesLock) {
+						notesLock = false;
+						return;
+					}
+					if (busy || swiper.activeIndex === spread) return;
+					go(swiper.activeIndex > spread ? 1 : -1);
+				},
+			},
 		});
-	};
+	}
 
-	const drawSheet = (bitmap, x) => {
-		if (!bitmap || bitmap.width < 2) {
-			ctx.fillStyle = PAPER;
-			ctx.fillRect(x, 0, pageWidth, pageHeight);
-			return;
-		}
+	function syncNotes(animate) {
+		if (!single || !notesSwiper) return;
+		const index = anim ? anim.toSpread : spread;
+		if (notesSwiper.activeIndex === index) return;
+		notesLock = true;
+		notesSwiper.slideTo(index, animate && !reduced ? FLIP_MS : 0);
+	}
 
-		ctx.drawImage(bitmap, x, 0, pageWidth, pageHeight);
-	};
+	function syncButtons() {
+		prev.disabled = busy || spread <= 0;
+		next.disabled = busy || spread >= pageCount() - 1;
+	}
 
-	const drawSpread = (index) => {
-		const spread = spreads[index];
+	function syncA11y() {
+		sources.forEach((page, index) => {
+			const visible = single ? index === spread : index === spread * 2 || index === spread * 2 + 1;
+			page.toggleAttribute('inert', !visible);
+			page.setAttribute('aria-hidden', visible ? 'false' : 'true');
+		});
+	}
 
-		if (!spread) return;
-
-		drawSheet(sheet(spread[0]), 0);
-		drawSheet(sheet(spread[1]), pageWidth);
-	};
-
-	const drawCurl = () => {
-		const curl = computeCurl(cornerPoint(flipping.progress, pageWidth, pageHeight), pageWidth, pageHeight);
-
-		drawSpread(spreadIndex);
-
-		if (!curl) {
-			drawSpine(ctx, pageWidth, pageHeight);
-			return;
-		}
-
-		const direction = flipping.direction;
-		const clips = clipsFor(curl, pageWidth, pageHeight);
-		const rotation = direction === "forward" ? -curl.angle : curl.angle;
-		const anchor = direction === "forward" ? curl.rect.topLeft : curl.rect.topRight;
-		const bottomAnchor = direction === "forward" ? { x: 0, y: 0 } : { x: pageWidth, y: 0 };
-		const target = flipping.direction === "forward" ? spreadIndex + 1 : spreadIndex - 1;
-		const targetSpread = spreads[target];
-
-		if (!targetSpread) return;
-
-		const flippingBitmap = direction === "forward" ? sheet(targetSpread[0]) : sheet(targetSpread[1] ?? targetSpread[0]);
-		const bottomBitmap = direction === "forward" ? sheet(targetSpread[1] ?? targetSpread[0]) : sheet(targetSpread[0]);
-
-		drawShaped(ctx, bottomBitmap, clips.bottom, bottomAnchor, 0, direction, pageWidth, pageHeight);
-		shadeFold(ctx, curl, direction, pageWidth, pageHeight, "cast");
-		drawSpine(ctx, pageWidth, pageHeight);
-		drawShaped(ctx, flippingBitmap, clips.flipping, anchor, rotation, direction, pageWidth, pageHeight);
-		ctx.save();
-		trace(ctx, clips.flipping, (point) => toGlobal(point, direction, pageWidth));
-		ctx.clip();
-		shadeFold(ctx, curl, direction, pageWidth, pageHeight, "crease");
-		ctx.restore();
-	};
-
-	const draw = () => {
-		const rect = canvas.getBoundingClientRect();
-		const nextWidth = rect.width / 2;
-		const nextHeight = rect.height;
-		const nextDpr = Math.min(window.devicePixelRatio || 1, 2);
-
-		if (nextWidth < 2 || nextHeight < 2) return;
-
-		const pixelWidth = Math.max(1, Math.round(rect.width * nextDpr));
-		const pixelHeight = Math.max(1, Math.round(rect.height * nextDpr));
-		const sizeChanged = Math.abs(nextWidth - pageWidth) > 0.5 || Math.abs(nextHeight - pageHeight) > 0.5 || canvas.width !== pixelWidth || canvas.height !== pixelHeight;
-
-		pageWidth = nextWidth;
-		pageHeight = nextHeight;
-		dpr = nextDpr;
-
-		if (sizeChanged) {
-			canvas.width = pixelWidth;
-			canvas.height = pixelHeight;
-			paintAll();
-		}
-
-		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-		ctx.clearRect(0, 0, rect.width, rect.height);
-		ctx.fillStyle = PAPER;
-		ctx.fillRect(0, 0, rect.width, rect.height);
-
-		if (flipping) drawCurl();
-		else {
-			drawSpread(spreadIndex);
-			drawSpine(ctx, pageWidth, pageHeight);
-		}
-	};
-
-	const updateControls = () => {
-		if (counter) counter.textContent = `${spreadIndex + 1} / ${spreads.length}`;
-		if (btnPrev) btnPrev.disabled = spreadIndex === 0 || Boolean(flipping);
-		if (btnNext) btnNext.disabled = spreadIndex >= spreads.length - 1 || Boolean(flipping);
-	};
-
-	const stop = () => {
-		if (!frameId) return;
-		cancelAnimationFrame(frameId);
-		frameId = 0;
-	};
-
-	const finish = () => {
-		if (!flipping) return;
-		spreadIndex += flipping.direction === "forward" ? 1 : -1;
-		flipping = null;
-		stop();
-		updateControls();
+	function refreshTextures() {
+		const geom = measure();
+		if (!geom) return;
+		const width = Math.round(geom.pageW);
+		const height = Math.round(geom.pageH);
+		stage.style.setProperty('--book-page-w', `${width}px`);
+		stage.style.setProperty('--book-page-h', `${height}px`);
+		void stage.offsetHeight;
+		textures = sources.map((page, index) => capturePage(page, width, height, geom.dpr, pageSide(index)));
 		draw();
-	};
+	}
 
-	const tick = (now) => {
-		if (!flipping) return;
-
-		const progress = Math.min(1, (now - flipping.startedAt) / FLIP_MS);
-		flipping.progress = easeInOut(progress);
+	function finish(target) {
+		spread = target;
+		anim = null;
+		busy = false;
+		syncButtons();
+		syncA11y();
+		syncNotes(false);
 		draw();
+		if (pendingResize) {
+			pendingResize = false;
+			refreshTextures();
+		}
+	}
 
-		if (progress < 1) {
-			frameId = requestAnimationFrame(tick);
+	function go(dir) {
+		if (busy) return;
+		const target = spread + dir;
+		if (target < 0 || target >= pageCount()) return;
+		busy = true;
+		syncButtons();
+		const fromSpread = spread;
+		const from = dir > 0 ? 0 : Math.PI;
+		const to = dir > 0 ? Math.PI : 0;
+
+		if (reduced) {
+			finish(target);
 			return;
 		}
 
-		finish();
-	};
-
-	const turn = (direction) => {
-		if (flipping) return;
-
-		const nextIndex = spreadIndex + direction;
-
-		if (nextIndex < 0 || nextIndex >= spreads.length) return;
-		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-			spreadIndex = nextIndex;
-			updateControls();
+		anim = { turn: from, dir, fromSpread, toSpread: target };
+		syncNotes(true);
+		const state = { turn: from };
+		const step = (turn) => {
+			anim = { turn, dir, fromSpread, toSpread: target };
 			draw();
-			return;
-		}
-
-		flipping = {
-			direction: direction > 0 ? "forward" : "back",
-			progress: 0,
-			startedAt: performance.now(),
 		};
 
-		updateControls();
-		frameId = requestAnimationFrame(tick);
-	};
+		if (typeof gsap !== 'undefined') {
+			gsap.to(state, {
+				turn: to,
+				duration: FLIP_MS / 1000,
+				ease: 'power2.inOut',
+				onUpdate: () => step(state.turn),
+				onComplete: () => finish(target),
+			});
+			return;
+		}
 
-	const onKeyDown = (event) => {
-		if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-		event.preventDefault();
-		turn(event.key === "ArrowRight" ? 1 : -1);
-	};
-
-	if (btnNext) btnNext.addEventListener("click", () => turn(1));
-	if (btnPrev) btnPrev.addEventListener("click", () => turn(-1));
-	root.addEventListener("keydown", onKeyDown);
-
-	const observer = new ResizeObserver(() => draw());
-	observer.observe(stage);
-
-	updateControls();
-	draw();
-
-	Promise.all(specs.map((spec) => loadImage(spec.src))).then((loaded) => {
-		loaded.forEach((image, index) => {
-			images[index] = image;
-		});
-		paintAll();
-		draw();
-	});
-
-	document.fonts.ready.then(() => {
-		paintAll();
-		draw();
-	});
-
-	return {
-		next: () => turn(1),
-		prev: () => turn(-1),
-		destroy: () => {
-			stop();
-			observer.disconnect();
-			root.removeEventListener("keydown", onKeyDown);
-			delete root.dataset.bookReady;
-		},
-	};
-};
-
-if (typeof window !== "undefined") {
-	window.initBook = initBook;
-
-	if (document.querySelector("[data-book]")) {
-		document.querySelectorAll("[data-book]").forEach((node) => initBook(node));
+		const start = performance.now();
+		const tick = (now) => {
+			const t = Math.min(1, (now - start) / FLIP_MS);
+			const eased = t < 0.5 ? 2 * t * t : 1 - ((-2 * t + 2) ** 2) / 2;
+			step(from + (to - from) * eased);
+			if (t < 1) requestAnimationFrame(tick);
+			else finish(target);
+		};
+		requestAnimationFrame(tick);
 	}
+
+	function applyMode(nextSingle) {
+		if (nextSingle === single) return;
+		spread = nextSingle ? spread * 2 : Math.floor(spread / 2);
+		single = nextSingle;
+		if (spread > pageCount() - 1) spread = pageCount() - 1;
+		if (spread < 0) spread = 0;
+		mountNotes();
+		syncNotes(false);
+		syncButtons();
+		syncA11y();
+		if (busy) {
+			pendingResize = true;
+			return;
+		}
+		refreshTextures();
+	}
+
+	prev.addEventListener('click', () => go(-1));
+	next.addEventListener('click', () => go(1));
+	mobileQuery.addEventListener('change', () => applyMode(mobileQuery.matches));
+	syncButtons();
+	syncA11y();
+	mountNotes();
+	syncNotes(false);
+
+	whenReady(root).then(() => {
+		notesSwiper?.updateAutoHeight(0);
+		refreshTextures();
+	});
+
+	const observer = new ResizeObserver(() => {
+		window.clearTimeout(resizeTimer);
+		resizeTimer = window.setTimeout(() => {
+			if (busy) {
+				pendingResize = true;
+				draw();
+				return;
+			}
+			refreshTextures();
+		}, 140);
+	});
+	observer.observe(stage);
+}
+
+function bootBooks() {
+	document.querySelectorAll('.book').forEach(initBook);
+}
+
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', bootBooks);
+} else {
+	bootBooks();
 }
